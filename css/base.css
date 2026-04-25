@@ -1,0 +1,69 @@
+:root {
+    --bg: #f8fafc;
+    --bg-soft: #ffffff;
+    --text: #0f172a;
+    --text-soft: #334155;
+    --border: rgba(148, 163, 184, 0.22);
+    --card: rgba(255, 255, 255, 0.92);
+    --accent: #2563eb;
+    --accent-soft: #dbeafe;
+    --shadow: 0 14px 38px rgba(2, 6, 23, 0.12);
+}
+
+body.dark-theme {
+    --bg: #050816;
+    --bg-soft: #0f172a;
+    --text: #f8fafc;
+    --text-soft: #cbd5e1;
+    --border: rgba(148, 163, 184, 0.16);
+    --card: rgba(15, 23, 42, 0.88);
+    --accent: #60a5fa;
+    --accent-soft: rgba(59, 130, 246, 0.14);
+    --shadow: 0 20px 45px rgba(2, 6, 23, 0.34);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+a {
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: 90%;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.cursor-glow {
+    position: fixed;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.16) 0%, rgba(96, 165, 250, 0) 72%);
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: transform 0.05s linear;
+}
