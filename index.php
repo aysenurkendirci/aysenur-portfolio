@@ -76,23 +76,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="hero-side-panel">
-                    <?php foreach ($quickInfo as $item): ?>
-                        <div class="info-box">
-                            <span class="info-label"
-                                  data-en="<?= htmlspecialchars($item["label"]["en"]); ?>"
-                                  data-tr="<?= htmlspecialchars($item["label"]["tr"]); ?>">
-                                <?= $item["label"]["en"]; ?>
-                            </span>
-                            <strong
-                                data-en="<?= htmlspecialchars($item["value"]["en"]); ?>"
-                                data-tr="<?= htmlspecialchars($item["value"]["tr"]); ?>">
-                                <?= $item["value"]["en"]; ?>
-                            </strong>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
             </div>
         </div>
     </section>

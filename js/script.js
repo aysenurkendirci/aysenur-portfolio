@@ -33,7 +33,10 @@ function applyLanguage(lang) {
     });
 
     if (langToggle) {
-        langToggle.textContent = lang === "en" ? "TR" : "EN";
+        const label = langToggle.querySelector(".tool-label");
+        if (label) {
+            label.textContent = lang === "en" ? "TR" : "EN";
+        }
     }
 
     localStorage.setItem("portfolio-language", lang);
@@ -44,7 +47,10 @@ function applyTheme(theme) {
     body.classList.add(theme);
 
     if (themeToggle) {
-        themeToggle.textContent = theme === "dark-theme" ? "☀" : "☾";
+        const label = themeToggle.querySelector(".tool-label");
+        if (label) {
+            label.textContent = theme === "dark-theme" ? "☀" : "☾";
+        }
     }
 
     localStorage.setItem("portfolio-theme", theme);
@@ -71,3 +77,28 @@ const savedTheme = localStorage.getItem("portfolio-theme") || "dark-theme";
 
 applyLanguage(savedLanguage);
 applyTheme(savedTheme);
+// ===============================
+// INTERACTIVE ID CARD
+// ===============================
+
+const lanyardCard = document.getElementById("lanyardCard");
+const idCard = document.querySelector(".id-card");
+
+if (lanyardCard && idCard) {
+    lanyardCard.addEventListener("mousemove", (event) => {
+        const rect = lanyardCard.getBoundingClientRect();
+
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        const rotateY = ((x / rect.width) - 0.5) * 20;
+        const rotateX = ((y / rect.height) - 0.5) * -20;
+
+        idCard.style.transform =
+            `rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotate(-3deg)`;
+    });
+
+    lanyardCard.addEventListener("mouseleave", () => {
+        idCard.style.transform = "rotate(-5deg)";
+    });
+}
