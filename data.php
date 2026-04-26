@@ -1,26 +1,65 @@
 <?php
 
+/*
+    Bu dosya portfolyo sitesinde kullanılacak verileri tutar.
+    Amaç: HTML dosyasını kalabalıklaştırmadan profil, teknoloji ve proje
+    bilgilerini tek bir yerde düzenli şekilde yönetmektir.
+*/
+
+/*
+    $profile dizisi portfolyo sahibinin temel bilgilerini içerir.
+    Bu bilgiler navbar, hero, contact ve sosyal medya linklerinde kullanılabilir.
+*/
 $profile = [
     "name" => "Ayşe Nur Kendirci",
+
+    /*
+        title alanı iki dilli tutulmuştur.
+        JavaScript dil değişimi yaparken en/tr değerleri kullanılabilir.
+    */
     "title" => [
         "en" => "Software Engineering Student",
         "tr" => "Yazılım Mühendisliği Öğrencisi"
     ],
+
+    /*
+        tagline kısa tanıtım cümlesidir.
+        Genellikle hero bölümünde başlığın altında gösterilir.
+    */
     "tagline" => [
         "en" => "Building clean, modern and maintainable software products.",
         "tr" => "Temiz, modern ve sürdürülebilir yazılım ürünleri geliştiriyorum."
     ],
+
+    /*
+        description daha uzun profil açıklamasıdır.
+        Hero veya About bölümünde kullanılabilir.
+    */
     "description" => [
         "en" => "I am a software engineering student focused on mobile, frontend and backend development. I enjoy transforming ideas into structured, user-friendly and scalable software solutions.",
         "tr" => "Mobil, frontend ve backend geliştirme alanlarına odaklanan bir yazılım mühendisliği öğrencisiyim. Fikirleri düzenli, kullanıcı dostu ve ölçeklenebilir yazılım çözümlerine dönüştürmeyi seviyorum."
     ],
+
+    /*
+        İletişim ve sosyal medya bilgileri.
+        Bu linkler HTML tarafında href içinde kullanılacaktır.
+    */
     "email" => "aysenurkendirciss@gmail.com",
     "linkedin" => "https://www.linkedin.com/in/aysenurkendirci",
     "github" => "https://github.com/aysenurkendirci",
+
+    /*
+        CV ve profil fotoğrafı yolu.
+        Dosyaların gerçekten bu klasörde olduğundan emin olunmalıdır.
+    */
     "cv" => "images/cv.pdf",
     "image" => "images/profile.jpg"
 ];
 
+/*
+    $quickInfo dizisi hero bölümündeki küçük bilgi kutularını tutar.
+    Her bilgi kutusunda label ve value vardır.
+*/
 $quickInfo = [
     [
         "label" => ["en" => "Focus", "tr" => "Odak"],
@@ -36,6 +75,10 @@ $quickInfo = [
     ]
 ];
 
+/*
+    $aboutTexts dizisi About bölümündeki paragrafları tutar.
+    Çok dilli yapı için her paragrafın en ve tr karşılığı vardır.
+*/
 $aboutTexts = [
     [
         "en" => "I am a software engineering student who enjoys building clean, structured and maintainable software products. My interests mainly focus on mobile development, frontend interfaces and backend logic.",
@@ -47,6 +90,10 @@ $aboutTexts = [
     ]
 ];
 
+/*
+    $techCategories dizisi Tech Stack bölümünü oluşturur.
+    Her kategori başlık, anahtar ve teknoloji item'larından oluşur.
+*/
 $techCategories = [
     [
         "key" => "mobile",
@@ -186,6 +233,10 @@ $techCategories = [
     ]
 ];
 
+/*
+    $projects dizisi Projects bölümünde gösterilecek portfolyo projelerini tutar.
+    Her projede başlık, açıklama, kullanılan teknolojiler ve GitHub linki bulunur.
+*/
 $projects = [
     [
         "title" => "CineScope",

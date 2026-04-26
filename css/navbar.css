@@ -1,93 +1,229 @@
+/* ==================================================
+   NAVBAR GENEL YAPISI
+   Sayfanın en üstünde duran menü alanıdır.
+   Sticky kullanıldığı için kullanıcı sayfayı aşağı kaydırsa bile
+   navbar ekranın üst kısmında kalır.
+   ================================================== */
 .navbar {
+    /*
+       Sticky, navbar'ın kendi yerine kadar normal akışta durmasını,
+       sayfa kayınca üstte sabitlenmesini sağlar.
+    */
     position: sticky;
+
+    /*
+       Navbar ekranın en üstüne yapışır.
+    */
     top: 0;
+
+    /*
+       Navbar'ın diğer içeriklerin üstünde görünmesini sağlar.
+    */
     z-index: 1000;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
+
+    /*
+       Arka plan rengini tema değişkeninden alır.
+       color-mix ile biraz şeffaflık verilerek modern cam efekti oluşturulur.
+    */
+    background: color-mix(in srgb, var(--page-background-color) 88%, transparent);
+
+    /*
+       Navbar arkasındaki içeriği bulanık göstererek glassmorphism efekti verir.
+    */
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+
+    /*
+       Navbar altına ince bir çizgi ekler.
+    */
+    border-bottom: 1px solid var(--border-color);
 }
 
+/* ==================================================
+   NAVBAR İÇ KAPSAYICI
+   Logo, menü linkleri ve sağdaki butonları aynı satırda düzenler.
+   ================================================== */
 .navbar-container {
+    /*
+       İçerikleri yatayda dizmek için flex kullanılır.
+    */
     display: flex;
+
+    /*
+       Elemanları dikeyde ortalar.
+    */
     align-items: center;
+
+    /*
+       Sol logo ile sağ menü/araçlar arasında boşluk bırakır.
+    */
     justify-content: space-between;
+
+    /*
+       Navbar içindeki elemanların birbirine yapışmasını engeller.
+    */
     gap: 20px;
+
+    /*
+       Navbar yüksekliğini sabit ve dengeli tutar.
+    */
     min-height: 78px;
 }
 
+/* ==================================================
+   NORMAL LOGO STİLİ
+   Eğer klasik logo kullanılırsa uygulanacak temel stil.
+   ================================================== */
 .logo {
     text-decoration: none;
     font-size: 24px;
     font-weight: 800;
-    color: var(--text);
+    color: var(--primary-text-color);
 }
 
-/* Code-style brand */
+/* ==================================================
+   CODE STYLE BRAND
+   Sol üstteki "const developer = ..." yazısını kod görünümüne çevirir.
+   ================================================== */
 .brand {
+    /*
+       Linkin varsayılan alt çizgisini kaldırır.
+    */
     text-decoration: none;
+
+    /*
+       Kod yazısı görünümü için monospace font kullanılır.
+    */
     font-family: "Fira Code", Consolas, monospace;
+
+    /*
+       Brand yazısının navbar içinde dengeli görünmesini sağlar.
+    */
     font-size: 15px;
+
+    /*
+       Yazının alt satıra düşmesini engeller.
+    */
     white-space: nowrap;
 }
 
+/* ==================================================
+   BRAND TYPING ANİMASYONU
+   Yazının sıfır genişlikten başlayıp yazılıyormuş gibi açılmasını sağlar.
+   ================================================== */
 .brand-line {
+    /*
+       inline-block sayesinde genişlik animasyonu uygulanabilir.
+    */
     display: inline-block;
+
+    /*
+       Yazının henüz görünmeyen kısmını gizler.
+    */
     overflow: hidden;
+
+    /*
+       Kod yazısının tek satırda kalmasını sağlar.
+    */
     white-space: nowrap;
+
+    /*
+       Başlangıçta yazı görünmez, animasyonla genişler.
+    */
     max-width: 0;
+
+    /*
+       steps kullanımı yazının harf harf yazılıyormuş gibi görünmesini sağlar.
+    */
     animation: typingLine 3.2s steps(34, end) forwards;
 }
 
+/* Kod içindeki const kelimesi */
 .token-const {
     color: #c084fc;
     font-weight: 700;
 }
 
+/* Kod içindeki değişken adı */
 .token-var {
     color: #60a5fa;
     font-weight: 700;
 }
 
+/* Kod içindeki eşittir ve noktalı virgül işaretleri */
 .token-eq,
 .token-semi {
     color: #94a3b8;
 }
 
+/* Kod içindeki string değer */
 .token-string {
     color: #34d399;
     font-weight: 700;
 }
 
+/* ==================================================
+   YANIP SÖNEN CURSOR
+   Kod yazılıyormuş hissi vermek için brand sonunda kullanılır.
+   ================================================== */
 .brand-cursor {
     display: inline-block;
     width: 3px;
     height: 18px;
-    background: var(--accent);
+    background: var(--primary-accent-color);
     margin-left: 3px;
     border-radius: 2px;
     box-shadow: 0 0 10px rgba(96, 165, 250, 0.7);
     animation: blinkBrandCursor 0.8s infinite;
 }
 
+/* ==================================================
+   NAVBAR MENÜ LİNKLERİ
+   About, Tech Stack, Projects, Contact gibi linkleri düzenler.
+   ================================================== */
 .nav-links {
+    /*
+       ul etiketinin varsayılan madde işaretlerini kaldırır.
+    */
     list-style: none;
+
+    /*
+       Menü elemanlarını yan yana dizer.
+    */
     display: flex;
+
+    /*
+       Menü elemanlarını dikeyde ortalar.
+    */
     align-items: center;
+
+    /*
+       Linkler arasında düzenli boşluk bırakır.
+    */
     gap: 26px;
+
+    /*
+       Menü linklerini mümkün olduğunca sağ tarafa iter.
+    */
     margin-left: auto;
 }
 
+/* Menü linklerinin temel görünümü */
 .nav-links a {
     text-decoration: none;
-    color: var(--text-soft);
+    color: var(--secondary-text-color);
     font-weight: 600;
     transition: 0.25s ease;
 }
 
+/* Menü linkinin üzerine gelindiğinde vurgu rengine döner */
 .nav-links a:hover {
-    color: var(--accent);
+    color: var(--primary-accent-color);
 }
 
+/* ==================================================
+   NAVBAR SAĞ ARAÇLAR
+   Dil değiştirme ve tema değiştirme butonlarını kapsar.
+   ================================================== */
 .navbar-actions,
 .navbar-tools {
     display: flex;
@@ -95,11 +231,15 @@
     gap: 12px;
 }
 
+/* ==================================================
+   ORTAK KÜÇÜK BUTONLAR
+   Tema ve dil butonları gibi navbar içindeki araç butonları.
+   ================================================== */
 .icon-btn,
 .tool-chip {
-    background: var(--bg-soft);
-    border: 1px solid var(--border);
-    color: var(--text);
+    background: var(--surface-background-color);
+    border: 1px solid var(--border-color);
+    color: var(--primary-text-color);
     border-radius: 12px;
     padding: 10px 14px;
     cursor: pointer;
@@ -107,28 +247,38 @@
     transition: 0.25s ease;
 }
 
+/* Araç butonlarının hover efekti */
 .icon-btn:hover,
 .tool-chip:hover {
     transform: translateY(-1px);
-    background: var(--accent-soft);
-    color: var(--accent);
+    background: var(--accent-background-color);
+    color: var(--primary-accent-color);
 }
 
+/* ==================================================
+   TOOLBAR KAPSAYICISI
+   Dil ve tema butonlarını tek küçük panel içinde gösterir.
+   ================================================== */
 .toolbar-shell {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 6px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
     border-radius: 16px;
-    background: color-mix(in srgb, var(--bg-soft) 88%, transparent);
+    background: color-mix(in srgb, var(--surface-background-color) 88%, transparent);
 }
 
+/* Buton içindeki TR/EN veya tema ikon yazısı */
 .tool-label {
     font-size: 14px;
     font-weight: 800;
 }
 
+/* ==================================================
+   NAVBAR CTA BUTONU
+   Eğer navbar içinde özel bir çağrı butonu kullanılacaksa bu class kullanılır.
+   ================================================== */
 .nav-btn {
     text-decoration: none;
     background: linear-gradient(135deg, #2563eb, #3b82f6);
@@ -139,19 +289,29 @@
     transition: 0.25s ease;
 }
 
+/* CTA buton hover efekti */
 .nav-btn:hover {
     transform: translateY(-2px);
 }
 
+/* ==================================================
+   MOBİL MENÜ BUTONU
+   Küçük ekranlarda hamburger menü olarak görünür.
+   Normalde gizlidir, responsive bölümde display:block yapılır.
+   ================================================== */
 .menu-toggle {
     display: none;
     background: transparent;
     border: none;
-    color: var(--text);
+    color: var(--primary-text-color);
     font-size: 28px;
     cursor: pointer;
 }
 
+/* ==================================================
+   BRAND YAZMA ANİMASYONU
+   max-width değerini artırarak yazının soldan sağa açılmasını sağlar.
+   ================================================== */
 @keyframes typingLine {
     from {
         max-width: 0;
@@ -162,6 +322,10 @@
     }
 }
 
+/* ==================================================
+   BRAND CURSOR YANIP SÖNME ANİMASYONU
+   Cursor'ın görünür/gizli olması kod yazma hissi verir.
+   ================================================== */
 @keyframes blinkBrandCursor {
     0%, 49% {
         opacity: 1;

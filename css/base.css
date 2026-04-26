@@ -1,69 +1,240 @@
+/* ==================================================
+   TEMA RENK DEĞİŞKENLERİ
+   Bu bölümde projenin ana renkleri tanımlanır.
+   Değişken kullanmamızın sebebi, aynı rengi birçok yerde
+   tekrar tekrar yazmak yerine tek yerden kontrol edebilmektir.
+   ================================================== */
 :root {
-    --bg: #f8fafc;
-    --bg-soft: #ffffff;
-    --text: #0f172a;
-    --text-soft: #334155;
-    --border: rgba(148, 163, 184, 0.22);
-    --card: rgba(255, 255, 255, 0.92);
-    --accent: #2563eb;
-    --accent-soft: #dbeafe;
-    --shadow: 0 14px 38px rgba(2, 6, 23, 0.12);
+    /* Sayfanın genel arka plan rengi */
+    --page-background-color: #f8fafc;
+
+    /* Kartlar, inputlar ve yumuşak alanlar için arka plan rengi */
+    --surface-background-color: #ffffff;
+
+    /* Ana başlıklar ve önemli yazılar için metin rengi */
+    --primary-text-color: #0f172a;
+
+    /* Açıklama, paragraf ve ikincil bilgiler için metin rengi */
+    --secondary-text-color: #334155;
+
+    /* Kart, buton ve input kenarlıkları için border rengi */
+    --border-color: rgba(148, 163, 184, 0.22);
+
+    /* Kart yapılarında kullanılan yarı saydam arka plan rengi */
+    --card-background-color: rgba(255, 255, 255, 0.92);
+
+    /* Butonlar, link hoverları ve vurgulu alanlar için ana vurgu rengi */
+    --primary-accent-color: #2563eb;
+
+    /* Hover, badge ve soft vurgular için açık vurgu rengi */
+    --accent-background-color: #dbeafe;
+
+    /* Kartlara ve kutulara derinlik vermek için kullanılan gölge */
+    --card-shadow: 0 14px 38px rgba(2, 6, 23, 0.12);
 }
 
+/* ==================================================
+   KOYU TEMA RENK DEĞİŞKENLERİ
+   body etiketine dark-theme class'ı eklendiğinde
+   yukarıdaki renk değişkenleri burada yeniden tanımlanır.
+   Böylece HTML yapısını değiştirmeden tema değişimi yapılır.
+   ================================================== */
 body.dark-theme {
-    --bg: #050816;
-    --bg-soft: #0f172a;
-    --text: #f8fafc;
-    --text-soft: #cbd5e1;
-    --border: rgba(148, 163, 184, 0.16);
-    --card: rgba(15, 23, 42, 0.88);
-    --accent: #60a5fa;
-    --accent-soft: rgba(59, 130, 246, 0.14);
-    --shadow: 0 20px 45px rgba(2, 6, 23, 0.34);
+    /* Koyu temada sayfanın genel arka plan rengi */
+    --page-background-color: #050816;
+
+    /* Koyu temada kartlar ve inputlar için arka plan rengi */
+    --surface-background-color: #0f172a;
+
+    /* Koyu temada ana metin rengi */
+    --primary-text-color: #f8fafc;
+
+    /* Koyu temada açıklama metinleri için renk */
+    --secondary-text-color: #cbd5e1;
+
+    /* Koyu temada daha yumuşak görünen kenarlık rengi */
+    --border-color: rgba(148, 163, 184, 0.16);
+
+    /* Koyu temada kartların arka plan rengi */
+    --card-background-color: rgba(15, 23, 42, 0.88);
+
+    /* Koyu temada kullanılan ana vurgu rengi */
+    --primary-accent-color: #60a5fa;
+
+    /* Koyu temada hover ve soft vurgu arka planı */
+    --accent-background-color: rgba(59, 130, 246, 0.14);
+
+    /* Koyu temada daha belirgin kart gölgesi */
+    --card-shadow: 0 20px 45px rgba(2, 6, 23, 0.34);
 }
 
+/* ==================================================
+   RESET CSS
+   Tarayıcılar bazı HTML elemanlarına varsayılan margin,
+   padding ve boyutlandırma kuralları verir.
+   Bu bölüm, farklı tarayıcılarda tasarımın aynı görünmesi
+   için bu varsayılan boşlukları sıfırlar.
+   ================================================== */
 * {
+    /* Tüm elemanların dış boşluğunu sıfırlar */
     margin: 0;
+
+    /* Tüm elemanların iç boşluğunu sıfırlar */
     padding: 0;
+
+    /*
+       width ve height hesaplanırken padding ve border da dahil edilir.
+       Böylece kutuların boyutunu kontrol etmek daha kolay olur.
+    */
     box-sizing: border-box;
 }
 
+/* ==================================================
+   HTML GENEL AYARI
+   Sayfa içi bağlantılara tıklanınca ani geçiş yerine
+   yumuşak kaydırma efekti verir.
+   Örneğin navbar'daki About linki #about alanına yumuşak iner.
+   ================================================== */
 html {
     scroll-behavior: smooth;
 }
 
+/* ==================================================
+   BODY GENEL TASARIMI
+   body tüm sayfanın ana kapsayıcısıdır.
+   Font, arka plan, yazı rengi ve genel geçiş efektleri
+   burada tanımlanır.
+   ================================================== */
 body {
+    /* Sayfanın genel yazı tipi */
     font-family: Arial, sans-serif;
+
+    /* Satırlar arasındaki boşluğu artırarak okunabilirliği iyileştirir */
     line-height: 1.6;
-    background: var(--bg);
-    color: var(--text);
+
+    /* Arka plan rengini tema değişkeninden alır */
+    background: var(--page-background-color);
+
+    /* Yazı rengini tema değişkeninden alır */
+    color: var(--primary-text-color);
+
+    /* Yatay taşmayı engeller, mobilde sağa sola kayma sorununu azaltır */
     overflow-x: hidden;
+
+    /* Tema değişirken arka plan ve yazı renginin yumuşak geçmesini sağlar */
     transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* ==================================================
+   LİNK GENEL AYARI
+   Tüm <a> etiketleri için ortak stil verilir.
+   Böyle yazmamızın sebebi, projedeki bütün linklerin
+   varsayılan mavi ve altı çizili tarayıcı stilinden çıkmasıdır.
+   ================================================== */
 a {
+    /*
+       Linkin rengini bulunduğu alanın yazı renginden almasını sağlar.
+       Örneğin navbar içindeyse navbar rengine, footer içindeyse footer rengine uyar.
+    */
     color: inherit;
+
+    /* Linklerde varsayılan alt çizgiyi kaldırır */
+    text-decoration: none;
 }
 
+/* ==================================================
+   GÖRSEL GENEL AYARI
+   Sayfadaki tüm img etiketleri için ortak responsive ayarlar.
+   Görsellerin kapsayıcı alanı taşmaması için kullanılır.
+   ================================================== */
 img {
+    /*
+       Görselin maksimum genişliği bulunduğu kapsayıcının genişliğini aşamaz.
+       Bu responsive tasarım için önemlidir.
+    */
     max-width: 100%;
+
+    /*
+       img etiketi varsayılan olarak inline davranabilir.
+       display block yaparak altında oluşabilecek küçük boşlukları engelleriz.
+    */
     display: block;
 }
 
+/* ==================================================
+   ORTAK CONTAINER YAPISI
+   Sayfa içeriklerini ortalamak ve belirli bir maksimum genişlikte
+   tutmak için kullanılır.
+   ================================================== */
 .container {
+    /*
+       Ekranın %90'ını kullanır.
+       Böylece küçük ekranlarda kenarlarda boşluk kalır.
+    */
     width: 90%;
+
+    /*
+       Büyük ekranlarda içeriğin çok fazla genişlemesini engeller.
+       Okunabilirliği artırır.
+    */
     max-width: 1180px;
+
+    /*
+       Sağ ve sol margin auto verilerek container yatayda ortalanır.
+    */
     margin: 0 auto;
 }
 
+/* ==================================================
+   CURSOR GLOW EFEKTİ
+   Mouse hareket ettikçe arka planda yumuşak ışık efekti oluşturur.
+   Bu efekt JavaScript ile mouse konumuna göre hareket ettirilir.
+   ================================================== */
 .cursor-glow {
+    /*
+       Efekt ekran üzerinde sabit konumlanır.
+       Sayfa scroll olsa bile mouse pozisyonuna göre kalır.
+    */
     position: fixed;
+
+    /* Işık efektinin genişliği */
     width: 260px;
+
+    /* Işık efektinin yüksekliği */
     height: 260px;
+
+    /* Kare alanı daireye çevirir */
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(96, 165, 250, 0.16) 0%, rgba(96, 165, 250, 0) 72%);
+
+    /*
+       Ortası hafif mavi, kenarlara doğru şeffaflaşan
+       radial gradient ışık efekti oluşturur.
+    */
+    background: radial-gradient(
+        circle,
+        rgba(96, 165, 250, 0.16) 0%,
+        rgba(96, 165, 250, 0) 72%
+    );
+
+    /*
+       Bu efekt tıklamaları engellemesin diye pointer-events none yapılır.
+       Böylece kullanıcı butonlara ve linklere normal şekilde tıklayabilir.
+    */
     pointer-events: none;
+
+    /*
+       Arka plan efekti olduğu için içeriklerin çok üstüne çıkmaması gerekir.
+    */
     z-index: 0;
+
+    /*
+       Efektin merkezi mouse noktasına gelsin diye kendi boyutunun
+       yarısı kadar geri taşınır.
+    */
     transform: translate(-50%, -50%);
+
+    /*
+       Mouse hareketinde efektin daha yumuşak hareket etmesini sağlar.
+    */
     transition: transform 0.05s linear;
 }
