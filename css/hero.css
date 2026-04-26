@@ -1,16 +1,54 @@
+/* ==================================================
+   HERO ANA BÖLÜMÜ
+   Sayfanın ilk açılışta görünen büyük tanıtım alanıdır.
+   Kullanıcı siteye girdiğinde ilk dikkat çeken bölüm burasıdır.
+   ================================================== */
 .hero-split {
+    /*
+       İçindeki absolute konumlu arka plan yazısının bu alana göre
+       yerleşebilmesi için relative verilir.
+    */
     position: relative;
+
+    /*
+       Hero alanının ekran yüksekliği kadar yer kaplamasını sağlar.
+    */
     min-height: 100vh;
+
+    /*
+       İçeriği dikeyde ortalamak için flex kullanılır.
+    */
     display: flex;
+
+    /*
+       Hero içeriğini dikey eksende ortaya hizalar.
+    */
     align-items: center;
+
+    /*
+       Büyük arka plan yazısı veya efektler dışarı taşarsa gizler.
+    */
     overflow: hidden;
+
+    /*
+       Navbar ile çakışmaması için üstten, alttan da nefes alanı bırakılır.
+    */
     padding: 120px 0 80px;
+
+    /*
+       Koyu temada hero bölümüne modern gradient arka plan verir.
+       Radial gradientler köşelerde ışık efekti oluşturur.
+    */
     background:
         radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 25%),
         radial-gradient(circle at top right, rgba(168, 85, 247, 0.16), transparent 22%),
         linear-gradient(180deg, #050816 0%, #081122 100%);
 }
 
+/* ==================================================
+   LIGHT THEME HERO ARKA PLAN
+   body light-theme olduğunda hero arka planı açık renge döner.
+   ================================================== */
 body.light-theme .hero-split {
     background:
         radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 25%),
@@ -18,125 +56,325 @@ body.light-theme .hero-split {
         linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
 }
 
+/* ==================================================
+   HERO ARKA PLAN YAZISI
+   Büyük, dekoratif ve tıklanamaz arka plan metnidir.
+   Örneğin "PORTFOLIO" gibi bir kelime olabilir.
+   ================================================== */
 .hero-bg-word {
+    /*
+       Hero alanının içinde serbest konumlandırmak için absolute kullanılır.
+    */
     position: absolute;
+
+    /*
+       Yatayda merkeze yaklaştırır.
+    */
     left: 50%;
+
+    /*
+       Dikeyde biraz aşağıya konumlandırır.
+    */
     top: 58%;
+
+    /*
+       Kendi genişlik ve yüksekliğinin yarısı kadar geri alarak
+       tam merkezlenmesini sağlar.
+    */
     transform: translate(-50%, -50%);
+
+    /*
+       clamp ile yazı boyutu responsive hale gelir.
+       Minimum 100px, ideal 19vw, maksimum 300px olur.
+    */
     font-size: clamp(100px, 19vw, 300px);
+
+    /*
+       Yazıyı çok kalın yaparak arka planda güçlü bir efekt oluşturur.
+    */
     font-weight: 900;
+
+    /*
+       Harfler arasında geniş boşluk bırakır.
+    */
     letter-spacing: 10px;
+
+    /*
+       Çok düşük opaklıkla sadece dekoratif görünmesini sağlar.
+    */
     color: rgba(255, 255, 255, 0.05);
+
+    /*
+       İçerik kartlarının ve yazıların arkasında kalmasını sağlar.
+    */
     z-index: 0;
+
+    /*
+       Kullanıcının bu dekoratif yazıyı seçmesini engeller.
+    */
     user-select: none;
+
+    /*
+       Bu yazı tıklama veya mouse olaylarını engellemez.
+    */
     pointer-events: none;
 }
 
+/* Açık temada arka plan yazısının koyu ama çok silik görünmesini sağlar */
 body.light-theme .hero-bg-word {
     color: rgba(15, 23, 42, 0.06);
 }
 
+/* ==================================================
+   HERO İKİ KOLONLU LAYOUT
+   Sol tarafta yazılar, sağ tarafta kart/görsel alanı bulunur.
+   ================================================== */
 .hero-split-layout {
+    /*
+       Arka plan yazısından önde durması için relative kullanılır.
+    */
     position: relative;
+
+    /*
+       Hero içeriğinin dekoratif arka plan yazısından üstte görünmesini sağlar.
+    */
     z-index: 2;
+
+    /*
+       Sol ve sağ alanı grid sistemiyle iki kolona böler.
+    */
     display: grid;
+
+    /*
+       Sol taraf biraz daha geniş, sağ taraf biraz daha dar olur.
+    */
     grid-template-columns: 1.1fr 0.9fr;
+
+    /*
+       İki kolonu dikeyde hizalar.
+    */
     align-items: center;
+
+    /*
+       Sol ve sağ kolon arasında boşluk bırakır.
+    */
     gap: 40px;
 }
 
+/* Sol hero yazı alanı */
 .hero-left {
+    /*
+       Yazı alanının çok genişlemesini engelleyerek okunabilirliği artırır.
+    */
     max-width: 640px;
 }
 
+/* Küçük giriş cümlesi */
 .intro-line {
     font-size: 28px;
     margin-bottom: 10px;
-    color: var(--text);
+    color: var(--primary-text-color);
     font-weight: 600;
 }
 
+/* Ana isim alanı */
 .hero-name {
+    /*
+       İsim ve soyismi alt alta göstermek için flex column kullanılır.
+    */
     display: flex;
     flex-direction: column;
+
+    /*
+       clamp ile büyük başlık responsive hale getirilir.
+    */
     font-size: clamp(56px, 7vw, 98px);
+
+    /*
+       Büyük başlıkta satır aralığını sıkı tutar.
+    */
     line-height: 0.95;
+
+    /*
+       İsim ile rol arasında boşluk bırakır.
+    */
     margin-bottom: 16px;
-    color: var(--accent);
+
+    /*
+       İsimde ana vurgu rengi kullanılır.
+    */
+    color: var(--primary-accent-color);
+
+    /*
+       İsmi güçlü göstermek için kalın font kullanılır.
+    */
     font-weight: 900;
 }
 
+/* Meslek / rol başlığı */
 .hero-role {
     font-size: 34px;
     margin-bottom: 18px;
-    color: var(--text);
+    color: var(--primary-text-color);
     font-weight: 700;
 }
 
+/* Hero açıklama paragrafı */
 .hero-description {
     font-size: 19px;
-    color: var(--text-soft);
+    color: var(--secondary-text-color);
     margin-bottom: 28px;
     max-width: 560px;
 }
 
+/* Hero butonlarının kapsayıcısı */
 .hero-buttons {
+    /*
+       Butonları yan yana dizmek için flex kullanılır.
+    */
     display: flex;
+
+    /*
+       Küçük ekranda butonların alt satıra geçebilmesini sağlar.
+    */
     flex-wrap: wrap;
+
+    /*
+       Butonlar arasında boşluk bırakır.
+    */
     gap: 16px;
+
+    /*
+       Butonlar ile sosyal ikonlar arasında boşluk bırakır.
+    */
     margin-bottom: 24px;
 }
 
+/* ==================================================
+   ORTAK BUTON TASARIMI
+   Hero ve diğer alanlarda tekrar kullanılabilecek ana buton stili.
+   ================================================== */
 .btn {
+    /*
+       Yazıyı buton içinde yatay/dikey ortalamak için inline-flex kullanılır.
+    */
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
+    /*
+       Butonun iç boşluğunu belirler.
+    */
     padding: 13px 24px;
+
+    /*
+       Buton köşelerini yuvarlatır.
+    */
     border-radius: 12px;
+
+    /*
+       Ana butona mavi gradient arka plan verir.
+    */
     background: linear-gradient(135deg, #2563eb, #3b82f6);
+
+    /*
+       Buton yazısını beyaz yapar.
+    */
     color: #ffffff;
+
+    /*
+       Link olarak kullanılan butonlarda alt çizgiyi kaldırır.
+    */
     text-decoration: none;
+
+    /*
+       Buton yazısını kalınlaştırır.
+    */
     font-weight: 700;
+
+    /*
+       Varsayılan border'ı kaldırır.
+    */
     border: none;
+
+    /*
+       Buton üzerine gelince tıklanabilir olduğunu gösterir.
+    */
     cursor: pointer;
+
+    /*
+       Hover animasyonunun yumuşak olmasını sağlar.
+    */
     transition: 0.25s ease;
 }
 
+/* Buton hover efekti */
 .btn:hover {
+    /*
+       Butonu hafif yukarı kaldırarak etkileşim hissi verir.
+    */
     transform: translateY(-2px);
 }
 
+/* İkincil buton tasarımı */
 .btn-secondary {
+    /*
+       İkincil butonun arka planını şeffaf yapar.
+    */
     background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text);
+
+    /*
+       Tema ile uyumlu border verir.
+    */
+    border: 1px solid var(--border-color);
+
+    /*
+       Yazı rengini tema metin renginden alır.
+    */
+    color: var(--primary-text-color);
 }
 
+/* ==================================================
+   SOSYAL MEDYA İKONLARI
+   GitHub, LinkedIn gibi ikonların bulunduğu alan.
+   ================================================== */
 .hero-social-icons {
     display: flex;
     gap: 16px;
 }
 
+/* Sosyal ikon kutuları */
 .hero-social-icons a {
     width: 52px;
     height: 52px;
     border-radius: 14px;
+
+    /*
+       İkonu kutu içinde tam ortaya almak için flex kullanılır.
+    */
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--card);
-    border: 1px solid var(--border);
+
+    background: var(--card-background-color);
+    border: 1px solid var(--border-color);
+
     text-decoration: none;
     font-size: 24px;
-    color: var(--accent);
-    box-shadow: var(--shadow);
+    color: var(--primary-accent-color);
+    box-shadow: var(--card-shadow);
     transition: 0.25s ease;
 }
 
+/* Sosyal ikon hover efekti */
 .hero-social-icons a:hover {
     transform: translateY(-4px);
 }
 
+/* ==================================================
+   HERO SAĞ ALAN
+   Kart, profil görseli ve bilgi kutularının bulunduğu sağ bölüm.
+   ================================================== */
 .hero-right {
     display: flex;
     flex-direction: column;
@@ -144,6 +382,7 @@ body.light-theme .hero-bg-word {
     gap: 24px;
 }
 
+/* Sallanan kartın kapsayıcısı */
 .swing-wrapper {
     position: relative;
     width: 280px;
@@ -152,26 +391,44 @@ body.light-theme .hero-bg-word {
     align-items: center;
 }
 
+/* Kartı yukarıdan asılı gibi gösteren çizgi */
 .swing-line {
     width: 2px;
     height: 80px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(96,165,250,0.6));
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(96, 165, 250, 0.6));
 }
 
+/* Profil / portfolyo kartı */
 .portfolio-card {
     width: 260px;
+
+    /*
+       Kartın arka planına altın tonlu gradient verir.
+    */
     background: linear-gradient(180deg, rgba(245, 223, 153, 0.95), rgba(200, 169, 92, 0.95));
+
     border-radius: 18px;
     padding: 12px;
     box-shadow: 0 24px 50px rgba(2, 6, 23, 0.36);
+
+    /*
+       Dönme animasyonunun üst merkezden gerçekleşmesini sağlar.
+       Böylece kart asılıymış gibi sallanır.
+    */
     transform-origin: top center;
+
+    /*
+       Aşağıda tanımlanan swingCard animasyonunu sürekli çalıştırır.
+    */
     animation: swingCard 4.5s ease-in-out infinite;
 }
 
+/* Kart üstünde küçük boşluk/header efekti */
 .portfolio-card-header {
     height: 18px;
 }
 
+/* Kart içindeki görsel alanı */
 .portfolio-card-image {
     border-radius: 14px;
     overflow: hidden;
@@ -179,12 +436,18 @@ body.light-theme .hero-bg-word {
     background: #111827;
 }
 
+/* Kart içindeki profil görseli */
 .portfolio-card-image img {
     width: 100%;
     height: 320px;
+
+    /*
+       Görselin kutuya taşmadan dolmasını sağlar.
+    */
     object-fit: cover;
 }
 
+/* Kart altındaki isim */
 .portfolio-card-footer h3 {
     font-size: 20px;
     color: #111827;
@@ -192,6 +455,7 @@ body.light-theme .hero-bg-word {
     text-align: center;
 }
 
+/* Kart altındaki rol açıklaması */
 .portfolio-card-footer p {
     font-size: 14px;
     color: #374151;
@@ -199,6 +463,7 @@ body.light-theme .hero-bg-word {
     font-weight: 600;
 }
 
+/* Sağ taraftaki bilgi kutularının kapsayıcısı */
 .hero-side-panel {
     width: 100%;
     max-width: 360px;
@@ -206,22 +471,28 @@ body.light-theme .hero-bg-word {
     gap: 14px;
 }
 
+/* Bilgi kutusu */
 .info-box {
     padding: 16px 18px;
     border-radius: 16px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
+    background: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
 }
 
+/* Bilgi kutusu içindeki küçük etiket */
 .info-label {
     display: block;
     font-size: 13px;
-    color: var(--accent);
+    color: var(--primary-accent-color);
     margin-bottom: 5px;
     font-weight: 700;
 }
 
+/* ==================================================
+   SALLANAN KART ANİMASYONU
+   Kartın sağa sola hafif dönerek asılı kart efekti vermesini sağlar.
+   ================================================== */
 @keyframes swingCard {
     0% {
         transform: rotate(-5deg);
