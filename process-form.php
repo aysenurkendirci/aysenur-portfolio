@@ -1,121 +1,140 @@
 <?php
 /*
-    Formdan gelen veriler için başlangıç değişkenleri tanımlanır.
-    Başta boş bırakılır çünkü kullanıcı form göndermeden bu sayfaya gelmiş olabilir.
+    PROCESS FORM PAGE
+    Bu dosya contact formundan gelen verileri kontrol eder.
+    Amaç:
+    - Formun POST yöntemiyle gönderilip gönderilmediğini kontrol etmek
+    - Kullanıcıdan gelen name, email ve message alanlarını doğrulamak
+    - Güvenli çıktı üretmek
+    - Kullanıcıya başarı veya hata sonucu göstermek
 */
-$name = "";
-$email = "";
-$message = "";
-$success = false;
-$error = "";
+
+include 'data.php';
 
 /*
-    Formun gerçekten POST yöntemiyle gönderilip gönderilmediği kontrol edilir.
-    Böylece sayfa direkt açılırsa gereksiz işlem yapılmaz.
+    e() fonksiyonu dinamik verileri HTML içine güvenli şekilde yazdırır.
+    Böylece özel karakterler sayfa yapısını bozmaz.
 */
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+function e($value)
+{
+    return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+}
+
+/*
+    Başlangıç değişkenleri.
+    Form gönderilmeden sayfa açılırsa varsayılan olarak hata gösterilir.
+*/
+$name = '';
+$email = '';
+$message = '';
+$isSuccess = false;
+$errorMessage = '';
+
+/*
+    Formun yalnızca POST yöntemiyle çalışmasını sağlar.
+    Bu, form sayfası için daha doğru ve kontrollü bir yapıdır.
+*/
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = trim($_POST['name'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $message = trim($_POST['message'] ?? '');
 
     /*
-        $_POST ile formdan gelen değerler alınır.
-        ?? "" kullanımı, değer gelmezse hata oluşmasını engeller.
-        trim() ise baştaki ve sondaki boşlukları temizler.
+        Form doğrulama kontrolleri.
+        Boş alanlar ve hatalı e-posta formatı kontrol edilir.
     */
-    $name = trim($_POST["name"] ?? "");
-    $email = trim($_POST["email"] ?? "");
-    $message = trim($_POST["message"] ?? "");
-
-    /*
-        Kullanıcı herhangi bir alanı boş bıraktıysa hata mesajı verilir.
-    */
-    if ($name === "" || $email === "" || $message === "") {
-        $error = "Please fill in all fields.";
-
-    /*
-        Email formatı doğru değilse kullanıcı uyarılır.
-    */
+    if ($name === '' || $email === '' || $message === '') {
+        $errorMessage = 'Please fill in all required fields.';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error = "Please enter a valid email address.";
-
-    /*
-        Bütün kontroller geçilirse form başarılı kabul edilir.
-        Bu projede gerçek mail gönderimi yapılmıyor, sadece başarı mesajı gösteriliyor.
-    */
+        $errorMessage = 'Please enter a valid email address.';
     } else {
-        $success = true;
+        /*
+            Bu projede gerçek mail gönderimi yerine başarılı form sonucu gösterilir.
+            İstenirse burada mail() fonksiyonu veya veritabanı kaydı eklenebilir.
+        */
+        $isSuccess = true;
     }
+} else {
+    $errorMessage = 'This page can only be accessed after submitting the contact form.';
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Türkçe karakterlerin ve özel sembollerin doğru görünmesi için UTF-8 kullanılır -->
+    <!-- Türkçe karakterlerin doğru görünmesi için UTF-8 kullanılır. -->
     <meta charset="UTF-8">
 
-    <!-- Sayfanın mobil cihazlarda düzgün görünmesi için viewport ayarı yapılır -->
+    <!-- Mobil cihazlarda responsive görünüm için gereklidir. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Tarayıcı sekmesinde görünen sayfa başlığı -->
-    <title>Contact Result</title>
+    <!-- Tarayıcı sekmesinde görünen başlık. -->
+    <title>Contact Result | Ayşe Nur Kendirci</title>
 
-    <!-- Projenin ortak CSS dosyası bağlanır -->
+    <!-- Font Awesome ikonları sonuç kartındaki ikon için kullanılır. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Devicon navbar veya diğer ortak alanlarda ikon gerekirse uyum için eklenmiştir. -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <!-- Ana CSS dosyası. -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<!-- Sayfa varsayılan olarak koyu tema ile açılır -->
 <body class="dark-theme">
+    <!-- Dekoratif mouse ışık efekti. Ekran okuyucular için gizlenir. -->
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-    <!-- 
-        main etiketi sayfanın ana içeriğini temsil eder.
-        Semantic HTML açısından doğru bir kullanımdır.
-    -->
-    <main class="section">
-        <div class="container">
+    <!-- Ortak navbar dosyası. -->
+    <?php include 'includes/navbar.php'; ?>
 
-            <!-- 
-                Form sonucunu gösteren kart yapısı.
-                contact-form class'ı mevcut form tasarımını tekrar kullanır.
-                result-box class'ı sadece bu sayfaya özel hizalama için eklenmiştir.
-            -->
-            <div class="contact-form result-box">
+    <main>
+        <!-- CONTACT RESULT SECTION -->
+        <section class="contact-result-section section" aria-labelledby="result-title">
+            <div class="container">
+                <article class="result-card">
+                    <?php if ($isSuccess): ?>
+                        <div class="result-icon success-icon" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
 
-                <!-- Eğer form başarıyla gönderildiyse başarı mesajı gösterilir -->
-                <?php if ($success): ?>
+                        <h1 id="result-title" class="result-title">
+                            Message Received
+                        </h1>
 
-                    <h1 class="result-title">Message Sent Successfully</h1>
+                        <p class="result-text">
+                            Thank you, <?= e($name); ?>. Your message has been received successfully.
+                        </p>
 
-                    <p class="result-text">
-                        Thank you,
-                        <strong><?= htmlspecialchars($name); ?></strong>.
-                    </p>
+                        <p class="result-text">
+                            I will review your message and get back to you as soon as possible.
+                        </p>
+                    <?php else: ?>
+                        <div class="result-icon error-icon" aria-hidden="true">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
 
-                    <p class="result-text">
-                        Your message has been received.
-                    </p>
+                        <h1 id="result-title" class="result-title">
+                            Message Could Not Be Sent
+                        </h1>
 
-                    <p class="result-text result-text-last">
-                        We will contact you via
-                        <strong><?= htmlspecialchars($email); ?></strong>
-                        if needed.
-                    </p>
+                        <p class="result-text">
+                            <?= e($errorMessage); ?>
+                        </p>
+                    <?php endif; ?>
 
-                    <a href="index.php" class="btn">Back to Portfolio</a>
-
-                <!-- Eğer hata varsa hata mesajı gösterilir -->
-                <?php else: ?>
-
-                    <h1 class="result-title">Form Error</h1>
-
-                    <p class="result-text result-text-last">
-                        <?= htmlspecialchars($error ?: "Something went wrong."); ?>
-                    </p>
-
-                    <a href="index.php#contact" class="btn">Go Back</a>
-
-                <?php endif; ?>
-
+                    <a href="index.php#contact" class="btn result-button">
+                        Back to Contact
+                    </a>
+                </article>
             </div>
-        </div>
+        </section>
     </main>
+
+    <!-- Ortak footer dosyası. -->
+    <?php include 'includes/footer.php'; ?>
+
+    <!-- Ortak JavaScript dosyası. -->
+    <script src="js/script.js"></script>
 </body>
 </html>

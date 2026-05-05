@@ -1,118 +1,78 @@
 <!-- 
-    NAVBAR (Üst Menü)
-    Sayfanın en üstünde bulunan navigasyon alanıdır.
-    Kullanıcı buradan sayfa içindeki bölümlere geçiş yapar.
+    NAVBAR
+    Sayfanın üst bölümündeki ana navigasyon alanıdır.
+    Kullanıcı bu bölümden sayfa içindeki ana alanlara geçiş yapabilir.
 -->
-<nav class="navbar">
+<header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="container navbar-container">
 
-    <!-- 
-        Container:
-        Navbar içeriğini ortalar ve sayfa ile hizalar
-    -->
-    <div class="container navbar-container">
+            <!-- Brand alanı: Portfolyo sahibinin ismini kod yazımı görünümünde gösterir. -->
+            <a href="index.php#home" class="brand" aria-label="Go to home section">
+                <span class="brand-line">
+                    <span class="token-const">const</span>
+                    <span class="token-var">developer</span>
+                    <span class="token-eq">=</span>
+                    <span class="token-string">"Ayşe Nur Kendirci"</span>
+                    <span class="token-semi">;</span>
+                    <span class="brand-cursor" aria-hidden="true"></span>
+                </span>
+            </a>
 
-        <!-- 
-            BRAND (Logo yerine kullanılan alan)
-            Kod yazıyormuş gibi görünen animasyonlu isim alanı
-        -->
-        <a href="#home" class="brand">
+            <!-- Mobil ekranlarda menüyü açıp kapatan butondur. -->
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-controls="navLinks"
+                aria-expanded="false"
+            >
+                <span aria-hidden="true">☰</span>
+            </button>
 
-            <!-- 
-                brand-line:
-                CSS ile typing (yazı yazılıyor) animasyonu uygulanır
-            -->
-            <div class="brand-line">
+            <!-- Sayfa içi navigasyon linkleri. -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.php#about">About</a></li>
+                <li><a href="index.php#skills">Tech Stack</a></li>
+                <li><a href="index.php#experience">Experience</a></li>
+                <li><a href="index.php#projects">Projects</a></li>
+                <li><a href="index.php#contact">Contact</a></li>
 
-                <!-- "const" keyword (renklendirme için ayrı span) -->
-                <span class="token-const">const</span>
+                <li>
+                    <a
+                        href="<?= e($profile["cv"]); ?>"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        CV
+                    </a>
+                </li>
+            </ul>
 
-                <!-- değişken adı -->
-                <span class="token-var">developer</span>
+            <!-- Dil ve tema değiştirme araçları. -->
+            <div class="navbar-tools" aria-label="Page settings">
+                <div class="toolbar-shell">
+                    <button
+                        class="tool-chip"
+                        id="langToggle"
+                        type="button"
+                        aria-label="Change language"
+                    >
+                        <span class="tool-label">TR</span>
+                    </button>
 
-                <!-- eşittir işareti -->
-                <span class="token-eq">=</span>
-
-                <!-- string değer (isim) -->
-                <span class="token-string">"Ayşe Nur Kendirci"</span>
-
-                <!-- noktalı virgül -->
-                <span class="token-semi">;</span>
-
-                <!-- 
-                    Yanıp sönen cursor
-                    Kod yazılıyormuş hissi verir
-                -->
-                <span class="brand-cursor"></span>
+                    <button
+                        class="tool-chip"
+                        id="themeToggle"
+                        type="button"
+                        aria-label="Change theme"
+                    >
+                        <span class="tool-label">☀</span>
+                    </button>
+                </div>
             </div>
-        </a>
 
-        <!-- 
-            MENU TOGGLE (Mobil Menü Butonu)
-            Küçük ekranlarda hamburger menü açıp kapatır
-            JS ile nav-links görünürlüğü kontrol edilir
-        -->
-        <button class="menu-toggle" id="menuToggle">☰</button>
-
-        <!-- 
-            NAV LINKS (Menü Linkleri)
-            Kullanıcıyı sayfa içindeki bölümlere götürür
-        -->
-        <ul class="nav-links" id="navLinks">
-
-            <!-- About bölümü -->
-            <li><a href="#about">About</a></li>
-
-            <!-- Tech Stack bölümü -->
-            <li><a href="#skills">Tech Stack</a></li>
-
-            <!-- Projects bölümü -->
-            <li><a href="#projects">Projects</a></li>
-
-            <!-- Contact bölümü -->
-            <li><a href="#contact">Contact</a></li>
-
-            <!-- 
-                CV linki
-                PHP ile dinamik olarak profile içinden alınır
-                target="_blank" yeni sekmede açar
-            -->
-            <li>
-                <a href="<?= $profile["cv"]; ?>" target="_blank">
-                    CV
-                </a>
-            </li>
-        </ul>
-
-        <!-- 
-            NAVBAR TOOLS (Sağ taraf butonları)
-            Tema ve dil değiştirme butonlarını içerir
-        -->
-        <div class="navbar-tools">
-
-            <!-- 
-                toolbar-shell:
-                Butonları tek kutu içinde gösterir
-            -->
-            <div class="toolbar-shell">
-
-                <!-- 
-                    Dil değiştirme butonu
-                    JS ile TR / EN değişir
-                -->
-                <button class="tool-chip" id="langToggle">
-                    <span class="tool-label">TR</span>
-                </button>
-
-                <!-- 
-                    Tema değiştirme butonu
-                    JS ile dark / light mode değişir
-                -->
-                <button class="tool-chip" id="themeToggle">
-                    <span class="tool-label">☀</span>
-                </button>
-
-            </div>
         </div>
-
-    </div>
-</nav>
+    </nav>
+</header>

@@ -1,83 +1,87 @@
 <?php
-
 /*
-    Bu dosya portfolyo sitesinde kullanılacak verileri tutar.
-    Amaç: HTML dosyasını kalabalıklaştırmadan profil, teknoloji ve proje
-    bilgilerini tek bir yerde düzenli şekilde yönetmektir.
+    DATA FILE
+    Bu dosya portfolyo sitesinde kullanılan tüm statik/dinamik içerikleri tutar.
+
+    Amaç:
+    - HTML dosyasını kalabalıklaştırmamak
+    - Profil, teknoloji, deneyim ve proje verilerini tek merkezden yönetmek
+    - Çok dilli içerikleri düzenli bir veri yapısı içinde saklamak
+    - Kod okunabilirliğini ve bakım kolaylığını artırmak
 */
 
 /*
-    $profile dizisi portfolyo sahibinin temel bilgilerini içerir.
-    Bu bilgiler navbar, hero, contact ve sosyal medya linklerinde kullanılabilir.
+    PROFILE DATA
+    Portfolyo sahibinin temel bilgileri burada tutulur.
+    Bu bilgiler hero, navbar, contact ve sosyal medya alanlarında kullanılır.
 */
 $profile = [
     "name" => "Ayşe Nur Kendirci",
 
-    /*
-        title alanı iki dilli tutulmuştur.
-        JavaScript dil değişimi yaparken en/tr değerleri kullanılabilir.
-    */
     "title" => [
         "en" => "Software Engineering Student",
         "tr" => "Yazılım Mühendisliği Öğrencisi"
     ],
 
-    /*
-        tagline kısa tanıtım cümlesidir.
-        Genellikle hero bölümünde başlığın altında gösterilir.
-    */
     "tagline" => [
         "en" => "Building clean, modern and maintainable software products.",
         "tr" => "Temiz, modern ve sürdürülebilir yazılım ürünleri geliştiriyorum."
     ],
 
-    /*
-        description daha uzun profil açıklamasıdır.
-        Hero veya About bölümünde kullanılabilir.
-    */
     "description" => [
         "en" => "I am a software engineering student focused on mobile, frontend and backend development. I enjoy transforming ideas into structured, user-friendly and scalable software solutions.",
         "tr" => "Mobil, frontend ve backend geliştirme alanlarına odaklanan bir yazılım mühendisliği öğrencisiyim. Fikirleri düzenli, kullanıcı dostu ve ölçeklenebilir yazılım çözümlerine dönüştürmeyi seviyorum."
     ],
 
-    /*
-        İletişim ve sosyal medya bilgileri.
-        Bu linkler HTML tarafında href içinde kullanılacaktır.
-    */
     "email" => "aysenurkendirciss@gmail.com",
     "linkedin" => "https://www.linkedin.com/in/aysenurkendirci",
     "github" => "https://github.com/aysenurkendirci",
 
-    /*
-        CV ve profil fotoğrafı yolu.
-        Dosyaların gerçekten bu klasörde olduğundan emin olunmalıdır.
-    */
     "cv" => "images/cv.pdf",
     "image" => "images/profile.jpg"
 ];
 
 /*
-    $quickInfo dizisi hero bölümündeki küçük bilgi kutularını tutar.
-    Her bilgi kutusunda label ve value vardır.
+    QUICK INFO DATA
+    Hero bölümünde küçük bilgi kutuları kullanılmak istenirse bu dizi çağrılabilir.
 */
 $quickInfo = [
     [
-        "label" => ["en" => "Focus", "tr" => "Odak"],
-        "value" => ["en" => "Mobile / Frontend / Backend", "tr" => "Mobil / Frontend / Backend"]
+        "label" => [
+            "en" => "Focus",
+            "tr" => "Odak"
+        ],
+        "value" => [
+            "en" => "Mobile / Frontend / Backend",
+            "tr" => "Mobil / Frontend / Backend"
+        ]
     ],
     [
-        "label" => ["en" => "Main Stack", "tr" => "Ana Teknolojiler"],
-        "value" => ["en" => "Swift, .NET, Angular, PHP", "tr" => "Swift, .NET, Angular, PHP"]
+        "label" => [
+            "en" => "Main Stack",
+            "tr" => "Ana Teknolojiler"
+        ],
+        "value" => [
+            "en" => "Swift, .NET, Angular, PHP",
+            "tr" => "Swift, .NET, Angular, PHP"
+        ]
     ],
     [
-        "label" => ["en" => "GitHub", "tr" => "GitHub"],
-        "value" => ["en" => "@aysenurkendirci", "tr" => "@aysenurkendirci"]
+        "label" => [
+            "en" => "GitHub",
+            "tr" => "GitHub"
+        ],
+        "value" => [
+            "en" => "@aysenurkendirci",
+            "tr" => "@aysenurkendirci"
+        ]
     ]
 ];
 
 /*
-    $aboutTexts dizisi About bölümündeki paragrafları tutar.
-    Çok dilli yapı için her paragrafın en ve tr karşılığı vardır.
+    ABOUT DATA
+    About bölümünde gösterilen açıklama paragraflarıdır.
+    Her paragraf İngilizce ve Türkçe olarak saklanır.
 */
 $aboutTexts = [
     [
@@ -91,158 +95,156 @@ $aboutTexts = [
 ];
 
 /*
-    $techCategories dizisi Tech Stack bölümünü oluşturur.
-    Her kategori başlık, anahtar ve teknoloji item'larından oluşur.
+    TECH STACK DATA
+    Tech Stack bölümü kategori bazlı tutulur.
+    Böylece HTML tarafında tekrar eden kart yapıları foreach ile oluşturulur.
 */
 $techCategories = [
     [
-        "key" => "mobile",
-        "title" => ["en" => "Mobile Development", "tr" => "Mobil Geliştirme"],
+        "title" => [
+            "en" => "Mobile",
+            "tr" => "Mobil"
+        ],
         "items" => [
             [
                 "name" => "Swift",
                 "icon" => "devicon-swift-plain colored",
-                "tooltip" => [
-                    "en" => "Swift is a modern programming language developed by Apple for iOS and macOS applications.",
-                    "tr" => "Swift, Apple tarafından iOS ve macOS uygulamaları için geliştirilen modern bir programlama dilidir."
-                ]
+                "iconText" => "",
+                "tooltip" => "A programming language used for native iOS app development."
             ],
             [
                 "name" => "SwiftUI",
                 "icon" => "devicon-swift-plain colored",
-                "tooltip" => [
-                    "en" => "SwiftUI is Apple’s declarative UI framework for building interfaces across Apple platforms.",
-                    "tr" => "SwiftUI, Apple platformlarında arayüz geliştirmek için kullanılan declarative UI framework’üdür."
-                ]
+                "iconText" => "",
+                "tooltip" => "A modern framework for building iOS interfaces declaratively."
             ],
             [
                 "name" => "UIKit",
                 "icon" => "devicon-apple-original",
-                "tooltip" => [
-                    "en" => "UIKit is a core Apple framework for building iOS user interfaces programmatically.",
-                    "tr" => "UIKit, iOS arayüzlerini programatik olarak geliştirmek için kullanılan temel Apple framework’üdür."
-                ]
+                "iconText" => "",
+                "tooltip" => "A classic iOS framework for building app interfaces programmatically."
+            ],
+            [
+                "name" => "SwiftData",
+                "icon" => "devicon-apple-original",
+                "iconText" => "",
+                "tooltip" => "Used for local data storage and persistence in iOS apps."
             ]
         ]
     ],
     [
-        "key" => "frontend",
-        "title" => ["en" => "Frontend", "tr" => "Frontend"],
+        "title" => [
+            "en" => "Frontend",
+            "tr" => "Frontend"
+        ],
         "items" => [
+            [
+                "name" => "Angular",
+                "icon" => "devicon-angularjs-plain colored",
+                "iconText" => "",
+                "tooltip" => "A frontend framework used for structured web applications."
+            ],
             [
                 "name" => "HTML",
                 "icon" => "devicon-html5-plain colored",
-                "tooltip" => [
-                    "en" => "HTML is the standard markup language used to structure web pages.",
-                    "tr" => "HTML, web sayfalarının yapısını oluşturmak için kullanılan standart işaretleme dilidir."
-                ]
+                "iconText" => "",
+                "tooltip" => "Used to create the structure of web pages."
             ],
             [
                 "name" => "CSS",
                 "icon" => "devicon-css3-plain colored",
-                "tooltip" => [
-                    "en" => "CSS controls the visual styling, layout and responsive behavior of web pages.",
-                    "tr" => "CSS, web sayfalarının görsel stilini, düzenini ve responsive davranışını kontrol eder."
-                ]
+                "iconText" => "",
+                "tooltip" => "Used to style responsive and modern web interfaces."
             ],
             [
                 "name" => "JavaScript",
                 "icon" => "devicon-javascript-plain colored",
-                "tooltip" => [
-                    "en" => "JavaScript adds dynamic and interactive behavior to websites.",
-                    "tr" => "JavaScript, web sitelerine dinamik ve etkileşimli davranış kazandırır."
-                ]
-            ],
-            [
-                "name" => "Angular",
-                "icon" => "devicon-angularjs-plain colored",
-                "tooltip" => [
-                    "en" => "Angular is a frontend framework maintained by Google for building scalable web applications.",
-                    "tr" => "Angular, ölçeklenebilir web uygulamaları geliştirmek için Google tarafından desteklenen bir frontend framework’üdür."
-                ]
+                "iconText" => "",
+                "tooltip" => "Used to add interactive behavior to web pages."
             ]
         ]
     ],
     [
-        "key" => "backend",
-        "title" => ["en" => "Backend", "tr" => "Backend"],
+        "title" => [
+            "en" => "Backend & Database",
+            "tr" => "Backend ve Veritabanı"
+        ],
         "items" => [
             [
-                "name" => "PHP",
-                "icon" => "devicon-php-plain colored",
-                "tooltip" => [
-                    "en" => "PHP is a widely used server-side scripting language for web development.",
-                    "tr" => "PHP, web geliştirmede yaygın olarak kullanılan sunucu taraflı bir betik dilidir."
-                ]
+                "name" => "C#",
+                "icon" => "devicon-csharp-plain colored",
+                "iconText" => "",
+                "tooltip" => "A programming language commonly used with .NET backend development."
             ],
             [
                 "name" => ".NET Core",
                 "icon" => "devicon-dotnetcore-plain colored",
-                "tooltip" => [
-                    "en" => ".NET is Microsoft’s modern development platform for backend and enterprise applications.",
-                    "tr" => ".NET, backend ve kurumsal uygulamalar için Microsoft’un modern geliştirme platformudur."
-                ]
+                "iconText" => "",
+                "tooltip" => "A backend framework used for building APIs and web applications."
             ],
             [
-                "name" => "C#",
-                "icon" => "devicon-csharp-plain colored",
-                "tooltip" => [
-                    "en" => "C# is an object-oriented programming language developed by Microsoft.",
-                    "tr" => "C#, Microsoft tarafından geliştirilen nesne yönelimli bir programlama dilidir."
-                ]
-            ]
-        ]
-    ],
-    [
-        "key" => "database-tools",
-        "title" => ["en" => "Database & Tools", "tr" => "Veritabanı ve Araçlar"],
-        "items" => [
+                "name" => "RESTful API",
+                "icon" => "",
+                "iconText" => "API",
+                "tooltip" => "Used for communication between frontend, mobile and backend systems."
+            ],
             [
-                "name" => "SQL",
-                "icon" => "devicon-azuresqldatabase-plain colored",
-                "tooltip" => [
-                    "en" => "SQL is used to manage, query and manipulate relational databases.",
-                    "tr" => "SQL, ilişkisel veritabanlarını yönetmek, sorgulamak ve düzenlemek için kullanılır."
-                ]
+                "name" => "SQL Server",
+                "icon" => "devicon-microsoftsqlserver-plain colored",
+                "iconText" => "",
+                "tooltip" => "A relational database system used for storing and managing data."
+            ],
+            [
+                "name" => "Oracle",
+                "icon" => "devicon-oracle-original colored",
+                "iconText" => "",
+                "tooltip" => "An enterprise-level relational database management system."
             ],
             [
                 "name" => "Firebase",
                 "icon" => "devicon-firebase-plain colored",
-                "tooltip" => [
-                    "en" => "Firebase is a backend platform by Google offering authentication, database and hosting services.",
-                    "tr" => "Firebase, Google tarafından sunulan kimlik doğrulama, veritabanı ve hosting hizmetleri sağlayan bir backend platformudur."
-                ]
-            ],
-            [
-                "name" => "Git",
-                "icon" => "devicon-git-plain colored",
-                "tooltip" => [
-                    "en" => "Git is a distributed version control system for tracking code changes.",
-                    "tr" => "Git, kod değişikliklerini takip etmek için kullanılan dağıtık bir sürüm kontrol sistemidir."
-                ]
-            ],
-            [
-                "name" => "GitHub",
-                "icon" => "devicon-github-original",
-                "tooltip" => [
-                    "en" => "GitHub is a collaboration platform used to host and manage Git repositories.",
-                    "tr" => "GitHub, Git depolarını barındırmak ve yönetmek için kullanılan bir iş birliği platformudur."
-                ]
+                "iconText" => "",
+                "tooltip" => "A cloud platform used for database, authentication and backend services."
             ]
         ]
     ]
 ];
 
 /*
-    $projects dizisi Projects bölümünde gösterilecek portfolyo projelerini tutar.
-    Her projede başlık, açıklama, kullanılan teknolojiler ve GitHub linki bulunur.
+    EXPERIENCE DATA
+    Deneyim ve liderlik bilgileri burada tutulur.
+*/
+$experiences = [
+    [
+        "title" => "Software Engineering Intern",
+        "company" => "VakıfBank",
+        "date" => "Internship",
+        "description" => "Gained experience in enterprise software development, backend systems and banking technology workflows."
+    ],
+    [
+        "title" => "Software Engineering Intern",
+        "company" => "DenizBank",
+        "date" => "Internship",
+        "description" => "Worked with software development processes, teamwork practices and financial technology project structures."
+    ],
+    [
+        "title" => "Mobile Team Lead",
+        "company" => "GDG On Campus",
+        "date" => "Leadership",
+        "description" => "Led mobile development activities, supported team coordination and contributed to student developer community events."
+    ]
+];
+
+/*
+    PROJECTS DATA
+    Projects bölümünde gösterilen portfolyo projeleri burada tutulur.
 */
 $projects = [
     [
         "title" => "CineScope",
         "description" => [
-            "en" => "An AI-powered movie recommendation application developed for iOS. This project focuses on recommendation flows, OpenAI API integration and a structured UIKit-based user experience. It reflects my experience with mobile UI design, API usage and modular application thinking.",
-            "tr" => "iOS için geliştirilmiş yapay zekâ destekli bir film öneri uygulamasıdır. Bu proje öneri akışları, OpenAI API entegrasyonu ve UIKit tabanlı düzenli bir kullanıcı deneyimi üzerine odaklanmaktadır. Mobil arayüz tasarımı, API kullanımı ve modüler uygulama yaklaşımı konularındaki deneyimimi yansıtır."
+            "en" => "An AI-powered movie recommendation application developed for iOS. This project focuses on recommendation flows, OpenAI API integration and a structured UIKit-based user experience.",
+            "tr" => "iOS için geliştirilmiş yapay zekâ destekli bir film öneri uygulamasıdır. Bu proje öneri akışları, OpenAI API entegrasyonu ve UIKit tabanlı düzenli bir kullanıcı deneyimi üzerine odaklanmaktadır."
         ],
         "tech" => ["Swift", "UIKit", "OpenAI API"],
         "github" => "https://github.com/aysenurkendirci/CineScope-MovieApp"
@@ -250,8 +252,8 @@ $projects = [
     [
         "title" => "PettiCare",
         "description" => [
-            "en" => "A pet care tracking application designed to help users manage routines and pet-related information in a clean and user-friendly way. The project demonstrates my experience with SwiftUI, MVVM architecture and local data persistence using SwiftData.",
-            "tr" => "Kullanıcıların evcil hayvan rutinlerini ve ilgili bilgileri düzenli ve kullanıcı dostu bir şekilde yönetmesini sağlayan bir evcil hayvan bakım takip uygulamasıdır. Proje, SwiftUI, MVVM mimarisi ve SwiftData ile yerel veri saklama konularındaki deneyimimi göstermektedir."
+            "en" => "A pet care tracking application designed to help users manage routines and pet-related information in a clean and user-friendly way.",
+            "tr" => "Kullanıcıların evcil hayvan rutinlerini ve ilgili bilgileri düzenli ve kullanıcı dostu bir şekilde yönetmesini sağlayan bir evcil hayvan bakım takip uygulamasıdır."
         ],
         "tech" => ["SwiftUI", "MVVM", "SwiftData"],
         "github" => "https://github.com/aysenurkendirci/PettiCareApp"
@@ -259,8 +261,8 @@ $projects = [
     [
         "title" => "HeyDou Campus",
         "description" => [
-            "en" => "A campus-focused digital platform project developed with a structured interface and usability-oriented approach. It highlights frontend organization, page structure and practical development experience around a real product idea.",
-            "tr" => "Kampüs odaklı dijital bir platform projesidir. Düzenli arayüz yapısı ve kullanılabilirlik odaklı yaklaşımıyla geliştirilmiştir. Frontend organizasyonu, sayfa yapısı ve gerçek bir ürün fikri etrafında geliştirme deneyimini öne çıkarır."
+            "en" => "A campus-focused digital platform project developed with a structured interface and usability-oriented approach.",
+            "tr" => "Kampüs odaklı dijital bir platform projesidir. Düzenli arayüz yapısı ve kullanılabilirlik odaklı yaklaşımıyla geliştirilmiştir."
         ],
         "tech" => ["HTML", "CSS", "OpenAI Integration"],
         "github" => "https://github.com/aysenurkendirci/Heydou_kamp-s"
@@ -268,8 +270,8 @@ $projects = [
     [
         "title" => "Internship Bank Project",
         "description" => [
-            "en" => "A full-stack internship project developed around banking-related workflows. It includes Angular on the frontend and .NET Core based backend logic, representing my experience with enterprise-style application structure, layered thinking and real internship development processes.",
-            "tr" => "Bankacılık süreçleri etrafında geliştirilmiş full-stack bir staj projesidir. Frontend tarafında Angular, backend tarafında ise .NET Core tabanlı mantık bulunmaktadır. Kurumsal uygulama yapısı, katmanlı düşünme ve gerçek staj geliştirme süreçlerindeki deneyimimi temsil eder."
+            "en" => "A full-stack internship project developed around banking-related workflows. It includes Angular on the frontend and .NET Core based backend logic.",
+            "tr" => "Bankacılık süreçleri etrafında geliştirilmiş full-stack bir staj projesidir. Frontend tarafında Angular, backend tarafında ise .NET Core tabanlı mantık bulunmaktadır."
         ],
         "tech" => ["Angular", ".NET Core", "Oracle DB"],
         "github" => "https://github.com/aysenurkendirci/Internship_Bank_Project"

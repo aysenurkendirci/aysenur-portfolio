@@ -1,601 +1,414 @@
 /* ==================================================
-   GENEL SECTION YAPISI
-   Sayfadaki About, Tech Stack, Projects ve Contact gibi
-   ana bölümlerin ortak boşluk ve konum ayarları burada yapılır.
+   SECTION GENEL YAPI
+   Tüm bölümlerin ekranda dengeli görünmesi ve navbar linklerinde doğru hizalanması için kullanılır.
+   ================================================== */
+/* ==================================================
+   SECTION GENEL YAPI
+   Her bölümün navbar altında doğru hizalanmasını sağlar.
+   Başlıkların ekrana çok aşağıdan başlamasını engeller.
    ================================================== */
 .section {
-    /*
-       Section içindeki içeriklerin cursor glow gibi arka plan
-       efektlerinin üstünde kalmasını sağlar.
-    */
-    position: relative;
-
-    /*
-       z-index 1 verilerek section içerikleri arka plan efektlerinden
-       daha önde görüntülenir.
-    */
-    z-index: 1;
-
-    /*
-       Her bölümün üstten ve alttan geniş nefes alanı olmasını sağlar.
-       Bu sayede bölümler birbirine yapışık görünmez.
-    */
-    padding: 96px 0;
+    padding: 56px 0 72px;
+    scroll-margin-top: 88px;
 }
 
-/* ==================================================
-   BÖLÜM BAŞLIKLARI
-   Her section içinde kullanılan ortak başlık stilidir.
-   ================================================== */
+/* Bölüm başlıkları için ortak tasarım */
 .section-title {
-    /*
-       Başlığı bulunduğu bölümün ortasına hizalar.
-    */
     text-align: center;
-
-    /*
-       Başlığı büyük göstererek bölüm ayrımını netleştirir.
-    */
     font-size: 42px;
-
-    /*
-       Başlık ile altındaki içerik arasında boşluk bırakır.
-    */
     margin-bottom: 42px;
-
-    /*
-       Başlık rengini tema değişkeninden alır.
-    */
     color: var(--primary-text-color);
 }
-
 /* ==================================================
-   ABOUT BÖLÜMÜ
-   Kişisel açıklama metinlerinin bulunduğu alan.
-   ================================================== */
+   ABOUT
+================================================== */
 .about-content {
-    /*
-       Metin alanının çok genişleyip okunabilirliği düşürmesini engeller.
-    */
     max-width: 860px;
-
-    /*
-       About içeriğini yatayda ortalar.
-    */
     margin: 0 auto;
-
-    /*
-       Paragraflar arasında düzenli boşluk oluşturmak için grid kullanılır.
-    */
     display: grid;
-
-    /*
-       About içindeki metinler arasında boşluk bırakır.
-    */
     gap: 18px;
-
-    /*
-       Metinleri ortalar.
-    */
     text-align: center;
-
-    /*
-       Açıklama metinleri için ikincil metin rengini kullanır.
-    */
     color: var(--secondary-text-color);
-
-    /*
-       Paragrafları normalden biraz büyük yaparak okunabilirliği artırır.
-    */
     font-size: 18px;
 }
 
 /* ==================================================
-   TECH STACK KATEGORİ ALANI
-   Teknolojileri kategori kartları halinde göstermek için kullanılır.
-   ================================================== */
+   TECH STACK
+================================================== */
 .tech-categories {
-    /*
-       Kategori kartlarını grid sistemiyle yan yana dizer.
-    */
     display: grid;
-
-    /*
-       Büyük ekranlarda iki sütunlu görünüm sağlar.
-    */
-    grid-template-columns: repeat(2, 1fr);
-
-    /*
-       Kartlar arasında boşluk bırakır.
-    */
-    gap: 28px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
 }
 
-/* ==================================================
-   ORTAK KART TASARIMI
-   Tech kartları, project kartları, contact formu ve more projects kutusu
-   aynı görsel dili kullansın diye ortak stiller burada yazılır.
-   ================================================== */
-.tech-category-card,
-.project-card,
-.contact-form,
-.more-projects-box {
-    /*
-       Kart arka planını tema değişkeninden alır.
-    */
+.tech-category-card {
+    padding: 28px;
+    border-radius: 24px;
     background: var(--card-background-color);
-
-    /*
-       Kart kenarlığını tema değişkeninden alır.
-    */
     border: 1px solid var(--border-color);
-
-    /*
-       Kart köşelerini yuvarlatır ve modern görünüm verir.
-    */
-    border-radius: 22px;
-
-    /*
-       Karta derinlik vermek için gölge ekler.
-    */
     box-shadow: var(--card-shadow);
 }
 
-/* Tech kategori kartlarının iç boşluğu */
-.tech-category-card {
-    padding: 28px;
-}
-
-/* Tech kategori başlıkları */
 .tech-category-card h3 {
-    /*
-       Kategori başlığını belirgin yapar.
-    */
-    font-size: 24px;
-
-    /*
-       Başlık ile altındaki teknoloji listesi arasına boşluk koyar.
-    */
-    margin-bottom: 20px;
-
-    /*
-       Başlık rengini tema değişkeninden alır.
-    */
+    margin-bottom: 22px;
+    font-size: 25px;
     color: var(--primary-text-color);
 }
 
-/* ==================================================
-   TECH GRID
-   Her kategori içindeki teknolojileri düzenli kutular halinde dizer.
-   ================================================== */
-.tech-grid {
-    /*
-       Teknoloji kutularını grid sistemiyle dizer.
-    */
-    display: grid;
-
-    /*
-       Büyük ekranda iki sütunlu teknoloji listesi oluşturur.
-    */
-    grid-template-columns: repeat(2, 1fr);
-
-    /*
-       Teknoloji kutuları arasında boşluk bırakır.
-    */
-    gap: 14px;
+/* TECH LIST */
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-/* ==================================================
-   TEKNOLOJİ KUTUSU
-   Her teknoloji ikon + isim şeklinde gösterilir.
-   ================================================== */
 .tech-item {
-    /*
-       Tooltip konumlandırması için relative gerekir.
-       Çünkü ::after pseudo-element'i bu kutuya göre konumlanır.
-    */
-    position: relative;
-
-    /*
-       İkon ve yazıyı yan yana hizalamak için flex kullanılır.
-    */
     display: flex;
-
-    /*
-       İkon ve yazıyı dikeyde ortalar.
-    */
     align-items: center;
-
-    /*
-       İkon ile yazı arasında boşluk bırakır.
-    */
-    gap: 12px;
-
-    /*
-       Kutunun arka planını tema değişkeninden alır.
-       color-mix ile biraz şeffaf/yumuşak görünüm oluşturulur.
-    */
-    background: color-mix(in srgb, var(--surface-background-color) 92%, transparent);
-
-    /*
-       Kutunun kenarlığını tema değişkeninden alır.
-    */
-    border: 1px solid var(--border-color);
-
-    /*
-       Kutunun iç boşluğunu belirler.
-    */
-    padding: 14px 16px;
-
-    /*
-       Kutunun köşelerini yuvarlatır.
-    */
-    border-radius: 14px;
-
-    /*
-       Hover durumundaki hareketin yumuşak olmasını sağlar.
-    */
-    transition: 0.25s ease;
-
-    /*
-       Bu eleman tıklanabilir olmadığı için default cursor kullanılır.
-    */
-    cursor: default;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-color);
 }
 
-/* Teknoloji kutusunun hover efekti */
-.tech-item:hover {
-    /*
-       Üzerine gelince kutuyu hafif yukarı taşır.
-    */
-    transform: translateY(-3px);
-
-    /*
-       Hover sırasında kenarlığı mavi tona yaklaştırır.
-    */
-    border-color: rgba(96, 165, 250, 0.45);
+.tech-item:last-child {
+    border-bottom: none;
 }
 
-/* Teknoloji ikonları */
-.tech-item i {
-    /*
-       İkonların boyutunu büyütür.
-    */
-    font-size: 28px;
-}
-
-/* Teknoloji isimleri */
-.tech-item span {
-    /*
-       Teknoloji adını biraz kalın gösterir.
-    */
-    font-weight: 600;
-
-    /*
-       Yazı rengini tema değişkeninden alır.
-    */
+.tech-name {
+    font-size: 16px;
+    font-weight: 700;
     color: var(--primary-text-color);
 }
 
-/* ==================================================
-   TECH TOOLTIP
-   Kullanıcı teknoloji kutusunun üzerine gelince açıklama gösterir.
-   data-tooltip attribute içindeki metni kullanır.
-   ================================================== */
-.tech-item::after {
-    /*
-       Tooltip metni HTML'deki data-tooltip değerinden alınır.
-    */
-    content: attr(data-tooltip);
-
-    /*
-       Tooltip kutusunu teknoloji item'a göre konumlandırır.
-    */
-    position: absolute;
-
-    /*
-       Tooltip'i kutunun üstüne yerleştirir.
-    */
-    bottom: calc(100% + 10px);
-
-    /*
-       Tooltip'i sol hizadan başlatır.
-    */
-    left: 0;
-
-    /*
-       Tooltip genişliğini belirler.
-    */
-    width: 240px;
-
-    /*
-       Tooltip koyu arka planlı olur.
-    */
-    background: #111827;
-
-    /*
-       Tooltip yazı rengi açık seçilir.
-    */
-    color: #e5e7eb;
-
-    /*
-       Tooltip yazı boyutu daha küçük tutulur.
-    */
-    font-size: 13px;
-
-    /*
-       Tooltip metninin satır aralığını düzenler.
-    */
-    line-height: 1.4;
-
-    /*
-       Tooltip iç boşluğu.
-    */
-    padding: 12px;
-
-    /*
-       Tooltip köşelerini yuvarlatır.
-    */
-    border-radius: 12px;
-
-    /*
-       Tooltip için ince kenarlık.
-    */
-    border: 1px solid rgba(148, 163, 184, 0.14);
-
-    /*
-       Tooltip'e derinlik verir.
-    */
-    box-shadow: 0 12px 30px rgba(2, 6, 23, 0.28);
-
-    /*
-       Başlangıçta görünmez olur.
-    */
-    opacity: 0;
-
-    /*
-       Tooltip mouse ile etkileşime girmesin diye kapatılır.
-    */
-    pointer-events: none;
-
-    /*
-       Başlangıçta biraz aşağıda durur.
-    */
-    transform: translateY(8px);
-
-    /*
-       Görünme animasyonunu yumuşatır.
-    */
-    transition: 0.25s ease;
-
-    /*
-       Tooltip'in diğer elemanların üstünde görünmesini sağlar.
-    */
-    z-index: 10;
+.tech-item:hover .tech-name {
+    color: var(--primary-accent-color);
 }
 
-/* Hover olunca tooltip görünür */
+/* TOOLTIP */
+.tech-item::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 48px;
+    bottom: calc(100% + 8px);
+    width: 220px;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    background: #111827;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: 0.2s ease;
+}
+
 .tech-item:hover::after {
     opacity: 1;
     transform: translateY(0);
 }
 
 /* ==================================================
-   PROJECTS GRID
-   Proje kartlarını düzenli şekilde yan yana gösterir.
-   ================================================== */
+   EXPERIENCE
+================================================== */
+.experience-list {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    gap: 22px;
+}
+
+.experience-card {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 24px;
+    padding: 28px;
+    border-radius: 24px;
+    background: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+}
+
+.experience-date {
+    color: var(--primary-accent-color);
+    font-weight: 800;
+}
+
+.experience-content h3 {
+    font-size: 23px;
+    margin-bottom: 6px;
+}
+
+/* ==================================================
+   PROJECTS
+================================================== */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 28px;
 }
 
-/* Proje kartlarının iç boşluğu ve geçiş efekti */
 .project-card {
     padding: 28px;
+    border-radius: 20px;
+    background: var(--card-background-color);
+    border: 1px solid var(--border-color);
     transition: 0.25s ease;
 }
 
-/* Proje kartı hover efekti */
 .project-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(96, 165, 250, 0.35);
 }
 
-/* Proje başlığı */
 .project-card h3 {
-    font-size: 28px;
-    margin-bottom: 14px;
-    color: var(--primary-text-color);
+    font-size: 26px;
+    margin-bottom: 12px;
 }
 
-/* Proje açıklaması */
-.project-card p {
-    color: var(--secondary-text-color);
-    margin-bottom: 18px;
-}
-
-/* Proje teknoloji etiketlerini yan yana dizer */
 .tech-stack {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 18px;
 }
 
-/* Proje teknoloji etiketi */
 .tech {
-    display: inline-block;
-    padding: 7px 12px;
-    background: var(--accent-background-color);
-    color: var(--primary-accent-color);
+    padding: 6px 12px;
     border-radius: 999px;
+    background: var(--accent-background-color);
     font-size: 13px;
     font-weight: 700;
-    border: 1px solid var(--border-color);
-}
-
-/* Proje linki */
-.project-link {
-    color: var(--primary-accent-color);
-    font-weight: 700;
-}
-
-/* Proje linkinin hover durumu */
-.project-link:hover {
-    text-decoration: underline;
-}
-
-/* Daha fazla proje kutusu */
-.more-projects-box {
-    padding: 42px;
-    text-align: center;
-}
-
-/* Daha fazla proje açıklaması */
-.more-projects-box p {
-    max-width: 760px;
-    margin: 0 auto 22px;
-    color: var(--secondary-text-color);
-    font-size: 18px;
 }
 
 /* ==================================================
-   CONTACT FORM
-   Kullanıcının mesaj gönderebildiği form alanı.
-   ================================================== */
-.contact-form {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 34px;
+   CONTACT
+================================================== */
+.contact {
+    padding-bottom: 80px;
 }
 
-/* Her input grubunun altına boşluk bırakır */
+.contact .section-title {
+    margin-bottom: 16px;
+}
+
+.contact-intro {
+    max-width: 680px;
+    margin: 0 auto 36px;
+    text-align: center;
+    color: var(--secondary-text-color);
+    font-size: 17px;
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 28px;
+    align-items: stretch;
+}
+
+.contact-info-card,
+.contact-form {
+    padding: 34px;
+    border-radius: 26px;
+    background: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+}
+
+.contact-info-list {
+    height: 100%;
+    display: grid;
+    gap: 16px;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.contact-info-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-accent-color);
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.email-icon {
+    background: linear-gradient(135deg, #f97316, #ef4444);
+}
+
+.github-icon {
+    background: linear-gradient(135deg, #111827, #374151);
+}
+
+.linkedin-icon {
+    background: linear-gradient(135deg, #0a66c2, #2563eb);
+}
+
+.contact-info-item small {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--secondary-text-color);
+    font-size: 13px;
+}
+
+.contact-info-item strong {
+    display: block;
+    color: var(--primary-text-color);
+    font-size: 16px;
+    word-break: break-word;
+}
+
 .form-group {
     margin-bottom: 20px;
 }
 
-/* Form label tasarımı */
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 700;
     color: var(--primary-text-color);
+    font-weight: 700;
 }
 
-/* Input ve textarea ortak tasarımı */
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 14px;
+    padding: 15px 16px;
+    border-radius: 16px;
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    font-size: 16px;
-    background: color-mix(in srgb, var(--surface-background-color) 92%, transparent);
+    background: rgba(255, 255, 255, 0.06);
     color: var(--primary-text-color);
+    font-size: 15px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--secondary-text-color);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-accent-color);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18);
+}
+
+.contact-submit {
+    gap: 8px;
+}
+
+.contact-submit i {
+    transition: transform 0.25s ease;
+}
+
+.contact-submit:hover i {
+    transform: translateX(4px) translateY(-4px);
 }
 
 /* ==================================================
-   FOOTER
-   Sayfanın en altındaki telif hakkı alanı.
-   ================================================== */
-.footer {
-    background: color-mix(in srgb, var(--page-background-color) 92%, black 8%);
-    color: var(--primary-text-color);
-    text-align: center;
-    padding: 24px 0;
-    margin-top: 20px;
-    border-top: 1px solid var(--border-color);
-}
+   RESPONSIVE
+================================================== */
 
-/* ==================================================
-   RESPONSIVE TASARIM - TABLET
-   992px altındaki ekranlarda iki sütunlu yapılar tek sütuna düşer.
-   ================================================== */
+/* Tablet */
 @media (max-width: 992px) {
-    .hero-split-layout,
     .tech-categories,
-    .projects-grid {
+    .projects-grid,
+    .contact-wrapper {
         grid-template-columns: 1fr;
     }
-
-    .hero-left {
-        text-align: center;
-        margin: 0 auto;
-    }
-
-    .hero-buttons,
-    .hero-social-icons {
-        justify-content: center;
-    }
-
-    .hero-right {
-        margin-top: 10px;
-    }
 }
 
-/* ==================================================
-   RESPONSIVE TASARIM - MOBİL
-   768px altındaki ekranlarda navbar ve içerik mobil uyumlu hale gelir.
-   ================================================== */
+/* Mobile */
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-btn {
-        display: none;
-    }
-
-    .navbar-container {
-        flex-wrap: wrap;
-    }
-
-    .nav-links {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
-        margin-top: 16px;
-        padding-top: 16px;
-        border-top: 1px solid var(--border-color);
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .hero-bg-word {
-        font-size: clamp(70px, 22vw, 130px);
-        letter-spacing: 4px;
-    }
-
-    .hero-name {
-        font-size: 54px;
-    }
-
-    .hero-role {
-        font-size: 28px;
-    }
-
-    .hero-description {
-        font-size: 16px;
-    }
-
-    .portfolio-card {
-        width: 210px;
-    }
-
-    .portfolio-card-image img {
-        height: 260px;
-    }
-
     .section-title {
         font-size: 32px;
     }
 
-    .tech-grid {
+    .experience-card {
         grid-template-columns: 1fr;
     }
+}
+
+.contact-info-list {
+    display: grid;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    border-radius: 18px;
+    background: var(--surface-background-color);
+    border: 1px solid var(--border-color);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-info-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow);
+}
+
+.contact-icon {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.email-icon {
+    background: linear-gradient(135deg, #f97316, #ef4444);
+}
+
+.github-icon {
+    background: linear-gradient(135deg, #111827, #374151);
+}
+
+.linkedin-icon {
+    background: linear-gradient(135deg, #0a66c2, #2563eb);
+}
+
+.contact-info-item small {
+    display: block;
+    color: var(--secondary-text-color);
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.contact-info-item strong {
+    display: block;
+    color: var(--primary-text-color);
+    word-break: break-word;
+}
+
+.contact-submit {
+    gap: 8px;
+}
+
+.contact-submit i {
+    transition: transform 0.25s ease;
+}
+
+.contact-submit:hover i {
+    transform: translateX(4px) translateY(-4px);
 }
