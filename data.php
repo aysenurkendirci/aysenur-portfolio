@@ -19,18 +19,18 @@ $profile = [
     "name" => "Ayşe Nur Kendirci",
 
     "title" => [
-        "en" => "Software Engineering Student",
-        "tr" => "Yazılım Mühendisliği Öğrencisi"
+        "en" => "Software Developer",
+        "tr" => "Yazılım Geliştirici"
     ],
 
     "tagline" => [
-        "en" => "Building clean, modern and maintainable software products.",
-        "tr" => "Temiz, modern ve sürdürülebilir yazılım ürünleri geliştiriyorum."
+        "en" => "Building real-world software with passion and continuous growth.",
+        "tr" => "Azimle öğrenen ve gerçek dünyaya yönelik yazılımlar geliştiren bir yazılımcı."
     ],
 
     "description" => [
-        "en" => "I am a software engineering student focused on mobile, frontend and backend development. I enjoy transforming ideas into structured, user-friendly and scalable software solutions.",
-        "tr" => "Mobil, frontend ve backend geliştirme alanlarına odaklanan bir yazılım mühendisliği öğrencisiyim. Fikirleri düzenli, kullanıcı dostu ve ölçeklenebilir yazılım çözümlerine dönüştürmeyi seviyorum."
+        "en" => "I build clean, scalable and user-focused applications across mobile, frontend and backend development.",
+        "tr" => "Mobil, frontend ve backend alanlarında temiz, ölçeklenebilir ve kullanıcı odaklı uygulamalar geliştiriyorum."
     ],
 
     "email" => "aysenurkendirciss@gmail.com",
@@ -40,7 +40,6 @@ $profile = [
     "cv" => "images/cv.pdf",
     "image" => "images/profile.jpg"
 ];
-
 /*
     QUICK INFO DATA
     Hero bölümünde küçük bilgi kutuları kullanılmak istenirse bu dizi çağrılabilir.
@@ -85,12 +84,16 @@ $quickInfo = [
 */
 $aboutTexts = [
     [
-        "en" => "I am a software engineering student who enjoys building clean, structured and maintainable software products. My interests mainly focus on mobile development, frontend interfaces and backend logic.",
-        "tr" => "Temiz, düzenli ve sürdürülebilir yazılım ürünleri geliştirmeyi seven bir yazılım mühendisliği öğrencisiyim. İlgi alanlarım ağırlıklı olarak mobil geliştirme, frontend arayüzleri ve backend mantığı üzerine odaklanmaktadır."
+        "en" => "I am a motivated software developer who enjoys building real-world applications and continuously improving my technical skills. My main focus areas are mobile development, frontend interfaces and backend systems.",
+        "tr" => "Gerçek dünyaya yönelik uygulamalar geliştirmeyi seven, öğrenmeye istekli ve kendini sürekli geliştiren bir yazılım geliştiricisiyim. Ana odak alanlarım mobil geliştirme, frontend arayüzleri ve backend sistemleridir."
     ],
     [
-        "en" => "Through academic work, internship projects and self-driven development, I continue improving my engineering mindset and practical coding skills. I enjoy transforming ideas into real applications and learning through project-based development.",
-        "tr" => "Akademik çalışmalar, staj projeleri ve bireysel geliştirme süreçleri sayesinde mühendislik bakış açımı ve pratik kodlama becerilerimi geliştirmeye devam ediyorum. Fikirleri gerçek uygulamalara dönüştürmeyi ve proje tabanlı öğrenmeyi seviyorum."
+        "en" => "Through internships, academic projects and self-driven learning, I have gained hands-on experience with modern software architectures, component-based development and structured project workflows.",
+        "tr" => "Staj deneyimlerim, akademik projelerim ve bireysel öğrenme sürecim sayesinde modern yazılım mimarileri, component tabanlı geliştirme ve düzenli proje yapıları konusunda pratik deneyim kazandım."
+    ],
+    [
+        "en" => "I am disciplined, detail-oriented and persistent. I enjoy turning ideas into functional products and aim to grow every day as a developer who creates meaningful and user-focused software.",
+        "tr" => "Disiplinli, detaylara önem veren ve azimli bir geliştiriciyim. Fikirleri çalışan ürünlere dönüştürmekten keyif alıyor ve her gün daha iyi, anlamlı ve kullanıcı odaklı yazılımlar geliştiren bir yazılımcı olmayı hedefliyorum."
     ]
 ];
 
@@ -214,24 +217,65 @@ $techCategories = [
     EXPERIENCE DATA
     Deneyim ve liderlik bilgileri burada tutulur.
 */
+/*
+    EXPERIENCE DATA
+    Deneyim, liderlik ve eğitim/bootcamp bilgileri burada tutulur.
+    Bu veriler Experience bölümünde kart yapısı ile dinamik olarak gösterilir.
+*/
 $experiences = [
     [
+        "category" => "Mobile Internship",
+        "date" => "Jul 2025 - Sep 2025",
+        "title" => "Mobile Application Development Intern",
+        "company" => "VakıfBank",
+        "description" => "Completed a 2-month mobile development internship and actively contributed to CineScope and PettiCare iOS applications.",
+        "items" => [
+            "Developed iOS application screens using Swift, UIKit and SwiftUI.",
+            "Worked with MVVM architecture, reusable components and clean project structure.",
+            "Built base structures for networking, data flow and screen organization.",
+            "Integrated OpenAI API features for personalized movie recommendation flows.",
+            "Improved practical knowledge of mobile UI design, Firebase, SwiftData and project-based development."
+        ]
+    ],
+    [
+        "category" => "Web Internship",
+        "date" => "Jan 2026 - Feb 2026",
         "title" => "Software Engineering Intern",
         "company" => "VakıfBank",
-        "date" => "Internship",
-        "description" => "Gained experience in enterprise software development, backend systems and banking technology workflows."
+        "description" => "Worked on a banking-focused web application and gained experience in frontend, backend and database development.",
+        "items" => [
+            "Developed frontend modules using Angular, HTML and CSS.",
+            "Worked on backend logic with C# and .NET Core.",
+            "Practiced RESTful API structure, authentication flow and business logic implementation.",
+            "Used Oracle Database, stored procedures and package-based database operations.",
+            "Learned clean architecture, repository pattern and Agile development workflow."
+        ]
     ],
     [
-        "title" => "Software Engineering Intern",
-        "company" => "DenizBank",
-        "date" => "Internship",
-        "description" => "Worked with software development processes, teamwork practices and financial technology project structures."
+        "category" => "Leadership",
+        "date" => "2025 - Present",
+        "title" => "Mobile Technical Team Lead",
+        "company" => "GDG On Campus Doğuş University",
+        "description" => "Served as the mobile technical team lead and supported both event organization and technical project development.",
+        "items" => [
+            "Helped organize student-focused software, mobile development and technology events.",
+            "Supported team coordination, communication and technical planning.",
+            "Contributed to mobile-focused projects and learning activities.",
+            "Improved leadership, teamwork and community management skills."
+        ]
     ],
     [
-        "title" => "Mobile Team Lead",
-        "company" => "GDG On Campus",
-        "date" => "Leadership",
-        "description" => "Led mobile development activities, supported team coordination and contributed to student developer community events."
+        "category" => "Programs & Bootcamps",
+        "date" => "Ongoing Learning",
+        "title" => "Technical Training and Online Internship Programs",
+        "company" => "DenizBank, Techcareer.net, BTK Academy, Udemy",
+        "description" => "Participated in online internship programs, bootcamps and technical trainings across finance, banking, mobile development and artificial intelligence.",
+        "items" => [
+            "Completed DenizBank Denizaşırı Online Internship Program and gained insight into banking, finance and digital transformation.",
+            "Successfully completed SwiftUI Bootcamp and improved iOS development skills.",
+            "Joined technical events and workshops about AI, software development, databases and career development.",
+            "Continued improving through hands-on learning, bootcamps and project-based practice."
+        ]
     ]
 ];
 
@@ -239,39 +283,60 @@ $experiences = [
     PROJECTS DATA
     Projects bölümünde gösterilen portfolyo projeleri burada tutulur.
 */
+/*
+    PROJECTS DATA
+    Portfolyo projeleri burada tutulur.
+    Her proje İngilizce ve Türkçe açıklama içerir.
+*/
 $projects = [
     [
         "title" => "CineScope",
+        "category" => [
+            "en" => "AI-Powered iOS Movie App",
+            "tr" => "Yapay Zekâ Destekli iOS Film Uygulaması"
+        ],
         "description" => [
-            "en" => "An AI-powered movie recommendation application developed for iOS. This project focuses on recommendation flows, OpenAI API integration and a structured UIKit-based user experience.",
-            "tr" => "iOS için geliştirilmiş yapay zekâ destekli bir film öneri uygulamasıdır. Bu proje öneri akışları, OpenAI API entegrasyonu ve UIKit tabanlı düzenli bir kullanıcı deneyimi üzerine odaklanmaktadır."
+            "en" => "CineScope is an iOS movie recommendation app that helps users discover films based on their preferences. The project focuses on OpenAI API integration, recommendation flows, UIKit-based screen structure and a clean mobile user experience.",
+            "tr" => "CineScope, kullanıcıların ilgi alanlarına göre film keşfetmesini sağlayan bir iOS film öneri uygulamasıdır. Projede OpenAI API entegrasyonu, öneri akışları, UIKit tabanlı ekran yapısı ve temiz bir mobil kullanıcı deneyimi üzerine çalışılmıştır."
         ],
         "tech" => ["Swift", "UIKit", "OpenAI API"],
         "github" => "https://github.com/aysenurkendirci/CineScope-MovieApp"
     ],
     [
         "title" => "PettiCare",
-        "description" => [
-            "en" => "A pet care tracking application designed to help users manage routines and pet-related information in a clean and user-friendly way.",
-            "tr" => "Kullanıcıların evcil hayvan rutinlerini ve ilgili bilgileri düzenli ve kullanıcı dostu bir şekilde yönetmesini sağlayan bir evcil hayvan bakım takip uygulamasıdır."
+        "category" => [
+            "en" => "Pet Care & Routine Tracking App",
+            "tr" => "Evcil Hayvan Bakım ve Rutin Takip Uygulaması"
         ],
-        "tech" => ["SwiftUI", "MVVM", "SwiftData"],
+        "description" => [
+            "en" => "PettiCare is an iOS application designed to manage multiple pet profiles, care routines and pet-related information. It includes features such as routine tracking, nearby veterinarians on map, favorite vets and Apple Maps directions.",
+            "tr" => "PettiCare, birden fazla evcil hayvan profili, bakım rutinleri ve evcil hayvan bilgilerini yönetmek için geliştirilen bir iOS uygulamasıdır. Rutin takibi, haritada yakın veterinerleri görme, favori veteriner ekleme ve Apple Maps yönlendirme özelliklerini içerir."
+        ],
+        "tech" => ["Swift", "SwiftUI", "SwiftData", "MapKit"],
         "github" => "https://github.com/aysenurkendirci/PettiCareApp"
     ],
     [
-        "title" => "HeyDou Campus",
-        "description" => [
-            "en" => "A campus-focused digital platform project developed with a structured interface and usability-oriented approach.",
-            "tr" => "Kampüs odaklı dijital bir platform projesidir. Düzenli arayüz yapısı ve kullanılabilirlik odaklı yaklaşımıyla geliştirilmiştir."
+        "title" => "HeyDOU Campus",
+        "category" => [
+            "en" => "Campus Management Platform",
+            "tr" => "Kampüs Yönetim Platformu"
         ],
-        "tech" => ["HTML", "CSS", "OpenAI Integration"],
+        "description" => [
+            "en" => "HeyDOU is a web-based campus management platform developed as an academic team project. The project brings academic calendar, cafeteria, events, clubs, internship tracking and campus map features into a single user-friendly system.",
+            "tr" => "HeyDOU, akademik ekip projesi olarak geliştirilen web tabanlı bir kampüs yönetim platformudur. Akademik takvim, yemekhane, etkinlikler, kulüpler, staj takibi ve kampüs haritası özelliklerini tek bir kullanıcı dostu sistemde birleştirir."
+        ],
+        "tech" => ["HTML", "CSS", "C#", "OpenAI Integration"],
         "github" => "https://github.com/aysenurkendirci/Heydou_kamp-s"
     ],
     [
         "title" => "Internship Bank Project",
+        "category" => [
+            "en" => "Full-Stack Banking Application",
+            "tr" => "Full-Stack Bankacılık Uygulaması"
+        ],
         "description" => [
-            "en" => "A full-stack internship project developed around banking-related workflows. It includes Angular on the frontend and .NET Core based backend logic.",
-            "tr" => "Bankacılık süreçleri etrafında geliştirilmiş full-stack bir staj projesidir. Frontend tarafında Angular, backend tarafında ise .NET Core tabanlı mantık bulunmaktadır."
+            "en" => "A full-stack internship project focused on banking workflows. The project includes Angular-based frontend modules, .NET Core backend logic, Oracle database operations and structured business process management.",
+            "tr" => "Bankacılık süreçlerine odaklanan full-stack bir staj projesidir. Projede Angular tabanlı frontend modülleri, .NET Core backend mantığı, Oracle veritabanı işlemleri ve düzenli iş süreci yönetimi yer almaktadır."
         ],
         "tech" => ["Angular", ".NET Core", "Oracle DB"],
         "github" => "https://github.com/aysenurkendirci/Internship_Bank_Project"
