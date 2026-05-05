@@ -191,91 +191,82 @@ function e($value)
         </section>
 
         <!-- EXPERIENCE SECTION -->
-        <section id="experience" class="experience section" aria-labelledby="experience-title">
-            <div class="container">
-                <h2 id="experience-title" class="section-title" data-en="Experience" data-tr="Deneyim">
-                    Experience
-                </h2>
+<section id="experience" class="experience section" aria-labelledby="experience-title">
+    <div class="container">
+        <h2 id="experience-title" class="section-title" data-en="Experience" data-tr="Deneyim">
+            Experience
+        </h2>
 
-                <div class="experience-list">
-                    <?php foreach ($experiences as $experience): ?>
-                        <article class="experience-card">
-                            <p class="experience-date"><?= e($experience["date"]); ?></p>
+        <div class="experience-list">
+            <?php foreach ($experiences as $experience): ?>
+                <article class="experience-card">
+                    <div class="experience-top">
+                        <span class="experience-category"><?= e($experience["category"]); ?></span>
+                        <span class="experience-date"><?= e($experience["date"]); ?></span>
+                    </div>
 
-                            <div class="experience-content">
-                                <h3><?= e($experience["title"]); ?></h3>
-                                <p class="experience-company"><?= e($experience["company"]); ?></p>
-                                <p><?= e($experience["description"]); ?></p>
-                            </div>
-                        </article>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </section>
+                    <div class="experience-content">
+                        <h3><?= e($experience["title"]); ?></h3>
+                        <p class="experience-company"><?= e($experience["company"]); ?></p>
+                        <p class="experience-description"><?= e($experience["description"]); ?></p>
 
-        <!-- PROJECTS SECTION -->
-        <section id="projects" class="projects section" aria-labelledby="projects-title">
-            <div class="container">
-                <h2 id="projects-title" class="section-title" data-en="Projects" data-tr="Projeler">
-                    Projects
-                </h2>
+                        <ul class="experience-points">
+                            <?php foreach ($experience["items"] as $item): ?>
+                                <li><?= e($item); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </article>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+       <!-- PROJECTS SECTION -->
+<section id="projects" class="projects section" aria-labelledby="projects-title">
+    <div class="container">
+        <h2 id="projects-title" class="section-title" data-en="Projects" data-tr="Projeler">
+            Projects
+        </h2>
 
-                <div class="projects-grid">
-                    <?php foreach ($projects as $project): ?>
-                        <article class="project-card">
-                            <h3><?= e($project["title"]); ?></h3>
+        <div class="projects-grid">
+            <?php foreach ($projects as $project): ?>
+                <article class="project-card">
+                    <div class="project-card-top">
+                        <span class="project-category"
+                              data-en="<?= e($project["category"]["en"]); ?>"
+                              data-tr="<?= e($project["category"]["tr"]); ?>">
+                            <?= e($project["category"]["en"]); ?>
+                        </span>
+                    </div>
 
-                            <p data-en="<?= e($project["description"]["en"]); ?>"
-                               data-tr="<?= e($project["description"]["tr"]); ?>">
-                                <?= e($project["description"]["en"]); ?>
-                            </p>
+                    <h3><?= e($project["title"]); ?></h3>
 
-                            <ul class="tech-stack" aria-label="Project technologies">
-                                <?php foreach ($project["tech"] as $tech): ?>
-                                    <li class="tech"><?= e($tech); ?></li>
-                                <?php endforeach; ?>
-                            </ul>
-
-                            <a href="<?= e($project["github"]); ?>"
-                               class="project-link"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               data-en="View Project →"
-                               data-tr="Projeyi Gör →">
-                                View Project →
-                            </a>
-                        </article>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </section>
-
-        <!-- MORE PROJECTS SECTION -->
-        <section class="more-projects section" aria-labelledby="more-projects-title">
-            <div class="container">
-                <div class="more-projects-box">
-                    <h2 id="more-projects-title" class="section-title"
-                        data-en="More on GitHub"
-                        data-tr="GitHub'da Daha Fazlası">
-                        More on GitHub
-                    </h2>
-
-                    <p data-en="In addition to my featured projects, I also build smaller learning-focused repositories, mini applications and practice projects in Swift, ASP.NET, frontend development and related technologies."
-                       data-tr="Öne çıkan projelerime ek olarak Swift, ASP.NET, frontend geliştirme ve ilgili teknolojilerde daha küçük öğrenme odaklı depolar, mini uygulamalar ve pratik projeler de geliştiriyorum.">
-                        In addition to my featured projects, I also build smaller learning-focused repositories, mini applications and practice projects in Swift, ASP.NET, frontend development and related technologies.
+                    <p class="project-description"
+                       data-en="<?= e($project["description"]["en"]); ?>"
+                       data-tr="<?= e($project["description"]["tr"]); ?>">
+                        <?= e($project["description"]["en"]); ?>
                     </p>
 
-                    <a href="<?= e($profile["github"]); ?>"
+                    <ul class="tech-stack" aria-label="Project technologies">
+                        <?php foreach ($project["tech"] as $tech): ?>
+                            <li class="tech"><?= e($tech); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+
+                    <a href="<?= e($project["github"]); ?>"
+                       class="project-link"
                        target="_blank"
                        rel="noopener noreferrer"
-                       class="btn"
-                       data-en="Explore All Repositories"
-                       data-tr="Tüm Depoları Gör">
-                        Explore All Repositories
+                       data-en="View Repository →"
+                       data-tr="Repoyu Gör →">
+                        View Repository →
                     </a>
-                </div>
-            </div>
-        </section>
+                </article>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
 <!-- CONTACT SECTION -->
 <section id="contact" class="contact section" aria-labelledby="contact-title">
     <div class="container">
