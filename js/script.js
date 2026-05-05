@@ -1,8 +1,18 @@
+/*
+==================================================
+SCRIPT FILE
+Bu dosya:
+- Tema değiştirme
+- Dil değiştirme
+- Mobil menü kontrolü
+- Mouse glow efekti
+işlemlerini yönetir.
+==================================================
+*/
+
 /* ==================================================
-   HTML ELEMANLARINI SEÇME
-   JavaScript ile kontrol edeceğimiz HTML elemanlarını burada seçiyoruz.
-   getElementById kullanmamızın sebebi, id değerlerinin sayfada tekil olmasıdır.
-   ================================================== */
+   DOM ELEMENT SEÇİMLERİ
+================================================== */
 const cursorGlowElement = document.getElementById("cursorGlow");
 const menuToggleButton = document.getElementById("menuToggle");
 const navigationLinks = document.getElementById("navLinks");
@@ -12,137 +22,125 @@ const pageBody = document.body;
 
 /* ==================================================
    CURSOR GLOW EFEKTİ
-   Mouse hareket ettikçe ışık efektinin konumu güncellenir.
-   cursorGlow elementi varsa çalışır; yoksa hata vermez.
-   ================================================== */
+================================================== */
 document.addEventListener("mousemove", (event) => {
-    if (cursorGlowElement) {
-        cursorGlowElement.style.left = `${event.clientX}px`;
-        cursorGlowElement.style.top = `${event.clientY}px`;
-    }
+    if (!cursorGlowElement) return;
+
+    cursorGlowElement.style.left = `${event.clientX}px`;
+    cursorGlowElement.style.top = `${event.clientY}px`;
 });
 
 /* ==================================================
-   MOBİL MENÜ AÇ / KAPAT
-   Hamburger butona tıklanınca nav-links class listesine active eklenir veya kaldırılır.
-   CSS tarafında .nav-links.active görünür hale gelir.
-   ================================================== */
+   MOBİL MENÜ KONTROLÜ (ARIA FIX EKLENDİ)
+================================================== */
 if (menuToggleButton && navigationLinks) {
     menuToggleButton.addEventListener("click", () => {
         navigationLinks.classList.toggle("active");
+
+        const isMenuOpen = navigationLinks.classList.contains("active");
+        menuToggleButton.setAttribute("aria-expanded", isMenuOpen.toString());
     });
 }
 
 /* ==================================================
    DİL DEĞİŞTİRME FONKSİYONU
-   Sayfadaki data-en ve data-tr attribute'larına sahip metinleri değiştirir.
-   Örneğin:
-   <h1 data-en="Hello" data-tr="Merhaba">Hello</h1>
-   ================================================== */
+================================================== */
 function applyLanguage(selectedLanguage) {
-    /* HTML etiketinin lang değerini günceller */
     document.documentElement.lang = selectedLanguage;
 
-    /* data-en ve data-tr içeren tüm elemanları seçer */
-    const translatableElements = document.querySelectorAll("[data-en][data-tr]");
+    const elements = document.querySelectorAll("[data-en][data-tr]");
 
-    /* Her elemanın metnini seçilen dile göre değiştirir */
-    translatableElements.forEach((element) => {
-        element.textContent = element.dataset[selectedLanguage];
+    elements.forEach((el) => {
+        el.textContent = el.dataset[selectedLanguage];
     });
 
-    /* Tooltip metinleri için ayrı data attribute kullanan elemanları seçer */
-    const tooltipElements = document.querySelectorAll("[data-tooltip-en][data-tooltip-tr]");
+    /* Tooltip desteği */
+    const tooltipElements = document.querySelectorAll(
+        "[data-tooltip-en][data-tooltip-tr]"
+    );
 
-    /* Tooltip açıklamalarını seçilen dile göre günceller */
-    tooltipElements.forEach((element) => {
-        const tooltipText =
+    tooltipElements.forEach((el) => {
+        const text =
             selectedLanguage === "en"
-                ? element.dataset.tooltipEn
-                : element.dataset.tooltipTr;
+                ? el.dataset.tooltipEn
+                : el.dataset.tooltipTr;
 
-        element.setAttribute("data-tooltip", tooltipText);
+        el.setAttribute("data-tooltip", text);
     });
 
-    /* Dil butonunun üzerinde görünen yazıyı günceller */
+    /* Buton label */
     if (languageToggleButton) {
         const label = languageToggleButton.querySelector(".tool-label");
-
         if (label) {
-            /*
-               Kullanıcı mevcut dil İngilizce iken butonda TR görür.
-               Çünkü butona basınca Türkçeye geçecektir.
-            */
             label.textContent = selectedLanguage === "en" ? "TR" : "EN";
         }
     }
 
-    /* Seçilen dili tarayıcı hafızasına kaydeder */
     localStorage.setItem("portfolio-language", selectedLanguage);
 }
 
 /* ==================================================
-   TEMA DEĞİŞTİRME FONKSİYONU
-   body üzerine dark-theme veya light-theme class'ı ekler.
-   CSS değişkenleri bu class'a göre değiştiği için tema değişir.
-   ================================================== */
+   TEMA DEĞİŞTİRME
+================================================== */
 function applyTheme(selectedTheme) {
-    /* Önce mevcut tema class'larını temizler */
     pageBody.classList.remove("dark-theme", "light-theme");
-
-    /* Sonra seçilen temayı body etiketine ekler */
     pageBody.classList.add(selectedTheme);
 
-    /* Tema butonu üzerindeki ikon yazısını günceller */
     if (themeToggleButton) {
         const label = themeToggleButton.querySelector(".tool-label");
-
         if (label) {
-            /*
-               Koyu temadayken güneş ikonu gösterilir.
-               Çünkü kullanıcı basarsa açık temaya geçecektir.
-            */
-            label.textContent = selectedTheme === "dark-theme" ? "☀" : "☾";
+            label.textContent =
+                selectedTheme === "dark-theme" ? "☀" : "☾";
         }
     }
 
-    /* Seçilen temayı tarayıcı hafızasına kaydeder */
     localStorage.setItem("portfolio-theme", selectedTheme);
 }
 
 /* ==================================================
-   DİL BUTONUNA TIKLAMA OLAYI
-   Kullanıcı butona basınca en ↔ tr arasında geçiş yapılır.
-   ================================================== */
+   EVENT LISTENERS
+================================================== */
+
+/* Dil toggle */
 if (languageToggleButton) {
     languageToggleButton.addEventListener("click", () => {
-        const currentLanguage = localStorage.getItem("portfolio-language") || "en";
-        const newLanguage = currentLanguage === "en" ? "tr" : "en";
+        const current =
+            localStorage.getItem("portfolio-language") || "en";
 
-        applyLanguage(newLanguage);
+        const next = current === "en" ? "tr" : "en";
+        applyLanguage(next);
     });
 }
 
-/* ==================================================
-   TEMA BUTONUNA TIKLAMA OLAYI
-   Kullanıcı butona basınca dark-theme ↔ light-theme arasında geçiş yapılır.
-   ================================================== */
+/* Tema toggle */
 if (themeToggleButton) {
     themeToggleButton.addEventListener("click", () => {
-        const currentTheme = localStorage.getItem("portfolio-theme") || "dark-theme";
-        const newTheme = currentTheme === "dark-theme" ? "light-theme" : "dark-theme";
+        const current =
+            localStorage.getItem("portfolio-theme") || "dark-theme";
 
-        applyTheme(newTheme);
+        const next =
+            current === "dark-theme" ? "light-theme" : "dark-theme";
+
+        applyTheme(next);
     });
 }
 
 /* ==================================================
-   KAYITLI DİL VE TEMA BİLGİSİNİ YÜKLEME
-   Kullanıcının önceki seçimi localStorage içinde tutulur.
-   Sayfa yenilense bile aynı dil ve tema korunur.
-   ================================================== */
-const savedLanguage = localStorage.getItem("portfolio-language") || "en";
-const savedTheme = localStorage.getItem("portfolio-theme") || "dark-theme";
+   INITIAL LOAD
+================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    const savedLanguage =
+        localStorage.getItem("portfolio-language") || "en";
 
-applyLanguage(savedLanguage);
-applyTheme(savedTheme);
+    const savedTheme =
+        localStorage.getItem("portfolio-theme") || "dark-theme";
+
+    applyLanguage(savedLanguage);
+    applyTheme(savedTheme);
+
+    /* Sayfa açıldığında ARIA doğru olsun */
+    if (menuToggleButton && navigationLinks) {
+        const isMenuOpen = navigationLinks.classList.contains("active");
+        menuToggleButton.setAttribute("aria-expanded", isMenuOpen.toString());
+    }
+});

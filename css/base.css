@@ -97,6 +97,7 @@ body.dark-theme {
    ================================================== */
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 88px;
 }
 
 /* ==================================================
@@ -105,23 +106,17 @@ html {
    Font, arka plan, yazı rengi ve genel geçiş efektleri
    burada tanımlanır.
    ================================================== */
+/* ==================================================
+   BODY GENEL TASARIMI
+   Sayfanın genel font, renk ve sabit navbar boşluğu burada tanımlanır.
+   ================================================== */
 body {
-    /* Sayfanın genel yazı tipi */
     font-family: Arial, sans-serif;
-
-    /* Satırlar arasındaki boşluğu artırarak okunabilirliği iyileştirir */
     line-height: 1.6;
-
-    /* Arka plan rengini tema değişkeninden alır */
     background: var(--page-background-color);
-
-    /* Yazı rengini tema değişkeninden alır */
     color: var(--primary-text-color);
-
-    /* Yatay taşmayı engeller, mobilde sağa sola kayma sorununu azaltır */
     overflow-x: hidden;
-
-    /* Tema değişirken arka plan ve yazı renginin yumuşak geçmesini sağlar */
+    padding-top: 88px;
     transition: background 0.3s ease, color 0.3s ease;
 }
 
