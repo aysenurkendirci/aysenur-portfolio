@@ -1,18 +1,10 @@
 /*
 ==================================================
 SCRIPT FILE
-Bu dosya:
-- Tema değiştirme
-- Dil değiştirme
-- Mobil menü kontrolü
-- Mouse glow efekti
-işlemlerini yönetir.
+Tema, dil, mobil menü, tooltip, placeholder ve cursor glow efektini yönetir.
 ==================================================
 */
 
-/* ==================================================
-   DOM ELEMENT SEÇİMLERİ
-================================================== */
 const cursorGlowElement = document.getElementById("cursorGlow");
 const menuToggleButton = document.getElementById("menuToggle");
 const navigationLinks = document.getElementById("navLinks");
@@ -20,9 +12,7 @@ const themeToggleButton = document.getElementById("themeToggle");
 const languageToggleButton = document.getElementById("langToggle");
 const pageBody = document.body;
 
-/* ==================================================
-   CURSOR GLOW EFEKTİ
-================================================== */
+/* Mouse glow efekti */
 document.addEventListener("mousemove", (event) => {
     if (!cursorGlowElement) return;
 
@@ -30,9 +20,7 @@ document.addEventListener("mousemove", (event) => {
     cursorGlowElement.style.top = `${event.clientY}px`;
 });
 
-/* ==================================================
-   MOBİL MENÜ KONTROLÜ (ARIA FIX EKLENDİ)
-================================================== */
+/* Mobil menü açma-kapama */
 if (menuToggleButton && navigationLinks) {
     menuToggleButton.addEventListener("click", () => {
         navigationLinks.classList.toggle("active");
@@ -42,35 +30,43 @@ if (menuToggleButton && navigationLinks) {
     });
 }
 
-/* ==================================================
-   DİL DEĞİŞTİRME FONKSİYONU
-================================================== */
+/* Dil değiştirme */
 function applyLanguage(selectedLanguage) {
     document.documentElement.lang = selectedLanguage;
 
-    const elements = document.querySelectorAll("[data-en][data-tr]");
+    const textElements = document.querySelectorAll("[data-en][data-tr]");
 
-    elements.forEach((el) => {
+    textElements.forEach((el) => {
         el.textContent = el.dataset[selectedLanguage];
     });
 
-    /* Tooltip desteği */
+    const placeholderElements = document.querySelectorAll(
+        "[data-placeholder-en][data-placeholder-tr]"
+    );
+
+    placeholderElements.forEach((el) => {
+        el.placeholder =
+            selectedLanguage === "en"
+                ? el.dataset.placeholderEn
+                : el.dataset.placeholderTr;
+    });
+
     const tooltipElements = document.querySelectorAll(
         "[data-tooltip-en][data-tooltip-tr]"
     );
 
     tooltipElements.forEach((el) => {
-        const text =
+        const tooltipText =
             selectedLanguage === "en"
                 ? el.dataset.tooltipEn
                 : el.dataset.tooltipTr;
 
-        el.setAttribute("data-tooltip", text);
+        el.setAttribute("data-tooltip", tooltipText);
     });
 
-    /* Buton label */
     if (languageToggleButton) {
         const label = languageToggleButton.querySelector(".tool-label");
+
         if (label) {
             label.textContent = selectedLanguage === "en" ? "TR" : "EN";
         }
@@ -79,55 +75,48 @@ function applyLanguage(selectedLanguage) {
     localStorage.setItem("portfolio-language", selectedLanguage);
 }
 
-/* ==================================================
-   TEMA DEĞİŞTİRME
-================================================== */
+/* Tema değiştirme */
 function applyTheme(selectedTheme) {
     pageBody.classList.remove("dark-theme", "light-theme");
     pageBody.classList.add(selectedTheme);
 
     if (themeToggleButton) {
         const label = themeToggleButton.querySelector(".tool-label");
+
         if (label) {
-            label.textContent =
-                selectedTheme === "dark-theme" ? "☀" : "☾";
+            label.textContent = selectedTheme === "dark-theme" ? "☾" : "☀";
         }
     }
 
     localStorage.setItem("portfolio-theme", selectedTheme);
 }
 
-/* ==================================================
-   EVENT LISTENERS
-================================================== */
-
-/* Dil toggle */
+/* Dil butonu */
 if (languageToggleButton) {
     languageToggleButton.addEventListener("click", () => {
-        const current =
+        const currentLanguage =
             localStorage.getItem("portfolio-language") || "en";
 
-        const next = current === "en" ? "tr" : "en";
-        applyLanguage(next);
+        const nextLanguage = currentLanguage === "en" ? "tr" : "en";
+
+        applyLanguage(nextLanguage);
     });
 }
 
-/* Tema toggle */
+/* Tema butonu */
 if (themeToggleButton) {
     themeToggleButton.addEventListener("click", () => {
-        const current =
+        const currentTheme =
             localStorage.getItem("portfolio-theme") || "dark-theme";
 
-        const next =
-            current === "dark-theme" ? "light-theme" : "dark-theme";
+        const nextTheme =
+            currentTheme === "dark-theme" ? "light-theme" : "dark-theme";
 
-        applyTheme(next);
+        applyTheme(nextTheme);
     });
 }
 
-/* ==================================================
-   INITIAL LOAD
-================================================== */
+/* Sayfa ilk açıldığında kayıtlı dil ve tema uygulanır */
 document.addEventListener("DOMContentLoaded", () => {
     const savedLanguage =
         localStorage.getItem("portfolio-language") || "en";
@@ -138,7 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
     applyLanguage(savedLanguage);
     applyTheme(savedTheme);
 
-    /* Sayfa açıldığında ARIA doğru olsun */
     if (menuToggleButton && navigationLinks) {
         const isMenuOpen = navigationLinks.classList.contains("active");
         menuToggleButton.setAttribute("aria-expanded", isMenuOpen.toString());

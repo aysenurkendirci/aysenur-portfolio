@@ -1,29 +1,25 @@
 /* ==================================================
    SECTION GENEL YAPI
-   Tüm bölümlerin ekranda dengeli görünmesi ve navbar linklerinde doğru hizalanması için kullanılır.
-   ================================================== */
-/* ==================================================
-   SECTION GENEL YAPI
-   Her bölümün navbar altında doğru hizalanmasını sağlar.
-   Başlıkların ekrana çok aşağıdan başlamasını engeller.
-   ================================================== */
+   Tüm bölümlerin navbar altında dengeli görünmesini sağlar.
+================================================== */
 .section {
     padding: 56px 0 72px;
     scroll-margin-top: 88px;
 }
 
-/* Bölüm başlıkları için ortak tasarım */
 .section-title {
     text-align: center;
     font-size: 42px;
     margin-bottom: 42px;
     color: var(--primary-text-color);
 }
+
 /* ==================================================
    ABOUT
+   Hakkımda metinleri okunabilir ve ortalanmış şekilde gösterilir.
 ================================================== */
 .about-content {
-    max-width: 860px;
+    max-width: 880px;
     margin: 0 auto;
     display: grid;
     gap: 18px;
@@ -34,6 +30,7 @@
 
 /* ==================================================
    TECH STACK
+   Teknolojiler kategori kartları halinde gösterilir.
 ================================================== */
 .tech-categories {
     display: grid;
@@ -55,14 +52,12 @@
     color: var(--primary-text-color);
 }
 
-/* TECH LIST */
 .tech-list {
     list-style: none;
-    padding: 0;
-    margin: 0;
 }
 
 .tech-item {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 14px;
@@ -72,6 +67,12 @@
 
 .tech-item:last-child {
     border-bottom: none;
+}
+
+.tech-icon {
+    min-width: 24px;
+    color: var(--primary-accent-color);
+    font-weight: 800;
 }
 
 .tech-name {
@@ -84,21 +85,23 @@
     color: var(--primary-accent-color);
 }
 
-/* TOOLTIP */
 .tech-item::after {
     content: attr(data-tooltip);
     position: absolute;
-    left: 48px;
+    left: 40px;
     bottom: calc(100% + 8px);
-    width: 220px;
-    padding: 10px;
+    width: 230px;
+    padding: 10px 12px;
     border-radius: 12px;
-    font-size: 13px;
     background: #111827;
-    color: #fff;
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 1.4;
     opacity: 0;
+    pointer-events: none;
     transform: translateY(8px);
-    transition: 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 20;
 }
 
 .tech-item:hover::after {
@@ -108,10 +111,7 @@
 
 /* ==================================================
    EXPERIENCE
-================================================== */
-/* ==================================================
-   EXPERIENCE
-   Deneyim kartları modern, okunabilir ve responsive olacak şekilde tasarlanır.
+   Deneyimler açıklama ve kazanımlar ile kart yapısında sunulur.
 ================================================== */
 .experience-list {
     max-width: 980px;
@@ -186,24 +186,9 @@
     color: var(--primary-accent-color);
 }
 
-/* Mobil görünümde kart içi boşluklar azaltılır. */
-@media (max-width: 768px) {
-    .experience-card {
-        padding: 24px;
-    }
-
-    .experience-content h3 {
-        font-size: 22px;
-    }
-}
-
 /* ==================================================
    PROJECTS
-================================================== */
-/* ==================================================
-   PROJECTS
-   Proje kartları modern, düzenli ve okunabilir şekilde tasarlanır.
-   Her kartta kategori, açıklama, teknoloji etiketleri ve repo linki bulunur.
+   Projeler repo odaklı, modern kartlar halinde gösterilir.
 ================================================== */
 .projects-grid {
     display: grid;
@@ -276,7 +261,6 @@
 
 .project-link {
     display: inline-flex;
-    align-items: center;
     width: fit-content;
     color: var(--primary-accent-color);
     font-weight: 800;
@@ -287,26 +271,9 @@
     transform: translateX(4px);
 }
 
-/* Mobil görünümde proje kartları tek sütuna düşer. */
-@media (max-width: 992px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .project-card {
-        min-height: auto;
-        padding: 24px;
-    }
-
-    .project-card h3 {
-        font-size: 24px;
-    }
-}
-
 /* ==================================================
    CONTACT
+   İletişim bilgileri ve form iki kolonlu temiz bir yapıda gösterilir.
 ================================================== */
 .contact {
     padding-bottom: 80px;
@@ -447,10 +414,26 @@
 }
 
 /* ==================================================
-   RESPONSIVE
+   FOOTER
 ================================================== */
+.footer {
+    padding: 28px 0;
+    border-top: 1px solid var(--border-color);
+}
 
-/* Tablet */
+.footer-container {
+    text-align: center;
+}
+
+.footer-text {
+    color: var(--secondary-text-color);
+    font-size: 15px;
+}
+
+/* ==================================================
+   RESPONSIVE
+   Tablet ve mobil ekranlarda kolonlar tek sütuna düşürülür.
+================================================== */
 @media (max-width: 992px) {
     .tech-categories,
     .projects-grid,
@@ -459,84 +442,25 @@
     }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
+    .section {
+        padding: 48px 0 64px;
+    }
+
     .section-title {
         font-size: 32px;
     }
 
-    .experience-card {
-        grid-template-columns: 1fr;
+    .tech-category-card,
+    .experience-card,
+    .project-card,
+    .contact-info-card,
+    .contact-form {
+        padding: 24px;
     }
-}
 
-.contact-info-list {
-    display: grid;
-    gap: 16px;
-    margin-top: 24px;
-}
-
-.contact-info-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 16px;
-    border-radius: 18px;
-    background: var(--surface-background-color);
-    border: 1px solid var(--border-color);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.contact-info-item:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--card-shadow);
-}
-
-.contact-icon {
-    width: 46px;
-    height: 46px;
-    flex-shrink: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 14px;
-    font-size: 20px;
-    color: #ffffff;
-}
-
-.email-icon {
-    background: linear-gradient(135deg, #f97316, #ef4444);
-}
-
-.github-icon {
-    background: linear-gradient(135deg, #111827, #374151);
-}
-
-.linkedin-icon {
-    background: linear-gradient(135deg, #0a66c2, #2563eb);
-}
-
-.contact-info-item small {
-    display: block;
-    color: var(--secondary-text-color);
-    font-size: 13px;
-    margin-bottom: 2px;
-}
-
-.contact-info-item strong {
-    display: block;
-    color: var(--primary-text-color);
-    word-break: break-word;
-}
-
-.contact-submit {
-    gap: 8px;
-}
-
-.contact-submit i {
-    transition: transform 0.25s ease;
-}
-
-.contact-submit:hover i {
-    transform: translateX(4px) translateY(-4px);
+    .experience-content h3,
+    .project-card h3 {
+        font-size: 22px;
+    }
 }
