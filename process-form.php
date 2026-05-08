@@ -1,95 +1,63 @@
 <?php
 /*
     PROCESS FORM PAGE
-    Bu dosya contact formundan gelen verileri kontrol eder.
-    Amaç:
-    - Formun POST yöntemiyle gönderilip gönderilmediğini kontrol etmek
-    - Kullanıcıdan gelen name, email ve message alanlarını doğrulamak
-    - Güvenli çıktı üretmek
-    - Kullanıcıya başarı veya hata sonucu göstermek
+    Contact formundan gelen verileri kontrol eder.
+    Form doğrulama sonucuna göre kullanıcıya başarı veya hata mesajı gösterir.
 */
 
 include 'data.php';
 
-/*
-    e() fonksiyonu dinamik verileri HTML içine güvenli şekilde yazdırır.
-    Böylece özel karakterler sayfa yapısını bozmaz.
-*/
 function e($value)
 {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 
-/*
-    Başlangıç değişkenleri.
-    Form gönderilmeden sayfa açılırsa varsayılan olarak hata gösterilir.
-*/
 $name = '';
 $email = '';
 $message = '';
 $isSuccess = false;
-$errorMessage = '';
 
-/*
-    Formun yalnızca POST yöntemiyle çalışmasını sağlar.
-    Bu, form sayfası için daha doğru ve kontrollü bir yapıdır.
-*/
+$errorMessageEn = '';
+$errorMessageTr = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $message = trim($_POST['message'] ?? '');
 
-    /*
-        Form doğrulama kontrolleri.
-        Boş alanlar ve hatalı e-posta formatı kontrol edilir.
-    */
     if ($name === '' || $email === '' || $message === '') {
-        $errorMessage = 'Please fill in all required fields.';
+        $errorMessageEn = 'Please fill in all required fields.';
+        $errorMessageTr = 'Lütfen zorunlu alanların tamamını doldurun.';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errorMessage = 'Please enter a valid email address.';
+        $errorMessageEn = 'Please enter a valid email address.';
+        $errorMessageTr = 'Lütfen geçerli bir e-posta adresi girin.';
     } else {
-        /*
-            Bu projede gerçek mail gönderimi yerine başarılı form sonucu gösterilir.
-            İstenirse burada mail() fonksiyonu veya veritabanı kaydı eklenebilir.
-        */
         $isSuccess = true;
     }
 } else {
-    $errorMessage = 'This page can only be accessed after submitting the contact form.';
+    $errorMessageEn = 'This page can only be accessed after submitting the contact form.';
+    $errorMessageTr = 'Bu sayfaya yalnızca iletişim formu gönderildikten sonra erişilebilir.';
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Türkçe karakterlerin doğru görünmesi için UTF-8 kullanılır. -->
     <meta charset="UTF-8">
-
-    <!-- Mobil cihazlarda responsive görünüm için gereklidir. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Tarayıcı sekmesinde görünen başlık. -->
     <title>Contact Result | Ayşe Nur Kendirci</title>
 
-    <!-- Font Awesome ikonları sonuç kartındaki ikon için kullanılır. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Devicon navbar veya diğer ortak alanlarda ikon gerekirse uyum için eklenmiştir. -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-
-    <!-- Ana CSS dosyası. -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="dark-theme">
-    <!-- Dekoratif mouse ışık efekti. Ekran okuyucular için gizlenir. -->
     <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-    <!-- Ortak navbar dosyası. -->
     <?php include 'includes/navbar.php'; ?>
 
     <main>
-        <!-- CONTACT RESULT SECTION -->
         <section class="contact-result-section section" aria-labelledby="result-title">
             <div class="container">
                 <article class="result-card">
@@ -98,15 +66,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <i class="fa-solid fa-check"></i>
                         </div>
 
-                        <h1 id="result-title" class="result-title">
+                        <h1 id="result-title"
+                            class="result-title"
+                            data-en="Message Received"
+                            data-tr="Mesaj Alındı">
                             Message Received
                         </h1>
 
-                        <p class="result-text">
+                        <p class="result-text"
+                           data-en="Thank you, <?= e($name); ?>. Your message has been received successfully."
+                           data-tr="Teşekkürler, <?= e($name); ?>. Mesajınız başarıyla alındı.">
                             Thank you, <?= e($name); ?>. Your message has been received successfully.
                         </p>
 
-                        <p class="result-text">
+                        <p class="result-text"
+                           data-en="I will review your message and get back to you as soon as possible."
+                           data-tr="Mesajınızı inceleyip en kısa sürede size dönüş yapacağım.">
                             I will review your message and get back to you as soon as possible.
                         </p>
                     <?php else: ?>
@@ -114,16 +89,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <i class="fa-solid fa-xmark"></i>
                         </div>
 
-                        <h1 id="result-title" class="result-title">
+                        <h1 id="result-title"
+                            class="result-title"
+                            data-en="Message Could Not Be Sent"
+                            data-tr="Mesaj Gönderilemedi">
                             Message Could Not Be Sent
                         </h1>
 
-                        <p class="result-text">
-                            <?= e($errorMessage); ?>
+                        <p class="result-text"
+                           data-en="<?= e($errorMessageEn); ?>"
+                           data-tr="<?= e($errorMessageTr); ?>">
+                            <?= e($errorMessageEn); ?>
                         </p>
                     <?php endif; ?>
 
-                    <a href="index.php#contact" class="btn result-button">
+                    <a href="index.php#contact"
+                       class="btn result-button"
+                       data-en="Back to Contact"
+                       data-tr="İletişime Geri Dön">
                         Back to Contact
                     </a>
                 </article>
@@ -131,10 +114,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
     </main>
 
-    <!-- Ortak footer dosyası. -->
     <?php include 'includes/footer.php'; ?>
 
-    <!-- Ortak JavaScript dosyası. -->
     <script src="js/script.js"></script>
 </body>
 </html>

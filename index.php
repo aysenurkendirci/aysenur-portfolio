@@ -1,15 +1,6 @@
 <?php
-/*
-    data.php dosyası portfolyo içeriğini yönetir.
-    Profil bilgileri, about metinleri, teknolojiler, deneyimler ve projeler
-    bu dosyadan dinamik olarak alınır.
-*/
 include 'data.php';
 
-/*
-    e() fonksiyonu ekrana yazdırılan dinamik verileri güvenli hale getirir.
-    Bu yapı HTML doğruluğu ve güvenli çıktı üretmek için kullanılır.
-*/
 function e($value)
 {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
@@ -19,41 +10,29 @@ function e($value)
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Türkçe karakterlerin doğru görünmesi için UTF-8 karakter seti kullanılır. -->
     <meta charset="UTF-8">
-
-    <!-- Mobil cihazlarda sayfanın doğru ölçeklenmesini sağlar. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Tarayıcı sekmesinde görünen başlık. -->
     <title>Ayşe Nur Kendirci | Personal Portfolio</title>
 
-    <!-- Font Awesome ikon kütüphanesi contact alanındaki ikonlar için kullanılır. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Devicon teknoloji ikonları için kullanılır. -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-
-    <!-- Projenin ana CSS dosyası. Diğer CSS dosyaları style.css içinden çağrılır. -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="dark-theme">
-    <!-- Dekoratif mouse ışık efekti. İçerik anlamı taşımadığı için aria-hidden kullanılır. -->
     <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-    <!-- Üst menü ayrı dosyada tutulur. -->
     <?php include 'includes/navbar.php'; ?>
 
-    <!-- main etiketi sayfanın ana içeriğini kapsar ve semantic HTML için önemlidir. -->
     <main>
-        <!-- HERO SECTION -->
         <section id="home" class="hero hero-split" aria-labelledby="hero-title">
             <div class="hero-bg-word" aria-hidden="true">PORTFOLIO</div>
 
             <div class="container hero-split-layout">
                 <div class="hero-left">
-                    <p class="intro-line">Hello, I'm</p>
+                    <p class="intro-line" data-en="Hello, I'm" data-tr="Merhaba, ben">
+                        Hello, I'm
+                    </p>
 
                     <h1 id="hero-title" class="hero-name">
                         <span>Ayşe Nur</span>
@@ -88,17 +67,11 @@ function e($value)
                     </div>
 
                     <div class="hero-social-icons" aria-label="Social media links">
-                        <a href="<?= e($profile["github"]); ?>"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           aria-label="GitHub profile">
+                        <a href="<?= e($profile["github"]); ?>" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
                             <i class="devicon-github-original" aria-hidden="true"></i>
                         </a>
 
-                        <a href="<?= e($profile["linkedin"]); ?>"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           aria-label="LinkedIn profile">
+                        <a href="<?= e($profile["linkedin"]); ?>" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
                             <i class="devicon-linkedin-plain" aria-hidden="true"></i>
                         </a>
 
@@ -116,8 +89,7 @@ function e($value)
                             <div class="portfolio-card-header" aria-hidden="true"></div>
 
                             <div class="portfolio-card-image">
-                                <img src="<?= e($profile["image"]); ?>"
-                                     alt="Portrait of <?= e($profile["name"]); ?>">
+                                <img src="<?= e($profile["image"]); ?>" alt="Portrait of <?= e($profile["name"]); ?>">
                             </div>
 
                             <div class="portfolio-card-footer">
@@ -134,7 +106,6 @@ function e($value)
             </div>
         </section>
 
-        <!-- ABOUT SECTION -->
         <section id="about" class="about section" aria-labelledby="about-title">
             <div class="container">
                 <h2 id="about-title" class="section-title" data-en="About Me" data-tr="Hakkımda">
@@ -152,10 +123,9 @@ function e($value)
             </div>
         </section>
 
-        <!-- SKILLS SECTION -->
         <section id="skills" class="skills section" aria-labelledby="skills-title">
             <div class="container">
-                <h2 id="skills-title" class="section-title" data-en="Tech Stack" data-tr="Teknoloji Yığını">
+                <h2 id="skills-title" class="section-title" data-en="Tech Stack" data-tr="Teknolojiler">
                     Tech Stack
                 </h2>
 
@@ -169,7 +139,10 @@ function e($value)
 
                             <ul class="tech-list">
                                 <?php foreach ($category["items"] as $item): ?>
-                                    <li class="tech-item" data-tooltip="<?= e($item["tooltip"]); ?>">
+                                    <li class="tech-item"
+                                        data-tooltip="<?= e($item["tooltip"]["en"]); ?>"
+                                        data-tooltip-en="<?= e($item["tooltip"]["en"]); ?>"
+                                        data-tooltip-tr="<?= e($item["tooltip"]["tr"]); ?>">
                                         <span class="tech-icon" aria-hidden="true">
                                             <?php if (!empty($item["icon"])): ?>
                                                 <i class="<?= e($item["icon"]); ?>"></i>
@@ -190,174 +163,221 @@ function e($value)
             </div>
         </section>
 
-        <!-- EXPERIENCE SECTION -->
-<section id="experience" class="experience section" aria-labelledby="experience-title">
-    <div class="container">
-        <h2 id="experience-title" class="section-title" data-en="Experience" data-tr="Deneyim">
-            Experience
-        </h2>
+        <section id="experience" class="experience section" aria-labelledby="experience-title">
+            <div class="container">
+                <h2 id="experience-title" class="section-title" data-en="Experience" data-tr="Deneyim">
+                    Experience
+                </h2>
 
-        <div class="experience-list">
-            <?php foreach ($experiences as $experience): ?>
-                <article class="experience-card">
-                    <div class="experience-top">
-                        <span class="experience-category"><?= e($experience["category"]); ?></span>
-                        <span class="experience-date"><?= e($experience["date"]); ?></span>
-                    </div>
+                <div class="experience-list">
+                    <?php foreach ($experiences as $experience): ?>
+                        <article class="experience-card">
+                            <div class="experience-top">
+                                <span class="experience-category"
+                                      data-en="<?= e($experience["category"]["en"]); ?>"
+                                      data-tr="<?= e($experience["category"]["tr"]); ?>">
+                                    <?= e($experience["category"]["en"]); ?>
+                                </span>
 
-                    <div class="experience-content">
-                        <h3><?= e($experience["title"]); ?></h3>
-                        <p class="experience-company"><?= e($experience["company"]); ?></p>
-                        <p class="experience-description"><?= e($experience["description"]); ?></p>
+                                <span class="experience-date">
+                                    <?= e($experience["date"]); ?>
+                                </span>
+                            </div>
 
-                        <ul class="experience-points">
-                            <?php foreach ($experience["items"] as $item): ?>
-                                <li><?= e($item); ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                </article>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-       <!-- PROJECTS SECTION -->
-<section id="projects" class="projects section" aria-labelledby="projects-title">
-    <div class="container">
-        <h2 id="projects-title" class="section-title" data-en="Projects" data-tr="Projeler">
-            Projects
-        </h2>
+                            <div class="experience-content">
+                                <h3 data-en="<?= e($experience["title"]["en"]); ?>"
+                                    data-tr="<?= e($experience["title"]["tr"]); ?>">
+                                    <?= e($experience["title"]["en"]); ?>
+                                </h3>
 
-        <div class="projects-grid">
-            <?php foreach ($projects as $project): ?>
-                <article class="project-card">
-                    <div class="project-card-top">
-                        <span class="project-category"
-                              data-en="<?= e($project["category"]["en"]); ?>"
-                              data-tr="<?= e($project["category"]["tr"]); ?>">
-                            <?= e($project["category"]["en"]); ?>
-                        </span>
-                    </div>
+                                <p class="experience-company">
+                                    <?= e($experience["company"]); ?>
+                                </p>
 
-                    <h3><?= e($project["title"]); ?></h3>
+                                <p class="experience-description"
+                                   data-en="<?= e($experience["description"]["en"]); ?>"
+                                   data-tr="<?= e($experience["description"]["tr"]); ?>">
+                                    <?= e($experience["description"]["en"]); ?>
+                                </p>
 
-                    <p class="project-description"
-                       data-en="<?= e($project["description"]["en"]); ?>"
-                       data-tr="<?= e($project["description"]["tr"]); ?>">
-                        <?= e($project["description"]["en"]); ?>
-                    </p>
+                                <ul class="experience-points">
+                                    <?php foreach ($experience["items"] as $item): ?>
+                                        <li data-en="<?= e($item["en"]); ?>"
+                                            data-tr="<?= e($item["tr"]); ?>">
+                                            <?= e($item["en"]); ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
 
-                    <ul class="tech-stack" aria-label="Project technologies">
-                        <?php foreach ($project["tech"] as $tech): ?>
-                            <li class="tech"><?= e($tech); ?></li>
+        <section id="projects" class="projects section" aria-labelledby="projects-title">
+            <div class="container">
+                <h2 id="projects-title" class="section-title" data-en="Projects" data-tr="Projeler">
+                    Projects
+                </h2>
+
+                <div class="projects-grid">
+                    <?php foreach ($projects as $project): ?>
+                        <article class="project-card">
+                            <div class="project-card-top">
+                                <span class="project-category"
+                                      data-en="<?= e($project["category"]["en"]); ?>"
+                                      data-tr="<?= e($project["category"]["tr"]); ?>">
+                                    <?= e($project["category"]["en"]); ?>
+                                </span>
+                            </div>
+
+                            <h3><?= e($project["title"]); ?></h3>
+
+                            <p class="project-description"
+                               data-en="<?= e($project["description"]["en"]); ?>"
+                               data-tr="<?= e($project["description"]["tr"]); ?>">
+                                <?= e($project["description"]["en"]); ?>
+                            </p>
+
+                            <ul class="tech-stack" aria-label="Project technologies">
+                                <?php foreach ($project["tech"] as $tech): ?>
+                                    <li class="tech"><?= e($tech); ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+
+                            <a href="<?= e($project["github"]); ?>"
+                               class="project-link"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               data-en="View Repository →"
+                               data-tr="Repoyu Gör →">
+                                View Repository →
+                            </a>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact section" aria-labelledby="contact-title">
+            <div class="container">
+                <h2 id="contact-title" class="section-title" data-en="Contact" data-tr="İletişim">
+                    Contact
+                </h2>
+
+                <p class="contact-intro"
+                   data-en="<?= e($contactForm['intro']['en']); ?>"
+                   data-tr="<?= e($contactForm['intro']['tr']); ?>">
+                    <?= e($contactForm['intro']['en']); ?>
+                </p>
+
+                <div class="contact-wrapper">
+                    <aside class="contact-info-card" aria-label="Contact information">
+                        <div class="contact-info-list">
+                            <a class="contact-info-item" href="mailto:<?= e($profile["email"]); ?>">
+                                <span class="contact-icon email-icon" aria-hidden="true">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </span>
+
+                                <span>
+                                    <small data-en="<?= e($profile['contact_info']['email_label']['en']); ?>"
+                                           data-tr="<?= e($profile['contact_info']['email_label']['tr']); ?>">
+                                        <?= e($profile['contact_info']['email_label']['en']); ?>
+                                    </small>
+                                    <strong><?= e($profile["email"]); ?></strong>
+                                </span>
+                            </a>
+
+                            <a class="contact-info-item"
+                               href="<?= e($profile["github"]); ?>"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                <span class="contact-icon github-icon" aria-hidden="true">
+                                    <i class="fa-brands fa-github"></i>
+                                </span>
+
+                                <span>
+                                    <small data-en="<?= e($profile['contact_info']['github_label']['en']); ?>"
+                                           data-tr="<?= e($profile['contact_info']['github_label']['tr']); ?>">
+                                        <?= e($profile['contact_info']['github_label']['en']); ?>
+                                    </small>
+                                    <strong data-en="<?= e($profile['contact_info']['github_action']['en']); ?>"
+                                            data-tr="<?= e($profile['contact_info']['github_action']['tr']); ?>">
+                                        <?= e($profile['contact_info']['github_action']['en']); ?>
+                                    </strong>
+                                </span>
+                            </a>
+
+                            <a class="contact-info-item"
+                               href="<?= e($profile["linkedin"]); ?>"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                <span class="contact-icon linkedin-icon" aria-hidden="true">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </span>
+
+                                <span>
+                                    <small data-en="<?= e($profile['contact_info']['linkedin_label']['en']); ?>"
+                                           data-tr="<?= e($profile['contact_info']['linkedin_label']['tr']); ?>">
+                                        <?= e($profile['contact_info']['linkedin_label']['en']); ?>
+                                    </small>
+                                    <strong data-en="<?= e($profile['contact_info']['linkedin_action']['en']); ?>"
+                                            data-tr="<?= e($profile['contact_info']['linkedin_action']['tr']); ?>">
+                                        <?= e($profile['contact_info']['linkedin_action']['en']); ?>
+                                    </strong>
+                                </span>
+                            </a>
+                        </div>
+                    </aside>
+
+                    <form class="contact-form" action="process-form.php" method="post">
+                        <?php foreach ($contactForm['fields'] as $field): ?>
+                            <div class="form-group">
+                                <label for="<?= e($field['id']); ?>"
+                                       data-en="<?= e($field['label']['en']); ?>"
+                                       data-tr="<?= e($field['label']['tr']); ?>">
+                                    <?= e($field['label']['en']); ?>
+                                </label>
+                                <?php if ($field['type'] === 'textarea'): ?>
+                                    <textarea
+                                        id="<?= e($field['id']); ?>"
+                                        name="<?= e($field['name']); ?>"
+                                        rows="<?= e($field['rows']); ?>"
+                                        placeholder="<?= e($field['placeholder']['en']); ?>"
+                                        data-placeholder-en="<?= e($field['placeholder']['en']); ?>"
+                                        data-placeholder-tr="<?= e($field['placeholder']['tr']); ?>"
+                                        <?= $field['required'] ? 'required' : ''; ?>
+                                    ></textarea>
+                                <?php else: ?>
+                                    <input
+                                        type="<?= e($field['type']); ?>"
+                                        id="<?= e($field['id']); ?>"
+                                        name="<?= e($field['name']); ?>"
+                                        placeholder="<?= e($field['placeholder']['en']); ?>"
+                                        data-placeholder-en="<?= e($field['placeholder']['en']); ?>"
+                                        data-placeholder-tr="<?= e($field['placeholder']['tr']); ?>"
+                                        <?= $field['required'] ? 'required' : ''; ?>
+                                    >
+                                <?php endif; ?>
+                            </div>
                         <?php endforeach; ?>
-                    </ul>
 
-                    <a href="<?= e($project["github"]); ?>"
-                       class="project-link"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       data-en="View Repository →"
-                       data-tr="Repoyu Gör →">
-                        View Repository →
-                    </a>
-                </article>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-
-<!-- CONTACT SECTION -->
-<section id="contact" class="contact section" aria-labelledby="contact-title">
-    <div class="container">
-        <h2 id="contact-title" class="section-title" data-en="Contact" data-tr="İletişim">
-            Contact
-        </h2>
-
-        <p class="contact-intro"
-           data-en="I am open to internship opportunities, junior developer roles and meaningful project collaborations."
-           data-tr="Staj fırsatlarına, junior geliştirici pozisyonlarına ve anlamlı proje iş birliklerine açığım.">
-            I am open to internship opportunities, junior developer roles and meaningful project collaborations.
-        </p>
-
-        <div class="contact-wrapper">
-            <aside class="contact-info-card" aria-label="Contact information">
-                <div class="contact-info-list">
-                    <a class="contact-info-item" href="mailto:<?= e($profile["email"]); ?>">
-                        <span class="contact-icon email-icon" aria-hidden="true">
-                            <i class="fa-solid fa-envelope"></i>
-                        </span>
-
-                        <span>
-                            <small data-en="Email" data-tr="E-posta">Email</small>
-                            <strong><?= e($profile["email"]); ?></strong>
-                        </span>
-                    </a>
-
-                    <a class="contact-info-item"
-                       href="<?= e($profile["github"]); ?>"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        <span class="contact-icon github-icon" aria-hidden="true">
-                            <i class="fa-brands fa-github"></i>
-                        </span>
-
-                        <span>
-                            <small>GitHub</small>
-                            <strong data-en="View repositories" data-tr="Depoları görüntüle">
-                                View repositories
-                            </strong>
-                        </span>
-                    </a>
-
-                    <a class="contact-info-item"
-                       href="<?= e($profile["linkedin"]); ?>"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        <span class="contact-icon linkedin-icon" aria-hidden="true">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </span>
-
-                        <span>
-                            <small>LinkedIn</small>
-                            <strong data-en="Connect with me" data-tr="Benimle bağlantı kurun">
-                                Connect with me
-                            </strong>
-                        </span>
-                    </a>
+                        <button type="submit" class="btn contact-submit">
+                            <span data-en="<?= e($contactForm['submit']['text']['en']); ?>"
+                                  data-tr="<?= e($contactForm['submit']['text']['tr']); ?>">
+                                <?= e($contactForm['submit']['text']['en']); ?>
+                            </span>
+                            <i class="<?= e($contactForm['submit']['icon']); ?>" aria-hidden="true"></i>
+                        </button>
+                    </form>
                 </div>
-            </aside>
-
-            <form class="contact-form" action="process-form.php" method="post">
-                <div class="form-group">
-                    <label for="name" data-en="Name" data-tr="Ad Soyad">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email" data-en="Email" data-tr="E-posta">Email</label>
-                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="message" data-en="Message" data-tr="Mesaj">Message</label>
-                    <textarea id="message" name="message" rows="6" placeholder="Write your message..." required></textarea>
-                </div>
-
-                <button type="submit" class="btn contact-submit">
-                    <span data-en="Send Message" data-tr="Mesaj Gönder">Send Message</span>
-                    <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
-                </button>
-            </form>
-        </div>
-    </div>
-</section>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer ayrı dosyada tutulur. -->
     <?php include 'includes/footer.php'; ?>
 
-    <!-- JavaScript dosyası sayfa sonunda çağrılır. -->
     <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,13 +1,7 @@
-<!-- 
-    NAVBAR
-    Sayfanın üst bölümündeki ana navigasyon alanıdır.
-    Kullanıcı bu bölümden sayfa içindeki ana alanlara geçiş yapabilir.
--->
 <header class="site-header">
     <nav class="navbar" aria-label="Main navigation">
         <div class="container navbar-container">
 
-            <!-- Brand alanı: Portfolyo sahibinin ismini kod yazımı görünümünde gösterir. -->
             <a href="index.php#home" class="brand" aria-label="Go to home section">
                 <span class="brand-line">
                     <span class="token-const">const</span>
@@ -19,7 +13,6 @@
                 </span>
             </a>
 
-            <!-- Mobil ekranlarda menüyü açıp kapatan butondur. -->
             <button
                 class="menu-toggle"
                 id="menuToggle"
@@ -31,26 +24,26 @@
                 <span aria-hidden="true">☰</span>
             </button>
 
-            <!-- Sayfa içi navigasyon linkleri. -->
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.php#about">About</a></li>
-                <li><a href="index.php#skills">Tech Stack</a></li>
-                <li><a href="index.php#experience">Experience</a></li>
-                <li><a href="index.php#projects">Projects</a></li>
-                <li><a href="index.php#contact">Contact</a></li>
+                <li><a href="index.php#about" data-en="About" data-tr="Hakkımda">About</a></li>
+                <li><a href="index.php#skills" data-en="Tech Stack" data-tr="Teknolojiler">Tech Stack</a></li>
+                <li><a href="index.php#experience" data-en="Experience" data-tr="Deneyim">Experience</a></li>
+                <li><a href="index.php#projects" data-en="Projects" data-tr="Projeler">Projects</a></li>
+                <li><a href="index.php#contact" data-en="Contact" data-tr="İletişim">Contact</a></li>
 
                 <li>
                     <a
                         href="<?= e($profile["cv"]); ?>"
                         target="_blank"
                         rel="noopener noreferrer"
+                        data-en="CV"
+                        data-tr="CV"
                     >
                         CV
                     </a>
                 </li>
             </ul>
 
-            <!-- Dil ve tema değiştirme araçları. -->
             <div class="navbar-tools" aria-label="Page settings">
                 <div class="toolbar-shell">
                     <button
@@ -68,7 +61,7 @@
                         type="button"
                         aria-label="Change theme"
                     >
-                        <span class="tool-label">☀</span>
+                        <span class="tool-label">☾</span>
                     </button>
                 </div>
             </div>

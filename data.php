@@ -1,20 +1,10 @@
 <?php
 /*
     DATA FILE
-    Bu dosya portfolyo sitesinde kullanılan tüm statik/dinamik içerikleri tutar.
-
-    Amaç:
-    - HTML dosyasını kalabalıklaştırmamak
-    - Profil, teknoloji, deneyim ve proje verilerini tek merkezden yönetmek
-    - Çok dilli içerikleri düzenli bir veri yapısı içinde saklamak
-    - Kod okunabilirliğini ve bakım kolaylığını artırmak
+    Bu dosya portfolyo sitesinde kullanılan profil, about, teknoloji,
+    deneyim ve proje verilerini tek merkezden yönetir.
 */
 
-/*
-    PROFILE DATA
-    Portfolyo sahibinin temel bilgileri burada tutulur.
-    Bu bilgiler hero, navbar, contact ve sosyal medya alanlarında kullanılır.
-*/
 $profile = [
     "name" => "Ayşe Nur Kendirci",
 
@@ -25,7 +15,7 @@ $profile = [
 
     "tagline" => [
         "en" => "Building real-world software with passion and continuous growth.",
-        "tr" => "Azimle öğrenen ve gerçek dünyaya yönelik yazılımlar geliştiren bir yazılımcı."
+        "tr" => "Tutkuyla öğrenen ve gerçek dünyaya yönelik yazılımlar geliştiren bir yazılımcı."
     ],
 
     "description" => [
@@ -38,50 +28,32 @@ $profile = [
     "github" => "https://github.com/aysenurkendirci",
 
     "cv" => "images/cv.pdf",
-    "image" => "images/profile.jpg"
-];
-/*
-    QUICK INFO DATA
-    Hero bölümünde küçük bilgi kutuları kullanılmak istenirse bu dizi çağrılabilir.
-*/
-$quickInfo = [
-    [
-        "label" => [
-            "en" => "Focus",
-            "tr" => "Odak"
+    "image" => "images/profile.jpg",
+
+    "contact_info" => [
+        "email_label" => [
+            "en" => "Email",
+            "tr" => "E-posta"
         ],
-        "value" => [
-            "en" => "Mobile / Frontend / Backend",
-            "tr" => "Mobil / Frontend / Backend"
-        ]
-    ],
-    [
-        "label" => [
-            "en" => "Main Stack",
-            "tr" => "Ana Teknolojiler"
-        ],
-        "value" => [
-            "en" => "Swift, .NET, Angular, PHP",
-            "tr" => "Swift, .NET, Angular, PHP"
-        ]
-    ],
-    [
-        "label" => [
+        "github_label" => [
             "en" => "GitHub",
             "tr" => "GitHub"
         ],
-        "value" => [
-            "en" => "@aysenurkendirci",
-            "tr" => "@aysenurkendirci"
+        "github_action" => [
+            "en" => "View repositories",
+            "tr" => "Depoları görüntüle"
+        ],
+        "linkedin_label" => [
+            "en" => "LinkedIn",
+            "tr" => "LinkedIn"
+        ],
+        "linkedin_action" => [
+            "en" => "Connect with me",
+            "tr" => "Benimle bağlantı kurun"
         ]
     ]
 ];
 
-/*
-    ABOUT DATA
-    About bölümünde gösterilen açıklama paragraflarıdır.
-    Her paragraf İngilizce ve Türkçe olarak saklanır.
-*/
 $aboutTexts = [
     [
         "en" => "I am a motivated software developer who enjoys building real-world applications and continuously improving my technical skills. My main focus areas are mobile development, frontend interfaces and backend systems.",
@@ -96,11 +68,10 @@ $aboutTexts = [
         "tr" => "Disiplinli, detaylara önem veren ve azimli bir geliştiriciyim. Fikirleri çalışan ürünlere dönüştürmekten keyif alıyor ve her gün daha iyi, anlamlı ve kullanıcı odaklı yazılımlar geliştiren bir yazılımcı olmayı hedefliyorum."
     ]
 ];
-
 /*
     TECH STACK DATA
-    Tech Stack bölümü kategori bazlı tutulur.
-    Böylece HTML tarafında tekrar eden kart yapıları foreach ile oluşturulur.
+    Teknoloji kartlarında gösterilen yetenekler burada tutulur.
+    Tooltip alanları İngilizce ve Türkçe olarak tanımlanır.
 */
 $techCategories = [
     [
@@ -113,25 +84,37 @@ $techCategories = [
                 "name" => "Swift",
                 "icon" => "devicon-swift-plain colored",
                 "iconText" => "",
-                "tooltip" => "A programming language used for native iOS app development."
+                "tooltip" => [
+                    "en" => "A programming language used for native iOS app development.",
+                    "tr" => "Native iOS uygulamaları geliştirmek için kullanılan programlama dilidir."
+                ]
             ],
             [
                 "name" => "SwiftUI",
                 "icon" => "devicon-swift-plain colored",
                 "iconText" => "",
-                "tooltip" => "A modern framework for building iOS interfaces declaratively."
+                "tooltip" => [
+                    "en" => "A modern framework for building iOS interfaces declaratively.",
+                    "tr" => "iOS arayüzlerini modern ve sade şekilde geliştirmek için kullanılan frameworktür."
+                ]
             ],
             [
                 "name" => "UIKit",
                 "icon" => "devicon-apple-original",
                 "iconText" => "",
-                "tooltip" => "A classic iOS framework for building app interfaces programmatically."
+                "tooltip" => [
+                    "en" => "A classic iOS framework for building app interfaces programmatically.",
+                    "tr" => "iOS uygulama arayüzlerini programatik olarak geliştirmek için kullanılan frameworktür."
+                ]
             ],
             [
                 "name" => "SwiftData",
                 "icon" => "devicon-apple-original",
                 "iconText" => "",
-                "tooltip" => "Used for local data storage and persistence in iOS apps."
+                "tooltip" => [
+                    "en" => "Used for local data storage and persistence in iOS apps.",
+                    "tr" => "iOS uygulamalarında yerel veri saklama ve kalıcılık için kullanılır."
+                ]
             ]
         ]
     ],
@@ -145,25 +128,37 @@ $techCategories = [
                 "name" => "Angular",
                 "icon" => "devicon-angularjs-plain colored",
                 "iconText" => "",
-                "tooltip" => "A frontend framework used for structured web applications."
+                "tooltip" => [
+                    "en" => "A frontend framework used for structured web applications.",
+                    "tr" => "Düzenli ve ölçeklenebilir web uygulamaları geliştirmek için kullanılan frontend frameworktür."
+                ]
             ],
             [
                 "name" => "HTML",
                 "icon" => "devicon-html5-plain colored",
                 "iconText" => "",
-                "tooltip" => "Used to create the structure of web pages."
+                "tooltip" => [
+                    "en" => "Used to create the structure of web pages.",
+                    "tr" => "Web sayfalarının temel yapısını oluşturmak için kullanılır."
+                ]
             ],
             [
                 "name" => "CSS",
                 "icon" => "devicon-css3-plain colored",
                 "iconText" => "",
-                "tooltip" => "Used to style responsive and modern web interfaces."
+                "tooltip" => [
+                    "en" => "Used to style responsive and modern web interfaces.",
+                    "tr" => "Modern ve responsive web arayüzlerini tasarlamak için kullanılır."
+                ]
             ],
             [
                 "name" => "JavaScript",
                 "icon" => "devicon-javascript-plain colored",
                 "iconText" => "",
-                "tooltip" => "Used to add interactive behavior to web pages."
+                "tooltip" => [
+                    "en" => "Used to add interactive behavior to web pages.",
+                    "tr" => "Web sayfalarına etkileşim ve dinamik davranış kazandırmak için kullanılır."
+                ]
             ]
         ]
     ],
@@ -177,117 +172,216 @@ $techCategories = [
                 "name" => "C#",
                 "icon" => "devicon-csharp-plain colored",
                 "iconText" => "",
-                "tooltip" => "A programming language commonly used with .NET backend development."
+                "tooltip" => [
+                    "en" => "A programming language commonly used with .NET backend development.",
+                    "tr" => ".NET ile backend geliştirme süreçlerinde kullanılan programlama dilidir."
+                ]
             ],
             [
                 "name" => ".NET Core",
                 "icon" => "devicon-dotnetcore-plain colored",
                 "iconText" => "",
-                "tooltip" => "A backend framework used for building APIs and web applications."
+                "tooltip" => [
+                    "en" => "A backend framework used for building APIs and web applications.",
+                    "tr" => "API ve web uygulamaları geliştirmek için kullanılan backend frameworktür."
+                ]
             ],
             [
                 "name" => "RESTful API",
                 "icon" => "",
                 "iconText" => "API",
-                "tooltip" => "Used for communication between frontend, mobile and backend systems."
+                "tooltip" => [
+                    "en" => "Used for communication between frontend, mobile and backend systems.",
+                    "tr" => "Frontend, mobil ve backend sistemleri arasında veri iletişimi sağlamak için kullanılır."
+                ]
             ],
             [
                 "name" => "SQL Server",
                 "icon" => "devicon-microsoftsqlserver-plain colored",
                 "iconText" => "",
-                "tooltip" => "A relational database system used for storing and managing data."
+                "tooltip" => [
+                    "en" => "A relational database system used for storing and managing data.",
+                    "tr" => "Verileri saklamak ve yönetmek için kullanılan ilişkisel veritabanı sistemidir."
+                ]
             ],
             [
                 "name" => "Oracle",
                 "icon" => "devicon-oracle-original colored",
                 "iconText" => "",
-                "tooltip" => "An enterprise-level relational database management system."
+                "tooltip" => [
+                    "en" => "An enterprise-level relational database management system.",
+                    "tr" => "Kurumsal seviyede kullanılan ilişkisel veritabanı yönetim sistemidir."
+                ]
+            ],
+            [
+                "name" => "PHP",
+                "icon" => "devicon-php-plain colored",
+                "iconText" => "",
+                "tooltip" => [
+                    "en" => "A server-side language used for building dynamic web applications and handling form processing.",
+                    "tr" => "Dinamik web uygulamaları geliştirmek ve form işleme için kullanılan sunucu tarafı programlama dilidir."
+                ]
             ],
             [
                 "name" => "Firebase",
                 "icon" => "devicon-firebase-plain colored",
                 "iconText" => "",
-                "tooltip" => "A cloud platform used for database, authentication and backend services."
+                "tooltip" => [
+                    "en" => "A cloud platform used for database, authentication and backend services.",
+                    "tr" => "Veritabanı, kimlik doğrulama ve backend servisleri için kullanılan bulut platformudur."
+                ]
             ]
         ]
     ]
 ];
 
-/*
-    EXPERIENCE DATA
-    Deneyim ve liderlik bilgileri burada tutulur.
-*/
-/*
-    EXPERIENCE DATA
-    Deneyim, liderlik ve eğitim/bootcamp bilgileri burada tutulur.
-    Bu veriler Experience bölümünde kart yapısı ile dinamik olarak gösterilir.
-*/
 $experiences = [
     [
-        "category" => "Mobile Internship",
+        "category" => [
+            "en" => "Mobile Internship",
+            "tr" => "Mobil Staj"
+        ],
         "date" => "Jul 2025 - Sep 2025",
-        "title" => "Mobile Application Development Intern",
+        "title" => [
+            "en" => "Mobile Application Development Intern",
+            "tr" => "Mobil Uygulama Geliştirme Stajyeri"
+        ],
         "company" => "VakıfBank",
-        "description" => "Completed a 2-month mobile development internship and actively contributed to CineScope and PettiCare iOS applications.",
+        "description" => [
+            "en" => "Completed a 2-month mobile development internship and actively contributed to CineScope and PettiCare iOS applications.",
+            "tr" => "2 aylık mobil geliştirme stajımı tamamladım ve CineScope ile PettiCare iOS uygulamalarına aktif olarak katkı sağladım."
+        ],
         "items" => [
-            "Developed iOS application screens using Swift, UIKit and SwiftUI.",
-            "Worked with MVVM architecture, reusable components and clean project structure.",
-            "Built base structures for networking, data flow and screen organization.",
-            "Integrated OpenAI API features for personalized movie recommendation flows.",
-            "Improved practical knowledge of mobile UI design, Firebase, SwiftData and project-based development."
+            [
+                "en" => "Developed iOS application screens using Swift, UIKit and SwiftUI.",
+                "tr" => "Swift, UIKit ve SwiftUI kullanarak iOS uygulama ekranları geliştirdim."
+            ],
+            [
+                "en" => "Worked with MVVM architecture, reusable components and clean project structure.",
+                "tr" => "MVVM mimarisi, tekrar kullanılabilir component yapısı ve temiz proje düzeni üzerine çalıştım."
+            ],
+            [
+                "en" => "Built base structures for networking, data flow and screen organization.",
+                "tr" => "Networking, veri akışı ve ekran organizasyonu için temel proje yapıları oluşturdum."
+            ],
+            [
+                "en" => "Integrated OpenAI API features for personalized movie recommendation flows.",
+                "tr" => "Kişiselleştirilmiş film öneri akışları için OpenAI API entegrasyonu üzerinde çalıştım."
+            ],
+            [
+                "en" => "Improved practical knowledge of mobile UI design, Firebase, SwiftData and project-based development.",
+                "tr" => "Mobil arayüz tasarımı, Firebase, SwiftData ve proje tabanlı geliştirme konularında pratik deneyim kazandım."
+            ]
         ]
     ],
     [
-        "category" => "Web Internship",
+        "category" => [
+            "en" => "Web Internship",
+            "tr" => "Web Stajı"
+        ],
         "date" => "Jan 2026 - Feb 2026",
-        "title" => "Software Engineering Intern",
+        "title" => [
+            "en" => "Software Engineering Intern",
+            "tr" => "Yazılım Mühendisliği Stajyeri"
+        ],
         "company" => "VakıfBank",
-        "description" => "Worked on a banking-focused web application and gained experience in frontend, backend and database development.",
+        "description" => [
+            "en" => "Worked on a banking-focused web application and gained experience in frontend, backend and database development.",
+            "tr" => "Bankacılık odaklı bir web uygulaması üzerinde çalışarak frontend, backend ve veritabanı geliştirme alanlarında deneyim kazandım."
+        ],
         "items" => [
-            "Developed frontend modules using Angular, HTML and CSS.",
-            "Worked on backend logic with C# and .NET Core.",
-            "Practiced RESTful API structure, authentication flow and business logic implementation.",
-            "Used Oracle Database, stored procedures and package-based database operations.",
-            "Learned clean architecture, repository pattern and Agile development workflow."
+            [
+                "en" => "Developed frontend modules using Angular, HTML and CSS.",
+                "tr" => "Angular, HTML ve CSS kullanarak frontend modülleri geliştirdim."
+            ],
+            [
+                "en" => "Worked on backend logic with C# and .NET Core.",
+                "tr" => "C# ve .NET Core ile backend mantığı üzerine çalıştım."
+            ],
+            [
+                "en" => "Practiced RESTful API structure, authentication flow and business logic implementation.",
+                "tr" => "RESTful API yapısı, authentication akışı ve iş mantığı geliştirme konularında pratik yaptım."
+            ],
+            [
+                "en" => "Used Oracle Database, stored procedures and package-based database operations.",
+                "tr" => "Oracle Database, stored procedure ve package tabanlı veritabanı işlemleri üzerinde çalıştım."
+            ],
+            [
+                "en" => "Learned clean architecture, repository pattern and Agile development workflow.",
+                "tr" => "Clean architecture, repository pattern ve Agile geliştirme iş akışı hakkında deneyim kazandım."
+            ]
         ]
     ],
     [
-        "category" => "Leadership",
+        "category" => [
+            "en" => "Leadership",
+            "tr" => "Liderlik"
+        ],
         "date" => "2025 - Present",
-        "title" => "Mobile Technical Team Lead",
+        "title" => [
+            "en" => "Mobile Technical Team Lead",
+            "tr" => "Mobil Teknik Takım Kaptanı"
+        ],
         "company" => "GDG On Campus Doğuş University",
-        "description" => "Served as the mobile technical team lead and supported both event organization and technical project development.",
+        "description" => [
+            "en" => "Served as the mobile technical team lead and supported both event organization and technical project development.",
+            "tr" => "Mobil teknik takım kaptanı olarak etkinlik organizasyonlarına ve teknik proje geliştirme süreçlerine aktif katkı sağladım."
+        ],
         "items" => [
-            "Helped organize student-focused software, mobile development and technology events.",
-            "Supported team coordination, communication and technical planning.",
-            "Contributed to mobile-focused projects and learning activities.",
-            "Improved leadership, teamwork and community management skills."
+            [
+                "en" => "Helped organize student-focused software, mobile development and technology events.",
+                "tr" => "Öğrenci odaklı yazılım, mobil geliştirme ve teknoloji etkinliklerinin düzenlenmesine yardımcı oldum."
+            ],
+            [
+                "en" => "Supported team coordination, communication and technical planning.",
+                "tr" => "Takım koordinasyonu, iletişim ve teknik planlama süreçlerine destek verdim."
+            ],
+            [
+                "en" => "Contributed to mobile-focused projects and learning activities.",
+                "tr" => "Mobil odaklı projelere ve öğrenme etkinliklerine katkıda bulundum."
+            ],
+            [
+                "en" => "Improved leadership, teamwork and community management skills.",
+                "tr" => "Liderlik, takım çalışması ve topluluk yönetimi becerilerimi geliştirdim."
+            ]
         ]
     ],
     [
-        "category" => "Programs & Bootcamps",
+        "category" => [
+            "en" => "Programs & Bootcamps",
+            "tr" => "Programlar ve Bootcampler"
+        ],
         "date" => "Ongoing Learning",
-        "title" => "Technical Training and Online Internship Programs",
+        "title" => [
+            "en" => "Technical Training and Online Internship Programs",
+            "tr" => "Teknik Eğitimler ve Online Staj Programları"
+        ],
         "company" => "DenizBank, Techcareer.net, BTK Academy, Udemy",
-        "description" => "Participated in online internship programs, bootcamps and technical trainings across finance, banking, mobile development and artificial intelligence.",
+        "description" => [
+            "en" => "Participated in online internship programs, bootcamps and technical trainings across finance, banking, mobile development and artificial intelligence.",
+            "tr" => "Finans, bankacılık, mobil geliştirme ve yapay zekâ gibi farklı alanlarda online staj programları, bootcampler ve teknik eğitimlere katıldım."
+        ],
         "items" => [
-            "Completed DenizBank Denizaşırı Online Internship Program and gained insight into banking, finance and digital transformation.",
-            "Successfully completed SwiftUI Bootcamp and improved iOS development skills.",
-            "Joined technical events and workshops about AI, software development, databases and career development.",
-            "Continued improving through hands-on learning, bootcamps and project-based practice."
+            [
+                "en" => "Completed DenizBank Denizaşırı Online Internship Program and gained insight into banking, finance and digital transformation.",
+                "tr" => "DenizBank Denizaşırı Online Staj Programı’nı tamamlayarak bankacılık, finans ve dijital dönüşüm alanlarında bilgi edindim."
+            ],
+            [
+                "en" => "Successfully completed SwiftUI Bootcamp and improved iOS development skills.",
+                "tr" => "SwiftUI Bootcamp programını başarıyla tamamlayarak iOS geliştirme becerilerimi güçlendirdim."
+            ],
+            [
+                "en" => "Joined technical events and workshops about AI, software development, databases and career development.",
+                "tr" => "Yapay zekâ, yazılım geliştirme, veritabanı ve kariyer gelişimi üzerine teknik etkinliklere ve workshoplara katıldım."
+            ],
+            [
+                "en" => "Continued improving through hands-on learning, bootcamps and project-based practice.",
+                "tr" => "Uygulamalı öğrenme, bootcampler ve proje tabanlı pratiklerle kendimi geliştirmeye devam ettim."
+            ]
         ]
     ]
 ];
 
-/*
-    PROJECTS DATA
-    Projects bölümünde gösterilen portfolyo projeleri burada tutulur.
-*/
-/*
-    PROJECTS DATA
-    Portfolyo projeleri burada tutulur.
-    Her proje İngilizce ve Türkçe açıklama içerir.
-*/
 $projects = [
     [
         "title" => "CineScope",
@@ -342,3 +436,68 @@ $projects = [
         "github" => "https://github.com/aysenurkendirci/Internship_Bank_Project"
     ]
 ];
+
+/*
+    CONTACT FORM DATA
+    İletişim formunun dil desteği (İngilizce-Türkçe) ile
+    etiketler, yer tutuculular ve butonu merkezi olarak yönetir.
+*/
+$contactForm = [
+    "intro" => [
+        "en" => "I am open to internship opportunities, junior developer roles and meaningful project collaborations.",
+        "tr" => "Staj fırsatlarına, junior geliştirici pozisyonlarına ve anlamlı proje iş birliklerine açığım."
+    ],
+    "fields" => [
+        [
+            "id" => "name",
+            "name" => "name",
+            "type" => "text",
+            "label" => [
+                "en" => "Name",
+                "tr" => "Ad Soyad"
+            ],
+            "placeholder" => [
+                "en" => "Your name",
+                "tr" => "Adınızı yazın"
+            ],
+            "required" => true
+        ],
+        [
+            "id" => "email",
+            "name" => "email",
+            "type" => "email",
+            "label" => [
+                "en" => "Email",
+                "tr" => "E-posta"
+            ],
+            "placeholder" => [
+                "en" => "your@email.com",
+                "tr" => "eposta@ornek.com"
+            ],
+            "required" => true
+        ],
+        [
+            "id" => "message",
+            "name" => "message",
+            "type" => "textarea",
+            "rows" => 6,
+            "label" => [
+                "en" => "Message",
+                "tr" => "Mesaj"
+            ],
+            "placeholder" => [
+                "en" => "Write your message...",
+                "tr" => "Mesajınızı yazın..."
+            ],
+            "required" => true
+        ]
+    ],
+    "submit" => [
+        "text" => [
+            "en" => "Send Message",
+            "tr" => "Mesaj Gönder"
+        ],
+        "icon" => "fa-solid fa-paper-plane"
+    ]
+];
+?>
