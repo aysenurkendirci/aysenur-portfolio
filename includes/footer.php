@@ -1,12 +1,12 @@
 <!--
-    FOOTER
-    Page footer with copyright information and site metadata.
-    Located at the bottom of every page for consistent structure.
-    Uses semantic <footer> element with contentinfo role for accessibility.
+    ALTBILGI (FOOTER)
+    Her sayfanın en altında bulunan telif hakkı bilgisi ve site metaveri.
+    Tutarlı yapı için uygun bir yerdir.
+    Erişilebilirlik için semantik <footer> öğesi ve contentinfo rolü kullanılır.
 -->
 <footer class="footer" role="contentinfo">
     <div class="container footer-container">
-        <!-- Copyright notice with bilingual support -->
+        <!-- Telif Hakkı Bildirimi - Çok dilli destek -->
         <p class="footer-text"
            data-en="&copy; 2026 Ayşe Nur Kendirci. All rights reserved."
            data-tr="&copy; 2026 Ayşe Nur Kendirci. Tüm hakları saklıdır.">

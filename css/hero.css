@@ -274,7 +274,60 @@ body.light-theme .hero-bg-word {
     }
 }
 
-/* Tablet görünümü */
+/* ==================================================
+   RESPONSIVE - TABLET ORTA (İPAD GİBİ)
+   600px - 992px arası ekranlar için optimizasyon
+================================================== */
+@media (min-width: 600px) and (max-width: 992px) {
+    .hero-split {
+        min-height: auto;
+        padding: 60px 0 76px;
+    }
+
+    .hero-split-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 48px;
+    }
+
+    .intro-line {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+
+    .hero-name {
+        font-size: clamp(48px, 12vw, 72px);
+        margin-bottom: 18px;
+    }
+
+    .hero-role {
+        font-size: 28px;
+        margin-bottom: 16px;
+    }
+
+    .hero-description {
+        font-size: 17px;
+        margin-bottom: 32px;
+    }
+
+    .hero-buttons,
+    .hero-social-icons {
+        justify-content: center;
+    }
+
+    .portfolio-card {
+        width: 260px;
+    }
+
+    .portfolio-card-image img {
+        height: 320px;
+    }
+}
+
+/* ==================================================
+   RESPONSIVE - TABLET
+   Tablet görünümü (768px altı)
+================================================== */
 @media (max-width: 992px) {
     .hero-split {
         min-height: auto;
@@ -301,38 +354,153 @@ body.light-theme .hero-bg-word {
     }
 }
 
-/* Mobil görünüm */
+/* ==================================================
+   RESPONSIVE - MOBİL
+   Mobil görünüm (768px altı) - İyileştirilmiş spacing
+================================================== */
 @media (max-width: 768px) {
     .hero-split {
-        padding: 48px 0 60px;
+        padding: 52px 0 64px;
+        min-height: auto;
     }
 
     .hero-bg-word {
-        font-size: clamp(70px, 22vw, 130px);
-        letter-spacing: 4px;
+        font-size: clamp(60px, 20vw, 120px);
+        letter-spacing: 2px;
+        top: 50%;
     }
 
     .intro-line {
-        font-size: 22px;
+        font-size: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
     }
 
     .hero-name {
-        font-size: clamp(46px, 14vw, 64px);
+        font-size: clamp(40px, 12vw, 56px);
+        margin-bottom: 14px;
+        line-height: 1;
     }
 
     .hero-role {
-        font-size: 26px;
+        font-size: 24px;
+        margin-bottom: 14px;
     }
 
     .hero-description {
-        font-size: 16px;
+        font-size: 15px;
+        margin-bottom: 24px;
+        max-width: 100%;
+    }
+
+    .hero-buttons {
+        gap: 12px;
+        margin-bottom: 20px;
     }
 
     .portfolio-card {
-        width: 220px;
+        width: 200px;
     }
 
     .portfolio-card-image img {
-        height: 270px;
+        height: 250px;
+    }
+}
+
+/* ==================================================
+   RESPONSIVE - MOBİL KÜÇÜK
+   Küçük telefonlar (480px altı)
+================================================== */
+@media (max-width: 480px) {
+    .hero-split {
+        padding: 40px 0 48px;
+        min-height: auto;
+    }
+
+    .hero-bg-word {
+        font-size: clamp(50px, 18vw, 100px);
+        letter-spacing: 1px;
+        top: 48%;
+    }
+
+    .hero-split-layout {
+        gap: 32px;
+    }
+
+    .intro-line {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .hero-name {
+        font-size: clamp(32px, 11vw, 44px);
+        margin-bottom: 12px;
+    }
+
+    .hero-role {
+        font-size: 20px;
+        margin-bottom: 12px;
+        font-weight: 700;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-social-icons {
+        gap: 16px;
+        justify-content: center;
+        margin-top: 16px;
+    }
+
+    .hero-social-icons a {
+        font-size: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+    }
+
+    .portfolio-card {
+        width: 180px;
+        padding: 16px;
+    }
+
+    .portfolio-card-header {
+        height: 8px;
+    }
+
+    .portfolio-card-image {
+        height: 200px;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .portfolio-card-image img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .portfolio-card-footer h2 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .portfolio-card-footer p {
+        font-size: 12px;
     }
 }

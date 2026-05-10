@@ -1,31 +1,31 @@
 /**
- * Main Stylesheet - Portfolio Website
+ * Ana Stil Dosyası - Portföy Web Sitesi
  * 
- * This file imports and organizes all CSS partials into a single namespace.
- * It follows a modular CSS structure for better maintainability.
+ * Bu dosya tüm CSS parça dosyalarını tek bir ad alanında içeri aktarır ve düzenler.
+ * Bakım kolaylığı için modüler CSS yapısını takip eder.
  * 
- * CSS Organization:
- * 1. base.css - Reset, colors, and global styles
- * 2. navbar.css - Navigation bar styling
- * 3. hero.css - Hero/home section styling
- * 4. content.css - Main content sections (about, skills, experience, projects, contact)
+ * CSS Yapısı:
+ * 1. base.css - Sıfırlama, renkler ve global stiller
+ * 2. navbar.css - Navigasyon çubuğu stilleri
+ * 3. hero.css - Hero/ana bölüm stilleri
+ * 4. content.css - Ana içerik bölümleri (hakkımda, beceriler, deneyim, projeler, iletişim)
  * 
- * Features:
- * - Responsive design with mobile-first approach
- * - Dark theme and light theme support
- * - CSS custom properties (variables) for easy color changes
- * - Semantic HTML structure with proper accessibility
- * - Smooth transitions and animations
+ * Özellikler:
+ * - Mobil-ilk yaklaşımla responsive tasarım
+ * - Koyu ve açık tema desteği
+ * - Kolay renk değişiklikleri için CSS özel özellikler (değişkenler)
+ * - Uygun erişilebilirlik ile semantik HTML yapısı
+ * - Yumuşak geçişler ve animasyonlar
  */
 
-/* Import base styles and theme colors */
+/* Temel stiller ve tema renkleri içeri aktarıldı */
 @import url("base.css");
 
-/* Import navigation bar styles */
+/* Navigasyon çubuğu stilleri içeri aktarıldı */
 @import url("navbar.css");
 
-/* Import hero section styles */
+/* Hero bölümü stilleri içeri aktarıldı */
 @import url("hero.css");
 
-/* Import content sections styles */
+/* İçerik bölümleri stilleri içeri aktarıldı */
 @import url("content.css");

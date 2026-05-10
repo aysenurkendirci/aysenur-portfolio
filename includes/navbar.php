@@ -1,15 +1,15 @@
 <!-- 
-    NAVIGATION BAR
-    Main navigation header with logo, menu links, and theme/language toggles.
-    This component is included on all pages for consistent navigation.
-    Semantic <header> and <nav> elements are used for proper document structure.
+    NAVİGASYON ÇUBUĞU
+    Logo, menü linkleri ve tema/dil değiştirme düğmeleri içeren ana navigasyon başlığı.
+    Bu bileşen tüm sayfaların başında dahil edilir ve tutarlı navigasyon sağlar.
+    Uygun belge yapısı için semantik <header> ve <nav> öğeleri kullanılır.
 -->
 <header class="site-header" role="banner">
-    <nav class="navbar" aria-label="Main navigation">
+    <nav class="navbar" aria-label="Ana navigasyon">
         <div class="container navbar-container">
 
-            <!-- Brand/Logo: Displays developer name in code style -->
-            <a href="index.php#home" class="brand" aria-label="Go to home section">
+            <!-- Marka/Logo: Kod yazımı stilinde geliştirici adını gösterir -->
+            <a href="index.php#home" class="brand" aria-label="Ana bölüme git">
                 <span class="brand-line">
                     <span class="token-const">const</span>
                     <span class="token-var">developer</span>
@@ -20,21 +20,21 @@
                 </span>
             </a>
 
-            <!-- Mobile menu toggle button -->
-            <!-- Visible on small screens, controls mobile navigation menu -->
+            <!-- Mobil Menü Aç/Kapa Düğmesi -->
+            <!-- Küçük ekranlarda görünür, mobil navigasyon menüsünü kontrol eder -->
             <button
                 class="menu-toggle"
                 id="menuToggle"
                 type="button"
-                aria-label="Open navigation menu"
+                aria-label="Navigasyon menüsünü aç"
                 aria-controls="navLinks"
                 aria-expanded="false"
             >
                 <span aria-hidden="true">☰</span>
             </button>
 
-            <!-- Navigation links list -->
-            <!-- Links to different sections of the portfolio -->
+            <!-- Navigasyon Linkleri Listesi -->
+            <!-- Portföyün farklı bölümlerine gitmek için linkler -->
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.php#about" data-en="About" data-tr="Hakkımda">About</a></li>
                 <li><a href="index.php#skills" data-en="Tech Stack" data-tr="Teknolojiler">Tech Stack</a></li>
@@ -42,7 +42,7 @@
                 <li><a href="index.php#projects" data-en="Projects" data-tr="Projeler">Projects</a></li>
                 <li><a href="index.php#contact" data-en="Contact" data-tr="İletişim">Contact</a></li>
 
-                <!-- CV download link -->
+                <!-- CV İndirme Linki -->
                 <li>
                     <a
                         href="<?= e($profile["cv"]); ?>"
@@ -56,28 +56,28 @@
                 </li>
             </ul>
 
-            <!-- Toolbar with theme and language toggles -->
-            <!-- Settings for visual theme and language preference -->
-            <div class="navbar-tools" aria-label="Page settings">
+            <!-- Tema ve Dil Değiştirme Araçları Çubuğu -->
+            <!-- Görsel tema ve dil tercihi ayarları -->
+            <div class="navbar-tools" aria-label="Sayfa ayarları">
                 <div class="toolbar-shell">
-                    <!-- Language toggle button -->
+                    <!-- Dil Değiştirme Düğmesi -->
                     <button
                         class="tool-chip"
                         id="langToggle"
                         type="button"
-                        aria-label="Change language"
-                        title="Toggle between English and Turkish"
+                        aria-label="Dili değiştir"
+                        title="İngilizce ve Türkçe arasında geçiş yap"
                     >
                         <span class="tool-label">TR</span>
                     </button>
 
-                    <!-- Theme toggle button -->
+                    <!-- Tema Değiştirme Düğmesi -->
                     <button
                         class="tool-chip"
                         id="themeToggle"
                         type="button"
-                        aria-label="Change theme"
-                        title="Toggle between dark and light theme"
+                        aria-label="Temayı değiştir"
+                        title="Koyu ve açık tema arasında geçiş yap"
                     >
                         <span class="tool-label">☾</span>
                     </button>

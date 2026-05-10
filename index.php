@@ -1,27 +1,27 @@
 <?php
 /**
- * Main Portfolio Page
+ * Ana Portföy Sayfası
  * 
- * This file displays the personal portfolio with multiple sections:
- * - Hero/Home section with introduction
- * - About section with background information
- * - Tech Stack section with skills
- * - Experience section with work history
- * - Projects section with portfolio projects
- * - Contact section with contact form
+ * Bu dosya kişisel portföyü birden fazla bölümle gösterir:
+ * - Hero/Ana Bölüm: Hakkımda tanıtımı ve başlıca eylem butonları
+ * - Hakkımda Bölümü: Arka plan bilgileri ve kişisel yaklaşım
+ * - Teknoloji Yığını: Mesleki beceriler ve teknolojiler
+ * - Deneyim Bölümü: İş geçmişi ve kariyer başarıları
+ * - Projeler Bölümü: Portföy projeleri ve GitHub bağlantıları
+ * - İletişim Bölümü: İletişim formu ve iletişim bilgileri
  * 
- * The page supports bilingual content (English/Turkish) with
- * language switching capability via JavaScript and localStorage.
+ * Sayfa iki dilde içeriği destekler (İngilizce/Türkçe) ve
+ * JavaScript ve localStorage aracılığıyla dil değiştirme yeteneğine sahiptir.
  */
 
 include 'data.php';
 
 /**
- * Security function to escape output
- * Prevents XSS attacks by converting special characters to HTML entities
+ * Güvenlik Fonksiyonu: Çıkışı Kaçış Karakteri ile İşle
+ * XSS saldırılarını önler - özel karakterleri HTML entitylerine dönüştürür
  * 
- * @param string $value The value to escape
- * @return string Escaped value safe for HTML output
+ * @param string $value Kaçış işlemi yapılacak değer
+ * @return string HTML çıkış için güvenli kaçışlı değer
  */
 function e($value)
 {
@@ -32,39 +32,39 @@ function e($value)
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Character encoding for proper text rendering -->
+    <!-- Metin Kodlaması: Doğru metin görüntülenmesi için -->
     <meta charset="UTF-8">
     
-    <!-- Viewport settings for responsive design on all devices -->
+    <!-- Responsive Tasarım: Tüm cihazlarda uygun görünüm -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Page title for browser tab and SEO -->
-    <title>Ayşe Nur Kendirci | Personal Portfolio</title>
+    <!-- Sayfa Başlığı: Tarayıcı sekmesi ve SEO için -->
+    <title>Ayşe Nur Kendirci | Kişisel Portföyü</title>
 
-    <!-- Font Awesome icons library -->
+    <!-- Font Awesome İkon Kütüphanesi: UI ikonları -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Dev icons library for technology badges -->
+    <!-- Dev İkonları Kütüphanesi: Teknoloji rozetleri -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     
-    <!-- Main stylesheet -->
+    <!-- Ana Stil Dosyası: Tüm CSS stilleri -->
     <link rel="stylesheet" href="css/style.css">
     
-    <!-- Prefetch DNS for external resources -->
+    <!-- Harici Kaynak Ön Yüklemesi: Hızlı yükleme -->
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 </head>
 
 <body class="dark-theme">
-    <!-- Decorative cursor glow effect (visual enhancement) -->
+    <!-- Dekoratif İmleç Parıltı Efekti (görsel iyileştirme) -->
     <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-    <!-- Include navigation bar -->
+    <!-- Navigasyon Çubuğunu Dahil Et -->
     <?php include 'includes/navbar.php'; ?>
 
-    <!-- Main content area -->
+    <!-- Ana İçerik Alanı -->
     <main>
-        <!-- Hero/Home Section: Introduction and call-to-action -->
+        <!-- Hero/Ana Bölüm: Tanıtım ve Hareket Çağrısı -->
         <section id="home" class="hero hero-split" aria-labelledby="hero-title">
             <div class="hero-bg-word" aria-hidden="true">PORTFOLIO</div>
 
@@ -146,7 +146,7 @@ function e($value)
             </div>
         </section>
 
-        <!-- About Section: Personal background and professional approach -->
+        <!-- Hakkımda Bölümü: Kişisel arka plan ve mesleki yaklaşım -->
         <section id="about" class="about section" aria-labelledby="about-title">
             <div class="container">
                 <h2 id="about-title" class="section-title" data-en="About Me" data-tr="Hakkımda">
@@ -164,7 +164,7 @@ function e($value)
             </div>
         </section>
 
-        <!-- Tech Stack Section: Professional skills and technologies -->
+        <!-- Teknoloji Yığını Bölümü: Mesleki beceriler ve teknolojiler -->
         <section id="skills" class="skills section" aria-labelledby="skills-title">
             <div class="container">
                 <h2 id="skills-title" class="section-title" data-en="Tech Stack" data-tr="Teknolojiler">
@@ -205,7 +205,7 @@ function e($value)
             </div>
         </section>
 
-        <!-- Experience Section: Work history and career achievements -->
+        <!-- Deneyim Bölümü: İş geçmişi ve kariyer başarıları -->
         <section id="experience" class="experience section" aria-labelledby="experience-title">
             <div class="container">
                 <h2 id="experience-title" class="section-title" data-en="Experience" data-tr="Deneyim">
@@ -258,7 +258,7 @@ function e($value)
             </div>
         </section>
 
-        <!-- Projects Section: Portfolio projects with descriptions and links -->
+        <!-- Projeler Bölümü: Portföy projeleri açıklamaları ve bağlantıları -->
         <section id="projects" class="projects section" aria-labelledby="projects-title">
             <div class="container">
                 <h2 id="projects-title" class="section-title" data-en="Projects" data-tr="Projeler">
@@ -304,7 +304,7 @@ function e($value)
             </div>
         </section>
 
-        <!-- Contact Section: Contact form and contact information -->
+        <!-- İletişim Bölümü: İletişim formu ve iletişim bilgileri -->
         <section id="contact" class="contact section" aria-labelledby="contact-title">
             <div class="container">
                 <h2 id="contact-title" class="section-title" data-en="Contact" data-tr="İletişim">
@@ -439,29 +439,29 @@ function e($value)
         </section>
     </main>
 
-    <!-- Include footer -->
+    <!-- Altbilgi (Footer) Dahil Et -->
     <?php include 'includes/footer.php'; ?>
 
-    <!-- JavaScript for language, theme, and interactivity -->
+    <!-- Dil, Tema ve Etkileşim için JavaScript -->
     <script>
         /**
-         * Language Preference Handler
-         * Loads the persisted language preference from localStorage on page load
-         * This ensures the page language is restored for returning visitors
+         * Dil Tercihi İşleyicisi
+         * Sayfa yüklenirken localStorage'dan kalıcı dil tercihini yükler
+         * Bu, dönen ziyaretçiler için sayfa dilinin geri yüklenmesini sağlar
          */
         (function() {
             const savedLanguage = localStorage.getItem('portfolio-language');
             const initialLanguage = savedLanguage || 'en';
             
-            // Update document language
+            // Belge dilini güncelle
             document.documentElement.lang = initialLanguage;
             
-            // Trigger language initialization in main script
+            // Ana betik dosyasında dil başlatmayı tetikle
             window.__initialLanguage = initialLanguage;
         })();
     </script>
     
-    <!-- Main interaction script -->
+    <!-- Ana Etkileşim Betiği -->
     <script src="js/script.js"></script>
 </body>
 </html>
