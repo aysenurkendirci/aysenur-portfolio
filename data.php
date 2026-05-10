@@ -1,29 +1,29 @@
 <?php
 /**
- * Portfolio Data File
+ * Portföy Veri Dosyası
  * 
- * This file contains all the content and configuration data for the portfolio website.
- * It is the single source of truth for:
- * - Profile information and social links
- * - About section content
- * - Technology/skill categories
- * - Work experience history
- * - Project showcase details
- * - Contact form configuration
+ * Bu dosya portföy web sitesinin tüm içeriğini ve yapılandırma verilerini barındırır.
+ * Aşağıdaki veriler için merkezi kaynak:
+ * - Profil bilgileri ve sosyal ağ bağlantıları
+ * - Hakkımda bölümü içeriği
+ * - Teknoloji/beceri kategorileri
+ * - İş geçmişi kaydı
+ * - Proje vitrin detayları
+ * - İletişim formu yapılandırması
  * 
- * By centralizing all content data here, updates to portfolio content
- * can be made without modifying HTML/PHP template files.
+ * Tüm içerik verilerini merkezi olarak tutarak, portföy içeriğine yapılan
+ * güncellemeler HTML/PHP şablon dosyalarını değiştirmeden yapılabilir.
  * 
- * Bilingual Support: All content is provided in both English and Turkish
- * with 'en' and 'tr' keys throughout the data structure.
+ * Çok Dilli Destek: Tüm içerik veri yapısında 'en' ve 'tr' anahtarlarıyla
+ * İngilizce ve Türkçe olarak sağlanır.
  * 
  * @author Ayşe Nur Kendirci
  * @version 1.0
  */
 
 /**
- * PROFILE SECTION
- * Main personal information and contact details
+ * PROFIL BÖLÜMÜ
+ * Temel kişisel bilgiler ve iletişim detayları
  */
 $profile = [
     "name" => "Ayşe Nur Kendirci",
@@ -90,8 +90,8 @@ $aboutTexts = [
 ];
 
 /**
- * ABOUT SECTION DATA
- * Personal background and professional approach paragraphs
+ * HAKKIMDA BÖLÜMÜ VERİSİ
+ * Kişisel arka plan ve mesleki yaklaşım paragrafları
  */
 $aboutTexts = [
     [
@@ -109,17 +109,17 @@ $aboutTexts = [
 ];
 
 /**
- * TECHNOLOGY/SKILLS DATA
+ * TEKNOLOJİ/BECERİLER VERİSİ
  * 
- * Categorized list of technical skills with:
- * - Category title (bilingual)
- * - Skill items with name, icon, and tooltip
- * - Each skill has bilingual tooltip descriptions
+ * Teknik becerilerin kategorilere ayrılmış listesi:
+ * - Kategori başlığı (çok dilli)
+ * - İsim, ikon ve araç ipucu ile beceri öğeleri
+ * - Her beceri çok dilli araç ipucu açıklamaları içerir
  * 
- * Categories:
- * 1. Mobile Development (Swift, SwiftUI, UIKit, etc.)
- * 2. Frontend Development (Angular, HTML, CSS, JavaScript)
- * 3. Backend & Database (C#, .NET Core, SQL Server, etc.)
+ * Kategoriler:
+ * 1. Mobil Geliştirme (Swift, SwiftUI, UIKit, vb.)
+ * 2. Frontend Geliştirme (Angular, HTML, CSS, JavaScript)
+ * 3. Backend ve Veritabanı (C#, .NET Core, SQL Server, vb.)
  */
 $techCategories = [
     [
@@ -284,17 +284,17 @@ $techCategories = [
 ];
 
 /**
- * EXPERIENCE SECTION DATA
+ * DENEYİM BÖLÜMÜ VERİSİ
  * 
- * Professional and educational experience records including:
- * - Category/type of experience (internship, education, etc.)
- * - Duration/date period
- * - Position title (bilingual)
- * - Company/institution name
- * - Description of role (bilingual)
- * - List of key accomplishments and responsibilities (bilingual)
+ * Profesyonel ve eğitim deneyimi kayıtları:
+ * - Deneyim kategorisi/tipi (staj, eğitim, vb.)
+ * - Süre/tarih aralığı
+ * - Pozisyon başlığı (çok dilli)
+ * - Şirket/kurum adı
+ * - Rol açıklaması (çok dilli)
+ * - Anahtar başarıları ve sorumlulukları listesi (çok dilli)
  * 
- * Displayed as chronologically ordered cards on the portfolio
+ * Portföyde kronolojik sırada kartlar olarak görüntülenir
  */
 $experiences = [
     [
@@ -444,17 +444,17 @@ $experiences = [
 ];
 
 /**
- * PROJECTS SECTION DATA
+ * PROJELER BÖLÜMÜ VERİSİ
  * 
- * Portfolio project showcase with:
- * - Project name/title
- * - Category/type (bilingual)
- * - Brief description of project (bilingual)
- * - Technologies used (array of tech names)
- * - GitHub repository link
+ * Portföy projesi vitrini şu bilgiler ile:
+ * - Proje adı/başlığı
+ * - Kategori/tür (çok dilli)
+ * - Proje açıklaması (çok dilli)
+ * - Kullanılan teknolojiler (teknoloji adlarından oluşan dizi)
+ * - GitHub depo linki
  * 
- * Projects are displayed as cards in a grid layout
- * Each card links to the project's GitHub repository
+ * Projeler grid düzeninde kartlar halinde gösterilir
+ * Her kart projenin GitHub deposuna bağlanır
  */
 $projects = [
     [
@@ -512,20 +512,21 @@ $projects = [
 ];
 
 /**
- * CONTACT FORM CONFIGURATION
+ * İLETİŞİM FORMU YAPILANDIRMASI
  * 
- * Defines the contact form structure with:
- * - Form introduction text (bilingual)
- * - Field definitions with validation rules
- * - Submit button configuration
+ * İletişim formu yapısını tanımlar:
+ * - Form giriş metni (çok dilli)
+ * - Doğrulama kuralları olan alan tanımları
+ * - Gönder düğmesi yapılandırması
  * 
- * Form fields include:
- * - Name (required, text input)
- * - Email (required, email input with validation)
- * - Message (required, textarea)
+ * Form alanları:
+ * - Ad (zorunlu, metin girişi)
+ * - E-posta (zorunlu, doğrulamalı e-posta girişi)
+ * - Mesaj (zorunlu, textarea)
  * 
- * All form labels, placeholders, and messages support both English and Turkish.
- * Form submission is handled by process-form.php
+ * Tüm form etiketleri, yer tutucu metinleri ve mesajları
+ * İngilizce ve Türkçe'yi destekler.
+ * Form gönderimi process-form.php tarafından işlenir
  */
 $contactForm = [
     "intro" => [

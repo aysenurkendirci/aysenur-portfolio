@@ -341,6 +341,30 @@ fieldset {
 }
 
 /* ==================================================
+   RESPONSIVE TASARIM - TABLET ORTA (İPAD GİBİ)
+   600px - 768px arası ekranlar için optimizasyon
+================================================== */
+@media (min-width: 600px) and (max-width: 768px) {
+    .container {
+        width: 92%;
+    }
+
+    .section {
+        padding: 50px 0 64px;
+    }
+
+    .section-title {
+        font-size: 36px;
+        margin-bottom: 36px;
+    }
+
+    .btn {
+        padding: 11px 24px;
+        font-size: 15px;
+    }
+}
+
+/* ==================================================
    RESPONSIVE TASARIM - TABLET
    768px'ten küçük ekranlar için uyarlamalar
 ================================================== */
@@ -358,7 +382,7 @@ fieldset {
     }
 
     .section {
-        padding: 42px 0 56px;
+        padding: 48px 0 60px;
     }
 
     .section-title {
@@ -367,8 +391,9 @@ fieldset {
     }
 
     .btn {
-        padding: 10px 20px;
+        padding: 10px 22px;
         font-size: 14px;
+        min-height: 44px;
     }
 
     input[type="text"],
@@ -376,33 +401,63 @@ fieldset {
     textarea,
     select {
         font-size: 16px;
+        padding: 12px 14px;
+        min-height: 44px;
+    }
+
+    label {
+        margin-bottom: 10px;
+        font-size: 15px;
     }
 }
 
 /* ==================================================
-   RESPONSIVE TASARIM - MOBİL
+   RESPONSIVE TASARIM - MOBİL (KÜÇÜK TELEFONLAR)
    480px'ten küçük ekranlar için uyarlamalar
 ================================================== */
 @media (max-width: 480px) {
+    .container {
+        width: 96%;
+    }
+
+    .section {
+        padding: 40px 0 52px;
+    }
+
     .section-title {
         font-size: 26px;
         margin-bottom: 24px;
+        line-height: 1.2;
     }
 
     .btn {
-        padding: 8px 16px;
+        padding: 10px 18px;
         font-size: 13px;
-        flex-wrap: wrap;
+        min-height: 44px;
+        gap: 6px;
+    }
+
+    .btn i {
+        font-size: 14px;
     }
 
     input[type="text"],
     input[type="email"],
     textarea,
     select {
-        padding: 10px 12px;
+        padding: 11px 12px;
+        font-size: 16px;
+        min-height: 44px;
+        border-radius: 10px;
     }
 
     label {
         font-size: 14px;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+
+    textarea {
+        min-height: 100px;
     }
 }

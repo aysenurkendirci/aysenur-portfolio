@@ -1,33 +1,33 @@
 <?php
 /**
- * Contact Form Processing Page
+ * İletişim Formu İşleme Sayfası
  * 
- * This file processes contact form submissions from the main portfolio page.
- * It validates the form data and displays a success or error message.
+ * Bu dosya ana portföy sayfasından gelen iletişim formu gönderilerini işler.
+ * Form verilerini doğrular ve başarı veya hata mesajı gösterir.
  * 
- * Features:
- * - Input validation (name, email, message)
- * - Email format validation
- * - Security: HTML escaping to prevent XSS attacks
- * - Bilingual support (English/Turkish)
- * - Proper HTTP method checking
+ * Özellikler:
+ * - Girdi doğrulaması (ad, e-posta, mesaj)
+ * - E-posta biçimi doğrulaması
+ * - Güvenlik: XSS saldırılarını önlemek için HTML kaçış karakteri
+ * - Çok dilli destek (İngilizce/Türkçe)
+ * - Uygun HTTP yöntem kontrolü
  */
 
 include 'data.php';
 
 /**
- * Security function to escape output
- * Prevents XSS attacks by converting special characters to HTML entities
+ * Güvenlik Fonksiyonu: Çıkışı Kaçış Karakteri ile İşle
+ * XSS saldırılarını önler - özel karakterleri HTML entitylerine dönüştürür
  * 
- * @param string $value The value to escape
- * @return string Escaped value safe for HTML output
+ * @param string $value Kaçış işlemi yapılacak değer
+ * @return string HTML çıkış için güvenli kaçışlı değer
  */
 function e($value)
 {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 
-// Initialize form variables
+// Form değişkenlerini başlat
 $name = '';
 $email = '';
 $message = '';
@@ -36,32 +36,32 @@ $isSuccess = false;
 $errorMessageEn = '';
 $errorMessageTr = '';
 
-// Process form only on POST request
+// Formu sadece POST isteği üzerinde işle
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Sanitize and trim input
+    // Girdiyi temizle ve boşlukları kaldır
     $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $message = trim($_POST['message'] ?? '');
 
-    // Validate required fields
+    // Zorunlu alanları doğrula
     if ($name === '' || $email === '' || $message === '') {
         $errorMessageEn = 'Please fill in all required fields.';
         $errorMessageTr = 'Lütfen zorunlu alanların tamamını doldurun.';
     } 
-    // Validate email format
+    // E-posta biçimini doğrula
     elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errorMessageEn = 'Please enter a valid email address.';
         $errorMessageTr = 'Lütfen geçerli bir e-posta adresi girin.';
     } 
-    // Form is valid
+    // Form geçerliyse
     else {
         $isSuccess = true;
         
-        // TODO: Add email sending functionality here
-        // Example: mail($profile["email"], "Portfolio Contact Form", "From: $email\n\n$message");
+        // TODO: E-posta gönderme işlevi burayı ekleyin
+        // Örnek: mail($profile["email"], "Portföy İletişim Formu", "Gönderen: $email\n\n$message");
     }
 } else {
-    // Handle non-POST access
+    // POST olmayan erişim için hata mesajı
     $errorMessageEn = 'This page can only be accessed after submitting the contact form.';
     $errorMessageTr = 'Bu sayfaya yalnızca iletişim formu gönderildikten sonra erişilebilir.';
 }
@@ -70,35 +70,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Character encoding for proper text rendering -->
+    <!-- Metin Kodlaması: Doğru metin görüntülenmesi için -->
     <meta charset="UTF-8">
     
-    <!-- Viewport settings for responsive design on all devices -->
+    <!-- Responsive Tasarım: Tüm cihazlarda uygun görünüm -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Page title for browser tab -->
-    <title>Contact Result | Ayşe Nur Kendirci</title>
+    <!-- Sayfa Başlığı: Tarayıcı sekmesi -->
+    <title>İletişim Sonucu | Ayşe Nur Kendirci</title>
 
-    <!-- Font Awesome icons library -->
+    <!-- Font Awesome İkon Kütüphanesi: UI ikonları -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Dev icons library -->
+    <!-- Dev İkonları Kütüphanesi -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     
-    <!-- Main stylesheet -->
+    <!-- Ana Stil Dosyası: Tüm CSS stilleri -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="dark-theme">
-    <!-- Decorative cursor glow effect (visual enhancement) -->
+    <!-- Dekoratif İmleç Parıltı Efekti (görsel iyileştirme) -->
     <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-    <!-- Include navigation bar -->
+    <!-- Navigasyon Çubuğunu Dahil Et -->
     <?php include 'includes/navbar.php'; ?>
 
-    <!-- Main content area -->
+    <!-- Ana İçerik Alanı -->
     <main>
-        <!-- Contact Result Section: Displays success or error message -->
+        <!-- İletişim Sonucu Bölümü: Başarı veya hata mesajı gösterir -->
         <section class="contact-result-section section" aria-labelledby="result-title">
             <div class="container">
                 <article class="result-card">
@@ -155,14 +155,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
     </main>
 
-    <!-- Include footer -->
+    <!-- Altbilgi (Footer) Dahil Et -->
     <?php include 'includes/footer.php'; ?>
 
-    <!-- Language preference loader script -->
+    <!-- Dil Tercihi Yükleyici Betiği -->
     <script>
         /**
-         * Language Preference Handler
-         * Loads the persisted language preference from localStorage on page load
+         * Dil Tercihi İşleyicisi
+         * Sayfa yüklenirken localStorage'dan kalıcı dil tercihini yükler
          */
         (function() {
             const savedLanguage = localStorage.getItem('portfolio-language');
@@ -173,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         })();
     </script>
     
-    <!-- Main interaction script -->
+    <!-- Ana Etkileşim Betiği -->
     <script src="js/script.js"></script>
 </body>
 </html>

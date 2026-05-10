@@ -440,21 +440,86 @@
    RESPONSIVE
    Tablet ve mobil ekranlarda kolonlar tek sütuna düşürülür.
 ================================================== */
+
+/* ==================================================
+   RESPONSIVE - TABLET ORTA (600px - 992px)
+   İpat benzeri ekranlar için optimizasyon
+================================================== */
+@media (min-width: 600px) and (max-width: 992px) {
+    .tech-categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tech-category-card,
+    .experience-card,
+    .project-card {
+        padding: 26px;
+    }
+
+    .tech-category-card h3 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .experience-top {
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .experience-content h3 {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    .project-card h3 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+}
+
+/* ==================================================
+   RESPONSIVE - TABLET (768px altı)
+   Tablet görünümü - İyileştirilmiş spacing ve layout
+================================================== */
 @media (max-width: 992px) {
     .tech-categories,
     .projects-grid,
     .contact-wrapper {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .experience-list {
+        gap: 18px;
+    }
+
+    .about-content {
+        gap: 16px;
+        font-size: 16px;
     }
 }
 
+/* ==================================================
+   RESPONSIVE - TABLET/MOBİL (768px altı)
+   Tablet ve mobil ekranlar için genel uyarlamalar
+================================================== */
 @media (max-width: 768px) {
     .section {
-        padding: 48px 0 64px;
+        padding: 44px 0 56px;
     }
 
     .section-title {
         font-size: 32px;
+        margin-bottom: 28px;
+        line-height: 1.2;
+    }
+
+    .tech-categories {
+        gap: 16px;
     }
 
     .tech-category-card,
@@ -463,10 +528,254 @@
     .contact-info-card,
     .contact-form {
         padding: 24px;
+        border-radius: 16px;
     }
 
+    .tech-category-card h3,
     .experience-content h3,
     .project-card h3 {
-        font-size: 22px;
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    .tech-item {
+        gap: 12px;
+        padding: 12px 0;
+    }
+
+    .experience-top {
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 14px;
+    }
+
+    .experience-category,
+    .project-category {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    .experience-date {
+        font-size: 13px;
+    }
+
+    .contact-wrapper {
+        gap: 20px;
+    }
+
+    .contact-form {
+        gap: 14px;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    .about-content p {
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+}
+
+/* ==================================================
+   RESPONSIVE - MOBİL KÜÇÜK (480px altı)
+   Küçük telefonlar için optimize edilmiş görünüm
+================================================== */
+@media (max-width: 480px) {
+    .section {
+        padding: 36px 0 48px;
+    }
+
+    .section-title {
+        font-size: 26px;
+        margin-bottom: 22px;
+    }
+
+    .about-content {
+        gap: 14px;
+    }
+
+    .about-content p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .tech-categories {
+        gap: 14px;
+    }
+
+    .tech-category-card,
+    .experience-card,
+    .project-card,
+    .contact-info-card,
+    .contact-form {
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    .tech-category-card h3 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .tech-list {
+        gap: 0;
+    }
+
+    .tech-item {
+        gap: 10px;
+        padding: 10px 0;
+        font-size: 14px;
+    }
+
+    .tech-icon {
+        min-width: 20px;
+        font-size: 18px;
+    }
+
+    .tech-name {
+        font-size: 14px;
+    }
+
+    .experience-list {
+        gap: 14px;
+    }
+
+    .experience-card {
+        border-radius: 12px;
+    }
+
+    .experience-top {
+        gap: 6px;
+        margin-bottom: 12px;
+        font-size: 12px;
+    }
+
+    .experience-content h3 {
+        font-size: 17px;
+        margin-bottom: 6px;
+        line-height: 1.2;
+    }
+
+    .experience-company {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
+    .experience-description {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .experience-points {
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    .experience-points li {
+        padding-left: 20px;
+    }
+
+    .projects-grid {
+        gap: 14px;
+    }
+
+    .project-card {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .project-card-top {
+        margin-bottom: 10px;
+    }
+
+    .project-card h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+        line-height: 1.2;
+    }
+
+    .project-description {
+        font-size: 13px;
+        margin-bottom: 12px;
+        line-height: 1.4;
+    }
+
+    .tech-stack {
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+
+    .tech-stack li {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+
+    .project-link {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .contact-intro {
+        font-size: 14px;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+
+    .contact-wrapper {
+        gap: 16px;
+    }
+
+    .contact-info-card {
+        padding: 18px;
+    }
+
+    .contact-info-list {
+        gap: 12px;
+    }
+
+    .contact-info-item {
+        padding: 12px 0;
+        gap: 10px;
+    }
+
+    .contact-icon {
+        min-width: 32px;
+        font-size: 18px;
+    }
+
+    .contact-info-item small {
+        font-size: 11px;
+    }
+
+    .contact-info-item strong {
+        font-size: 13px;
+    }
+
+    .contact-form {
+        gap: 12px;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    .form-group label {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
+    .contact-submit {
+        width: 100%;
+        padding: 12px;
+        font-size: 13px;
+        min-height: 44px;
+        margin-top: 8px;
+    }
+
+    .footer-text {
+        font-size: 12px;
+        line-height: 1.4;
     }
 }

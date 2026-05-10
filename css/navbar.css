@@ -1,9 +1,7 @@
 /* ==================================================
    NAVBAR GENEL YAPISI
-   Sayfanın en üstünde bulunan ana menü alanıdır.
-   Sticky yapısı sayesinde kullanıcı sayfayı aşağı kaydırsa bile
-   navbar ekranın üst kısmında görünür kalır.
-   ================================================== */
+================================================== */
+
 .site-header {
     position: fixed;
     top: 0;
@@ -15,10 +13,10 @@
 .navbar {
     width: 100%;
     background: rgba(248, 250, 252, 0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border-color);
     box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
 
 body.dark-theme .navbar {
@@ -27,28 +25,29 @@ body.dark-theme .navbar {
 
 /* ==================================================
    NAVBAR CONTAINER
-   Brand, menü linkleri ve araç butonlarını aynı satırda hizalar.
-   ================================================== */
+================================================== */
+
 .navbar-container {
+    min-height: 78px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    min-height: 78px;
 }
 
 /* ==================================================
-   BRAND ALANI
-   Sol üstte kod yazımı görünümünde isim alanıdır.
-   ================================================== */
+   BRAND
+================================================== */
+
 .brand {
     display: inline-flex;
     align-items: center;
     max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
     text-decoration: none;
     font-family: "Fira Code", Consolas, monospace;
     font-size: 15px;
-    white-space: nowrap;
 }
 
 .brand-line {
@@ -91,9 +90,9 @@ body.dark-theme .navbar {
 }
 
 /* ==================================================
-   NAVBAR LINKLERİ
-   Sayfa içi geçiş bağlantılarını düzenler.
-   ================================================== */
+   NAV LINKS
+================================================== */
+
 .nav-links {
     display: flex;
     align-items: center;
@@ -106,7 +105,7 @@ body.dark-theme .navbar {
     color: var(--secondary-text-color);
     font-weight: 600;
     text-decoration: none;
-    transition: color 0.25s ease;
+    transition: color 0.25s ease, background 0.25s ease;
 }
 
 .nav-links a:hover {
@@ -120,13 +119,13 @@ body.dark-theme .navbar {
 }
 
 /* ==================================================
-   NAVBAR ARAÇLARI
-   Dil ve tema değiştirme butonlarını içerir.
-   ================================================== */
+   LANGUAGE / THEME TOOLS
+================================================== */
+
 .navbar-tools {
     display: flex;
     align-items: center;
-    gap: 12px;
+    flex-shrink: 0;
 }
 
 .toolbar-shell {
@@ -136,7 +135,11 @@ body.dark-theme .navbar {
     padding: 6px;
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    background: color-mix(in srgb, var(--surface-background-color) 88%, transparent);
+    background: rgba(255, 255, 255, 0.88);
+}
+
+body.dark-theme .toolbar-shell {
+    background: rgba(15, 23, 42, 0.88);
 }
 
 .tool-chip {
@@ -170,25 +173,33 @@ body.dark-theme .navbar {
 }
 
 /* ==================================================
-   MOBİL MENÜ BUTONU
-   Küçük ekranlarda hamburger menü olarak görünür.
-   ================================================== */
+   MOBILE MENU BUTTON
+================================================== */
+
 .menu-toggle {
     display: none;
+    align-items: center;
+    justify-content: center;
     min-width: 44px;
     min-height: 44px;
     border: 1px solid var(--border-color);
     border-radius: 12px;
     background: var(--surface-background-color);
     color: var(--primary-text-color);
-    font-size: 26px;
+    font-size: 24px;
     cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.menu-toggle:hover {
+    background: var(--accent-background-color);
+    color: var(--primary-accent-color);
 }
 
 /* ==================================================
-   ANİMASYONLAR
-   Brand yazısı ve cursor efekti için kullanılır.
-   ================================================== */
+   ANIMATIONS
+================================================== */
+
 @keyframes typingLine {
     from {
         max-width: 0;
@@ -211,10 +222,22 @@ body.dark-theme .navbar {
     }
 }
 
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ==================================================
-   RESPONSIVE NAVBAR - TABLET
-   Orta ekranlarda brand alanının taşmasını engeller.
-   ================================================== */
+   TABLET
+================================================== */
+
 @media (max-width: 992px) {
     .navbar-container {
         gap: 14px;
@@ -227,78 +250,210 @@ body.dark-theme .navbar {
     .nav-links {
         gap: 18px;
     }
+
+    .nav-links a {
+        font-size: 15px;
+    }
+
+    .tool-chip {
+        min-width: 38px;
+        min-height: 38px;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
 }
 
 /* ==================================================
-   RESPONSIVE NAVBAR - MOBİL
-   768px altındaki ekranlarda hamburger menü aktif olur.
-   ================================================== */
+   MOBILE
+   Flex order ile doğru sıra:
+   Logo | EN/Theme | Toggle
+   Nav links toggle açılınca altta görünür.
+================================================== */
+
 @media (max-width: 768px) {
     .navbar-container {
+        min-height: 62px;
+        display: flex;
         flex-wrap: wrap;
-        padding-top: 12px;
-        padding-bottom: 12px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding-top: 8px;
+        padding-bottom: 8px;
     }
 
     .brand {
-        max-width: calc(100% - 64px);
-        font-size: 12px;
+        order: 1;
+        flex: 1 1 auto;
+        min-width: 0;
+        max-width: calc(100% - 120px);
+        font-size: 10px;
     }
 
     .brand-line {
-        animation: none;
         max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        animation: none;
+    }
+
+    .brand-cursor {
+        height: 14px;
+    }
+
+    .navbar-tools {
+        order: 2;
+        width: auto;
+        margin: 0;
+        flex: 0 0 auto;
+    }
+
+    .toolbar-shell {
+        gap: 5px;
+        padding: 4px;
+        border-radius: 14px;
+    }
+
+    .tool-chip {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        min-height: 32px;
+        padding: 0;
+        border-radius: 10px;
+    }
+
+    .tool-label {
+        font-size: 10px;
     }
 
     .menu-toggle {
+        order: 3;
         display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: auto;
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+        margin: 0;
+        border-radius: 12px;
+        font-size: 20px;
+        flex: 0 0 auto;
     }
 
     .nav-links {
+        order: 4;
         display: none;
         width: 100%;
         flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
-        margin-left: 0;
-        margin-top: 14px;
-        padding-top: 16px;
+        align-items: stretch;
+        gap: 8px;
+        margin: 8px 0 0;
+        padding: 12px 0 0;
         border-top: 1px solid var(--border-color);
+        animation: slideDown 0.25s ease;
     }
 
     .nav-links.active {
         display: flex;
     }
 
-    .nav-links a {
-        display: inline-block;
-        padding: 4px 0;
+    .nav-links li {
+        width: 100%;
     }
 
-    .navbar-tools {
+    .nav-links a {
+        display: flex;
+        align-items: center;
         width: 100%;
-        justify-content: flex-start;
+        min-height: 40px;
+        padding: 9px 12px;
+        border-radius: 12px;
+        background: var(--surface-background-color);
+        font-size: 14px;
+    }
+
+    .nav-links a:hover {
+        background: var(--accent-background-color);
+        color: var(--primary-accent-color);
     }
 }
 
 /* ==================================================
-   ÇOK KÜÇÜK EKRANLAR
-   Brand yazısının ekrandan taşmasını önler.
-   ================================================== */
-@media (max-width: 420px) {
-    .brand {
-        font-size: 10px;
+   SMALL MOBILE
+================================================== */
+
+@media (max-width: 480px) {
+    .navbar-container {
+        min-height: 56px;
+        gap: 6px;
+        padding-top: 7px;
+        padding-bottom: 7px;
     }
 
-    .toolbar-shell {
-        width: 100%;
-        justify-content: space-between;
+    .brand {
+        max-width: calc(100% - 108px);
+        font-size: 8.7px;
     }
 
     .tool-chip {
-        flex: 1;
+        width: 29px;
+        height: 29px;
+        min-width: 29px;
+        min-height: 29px;
+        border-radius: 9px;
+    }
+
+    .tool-label {
+        font-size: 9.5px;
+    }
+
+    .menu-toggle {
+        width: 37px;
+        height: 37px;
+        min-width: 37px;
+        min-height: 37px;
+        font-size: 18px;
+    }
+
+    .nav-links a {
+        min-height: 38px;
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+}
+/* ==================================================
+   NAVBAR - HERO GAP FIX
+   Navbar ile ilk bölüm arasındaki fazla boşluğu azaltır.
+   Diğer dosyalara dokunmadan çalışır.
+================================================== */
+
+body {
+    padding-top: 78px;
+}
+
+#home.hero-split {
+    min-height: calc(100vh - 78px);
+    padding-top: 24px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 62px;
+    }
+
+    #home.hero-split {
+        min-height: calc(100vh - 62px);
+        padding-top: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 56px;
+    }
+
+    #home.hero-split {
+        min-height: calc(100vh - 56px);
+        padding-top: 18px;
     }
 }
