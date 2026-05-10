@@ -1,10 +1,30 @@
 <?php
-/*
-    DATA FILE
-    Bu dosya portfolyo sitesinde kullanılan profil, about, teknoloji,
-    deneyim ve proje verilerini tek merkezden yönetir.
-*/
+/**
+ * Portfolio Data File
+ * 
+ * This file contains all the content and configuration data for the portfolio website.
+ * It is the single source of truth for:
+ * - Profile information and social links
+ * - About section content
+ * - Technology/skill categories
+ * - Work experience history
+ * - Project showcase details
+ * - Contact form configuration
+ * 
+ * By centralizing all content data here, updates to portfolio content
+ * can be made without modifying HTML/PHP template files.
+ * 
+ * Bilingual Support: All content is provided in both English and Turkish
+ * with 'en' and 'tr' keys throughout the data structure.
+ * 
+ * @author Ayşe Nur Kendirci
+ * @version 1.0
+ */
 
+/**
+ * PROFILE SECTION
+ * Main personal information and contact details
+ */
 $profile = [
     "name" => "Ayşe Nur Kendirci",
 
@@ -68,11 +88,39 @@ $aboutTexts = [
         "tr" => "Disiplinli, detaylara önem veren ve azimli bir geliştiriciyim. Fikirleri çalışan ürünlere dönüştürmekten keyif alıyor ve her gün daha iyi, anlamlı ve kullanıcı odaklı yazılımlar geliştiren bir yazılımcı olmayı hedefliyorum."
     ]
 ];
-/*
-    TECH STACK DATA
-    Teknoloji kartlarında gösterilen yetenekler burada tutulur.
-    Tooltip alanları İngilizce ve Türkçe olarak tanımlanır.
-*/
+
+/**
+ * ABOUT SECTION DATA
+ * Personal background and professional approach paragraphs
+ */
+$aboutTexts = [
+    [
+        "en" => "I am a motivated software developer who enjoys building real-world applications and continuously improving my technical skills. My main focus areas are mobile development, frontend interfaces and backend systems.",
+        "tr" => "Gerçek dünyaya yönelik uygulamalar geliştirmeyi seven, öğrenmeye istekli ve kendini sürekli geliştiren bir yazılım geliştiricisiyim. Ana odak alanlarım mobil geliştirme, frontend arayüzleri ve backend sistemleridir."
+    ],
+    [
+        "en" => "Through internships, academic projects and self-driven learning, I have gained hands-on experience with modern software architectures, component-based development and structured project workflows.",
+        "tr" => "Staj deneyimlerim, akademik projelerim ve bireysel öğrenme sürecim sayesinde modern yazılım mimarileri, component tabanlı geliştirme ve düzenli proje yapıları konusunda pratik deneyim kazandım."
+    ],
+    [
+        "en" => "I am disciplined, detail-oriented and persistent. I enjoy turning ideas into functional products and aim to grow every day as a developer who creates meaningful and user-focused software.",
+        "tr" => "Disiplinli, detaylara önem veren ve azimli bir geliştiriciyim. Fikirleri çalışan ürünlere dönüştürmekten keyif alıyor ve her gün daha iyi, anlamlı ve kullanıcı odaklı yazılımlar geliştiren bir yazılımcı olmayı hedefliyorum."
+    ]
+];
+
+/**
+ * TECHNOLOGY/SKILLS DATA
+ * 
+ * Categorized list of technical skills with:
+ * - Category title (bilingual)
+ * - Skill items with name, icon, and tooltip
+ * - Each skill has bilingual tooltip descriptions
+ * 
+ * Categories:
+ * 1. Mobile Development (Swift, SwiftUI, UIKit, etc.)
+ * 2. Frontend Development (Angular, HTML, CSS, JavaScript)
+ * 3. Backend & Database (C#, .NET Core, SQL Server, etc.)
+ */
 $techCategories = [
     [
         "title" => [
@@ -235,6 +283,19 @@ $techCategories = [
     ]
 ];
 
+/**
+ * EXPERIENCE SECTION DATA
+ * 
+ * Professional and educational experience records including:
+ * - Category/type of experience (internship, education, etc.)
+ * - Duration/date period
+ * - Position title (bilingual)
+ * - Company/institution name
+ * - Description of role (bilingual)
+ * - List of key accomplishments and responsibilities (bilingual)
+ * 
+ * Displayed as chronologically ordered cards on the portfolio
+ */
 $experiences = [
     [
         "category" => [
@@ -382,6 +443,19 @@ $experiences = [
     ]
 ];
 
+/**
+ * PROJECTS SECTION DATA
+ * 
+ * Portfolio project showcase with:
+ * - Project name/title
+ * - Category/type (bilingual)
+ * - Brief description of project (bilingual)
+ * - Technologies used (array of tech names)
+ * - GitHub repository link
+ * 
+ * Projects are displayed as cards in a grid layout
+ * Each card links to the project's GitHub repository
+ */
 $projects = [
     [
         "title" => "CineScope",
@@ -437,11 +511,22 @@ $projects = [
     ]
 ];
 
-/*
-    CONTACT FORM DATA
-    İletişim formunun dil desteği (İngilizce-Türkçe) ile
-    etiketler, yer tutuculular ve butonu merkezi olarak yönetir.
-*/
+/**
+ * CONTACT FORM CONFIGURATION
+ * 
+ * Defines the contact form structure with:
+ * - Form introduction text (bilingual)
+ * - Field definitions with validation rules
+ * - Submit button configuration
+ * 
+ * Form fields include:
+ * - Name (required, text input)
+ * - Email (required, email input with validation)
+ * - Message (required, textarea)
+ * 
+ * All form labels, placeholders, and messages support both English and Turkish.
+ * Form submission is handled by process-form.php
+ */
 $contactForm = [
     "intro" => [
         "en" => "I am open to internship opportunities, junior developer roles and meaningful project collaborations.",

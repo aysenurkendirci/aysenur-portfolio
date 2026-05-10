@@ -1,9 +1,31 @@
-/*
-    Bu dosya tüm CSS parçalarını tek merkezden çağırır.
-    HTML/PHP içinde sadece bu dosya linklenir.
-*/
+/**
+ * Main Stylesheet - Portfolio Website
+ * 
+ * This file imports and organizes all CSS partials into a single namespace.
+ * It follows a modular CSS structure for better maintainability.
+ * 
+ * CSS Organization:
+ * 1. base.css - Reset, colors, and global styles
+ * 2. navbar.css - Navigation bar styling
+ * 3. hero.css - Hero/home section styling
+ * 4. content.css - Main content sections (about, skills, experience, projects, contact)
+ * 
+ * Features:
+ * - Responsive design with mobile-first approach
+ * - Dark theme and light theme support
+ * - CSS custom properties (variables) for easy color changes
+ * - Semantic HTML structure with proper accessibility
+ * - Smooth transitions and animations
+ */
 
+/* Import base styles and theme colors */
 @import url("base.css");
+
+/* Import navigation bar styles */
 @import url("navbar.css");
+
+/* Import hero section styles */
 @import url("hero.css");
+
+/* Import content sections styles */
 @import url("content.css");
