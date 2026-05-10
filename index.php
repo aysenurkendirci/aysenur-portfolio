@@ -1,6 +1,28 @@
 <?php
+/**
+ * Main Portfolio Page
+ * 
+ * This file displays the personal portfolio with multiple sections:
+ * - Hero/Home section with introduction
+ * - About section with background information
+ * - Tech Stack section with skills
+ * - Experience section with work history
+ * - Projects section with portfolio projects
+ * - Contact section with contact form
+ * 
+ * The page supports bilingual content (English/Turkish) with
+ * language switching capability via JavaScript and localStorage.
+ */
+
 include 'data.php';
 
+/**
+ * Security function to escape output
+ * Prevents XSS attacks by converting special characters to HTML entities
+ * 
+ * @param string $value The value to escape
+ * @return string Escaped value safe for HTML output
+ */
 function e($value)
 {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
@@ -10,21 +32,39 @@ function e($value)
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Character encoding for proper text rendering -->
     <meta charset="UTF-8">
+    
+    <!-- Viewport settings for responsive design on all devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page title for browser tab and SEO -->
     <title>Ayşe Nur Kendirci | Personal Portfolio</title>
 
+    <!-- Font Awesome icons library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Dev icons library for technology badges -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Prefetch DNS for external resources -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 </head>
 
 <body class="dark-theme">
+    <!-- Decorative cursor glow effect (visual enhancement) -->
     <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
+    <!-- Include navigation bar -->
     <?php include 'includes/navbar.php'; ?>
 
+    <!-- Main content area -->
     <main>
+        <!-- Hero/Home Section: Introduction and call-to-action -->
         <section id="home" class="hero hero-split" aria-labelledby="hero-title">
             <div class="hero-bg-word" aria-hidden="true">PORTFOLIO</div>
 
@@ -106,6 +146,7 @@ function e($value)
             </div>
         </section>
 
+        <!-- About Section: Personal background and professional approach -->
         <section id="about" class="about section" aria-labelledby="about-title">
             <div class="container">
                 <h2 id="about-title" class="section-title" data-en="About Me" data-tr="Hakkımda">
@@ -123,6 +164,7 @@ function e($value)
             </div>
         </section>
 
+        <!-- Tech Stack Section: Professional skills and technologies -->
         <section id="skills" class="skills section" aria-labelledby="skills-title">
             <div class="container">
                 <h2 id="skills-title" class="section-title" data-en="Tech Stack" data-tr="Teknolojiler">
@@ -163,6 +205,7 @@ function e($value)
             </div>
         </section>
 
+        <!-- Experience Section: Work history and career achievements -->
         <section id="experience" class="experience section" aria-labelledby="experience-title">
             <div class="container">
                 <h2 id="experience-title" class="section-title" data-en="Experience" data-tr="Deneyim">
@@ -215,6 +258,7 @@ function e($value)
             </div>
         </section>
 
+        <!-- Projects Section: Portfolio projects with descriptions and links -->
         <section id="projects" class="projects section" aria-labelledby="projects-title">
             <div class="container">
                 <h2 id="projects-title" class="section-title" data-en="Projects" data-tr="Projeler">
@@ -260,6 +304,7 @@ function e($value)
             </div>
         </section>
 
+        <!-- Contact Section: Contact form and contact information -->
         <section id="contact" class="contact section" aria-labelledby="contact-title">
             <div class="container">
                 <h2 id="contact-title" class="section-title" data-en="Contact" data-tr="İletişim">
@@ -331,39 +376,57 @@ function e($value)
                         </div>
                     </aside>
 
-                    <form class="contact-form" action="process-form.php" method="post">
-                        <?php foreach ($contactForm['fields'] as $field): ?>
-                            <div class="form-group">
-                                <label for="<?= e($field['id']); ?>"
-                                       data-en="<?= e($field['label']['en']); ?>"
-                                       data-tr="<?= e($field['label']['tr']); ?>">
-                                    <?= e($field['label']['en']); ?>
-                                </label>
-                                <?php if ($field['type'] === 'textarea'): ?>
-                                    <textarea
-                                        id="<?= e($field['id']); ?>"
-                                        name="<?= e($field['name']); ?>"
-                                        rows="<?= e($field['rows']); ?>"
-                                        placeholder="<?= e($field['placeholder']['en']); ?>"
-                                        data-placeholder-en="<?= e($field['placeholder']['en']); ?>"
-                                        data-placeholder-tr="<?= e($field['placeholder']['tr']); ?>"
-                                        <?= $field['required'] ? 'required' : ''; ?>
-                                    ></textarea>
-                                <?php else: ?>
-                                    <input
-                                        type="<?= e($field['type']); ?>"
-                                        id="<?= e($field['id']); ?>"
-                                        name="<?= e($field['name']); ?>"
-                                        placeholder="<?= e($field['placeholder']['en']); ?>"
-                                        data-placeholder-en="<?= e($field['placeholder']['en']); ?>"
-                                        data-placeholder-tr="<?= e($field['placeholder']['tr']); ?>"
-                                        <?= $field['required'] ? 'required' : ''; ?>
-                                    >
-                                <?php endif; ?>
-                            </div>
-                        <?php endforeach; ?>
+                    <form class="contact-form" action="process-form.php" method="post" novalidate aria-describedby="form-help">
+                        <fieldset>
+                            <legend class="sr-only">
+                                <span data-en="Contact Form" data-tr="İletişim Formu">Contact Form</span>
+                            </legend>
 
-                        <button type="submit" class="btn contact-submit">
+                            <p id="form-help" class="sr-only">
+                                <span data-en="Fill in your details and message to get in touch"
+                                      data-tr="Benimle iletişim kurmak için ayrıntılarınızı ve mesajınızı doldurun">
+                                    Fill in your details and message to get in touch
+                                </span>
+                            </p>
+                            
+                            <?php foreach ($contactForm['fields'] as $field): ?>
+                                <div class="form-group">
+                                    <label for="<?= e($field['id']); ?>"
+                                           data-en="<?= e($field['label']['en']); ?>"
+                                           data-tr="<?= e($field['label']['tr']); ?>">
+                                        <?= e($field['label']['en']); ?>
+                                        <?php if ($field['required']): ?>
+                                            <span aria-label="required" title="Required">*</span>
+                                        <?php endif; ?>
+                                    </label>
+                                    <?php if ($field['type'] === 'textarea'): ?>
+                                        <textarea
+                                            id="<?= e($field['id']); ?>"
+                                            name="<?= e($field['name']); ?>"
+                                            rows="<?= e($field['rows']); ?>"
+                                            placeholder="<?= e($field['placeholder']['en']); ?>"
+                                            data-placeholder-en="<?= e($field['placeholder']['en']); ?>"
+                                            data-placeholder-tr="<?= e($field['placeholder']['tr']); ?>"
+                                            <?= $field['required'] ? 'required aria-required="true"' : ''; ?>
+                                            aria-label="<?= e($field['label']['en']); ?>"
+                                        ></textarea>
+                                    <?php else: ?>
+                                        <input
+                                            type="<?= e($field['type']); ?>"
+                                            id="<?= e($field['id']); ?>"
+                                            name="<?= e($field['name']); ?>"
+                                            placeholder="<?= e($field['placeholder']['en']); ?>"
+                                            data-placeholder-en="<?= e($field['placeholder']['en']); ?>"
+                                            data-placeholder-tr="<?= e($field['placeholder']['tr']); ?>"
+                                            <?= $field['required'] ? 'required aria-required="true"' : ''; ?>
+                                            aria-label="<?= e($field['label']['en']); ?>"
+                                        >
+                                    <?php endif; ?>
+                                </div>
+                            <?php endforeach; ?>
+                        </fieldset>
+
+                        <button type="submit" class="btn contact-submit" aria-label="Submit contact form">
                             <span data-en="<?= e($contactForm['submit']['text']['en']); ?>"
                                   data-tr="<?= e($contactForm['submit']['text']['tr']); ?>">
                                 <?= e($contactForm['submit']['text']['en']); ?>
@@ -376,8 +439,29 @@ function e($value)
         </section>
     </main>
 
+    <!-- Include footer -->
     <?php include 'includes/footer.php'; ?>
 
+    <!-- JavaScript for language, theme, and interactivity -->
+    <script>
+        /**
+         * Language Preference Handler
+         * Loads the persisted language preference from localStorage on page load
+         * This ensures the page language is restored for returning visitors
+         */
+        (function() {
+            const savedLanguage = localStorage.getItem('portfolio-language');
+            const initialLanguage = savedLanguage || 'en';
+            
+            // Update document language
+            document.documentElement.lang = initialLanguage;
+            
+            // Trigger language initialization in main script
+            window.__initialLanguage = initialLanguage;
+        })();
+    </script>
+    
+    <!-- Main interaction script -->
     <script src="js/script.js"></script>
 </body>
 </html>

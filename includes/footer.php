@@ -1,11 +1,15 @@
 <!--
     FOOTER
-    Sayfanın en alt bölümüdür.
-    Telif hakkı bilgisini ve kısa portfolyo notunu içerir.
+    Page footer with copyright information and site metadata.
+    Located at the bottom of every page for consistent structure.
+    Uses semantic <footer> element with contentinfo role for accessibility.
 -->
-<footer class="footer">
+<footer class="footer" role="contentinfo">
     <div class="container footer-container">
-        <p class="footer-text">
+        <!-- Copyright notice with bilingual support -->
+        <p class="footer-text"
+           data-en="&copy; 2026 Ayşe Nur Kendirci. All rights reserved."
+           data-tr="&copy; 2026 Ayşe Nur Kendirci. Tüm hakları saklıdır.">
             &copy; 2026 Ayşe Nur Kendirci. All rights reserved.
         </p>
     </div>

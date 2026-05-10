@@ -233,3 +233,176 @@ img {
     */
     transition: transform 0.05s linear;
 }
+
+/* ==================================================
+   ERIŞILEBILIRLIK SINIFI
+   sr-only = Screen Reader Only
+   Bu sınıf, görsel olarak gizli fakat ekran okuyucular tarafından
+   okunan metinler içindir. Örn: form legend, skip-to-content linkler
+   ================================================== */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ==================================================
+   BUTON GENEL AYARI
+   Tüm .btn sınıfı butonlar için ortak stil verilir.
+   ================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    background: var(--primary-accent-color);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--primary-accent-color);
+    color: var(--primary-accent-color);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-accent-color);
+    color: #ffffff;
+}
+
+/* ==================================================
+   FORM ELEMANLARI
+   Input, textarea ve select elemanları için ortak stil.
+   ================================================== */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--surface-background-color);
+    color: var(--primary-text-color);
+    font-family: inherit;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-accent-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+textarea {
+    font-family: inherit;
+    resize: vertical;
+    min-height: 120px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-text-color);
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+}
+
+/* ==================================================
+   RESPONSIVE TASARIM - TABLET
+   768px'ten küçük ekranlar için uyarlamalar
+================================================== */
+@media (max-width: 768px) {
+    html {
+        scroll-padding-top: 72px;
+    }
+
+    body {
+        padding-top: 72px;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .section {
+        padding: 42px 0 56px;
+    }
+
+    .section-title {
+        font-size: 32px;
+        margin-bottom: 32px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+        font-size: 16px;
+    }
+}
+
+/* ==================================================
+   RESPONSIVE TASARIM - MOBİL
+   480px'ten küçük ekranlar için uyarlamalar
+================================================== */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 26px;
+        margin-bottom: 24px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 13px;
+        flex-wrap: wrap;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+        padding: 10px 12px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+}
