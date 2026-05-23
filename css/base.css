@@ -1,80 +1,104 @@
 /* ==================================================
-   TEMA RENK DEĞİŞKENLERİ
-   Bu bölümde projenin ana renkleri tanımlanır.
-   Değişken kullanmamızın sebebi, aynı rengi birçok yerde
-   tekrar tekrar yazmak yerine tek yerden kontrol edebilmektir.
+   AÇIK TEMA RENK DEĞİŞKENLERİ
+   
+   Bu bölümde projenin ana renk şeması (light theme) tanımlanır.
+   CSS özel özellikleri (custom properties/variables) kullanılarak,
+   renkler tek bir yerden yönetilir ve tema değişikliği kolaylaştırılır.
+   
+   Renkler WCAG erişilebilirlik standartlarına  uyumludur.
+   Tüm metin/arka plan kombinasyonları 4.5:1 kontrastı sağlar.
+   
+   Faydaları:
+   - Bakım kolaylığı: renk değişirse tek yerde güncellenir
+   - Tema değiştirme: body sınıfı ile tüm renkler otomatik değişir
+   - Kod tekrarı azalır: renk kodları birçok yerde tekrarlanmaz
    ================================================== */
+
 :root {
-    /* Sayfanın genel arka plan rengi */
+    /* Sayfa Arka Planı - Açık gri ton */
     --page-background-color: #f8fafc;
 
-    /* Kartlar, inputlar ve yumuşak alanlar için arka plan rengi */
+    /* Yüzey Arka Planı - Kartlar, alanlar, en açık ton */
     --surface-background-color: #ffffff;
 
-    /* Ana başlıklar ve önemli yazılar için metin rengi */
+    /* Birincil Metin Rengi - Başlıklar ve kalın metinler */
     --primary-text-color: #0f172a;
 
-    /* Açıklama, paragraf ve ikincil bilgiler için metin rengi */
+    /* İkincil Metin Rengi - Açıklama metinleri, paragraflar */
     --secondary-text-color: #334155;
 
-    /* Kart, buton ve input kenarlıkları için border rengi */
+    /* Sınır Rengi - Kart ve input kenarlıkları (yarı saydam) */
     --border-color: rgba(148, 163, 184, 0.22);
 
-    /* Kart yapılarında kullanılan yarı saydam arka plan rengi */
+    /* Kart Arka Plan - Hafif saydam beyaz */
     --card-background-color: rgba(255, 255, 255, 0.92);
 
-    /* Butonlar, link hoverları ve vurgulu alanlar için ana vurgu rengi */
+    /* Vurgu Rengi (Birincil) - Butonlar, linkler, highlight */
     --primary-accent-color: #2563eb;
 
-    /* Hover, badge ve soft vurgular için açık vurgu rengi */
+    /* Vurgu Rengi (Hafif) - Badge arka planları, soft vurgular */
     --accent-background-color: #dbeafe;
 
-    /* Kartlara ve kutulara derinlik vermek için kullanılan gölge */
+    /* Kart Gölgesi - Derinlik ve katman hissi yaratır */
     --card-shadow: 0 14px 38px rgba(2, 6, 23, 0.12);
 }
 
 /* ==================================================
    KOYU TEMA RENK DEĞİŞKENLERİ
-   body etiketine dark-theme class'ı eklendiğinde
-   yukarıdaki renk değişkenleri burada yeniden tanımlanır.
-   Böylece HTML yapısını değiştirmeden tema değişimi yapılır.
+   
+   Body etiketine 'dark-theme' sınıfı eklendiğinde,
+   bu CSS kuralları devreye girerek tüm renk değişkenleri
+   yeniden tanımlanır.
    ================================================== */
+
 body.dark-theme {
-    /* Koyu temada sayfanın genel arka plan rengi */
+    /* Koyu temada sayfa arka planı - Çok koyu mavi-gri */
     --page-background-color: #050816;
 
-    /* Koyu temada kartlar ve inputlar için arka plan rengi */
+    /* Koyu temada yüzey arka planı - Daha açık mavi-gri */
     --surface-background-color: #0f172a;
 
-    /* Koyu temada ana metin rengi */
+    /* Koyu temada birincil metin rengi - Açık gri-beyaz */
     --primary-text-color: #f8fafc;
 
-    /* Koyu temada açıklama metinleri için renk */
+    /* Koyu temada ikincil metin rengi - Orta gri */
     --secondary-text-color: #cbd5e1;
 
-    /* Koyu temada daha yumuşak görünen kenarlık rengi */
+    /* Koyu temada sınır rengi - Yarı saydam açık gri */
     --border-color: rgba(148, 163, 184, 0.16);
 
-    /* Koyu temada kartların arka plan rengi */
+    /* Koyu temada kart arka planı - Yarı saydam mavi-gri */
     --card-background-color: rgba(15, 23, 42, 0.88);
 
-    /* Koyu temada kullanılan ana vurgu rengi */
+    /* Koyu temada vurgu rengi - Daha açık mavi */
     --primary-accent-color: #60a5fa;
 
-    /* Koyu temada hover ve soft vurgu arka planı */
+    /* Koyu temada hafif vurgu - Çok açık mavi */
     --accent-background-color: rgba(59, 130, 246, 0.14);
 
-    /* Koyu temada daha belirgin kart gölgesi */
+    /* Koyu temada kart gölgesi - Daha belirgin ve derin */
     --card-shadow: 0 20px 45px rgba(2, 6, 23, 0.34);
 }
 
 /* ==================================================
-   RESET CSS
-   Tarayıcılar bazı HTML elemanlarına varsayılan margin,
-   padding ve boyutlandırma kuralları verir.
-   Bu bölüm, farklı tarayıcılarda tasarımın aynı görünmesi
-   için bu varsayılan boşlukları sıfırlar.
+   EVRENSEL AYAR (CSS RESET)
+   
+   Çapraz Tarayıcı Uyumluluğu:
+   Farklı tarayıcılar (Chrome, Firefox, Safari, Edge, vb.),
+   HTML elemanlarına varsayılan margin, padding ve boyut kuralları
+   uygularlar. Bu tutarsızlıklar tasarımı bozar.
+   
+   Çözüm:
+   Tüm elemanların varsayılan boşluklarını sıfırlayarak,
+   tutarlı bir başlangıç noktası oluştururuz.
+   
+   Teknik Detaylar:
+   - Margin/Padding: Hepsi 0 ile sıfırlanır
+   - Box-sizing: border-box ile padding ve border,
+     width/height hesaplamalarına dahil edilir.
+     Böylece kutu boyutlandırması daha öngörülebilir olur.
    ================================================== */
+
 * {
     /* Tüm elemanların dış boşluğunu sıfırlar */
     margin: 0;
@@ -83,100 +107,166 @@ body.dark-theme {
     padding: 0;
 
     /*
-       width ve height hesaplanırken padding ve border da dahil edilir.
-       Böylece kutuların boyutunu kontrol etmek daha kolay olur.
+       Box Model Hesaplaması: border-box modeli kullanılır.
+       
+       Varsayılan (content-box):
+         width = içerik genişliği (padding ve border hariç)
+       
+       border-box:
+         width = içerik + padding + border
+       
+       Avantajı: Kutu boyutlandırması daha kolay ve tahmin edilebilir.
+       Örn: width: 100px, padding: 10px → Toplam 100px olur, 120px olmaz.
     */
     box-sizing: border-box;
 }
 
 /* ==================================================
    HTML GENEL AYARI
-   Sayfa içi bağlantılara tıklanınca ani geçiş yerine
-   yumuşak kaydırma efekti verir.
-   Örneğin navbar'daki About linki #about alanına yumuşak iner.
+   Teknik İmplementasyon:
+   - scroll-behavior: smooth → Tüm sayfa scroll işlemlerinde
+     yumuşak animasyon uygulanır (#about, #skills vb. linkler için)
+   
+   Navbar Boşluğu:
+   - scroll-padding-top: Scroll işlemi sırasında, element sayfanın
+     en üstüne gelmek yerine, navbar yüksekliği kadar aşağıdan
+     gelir. Böylece navbar içeriği örtmez.
    ================================================== */
 html {
+    /* Tüm internal anchor linkleri için yumuşak kaydırma */
     scroll-behavior: smooth;
+
+    /* Navbar sabit olduğu için (height: 88px) scroll sırasında bu kadar padding ekler */
     scroll-padding-top: 88px;
 }
 
 /* ==================================================
    BODY GENEL TASARIMI
-   body tüm sayfanın ana kapsayıcısıdır.
-   Font, arka plan, yazı rengi ve genel geçiş efektleri
-   burada tanımlanır.
+   
+   Sayfanın temel yapıtaşı olan body öğesi için
+   genel font, renk, scroll davranışı ve tema geçişleri tanımlanır.
    ================================================== */
-/* ==================================================
-   BODY GENEL TASARIMI
-   Sayfanın genel font, renk ve sabit navbar boşluğu burada tanımlanır.
-   ================================================== */
+
 body {
+    /* Sayfanın temel fontu - yaygın ve okunabilir */
     font-family: Arial, sans-serif;
+
+    /* Satırlar arası boşluk - okunabilirlik için önemli */
     line-height: 1.6;
+
+    /* Sayfa arka planı - tema değişkeninden alınır */
     background: var(--page-background-color);
+
+    /* Metin rengi - tema değişkeninden alınır */
     color: var(--primary-text-color);
-    overflow-x: hidden;
+
+    /* Sabit navbar için boşluk */
     padding-top: 88px;
+
+    /* Yatay scrollbar gizleme (responsive tasarım) */
+    overflow-x: hidden;
+
+    /* Tema değişimi sırasında yumuşak renk geçişi */
     transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* ==================================================
    LİNK GENEL AYARI
-   Tüm <a> etiketleri için ortak stil verilir.
-   Böyle yazmamızın sebebi, projedeki bütün linklerin
-   varsayılan mavi ve altı çizili tarayıcı stilinden çıkmasıdır.
+   
+   Tarayıcı Varsayılanları:
+   HTML'deki <a> etiketlerine tarayıcı varsayılan olarak:
+   - Mavi renk (#0563c1)
+   - Alt çizgi (text-decoration: underline)
+   uygular. Bu, genellikle tasarımla uyuşmaz.
+   
+   Çözüm:
+   Tüm linklere tutarlı bir stil uygularız ve gerektiğinde
+   kontekste uygun renkler kullanırız.
+   
+   Renkler:
+   - inherit: LinkIn rengini, üst öğenin yazı renginden alır.
+     Örn: navbar içindeki link → navbar yazı rengi
+          footer içindeki link → footer yazı rengi
+   - Bu sayede, her bölümde linklerin doğru görünmesini sağlarız.
+   
+   Text Decoration:
+   - Hover ve focus durumlarında alt çizgi / renk değişimi ile
+     link olduğu anlaşılır hale getirilir.
    ================================================== */
+
 a {
-    /*
-       Linkin rengini bulunduğu alanın yazı renginden almasını sağlar.
-       Örneğin navbar içindeyse navbar rengine, footer içindeyse footer rengine uyar.
-    */
+    /* Linkin rengini üst öğenin renginden alır */
     color: inherit;
 
-    /* Linklerde varsayılan alt çizgiyi kaldırır */
+    /* Varsayılan alt çizgiyi kaldırır */
     text-decoration: none;
 }
 
 /* ==================================================
-   GÖRSEL GENEL AYARI
-   Sayfadaki tüm img etiketleri için ortak responsive ayarlar.
-   Görsellerin kapsayıcı alanı taşmaması için kullanılır.
+   GÖRSEL (IMG) GENEL AYARI
+   
+   Responsive Tasarım:
+   Mobil, tablet ve masaüstü cihazlarda görsellerin
+   konteyner genişliğini aşmaması için kurallar tanımlanır.
+   
+   Max-Width Kullanımı:
+   - max-width: 100% → Görsel asla ana containerından geniş olmaz
+   - Ör: 500px'lik bir resim 300px'lik konteynerde 300px olur
+   - Responsive tasarımın temelini oluşturur
+   
+   Display Block:
+   - Varsayılan: img inline elemanı (yazı gibi) davranır
+   - Inline davranışında, öğenin altında küçük boşluk kalır
+   - display: block ile bu boşluk kaldırılır
+   - Grid/Flex layout'larda daha tutarlı davranır
+   
+   Height Ayarı:
+   - Yükseklik otomatik → Görselin en-boy oranı korunur
+   - Deformasyon olmaz (sıkışmış/gerilmiş görünmez)
    ================================================== */
+
 img {
-    /*
-       Görselin maksimum genişliği bulunduğu kapsayıcının genişliğini aşamaz.
-       Bu responsive tasarım için önemlidir.
-    */
+    /* Görselin kapsayıcıyı aşmaması */
     max-width: 100%;
 
-    /*
-       img etiketi varsayılan olarak inline davranabilir.
-       display block yaparak altında oluşabilecek küçük boşlukları engelleriz.
-    */
+    /* Inline davranışını blok davranışına çevirir */
     display: block;
+
+    /* En-boy oranını korur (otomatik hesaplanır) */
+    height: auto;
 }
 
 /* ==================================================
-   ORTAK CONTAINER YAPISI
-   Sayfa içeriklerini ortalamak ve belirli bir maksimum genişlikte
-   tutmak için kullanılır.
+   ORTAK KONTEYNER AYARI
+   
+   Tasarım Esası (Design Principle - Max-Width):
+   Modern web tasarımında, içeriğin genişliği sınırlandırılır.
+   Nedenler:
+   - Okunabilirlik: 80-100 karakter genişliğinde metinler en rahat okunur
+   - Gözün takip etmesi: Çok geniş satırlar göz hareketini zorlaştırır
+   - Estetik: Sınırlı genişlik tasarımı daha profesyonel görünür
+   
+   İmplementasyon:
+   - width: 90% → Küçük ekranlarda (mobil) % oranlarla responsive olur
+   - max-width: 1180px → Büyük ekranlarda maksimum genişlik sınırı
+   - margin: 0 auto → Yatay ve dikey merkezleme (auto margin tekniği)
+   
+   Responsive Davranış:
+   - 320px mobil: Kullanılan alan = 320px * 0.9 = 288px
+   - 768px tablet: Kullanılan alan = 768px * 0.9 = 691px
+   - 1400px masaüstü: Kullanılan alan = 1180px (max-width limiti)
+   
+   Bu sayede tüm ekranlarda optimal bir genişlik sağlanır.
    ================================================== */
+
 .container {
-    /*
-       Ekranın %90'ını kullanır.
-       Böylece küçük ekranlarda kenarlarda boşluk kalır.
-    */
+    /* Mobil-ilk yaklaşımda: ekranın %90'ını kullan */
     width: 90%;
 
-    /*
-       Büyük ekranlarda içeriğin çok fazla genişlemesini engeller.
-       Okunabilirliği artırır.
-    */
+    /* Büyük ekranlarda çok geniş olmasını engelle */
     max-width: 1180px;
 
-    /*
-       Sağ ve sol margin auto verilerek container yatayda ortalanır.
-    */
+    /* Yatay merkezleme: sağ-sol margin otomatik eşit dağılır */
     margin: 0 auto;
 }
 

@@ -1,22 +1,3 @@
-/**
- * Ana Stil Dosyası - Portföy Web Sitesi
- * 
- * Bu dosya tüm CSS parça dosyalarını tek bir ad alanında içeri aktarır ve düzenler.
- * Bakım kolaylığı için modüler CSS yapısını takip eder.
- * 
- * CSS Yapısı:
- * 1. base.css - Sıfırlama, renkler ve global stiller
- * 2. navbar.css - Navigasyon çubuğu stilleri
- * 3. hero.css - Hero/ana bölüm stilleri
- * 4. content.css - Ana içerik bölümleri (hakkımda, beceriler, deneyim, projeler, iletişim)
- * 
- * Özellikler:
- * - Mobil-ilk yaklaşımla responsive tasarım
- * - Koyu ve açık tema desteği
- * - Kolay renk değişiklikleri için CSS özel özellikler (değişkenler)
- * - Uygun erişilebilirlik ile semantik HTML yapısı
- * - Yumuşak geçişler ve animasyonlar
- */
 
 /* Temel stiller ve tema renkleri içeri aktarıldı */
 @import url("base.css");

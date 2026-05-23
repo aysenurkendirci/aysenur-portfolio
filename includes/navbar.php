@@ -1,14 +1,7 @@
-<!-- 
-    NAVİGASYON ÇUBUĞU
-    Logo, menü linkleri ve tema/dil değiştirme düğmeleri içeren ana navigasyon başlığı.
-    Bu bileşen tüm sayfaların başında dahil edilir ve tutarlı navigasyon sağlar.
-    Uygun belge yapısı için semantik <header> ve <nav> öğeleri kullanılır.
--->
+
 <header class="site-header" role="banner">
     <nav class="navbar" aria-label="Ana navigasyon">
         <div class="container navbar-container">
-
-            <!-- Marka/Logo: Kod yazımı stilinde geliştirici adını gösterir -->
             <a href="index.php#home" class="brand" aria-label="Ana bölüme git">
                 <span class="brand-line">
                     <span class="token-const">const</span>
@@ -20,8 +13,25 @@
                 </span>
             </a>
 
-            <!-- Mobil Menü Aç/Kapa Düğmesi -->
-            <!-- Küçük ekranlarda görünür, mobil navigasyon menüsünü kontrol eder -->
+            <!-- 
+                MOBİL MENÜ AÇ/KAPA DÜĞMESI
+                
+                Davranış:
+                - Sadece 768px altında görünür (CSS @media)
+                - Tıklanınca .nav-links.active class'ı toggle eder
+                - JavaScript: classList.toggle("active")
+                
+                Erişilebilirlik:
+                - type="button": Anlamsal doğruluk
+                - aria-label: Ne yaptığını açıklar
+                - aria-controls="navLinks": Hangi öğeyi kontrol eder
+                - aria-expanded: Menü açık mı kapalı mı
+                
+                İçerik:
+                - ☰: Hamburger ikonu (Unicode)
+                - aria-hidden="true": İkonu ekran okuyucudan gizle
+                  (aria-label zaten açıklamalı)
+            -->
             <button
                 class="menu-toggle"
                 id="menuToggle"
@@ -33,8 +43,29 @@
                 <span aria-hidden="true">☰</span>
             </button>
 
-            <!-- Navigasyon Linkleri Listesi -->
-            <!-- Portföyün farklı bölümlerine gitmek için linkler -->
+            <!-- 
+                NAVIGASYON LINKLERI
+                
+                Semantic HTML:
+                - <ul>: Unordered list (sırasız liste)
+                - <li>: List item (her link bir list item)
+                - Anlamsal olarak "linkler listesi" demektir
+                
+                Çok Dilli Veriler:
+                - data-en="..." : İngilizce metin
+                - data-tr="..." : Türkçe metin
+                - İçerik: Varsayılan (İngilizce)
+                - JavaScript dil değişince metin güncellenir
+                
+                Responsive Davranış:
+                - Desktop: display: flex (görünür)
+                - Mobil: display: none (gizli)
+                - .active class: display: flex (göster)
+                
+                İç Linkler (#):
+                - index.php#about → sayfa içinde about bölümüne atla
+                - HTML Smooth Scroll: css/base.css scroll-behavior: smooth
+            -->
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.php#about" data-en="About" data-tr="Hakkımda">About</a></li>
                 <li><a href="index.php#skills" data-en="Tech Stack" data-tr="Teknolojiler">Tech Stack</a></li>
@@ -56,11 +87,30 @@
                 </li>
             </ul>
 
-            <!-- Tema ve Dil Değiştirme Araçları Çubuğu -->
-            <!-- Görsel tema ve dil tercihi ayarları -->
+            <!-- 
+                TEMA VE DİL AYARLARI
+                
+                Amacı:
+                - Dil seçimi (EN/TR)
+                - Tema seçimi (☾/☀)
+                
+                Tasarım:
+                - toolbar-shell: İçeriği bir "bar" içine alır
+                - tool-chip: Her düğme
+                
+                Erişilebilirlik:
+                - aria-label: Düğmenin amacını açıklar
+                - title: Hover'da tooltip (açıklama)
+                - Focusable: Tab tuşu ile erişilebilir
+                
+                JavaScript Bağlantısı:
+                - id="themeToggle": JS tarafından seçilir
+                - id="langToggle": JS tarafından seçilir
+                - addEventListener("click", ...): Tıklamaya tepki
+            -->
             <div class="navbar-tools" aria-label="Sayfa ayarları">
                 <div class="toolbar-shell">
-                    <!-- Dil Değiştirme Düğmesi -->
+                    <!-- Dil Seçimi Düğmesi -->
                     <button
                         class="tool-chip"
                         id="langToggle"
@@ -71,7 +121,7 @@
                         <span class="tool-label">TR</span>
                     </button>
 
-                    <!-- Tema Değiştirme Düğmesi -->
+                    <!-- Tema Seçimi Düğmesi -->
                     <button
                         class="tool-chip"
                         id="themeToggle"

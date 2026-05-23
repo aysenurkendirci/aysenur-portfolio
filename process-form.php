@@ -1,27 +1,13 @@
 <?php
-/**
- * İletişim Formu İşleme Sayfası
- * 
- * Bu dosya ana portföy sayfasından gelen iletişim formu gönderilerini işler.
- * Form verilerini doğrular ve başarı veya hata mesajı gösterir.
- * 
- * Özellikler:
- * - Girdi doğrulaması (ad, e-posta, mesaj)
- * - E-posta biçimi doğrulaması
- * - Güvenlik: XSS saldırılarını önlemek için HTML kaçış karakteri
- * - Çok dilli destek (İngilizce/Türkçe)
- * - Uygun HTTP yöntem kontrolü
- */
-
 include 'data.php';
-
 /**
  * Güvenlik Fonksiyonu: Çıkışı Kaçış Karakteri ile İşle
  * XSS saldırılarını önler - özel karakterleri HTML entitylerine dönüştürür
  * 
  * @param string $value Kaçış işlemi yapılacak değer
  * @return string HTML çıkış için güvenli kaçışlı değer
- */
+*/
+/*Kullanıcıdan gelen verileri direkt ekrana basmadım. XSS saldırılarını önlemek için htmlspecialchars kullanan e() fonksiyonu oluşturdum. Bu fonksiyon, özel karakterleri HTML entitylerine dönüştürerek zararlı kodların çalışmasını engeller. Formdan gelen verileri ekrana basarken e() fonksiyonunu kullanarak güvenliği sağlıyorum.*/
 function e($value)
 {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
@@ -42,6 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $message = trim($_POST['message'] ?? '');
+//* trim() fonksiyonu, kullanıcıdan gelen verilerin başındaki ve sonundaki gereksiz boşlukları kaldırır.*/
+//*?? '' Eğer veri gelmezse boş string verir. Hata oluşmasını engeller.
 
     // Zorunlu alanları doğrula
     if ($name === '' || $email === '' || $message === '') {
@@ -57,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     else {
         $isSuccess = true;
         
-        // TODO: E-posta gönderme işlevi burayı ekleyin
+        //  E-posta gönderme işlevi buraya eklenicek
         // Örnek: mail($profile["email"], "Portföy İletişim Formu", "Gönderen: $email\n\n$message");
     }
 } else {
@@ -90,6 +78,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body class="dark-theme">
+    <a href="#main-content" class="sr-only" tabindex="1">
+        <span data-en="Skip to main content" data-tr="Ana içeriğe atla">
+            Skip to main content
+        </span>
+    </a>
+
     <!-- Dekoratif İmleç Parıltı Efekti (görsel iyileştirme) -->
     <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
@@ -97,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php include 'includes/navbar.php'; ?>
 
     <!-- Ana İçerik Alanı -->
-    <main>
+    <main id="main-content">
         <!-- İletişim Sonucu Bölümü: Başarı veya hata mesajı gösterir -->
         <section class="contact-result-section section" aria-labelledby="result-title">
             <div class="container">

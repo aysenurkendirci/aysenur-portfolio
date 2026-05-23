@@ -1,52 +1,111 @@
 /* ==================================================
-   NAVBAR GENEL YAPISI
-================================================== */
+   NAVBAR GENEL YAPISI VE POSITION
+   
+   Sabit (Fixed) Navbar Tasarımı:
+   - position: fixed ile navbar sayfada sabit kalır
+   - Sayfa scroll olsa bile navbar görünür
+   - Tüm içerik navbar altında geliştirilir
+   
+   Z-Index (Katmanlar):
+   - z-index: 9999 ile navbar tüm diğer elemanların üstünde
+   - 9999 çok yüksek olsa da, modal ve popup'lardan
+     kurtulmanın en güvenli yolu
+   
+   Backdrop Filter (Cam Efekti):
+   - blur(14px): Navbar arkasındaki içerik bulanık görünür
+   - Modern tarayıcılar destekler (Chrome, Safari, Firefox)
+   - -webkit- prefix ile WebKit tarayıcıları desteklenir
+   - IE/Edge eski sürümleri desteklemez (graceful degradation)
+   
+   Erişilebilirlik:
+   - role="banner" HTML5'te <header> için implicit role
+   - Ekran okuyucular bu bölümü başlık olarak algılar
+   ================================================== */
 
 .site-header {
+    /* Sayfada sabit konumlama */
     position: fixed;
+
+    /* Sayfanın en üst başı */
     top: 0;
+
+    /* Sayfanın sol tarafına koy */
     left: 0;
+
+    /* Tam ekran genişliğini kapla */
     width: 100%;
+
+    /* Tüm diğer elemanlarının üstünde olsun */
     z-index: 9999;
 }
 
 .navbar {
+    /* Tam ekran genişliği */
     width: 100%;
+
+    /* Açık temada seçilmiş gri-beyaz arka plan */
     background: rgba(248, 250, 252, 0.92);
+
+    /* Subtil sınır (altında) */
     border-bottom: 1px solid var(--border-color);
+
+    /* Gölge ile ufak bir derinlik efekti */
     box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+
+    /* Arka planda bulanık efekt - modern tarayıcılar destekler */
     backdrop-filter: blur(14px);
+
+    /* Apple Safari / iOS Safari uyumluluğu için */
     -webkit-backdrop-filter: blur(14px);
 }
 
+/* Koyu temada navbar arka planını karşılık gelen renge çevir */
 body.dark-theme .navbar {
     background: rgba(5, 8, 22, 0.92);
 }
 
-/* ==================================================
-   NAVBAR CONTAINER
-================================================== */
 
 .navbar-container {
+    /* Navbar minimum yüksekliği */
     min-height: 78px;
+
+    /* Yatay esnek düzen */
     display: flex;
+
+    /* Dikey olarak ortala */
     align-items: center;
+
+    /* Logo sola, tools sağa */
     justify-content: space-between;
+
+    /* Öğeler arası boşluk */
     gap: 20px;
 }
 
-/* ==================================================
-   BRAND
-================================================== */
-
+   /*const developer = "Ayşe Nur Kendirci";*/
 .brand {
+    /* Inline görünüm, yanyana yani */
     display: inline-flex;
+
+    /* Dikey merkezleme */
     align-items: center;
+
+    /* Mobil'de text overflow'u engelle */
     max-width: 100%;
+
+    /* Taşan metni gizle */
     overflow: hidden;
+
+    /* Tek satırda kalsın */
     white-space: nowrap;
+
+    /* Link stilini kaldır */
     text-decoration: none;
+
+    /* Yazı tipi: monospace (kod görünümü) */
     font-family: "Fira Code", Consolas, monospace;
+
+    /* Yazı boyutu */
     font-size: 15px;
 }
 
