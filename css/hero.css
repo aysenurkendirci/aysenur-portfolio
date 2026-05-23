@@ -1,506 +1,508 @@
-/* ==================================================
-   HERO SECTION
-   Sayfanın ilk açılışta görünen ana tanıtım alanıdır.
-   İki kolonlu yapı kullanır: sol tarafta metinler,
-   sağ tarafta profil kartı bulunur.
-   ================================================== */
-/* ==================================================
-   HERO SECTION
-   İlk açılış ekranıdır.
-   Navbar sabit olduğu için yükseklik navbar yüksekliği çıkarılarak hesaplanır.
-   ================================================== */
+/* HERO SECTION: Sayfanın ilk görünen ana bölümünü stillendirir. */
 .hero-split {
-    position: relative;
-    min-height: calc(100vh - 88px);
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    padding: 48px 0 56px;
-    background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 25%),
-        radial-gradient(circle at top right, rgba(168, 85, 247, 0.16), transparent 22%),
-        linear-gradient(180deg, #050816 0%, #081122 100%);
+    position: relative; /* İçindeki absolute öğelerin bu alana göre konumlanmasını sağlar. */
+    min-height: calc(100vh - 88px); /* Ekran yüksekliğinden navbar yüksekliğini çıkarır. */
+    display: flex; /* İçeriği flex düzenine alır. */
+    align-items: center; /* İçeriği dikeyde ortalar. */
+    overflow: hidden; /* Taşan dekoratif öğeleri gizler. */
+    padding: 48px 0 56px; /* Üst, sağ-sol ve alt boşluk verir. */
+    background: /* Arka plana çok katmanlı efekt verir. */
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 25%), /* Sol üstte mavi ışık efekti oluşturur. */
+        radial-gradient(circle at top right, rgba(168, 85, 247, 0.16), transparent 22%), /* Sağ üstte mor ışık efekti oluşturur. */
+        linear-gradient(180deg, #050816 0%, #081122 100%); /* Koyu lacivert dikey geçiş verir. */
 }
+
+/* Light theme açıkken hero arka planını açık renge çevirir. */
 body.light-theme .hero-split {
-    background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 25%),
-        radial-gradient(circle at top right, rgba(168, 85, 247, 0.10), transparent 22%),
-        linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
+    background: /* Açık tema için arka plan efektleri. */
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 25%), /* Sol üstte daha hafif mavi efekt verir. */
+        radial-gradient(circle at top right, rgba(168, 85, 247, 0.10), transparent 22%), /* Sağ üstte daha hafif mor efekt verir. */
+        linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%); /* Açık mavi-beyaz geçişli arka plan oluşturur. */
 }
 
-/* Dekoratif arka plan yazısıdır. */
+/* Arka plandaki büyük dekoratif yazıyı ayarlar. */
 .hero-bg-word {
-    position: absolute;
-    left: 50%;
-    top: 58%;
-    z-index: 0;
-    transform: translate(-50%, -50%);
-    font-size: clamp(80px, 18vw, 280px);
-    font-weight: 900;
-    letter-spacing: 10px;
-    color: rgba(255, 255, 255, 0.05);
-    user-select: none;
-    pointer-events: none;
+    position: absolute; /* Yazıyı hero içinde bağımsız konumlandırır. */
+    left: 50%; /* Yatayda ortaya alır. */
+    top: 58%; /* Dikeyde biraz aşağı konumlandırır. */
+    z-index: 0; /* İçeriğin arkasında kalmasını sağlar. */
+    transform: translate(-50%, -50%); /* Tam merkezleme yapar. */
+    font-size: clamp(80px, 18vw, 280px); /* Ekrana göre büyüyüp küçülen font boyutu verir. */
+    font-weight: 900; /* Yazıyı çok kalın yapar. */
+    letter-spacing: 10px; /* Harfler arasını açar. */
+    color: rgba(255, 255, 255, 0.05); /* Yazıyı çok silik beyaz yapar. */
+    user-select: none; /* Kullanıcının yazıyı seçmesini engeller. */
+    pointer-events: none; /* Yazının tıklamaları engellememesini sağlar. */
 }
 
+/* Açık temada arka plan yazısının rengini koyu ama silik yapar. */
 body.light-theme .hero-bg-word {
-    color: rgba(15, 23, 42, 0.06);
+    color: rgba(15, 23, 42, 0.06); /* Açık temada silik lacivert görünüm verir. */
 }
 
-/* Hero içeriğini iki sütuna ayırır. */
+/* Hero içeriğini iki sütunlu düzene sokar. */
 .hero-split-layout {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: center;
-    gap: 40px;
+    position: relative; /* z-index'in çalışması için konumlandırma verir. */
+    z-index: 2; /* İçeriği arka plan yazısının üstüne çıkarır. */
+    display: grid; /* Grid sistemi kullanır. */
+    grid-template-columns: 1.1fr 0.9fr; /* Sol sütunu sağdan biraz geniş yapar. */
+    align-items: center; /* Sütun içeriklerini dikeyde ortalar. */
+    gap: 40px; /* İki sütun arasına boşluk verir. */
 }
 
+/* Sol taraftaki yazı alanının maksimum genişliğini belirler. */
 .hero-left {
-    max-width: 640px;
+    max-width: 640px; /* Yazıların fazla genişlemesini engeller. */
 }
 
+/* Giriş cümlesini stillendirir. */
 .intro-line {
-    margin-bottom: 10px;
-    color: var(--primary-text-color);
-    font-size: 28px;
-    font-weight: 600;
+    margin-bottom: 10px; /* Altına boşluk bırakır. */
+    color: var(--primary-text-color); /* Tema ana yazı rengini kullanır. */
+    font-size: 28px; /* Yazı boyutunu ayarlar. */
+    font-weight: 600; /* Yarı kalın görünüm verir. */
 }
 
+/* İsim alanını büyük ve dikey şekilde gösterir. */
 .hero-name {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 16px;
-    color: var(--primary-accent-color);
-    font-size: clamp(52px, 7vw, 98px);
-    line-height: 0.95;
-    font-weight: 900;
+    display: flex; /* İçindeki span/öğeleri flex yapar. */
+    flex-direction: column; /* İsmi alt alta dizer. */
+    margin-bottom: 16px; /* Alt boşluk verir. */
+    color: var(--primary-accent-color); /* Ana vurgu rengini kullanır. */
+    font-size: clamp(52px, 7vw, 98px); /* Responsive büyük başlık boyutu verir. */
+    line-height: 0.95; /* Satır aralığını sıkılaştırır. */
+    font-weight: 900; /* Çok kalın yazı yapar. */
 }
 
+/* Meslek/rol yazısını ayarlar. */
 .hero-role {
-    margin-bottom: 18px;
-    color: var(--primary-text-color);
-    font-size: 34px;
-    font-weight: 700;
+    margin-bottom: 18px; /* Alt boşluk verir. */
+    color: var(--primary-text-color); /* Ana yazı rengini kullanır. */
+    font-size: 34px; /* Rol yazısını büyük gösterir. */
+    font-weight: 700; /* Kalın yapar. */
 }
 
+/* Açıklama paragrafını ayarlar. */
 .hero-description {
-    max-width: 560px;
-    margin-bottom: 28px;
-    color: var(--secondary-text-color);
-    font-size: 19px;
+    max-width: 560px; /* Paragrafın fazla uzamasını engeller. */
+    margin-bottom: 28px; /* Butonlarla arasında boşluk bırakır. */
+    color: var(--secondary-text-color); /* İkincil yazı rengini kullanır. */
+    font-size: 19px; /* Okunabilir paragraf boyutu verir. */
 }
 
-/* Hero butonları. */
+/* Hero butonlarının bulunduğu alanı düzenler. */
 .hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-bottom: 24px;
+    display: flex; /* Butonları yan yana dizer. */
+    flex-wrap: wrap; /* Alan yetmezse alt satıra geçirir. */
+    gap: 16px; /* Butonlar arasında boşluk bırakır. */
+    margin-bottom: 24px; /* Sosyal ikonlarla arasında boşluk bırakır. */
 }
 
-/* Ortak buton tasarımı. */
+/* Ortak buton tasarımını oluşturur. */
 .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 13px 24px;
-    border: none;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #2563eb, #3b82f6);
-    color: #ffffff;
-    cursor: pointer;
-    font-weight: 700;
-    text-decoration: none;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: inline-flex; /* Buton içeriğini hizalamak için flex yapar. */
+    align-items: center; /* İçeriği dikeyde ortalar. */
+    justify-content: center; /* İçeriği yatayda ortalar. */
+    min-height: 44px; /* Minimum buton yüksekliği verir. */
+    padding: 13px 24px; /* İç boşluk verir. */
+    border: none; /* Varsayılan kenarlığı kaldırır. */
+    border-radius: 12px; /* Köşeleri yuvarlatır. */
+    background: linear-gradient(135deg, #2563eb, #3b82f6); /* Mavi gradient arka plan verir. */
+    color: #ffffff; /* Yazıyı beyaz yapar. */
+    cursor: pointer; /* Üzerine gelince el işareti çıkarır. */
+    font-weight: 700; /* Yazıyı kalın yapar. */
+    text-decoration: none; /* Link alt çizgisini kaldırır. */
+    transition: transform 0.25s ease, box-shadow 0.25s ease; /* Hover geçişlerini yumuşatır. */
 }
 
+/* Butonun üzerine gelince hafif yukarı çıkarır. */
 .btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px); /* Butonu 2px yukarı taşır. */
 }
 
+/* Klavye ile butona gelindiğinde erişilebilir odak efekti verir. */
 .btn:focus {
-    outline: 2px solid var(--primary-accent-color);
-    outline-offset: 4px;
+    outline: 2px solid var(--primary-accent-color); /* Vurgu renginde dış çizgi verir. */
+    outline-offset: 4px; /* Çizgiyi butondan biraz uzaklaştırır. */
 }
 
+/* İkincil buton tasarımını ayarlar. */
 .btn-secondary {
-    border: 1px solid var(--border-color);
-    background: transparent;
-    color: var(--primary-text-color);
+    border: 1px solid var(--border-color); /* İnce kenarlık verir. */
+    background: transparent; /* Arka planı şeffaf yapar. */
+    color: var(--primary-text-color); /* Tema yazı rengini kullanır. */
 }
 
-/* Sosyal medya ikonları. */
+/* Sosyal medya ikonlarının kapsayıcısını düzenler. */
 .hero-social-icons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
+    display: flex; /* İkonları yan yana dizer. */
+    flex-wrap: wrap; /* Küçük ekranda alt satıra geçmelerini sağlar. */
+    gap: 16px; /* İkonlar arası boşluk verir. */
 }
 
+/* Sosyal medya ikon linklerini kutu şeklinde tasarlar. */
 .hero-social-icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 52px;
-    height: 52px;
-    border: 1px solid var(--border-color);
-    border-radius: 14px;
-    background: var(--card-background-color);
-    color: var(--primary-accent-color);
-    font-size: 24px;
-    text-decoration: none;
-    box-shadow: var(--card-shadow);
-    transition: transform 0.25s ease;
+    display: flex; /* İkonu hizalamak için flex yapar. */
+    align-items: center; /* İkonu dikeyde ortalar. */
+    justify-content: center; /* İkonu yatayda ortalar. */
+    width: 52px; /* İkon kutusunun genişliğini belirler. */
+    height: 52px; /* İkon kutusunun yüksekliğini belirler. */
+    border: 1px solid var(--border-color); /* Kenarlık verir. */
+    border-radius: 14px; /* Köşeleri yuvarlatır. */
+    background: var(--card-background-color); /* Kart arka plan rengini kullanır. */
+    color: var(--primary-accent-color); /* İkon rengini vurgu rengi yapar. */
+    font-size: 24px; /* İkon boyutunu belirler. */
+    text-decoration: none; /* Link alt çizgisini kaldırır. */
+    box-shadow: var(--card-shadow); /* Kart gölgesi verir. */
+    transition: transform 0.25s ease; /* Hover hareketini yumuşatır. */
 }
 
+/* Sosyal ikonun üzerine gelince yukarı hareket ettirir. */
 .hero-social-icons a:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px); /* İkon kutusunu 4px yukarı taşır. */
 }
 
+/* Sosyal ikonlara klavye ile gelindiğinde odak efekti verir. */
 .hero-social-icons a:focus {
-    outline: 2px solid var(--primary-accent-color);
-    outline-offset: 4px;
+    outline: 2px solid var(--primary-accent-color); /* Dış odak çizgisi verir. */
+    outline-offset: 4px; /* Çizgiyi kutudan uzaklaştırır. */
 }
 
-/* Hero sağ profil kartı alanı. */
+/* Hero sağ taraf profil kartı alanını ayarlar. */
 .hero-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
+    display: flex; /* İçeriği flex yapar. */
+    flex-direction: column; /* Öğeleri alt alta dizer. */
+    align-items: center; /* Yatayda ortalar. */
+    gap: 24px; /* Öğeler arasında boşluk bırakır. */
 }
 
+/* Sallanan kartın dış kapsayıcısını ayarlar. */
 .swing-wrapper {
-    position: relative;
-    width: 280px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative; /* İçindeki çizgi/kart için konum referansı olur. */
+    width: 280px; /* Kapsayıcı genişliğini belirler. */
+    display: flex; /* İçeriği flex yapar. */
+    flex-direction: column; /* Çizgi ve kartı alt alta dizer. */
+    align-items: center; /* Ortalar. */
 }
 
+/* Kartı yukarıdan asılmış gibi gösteren çizgiyi oluşturur. */
 .swing-line {
-    width: 2px;
-    height: 80px;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.1),
-        rgba(96, 165, 250, 0.6)
+    width: 2px; /* Çizginin kalınlığını belirler. */
+    height: 80px; /* Çizginin uzunluğunu belirler. */
+    background: linear-gradient( /* Çizgiye dikey renk geçişi verir. */
+        to bottom, /* Geçişin yukarıdan aşağıya olmasını sağlar. */
+        rgba(255, 255, 255, 0.1), /* Üst kısmı silik beyaz yapar. */
+        rgba(96, 165, 250, 0.6) /* Alt kısmı mavi yapar. */
     );
 }
 
+/* Profil kartının ana görünümünü oluşturur. */
 .portfolio-card {
-    width: 260px;
-    padding: 12px;
-    border-radius: 18px;
-    background: linear-gradient(
-        180deg,
-        rgba(245, 223, 153, 0.95),
-        rgba(200, 169, 92, 0.95)
+    width: 260px; /* Kart genişliğini belirler. */
+    padding: 12px; /* Kart iç boşluğu verir. */
+    border-radius: 18px; /* Kart köşelerini yuvarlatır. */
+    background: linear-gradient( /* Kart arka planına altın tonlu geçiş verir. */
+        180deg, /* Geçişi dikey yapar. */
+        rgba(245, 223, 153, 0.95), /* Üst kısmı açık altın yapar. */
+        rgba(200, 169, 92, 0.95) /* Alt kısmı koyu altın yapar. */
     );
-    box-shadow: 0 24px 50px rgba(2, 6, 23, 0.36);
-    transform-origin: top center;
-    animation: swingCard 4.5s ease-in-out infinite;
+    box-shadow: 0 24px 50px rgba(2, 6, 23, 0.36); /* Kartın arkasına büyük gölge verir. */
+    transform-origin: top center; /* Sallanma hareketinin üst merkezden başlamasını sağlar. */
+    animation: swingCard 4.5s ease-in-out infinite; /* Kartı sürekli sallanan animasyona bağlar. */
 }
 
+/* Profil kartının üst boşluk alanıdır. */
 .portfolio-card-header {
-    height: 18px;
+    height: 18px; /* Kart üstünde küçük boşluk oluşturur. */
 }
 
+/* Profil fotoğrafının bulunduğu alanı ayarlar. */
 .portfolio-card-image {
-    overflow: hidden;
-    margin-bottom: 12px;
-    border-radius: 14px;
-    background: #111827;
+    overflow: hidden; /* Fotoğraf taşarsa gizler. */
+    margin-bottom: 12px; /* Fotoğraf ile alt yazı arasında boşluk bırakır. */
+    border-radius: 14px; /* Fotoğraf alanının köşelerini yuvarlatır. */
+    background: #111827; /* Fotoğraf yüklenmezse koyu arka plan gösterir. */
 }
 
+/* Profil fotoğrafının boyutunu ayarlar. */
 .portfolio-card-image img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
+    width: 100%; /* Fotoğrafı kapsayıcı genişliğine yayar. */
+    height: 320px; /* Fotoğraf yüksekliğini belirler. */
+    object-fit: cover; /* Fotoğrafı kırparak alanı doldurur. */
 }
 
+/* Kart altındaki isim başlığını ayarlar. */
 .portfolio-card-footer h2 {
-    margin-bottom: 4px;
-    color: #111827;
-    font-size: 20px;
-    text-align: center;
+    margin-bottom: 4px; /* Başlık ile açıklama arasına boşluk verir. */
+    color: #111827; /* Başlığı koyu yapar. */
+    font-size: 20px; /* Başlık boyutunu belirler. */
+    text-align: center; /* Başlığı ortalar. */
 }
 
+/* Kart altındaki açıklama yazısını ayarlar. */
 .portfolio-card-footer p {
-    color: #374151;
-    font-size: 14px;
-    font-weight: 600;
-    text-align: center;
+    color: #374151; /* Açıklama rengini gri yapar. */
+    font-size: 14px; /* Açıklama boyutunu belirler. */
+    font-weight: 600; /* Açıklamayı yarı kalın yapar. */
+    text-align: center; /* Açıklamayı ortalar. */
 }
 
-/* Eğer hero bilgi kutuları kullanılırsa hazır stil. */
+/* Hero içinde bilgi kutuları kullanılacaksa alanı hazırlar. */
 .hero-side-panel {
-    width: 100%;
-    max-width: 360px;
-    display: grid;
-    gap: 14px;
+    width: 100%; /* Kapsayıcıyı bulunduğu alanın tamamına yayar. */
+    max-width: 360px; /* Maksimum genişliği sınırlar. */
+    display: grid; /* Kutuları grid düzenine alır. */
+    gap: 14px; /* Kutular arasında boşluk bırakır. */
 }
 
+/* Bilgi kutusu kart tasarımını oluşturur. */
 .info-box {
-    padding: 16px 18px;
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    background: var(--card-background-color);
-    box-shadow: var(--card-shadow);
+    padding: 16px 18px; /* İç boşluk verir. */
+    border: 1px solid var(--border-color); /* Kenarlık ekler. */
+    border-radius: 16px; /* Köşeleri yuvarlatır. */
+    background: var(--card-background-color); /* Kart arka plan rengini kullanır. */
+    box-shadow: var(--card-shadow); /* Kart gölgesi verir. */
 }
 
+/* Bilgi kutusu içindeki etiket yazısını ayarlar. */
 .info-label {
-    display: block;
-    margin-bottom: 5px;
-    color: var(--primary-accent-color);
-    font-size: 13px;
-    font-weight: 700;
+    display: block; /* Etiketi blok seviyesine getirir. */
+    margin-bottom: 5px; /* Altına küçük boşluk bırakır. */
+    color: var(--primary-accent-color); /* Vurgu rengini kullanır. */
+    font-size: 13px; /* Küçük etiket boyutu verir. */
+    font-weight: 700; /* Etiketi kalın yapar. */
 }
 
-/* Profil kartı animasyonu. */
+/* Sallanma animasyonunu tanımlar. */
 @keyframes swingCard {
-    0% {
-        transform: rotate(-5deg);
+    0% { /* Animasyon başlangıcı. */
+        transform: rotate(-5deg); /* Kartı sola 5 derece döndürür. */
     }
 
-    50% {
-        transform: rotate(5deg);
+    50% { /* Animasyonun ortası. */
+        transform: rotate(5deg); /* Kartı sağa 5 derece döndürür. */
     }
 
-    100% {
-        transform: rotate(-5deg);
+    100% { /* Animasyon sonu. */
+        transform: rotate(-5deg); /* Kartı tekrar sola döndürür. */
     }
 }
 
-/* ==================================================
-   RESPONSIVE - TABLET ORTA (İPAD GİBİ)
-   600px - 992px arası ekranlar için optimizasyon
-================================================== */
+/* 600px ile 992px arası tablet görünümünü düzenler. */
 @media (min-width: 600px) and (max-width: 992px) {
     .hero-split {
-        min-height: auto;
-        padding: 60px 0 76px;
+        min-height: auto; /* Sabit ekran yüksekliği zorunluluğunu kaldırır. */
+        padding: 60px 0 76px; /* Tablet için daha dengeli boşluk verir. */
     }
 
     .hero-split-layout {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 48px;
+        grid-template-columns: 1fr; /* İki sütunu tek sütuna düşürür. */
+        text-align: center; /* Yazıları ortalar. */
+        gap: 48px; /* Bölümler arası boşluğu artırır. */
     }
 
     .intro-line {
-        font-size: 24px;
-        margin-bottom: 12px;
+        font-size: 24px; /* Tablet için giriş yazısını küçültür. */
+        margin-bottom: 12px; /* Alt boşluğu ayarlar. */
     }
 
     .hero-name {
-        font-size: clamp(48px, 12vw, 72px);
-        margin-bottom: 18px;
+        font-size: clamp(48px, 12vw, 72px); /* Tablet için isim boyutunu ayarlar. */
+        margin-bottom: 18px; /* Alt boşluk verir. */
     }
 
     .hero-role {
-        font-size: 28px;
-        margin-bottom: 16px;
+        font-size: 28px; /* Rol yazısını tablet boyutuna indirir. */
+        margin-bottom: 16px; /* Alt boşluğu ayarlar. */
     }
 
     .hero-description {
-        font-size: 17px;
-        margin-bottom: 32px;
+        font-size: 17px; /* Açıklama yazısını tablet için ayarlar. */
+        margin-bottom: 32px; /* Butonlarla arasında boşluk bırakır. */
     }
 
     .hero-buttons,
     .hero-social-icons {
-        justify-content: center;
+        justify-content: center; /* Butonları ve ikonları ortalar. */
     }
 
     .portfolio-card {
-        width: 260px;
+        width: 260px; /* Kart genişliğini tablet için korur. */
     }
 
     .portfolio-card-image img {
-        height: 320px;
+        height: 320px; /* Fotoğraf yüksekliğini korur. */
     }
 }
 
-/* ==================================================
-   RESPONSIVE - TABLET
-   Tablet görünümü (768px altı)
-================================================== */
+/* 992px altındaki genel tablet görünümünü düzenler. */
 @media (max-width: 992px) {
     .hero-split {
-        min-height: auto;
-        padding: 56px 0 70px;
+        min-height: auto; /* Hero yüksekliğini içeriğe göre yapar. */
+        padding: 56px 0 70px; /* Tablet boşluklarını ayarlar. */
     }
 
     .hero-split-layout {
-        grid-template-columns: 1fr;
-        text-align: center;
+        grid-template-columns: 1fr; /* Tek sütunlu düzene geçer. */
+        text-align: center; /* İçeriği ortalar. */
     }
 
     .hero-left {
-        margin: 0 auto;
+        margin: 0 auto; /* Sol yazı alanını yatayda ortalar. */
     }
 
     .hero-description {
-        margin-right: auto;
-        margin-left: auto;
+        margin-right: auto; /* Açıklamayı sağdan otomatik ortalar. */
+        margin-left: auto; /* Açıklamayı soldan otomatik ortalar. */
     }
 
     .hero-buttons,
     .hero-social-icons {
-        justify-content: center;
+        justify-content: center; /* Butonları ve sosyal ikonları ortalar. */
     }
 }
 
-/* ==================================================
-   RESPONSIVE - MOBİL
-   Mobil görünüm (768px altı) - İyileştirilmiş spacing
-================================================== */
+/* 768px altındaki mobil görünümü düzenler. */
 @media (max-width: 768px) {
     .hero-split {
-        padding: 52px 0 64px;
-        min-height: auto;
+        padding: 52px 0 64px; /* Mobil için üst-alt boşluk verir. */
+        min-height: auto; /* Sabit yükseklik yerine içerik yüksekliği kullanır. */
     }
 
     .hero-bg-word {
-        font-size: clamp(60px, 20vw, 120px);
-        letter-spacing: 2px;
-        top: 50%;
+        font-size: clamp(60px, 20vw, 120px); /* Arka plan yazısını mobilde küçültür. */
+        letter-spacing: 2px; /* Harf aralığını azaltır. */
+        top: 50%; /* Yazıyı dikeyde merkeze yaklaştırır. */
     }
 
     .intro-line {
-        font-size: 20px;
-        margin-bottom: 10px;
-        font-weight: 600;
+        font-size: 20px; /* Giriş yazısını mobil için küçültür. */
+        margin-bottom: 10px; /* Alt boşluk verir. */
+        font-weight: 600; /* Yarı kalın görünüm verir. */
     }
 
     .hero-name {
-        font-size: clamp(40px, 12vw, 56px);
-        margin-bottom: 14px;
-        line-height: 1;
+        font-size: clamp(40px, 12vw, 56px); /* İsim boyutunu mobil ekrana göre ayarlar. */
+        margin-bottom: 14px; /* Alt boşluk verir. */
+        line-height: 1; /* Satır aralığını dengeler. */
     }
 
     .hero-role {
-        font-size: 24px;
-        margin-bottom: 14px;
+        font-size: 24px; /* Rol yazısını mobil için küçültür. */
+        margin-bottom: 14px; /* Alt boşluk verir. */
     }
 
     .hero-description {
-        font-size: 15px;
-        margin-bottom: 24px;
-        max-width: 100%;
+        font-size: 15px; /* Açıklama yazısını mobil için ayarlar. */
+        margin-bottom: 24px; /* Alt boşluk verir. */
+        max-width: 100%; /* Mobilde alanın tamamını kullanmasına izin verir. */
     }
 
     .hero-buttons {
-        gap: 12px;
-        margin-bottom: 20px;
+        gap: 12px; /* Buton aralığını azaltır. */
+        margin-bottom: 20px; /* Alt boşluk verir. */
     }
 
     .portfolio-card {
-        width: 200px;
+        width: 200px; /* Kartı mobil için küçültür. */
     }
 
     .portfolio-card-image img {
-        height: 250px;
+        height: 250px; /* Fotoğraf yüksekliğini mobil için azaltır. */
     }
 }
 
-/* ==================================================
-   RESPONSIVE - MOBİL KÜÇÜK
-   Küçük telefonlar (480px altı)
-================================================== */
+/* 480px altındaki küçük telefon görünümünü düzenler. */
 @media (max-width: 480px) {
     .hero-split {
-        padding: 40px 0 48px;
-        min-height: auto;
+        padding: 40px 0 48px; /* Küçük telefonlarda daha az boşluk verir. */
+        min-height: auto; /* İçeriğe göre yükseklik kullanır. */
     }
 
     .hero-bg-word {
-        font-size: clamp(50px, 18vw, 100px);
-        letter-spacing: 1px;
-        top: 48%;
+        font-size: clamp(50px, 18vw, 100px); /* Arka plan yazısını daha da küçültür. */
+        letter-spacing: 1px; /* Harf aralığını minimuma indirir. */
+        top: 48%; /* Yazıyı biraz yukarı alır. */
     }
 
     .hero-split-layout {
-        gap: 32px;
+        gap: 32px; /* Sol ve sağ içerik aralığını azaltır. */
     }
 
     .intro-line {
-        font-size: 18px;
-        margin-bottom: 8px;
+        font-size: 18px; /* Giriş yazısını küçük telefon için ayarlar. */
+        margin-bottom: 8px; /* Alt boşluğu azaltır. */
     }
 
     .hero-name {
-        font-size: clamp(32px, 11vw, 44px);
-        margin-bottom: 12px;
+        font-size: clamp(32px, 11vw, 44px); /* İsim boyutunu küçük telefon için ayarlar. */
+        margin-bottom: 12px; /* Alt boşluk verir. */
     }
 
     .hero-role {
-        font-size: 20px;
-        margin-bottom: 12px;
-        font-weight: 700;
+        font-size: 20px; /* Rol yazısını küçük telefon için küçültür. */
+        margin-bottom: 12px; /* Alt boşluk verir. */
+        font-weight: 700; /* Kalın görünüm verir. */
     }
 
     .hero-description {
-        font-size: 14px;
-        margin-bottom: 20px;
-        line-height: 1.5;
+        font-size: 14px; /* Açıklama yazısını küçük telefon için ayarlar. */
+        margin-bottom: 20px; /* Alt boşluk verir. */
+        line-height: 1.5; /* Okunabilir satır aralığı verir. */
     }
 
     .hero-buttons {
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 18px;
+        flex-direction: column; /* Butonları alt alta dizer. */
+        gap: 10px; /* Butonlar arası boşluğu azaltır. */
+        margin-bottom: 18px; /* Alt boşluk verir. */
     }
 
     .btn {
-        width: 100%;
-        justify-content: center;
+        width: 100%; /* Butonları tam genişlik yapar. */
+        justify-content: center; /* Buton içeriğini ortalar. */
     }
 
     .hero-social-icons {
-        gap: 16px;
-        justify-content: center;
-        margin-top: 16px;
+        gap: 16px; /* İkonlar arasında boşluk verir. */
+        justify-content: center; /* İkonları ortalar. */
+        margin-top: 16px; /* Üst boşluk verir. */
     }
 
     .hero-social-icons a {
-        font-size: 28px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 44px;
-        height: 44px;
+        font-size: 28px; /* İkonları biraz büyütür. */
+        display: inline-flex; /* İkon kutusunu hizalamak için flex yapar. */
+        align-items: center; /* İkonu dikeyde ortalar. */
+        justify-content: center; /* İkonu yatayda ortalar. */
+        width: 44px; /* İkon kutusu genişliğini belirler. */
+        height: 44px; /* İkon kutusu yüksekliğini belirler. */
     }
 
     .portfolio-card {
-        width: 180px;
-        padding: 16px;
+        width: 180px; /* Kartı küçük telefon için küçültür. */
+        padding: 16px; /* İç boşluğu artırarak daha dengeli gösterir. */
     }
 
     .portfolio-card-header {
-        height: 8px;
+        height: 8px; /* Üst boşluğu azaltır. */
     }
 
     .portfolio-card-image {
-        height: 200px;
-        border-radius: 12px;
-        overflow: hidden;
+        height: 200px; /* Fotoğraf alanı yüksekliğini belirler. */
+        border-radius: 12px; /* Köşeleri yuvarlatır. */
+        overflow: hidden; /* Taşan fotoğrafı gizler. */
     }
 
     .portfolio-card-image img {
-        height: 100%;
-        object-fit: cover;
+        height: 100%; /* Fotoğrafı kapsayıcı yüksekliğine yayar. */
+        object-fit: cover; /* Fotoğrafı kırparak alanı doldurur. */
     }
 
     .portfolio-card-footer h2 {
-        font-size: 16px;
-        margin-bottom: 8px;
+        font-size: 16px; /* Kart başlığını küçültür. */
+        margin-bottom: 8px; /* Alt boşluk verir. */
     }
 
     .portfolio-card-footer p {
-        font-size: 12px;
+        font-size: 12px; /* Kart açıklamasını küçültür. */
     }
 }

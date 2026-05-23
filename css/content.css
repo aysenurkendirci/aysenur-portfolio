@@ -31,6 +31,11 @@
 /* ==================================================
    TECH STACK
    Teknolojiler kategori kartları halinde gösterilir.
+   masaüstünde 3 sütun
+tablette 2 sütun
+mobilde 1 sütun
+
+olacak şekilde responsive davranıyor.
 ================================================== */
 .tech-categories {
     display: grid;
@@ -55,7 +60,7 @@
 .tech-list {
     list-style: none;
 }
-
+/* Teknoloji öğeleri ikon ve isimle birlikte listelenir, hover ile açıklama gösterilir. */
 .tech-item {
     position: relative;
     display: flex;
@@ -64,7 +69,7 @@
     padding: 14px 0;
     border-bottom: 1px solid var(--border-color);
 }
-
+ /*Kullanıcı teknoloji üzerine gelince açıklama çıkarıyor.*/
 .tech-item:last-child {
     border-bottom: none;
 }
@@ -80,13 +85,14 @@
     font-weight: 700;
     color: var(--primary-text-color);
 }
-
+/*Kullanıcı teknoloji üzerine geldiğinde isim rengi değişiyor.*/
 .tech-item:hover .tech-name {
     color: var(--primary-accent-color);
 }
 
+/*Teknoloji öğesi üzerine gelindiğinde açıklama kutusu gösterilir, konumlandırma ve stil verilmiştir.*/
 .tech-item::after {
-    content: attr(data-tooltip);
+    content: attr(data-tooltip); /*data-tooltip özniteliğindeki metni gösterir*/
     position: absolute;
     left: 40px;
     bottom: calc(100% + 8px);
@@ -103,7 +109,7 @@
     transition: opacity 0.2s ease, transform 0.2s ease;
     z-index: 20;
 }
-
+/*Kullanıcı teknoloji üzerine geldiğinde açıklama gösteriliyor.*/
 .tech-item:hover::after {
     opacity: 1;
     transform: translateY(0);
@@ -128,12 +134,12 @@
     box-shadow: var(--card-shadow);
     transition: transform 0.25s ease, border-color 0.25s ease;
 }
-
+/*Deneyim kartına hover efekti eklenir, hafifçe yükselir ve border rengi değişir.*/
 .experience-card:hover {
     transform: translateY(-4px);
     border-color: var(--primary-accent-color);
 }
-
+/*Deneyim kartının üst kısmında kategori ve tarih bilgisi yan yana gösterilir, responsive olarak düzenlenir.*/
 .experience-top {
     display: flex;
     justify-content: space-between;
@@ -209,7 +215,7 @@
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px);/*Kart hafifçe yükselir, hover efekti eklenir.*/
     border-color: var(--primary-accent-color);
 }
 
@@ -259,6 +265,7 @@
     font-weight: 800;
 }
 
+/*Projeye ait linkler, hover ile hareket efekti eklenir, renk vurgulanır.*/
 .project-link {
     display: inline-flex;
     width: fit-content;
@@ -395,11 +402,12 @@
     font-size: 15px;
 }
 
+/*Form alanlarının placeholder metni, kullanıcıya yardımcı olacak şekilde daha hafif bir renkte gösterilir.*/
 .form-group input::placeholder,
 .form-group textarea::placeholder {
     color: var(--secondary-text-color);
 }
-
+/*Form alanlarına odaklanıldığında, border rengi ve gölge efekti ile görsel bir vurgu sağlanır, kullanıcı deneyimi artırılır.*/
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
