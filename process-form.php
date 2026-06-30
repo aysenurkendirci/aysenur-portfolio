@@ -13,7 +13,7 @@ function e($value)
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 
-// Form değişkenlerini başlat
+// Initialize form variables
 $name = '';
 $email = '';
 $message = '';
@@ -22,34 +22,71 @@ $isSuccess = false;
 $errorMessageEn = '';
 $errorMessageTr = '';
 
-// Formu sadece POST isteği üzerinde işle
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Girdiyi temizle ve boşlukları kaldır
-    $name = trim($_POST['name'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $message = trim($_POST['message'] ?? '');
-//* trim() fonksiyonu, kullanıcıdan gelen verilerin başındaki ve sonundaki gereksiz boşlukları kaldırır.*/
-//*?? '' Eğer veri gelmezse boş string verir. Hata oluşmasını engeller.
-
-    // Zorunlu alanları doğrula
+/**
+ * Validates the contact form data.
+ *
+ * @param string $name The submitted name.
+ * @param string $email The submitted email address.
+ * @param string $message The submitted message.
+ * @param string|null &$errorMessageEn Reference to English error message variable.
+ * @param string|null &$errorMessageTr Reference to Turkish error message variable.
+ * @return bool True if validation passes, false otherwise.
+ */
+function validateFormData(string $name, string $email, string $message, ?string &$errorMessageEn, ?string &$errorMessageTr): bool
+{
     if ($name === '' || $email === '' || $message === '') {
         $errorMessageEn = 'Please fill in all required fields.';
         $errorMessageTr = 'Lütfen zorunlu alanların tamamını doldurun.';
-    } 
-    // E-posta biçimini doğrula
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        error_log('Form Validation Error: Missing required fields.');
+        return false;
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errorMessageEn = 'Please enter a valid email address.';
         $errorMessageTr = 'Lütfen geçerli bir e-posta adresi girin.';
-    } 
-    // Form geçerliyse
-    else {
+        error_log('Form Validation Error: Invalid email format provided.');
+        return false;
+    }
+
+    return true;
+}
+
+// Process form only on POST request
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Sanitize and trim input data
+    $name = trim($_POST['name'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $message = trim($_POST['message'] ?? '');
+
+    // Validate form data using the helper function
+    if (validateFormData($name, $email, $message, $errorMessageEn, $errorMessageTr)) {
         $isSuccess = true;
         
-        //  E-posta gönderme işlevi buraya eklenicek
-        // Örnek: mail($profile["email"], "Portföy İletişim Formu", "Gönderen: $email\n\n$message");
+        // TODO: Email sending functionality will be added here.
+        // Example: mail($profile["email"], "Portfolio Contact Form", "Sender: $email\n\n$message");
+        
+        // E-posta gönderme işlevselliği
+        $to = $profile["email"]; // data.php'den alınan e-posta adresi
+        $subject = "Portfolio Contact Form - Yeni Mesaj"; // E-posta konusu
+        $body = "Gönderen: " . e($name) . " <" . e($email) . ">\n\n";
+        $body .= "Mesaj:\n" . e($message);
+        
+        // Ek başlıklar
+        $headers = "From: " . e($name) . " <" . e($email) . ">\r\n";
+        $headers .= "Reply-To: " . e($email) . "\r\n";
+        $headers .= "Content-type: text/plain; charset=UTF-8\r\n";
+
+        // E-postayı gönderme
+        if (!mail($to, $subject, $body, $headers)) {
+            // E-posta gönderme başarısız olursa
+            $isSuccess = false;
+            $errorMessageEn = 'Failed to send your message. Please try again later.';
+            $errorMessageTr = 'Mesajınız gönderilemedi. Lütfen daha sonra tekrar deneyin.';
+            error_log('Email sending failed for: ' . $email);
+        }
     }
 } else {
-    // POST olmayan erişim için hata mesajı
+    // Error message for non-POST access
     $errorMessageEn = 'This page can only be accessed after submitting the contact form.';
     $errorMessageTr = 'Bu sayfaya yalnızca iletişim formu gönderildikten sonra erişilebilir.';
 }

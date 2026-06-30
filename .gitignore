@@ -1,0 +1,40 @@
+# OS Files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# Node modules (if using any frontend tools)
+node_modules/
+package-lock.json
+
+# Build artifacts
+dist/
+build/
+
+# Temporary files
+temp/
+tmp/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Legacy PHP files (no longer needed)
+data.php
+process-form.php
+includes/
+
+# OS
+.DS_Store
+*.php
