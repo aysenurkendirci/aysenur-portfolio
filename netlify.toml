@@ -1,76 +1,47 @@
-# Netlify Configuration for Portfolio
-# Auto-deployed static site with form handling
+# ==========================================
+# Netlify Configuration
+# Ayşe Nur Kendirci Portfolio
+# ==========================================
 
 [build]
-  command = ""
-  publish = "/"
-  functions = "netlify/functions"
-
-[dev]
-  publish = "/"
-
-# Production context
-[context.production]
-  command = ""
-  environment = { NODE_ENV = "production" }
-
-# Deploy Preview context  
-[context.deploy-preview]
+  publish = "."
   command = ""
 
-# Branch Deploy context
-[context.branch-deploy]
-  command = ""
-
-# Redirect rules for single-page navigation
+# SPA routing (HTML anchor links çalışmaya devam eder)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# Form handling - Netlify will process forms
-[[redirects]]
-  from = "/form-submit"
-  to = "/.netlify/functions/submit-form"
-  status = 200
-
-# Security and Performance Headers
+# Security Headers
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
 
-# Cache settings for CSS
+# CSS Cache
 [[headers]]
   for = "/css/*"
   [headers.values]
-    Cache-Control = "public, immutable, max-age=31536000"
+    Cache-Control = "public, max-age=31536000, immutable"
 
-# Cache settings for JavaScript
+# JavaScript Cache
 [[headers]]
   for = "/js/*"
   [headers.values]
-    Cache-Control = "public, immutable, max-age=31536000"
+    Cache-Control = "public, max-age=31536000, immutable"
 
-# Cache settings for Images
+# Images Cache
 [[headers]]
   for = "/images/*"
   [headers.values]
-    Cache-Control = "public, immutable, max-age=31536000"
+    Cache-Control = "public, max-age=31536000, immutable"
 
-# Cache HTML with shorter TTL for updates
+# HTML Cache
 [[headers]]
   for = "/*.html"
   [headers.values]
-    Cache-Control = "public, max-age=3600, must-revalidate"
-
-# Font caching
-[[headers]]
-  for = "/fonts/*"
-  [headers.values]
-    Cache-Control = "public, immutable, max-age=31536000"
+    Cache-Control = "public, max-age=0, must-revalidate"
