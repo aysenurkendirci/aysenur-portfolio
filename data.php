@@ -29,18 +29,18 @@ $profile = [
     "name" => "Ayşe Nur Kendirci",
 
     "title" => [
-        "en" => "Software Developer",
-        "tr" => "Yazılım Geliştirici"
+        "en" => "Backend Software Developer",
+        "tr" => "Backend  Yazılım Geliştirici"
     ],
 
     "tagline" => [
-        "en" => "Building real-world software with passion and continuous growth.",
-        "tr" => "Tutkuyla öğrenen ve gerçek dünyaya yönelik yazılımlar geliştiren bir yazılımcı."
+        "en" => "Building scalable backend systems and native mobile applications with clean architecture.",
+        "tr" => "Temiz mimari ile ölçeklenebilir backend sistemleri ve native mobil uygulamalar geliştiriyorum."
     ],
 
     "description" => [
-        "en" => "I build clean, scalable and user-focused applications across mobile, frontend and backend development.",
-        "tr" => "Mobil, frontend ve backend alanlarında temiz, ölçeklenebilir ve kullanıcı odaklı uygulamalar geliştiriyorum."
+        "en" => "I design and build REST APIs, backend services and iOS applications. Focused on clean code, maintainable architecture and solving real-world problems through software.",
+        "tr" => "REST API'ler, backend servisleri ve iOS uygulamaları tasarlayıp geliştiriyorum. Temiz kod, sürdürülebilir mimari ve yazılım aracılığıyla gerçek dünya problemlerini çözmek üzerine odaklanıyorum."
     ],
 
     "email" => "aysenurkendirciss@gmail.com",
@@ -95,16 +95,16 @@ $aboutTexts = [
  */
 $aboutTexts = [
     [
-        "en" => "I am a motivated software developer who enjoys building real-world applications and continuously improving my technical skills. My main focus areas are mobile development, frontend interfaces and backend systems.",
-        "tr" => "Gerçek dünyaya yönelik uygulamalar geliştirmeyi seven, öğrenmeye istekli ve kendini sürekli geliştiren bir yazılım geliştiricisiyim. Ana odak alanlarım mobil geliştirme, frontend arayüzleri ve backend sistemleridir."
+        "en" => "I am a Software Engineer with hands-on experience building backend systems and iOS applications. I specialize in REST API design, database architecture, and mobile app development using modern frameworks and clean code principles.",
+        "tr" => "Backend sistemleri ve iOS uygulamaları geliştirme konusunda pratik deneyime sahip bir yazılım mühendisiyim. REST API tasarımı, veritabanı mimarisi ve modern frameworkler ile temiz kod ilkeleri kullanarak mobil uygulama geliştirme konularında uzmanlaşmışım."
     ],
     [
-        "en" => "Through internships, academic projects and self-driven learning, I have gained hands-on experience with modern software architectures, component-based development and structured project workflows.",
-        "tr" => "Staj deneyimlerim, akademik projelerim ve bireysel öğrenme sürecim sayesinde modern yazılım mimarileri, component tabanlı geliştirme ve düzenli proje yapıları konusunda pratik deneyim kazandım."
+        "en" => "Through internships at VakıfBank and academic projects, I have developed expertise in full-stack development, MVC architecture, and Agile workflows. I am comfortable working with C#, .NET Core, Oracle Database, Swift and Angular across different layers of application development.",
+        "tr" => "VakıfBank'taki stajlarım ve akademik projelerim sayesinde full-stack geliştirme, MVC mimarisi ve Agile iş akışlarında uzmanlık geliştirdim. Uygulama geliştirmenin farklı katmanlarında C#, .NET Core, Oracle Database, Swift ve Angular ile çalışmaktan rahatım."
     ],
     [
-        "en" => "I am disciplined, detail-oriented and persistent. I enjoy turning ideas into functional products and aim to grow every day as a developer who creates meaningful and user-focused software.",
-        "tr" => "Disiplinli, detaylara önem veren ve azimli bir geliştiriciyim. Fikirleri çalışan ürünlere dönüştürmekten keyif alıyor ve her gün daha iyi, anlamlı ve kullanıcı odaklı yazılımlar geliştiren bir yazılımcı olmayı hedefliyorum."
+        "en" => "I focus on writing maintainable code, designing robust systems and solving complex technical problems. I am committed to continuous learning and delivering high-quality software that meets both technical requirements and user expectations.",
+        "tr" => "Sürdürülebilir kod yazma, güçlü sistemler tasarlama ve karmaşık teknik problemleri çözme üzerine odaklanıyorum. Sürekli öğrenmeye ve hem teknik gereksinimleri hem de kullanıcı beklentilerini karşılayan yüksek kaliteli yazılım sunmaya sadınım."
     ]
 ];
 
@@ -117,11 +117,91 @@ $aboutTexts = [
  * - Her beceri çok dilli araç ipucu açıklamaları içerir
  * 
  * Kategoriler:
- * 1. Mobil Geliştirme (Swift, SwiftUI, UIKit, vb.)
- * 2. Frontend Geliştirme (Angular, HTML, CSS, JavaScript)
- * 3. Backend ve Veritabanı (C#, .NET Core, SQL Server, vb.)
+ * 1. Backend ve Veritabanı
+ * 2. Mobil Geliştirme
+ * 3. Frontend Geliştirme
  */
 $techCategories = [
+    [
+        "title" => [
+            "en" => "Backend",
+            "tr" => "Backend"
+        ],
+        "items" => [
+            [
+                "name" => "C#",
+                "icon" => "devicon-csharp-plain colored",
+                "iconText" => "",
+                "tooltip" => [
+                    "en" => "Object-oriented language for building robust backend systems and APIs.",
+                    "tr" => "Güçlü backend sistemleri ve API'ler geliştirmek için nesne yönelimli programlama dili."
+                ]
+            ],
+            [
+                "name" => ".NET Core",
+                "icon" => "devicon-dotnetcore-plain colored",
+                "iconText" => "",
+                "tooltip" => [
+                    "en" => "Cross-platform framework for building scalable APIs and backend services.",
+                    "tr" => "Ölçeklenebilir API'ler ve backend servisleri geliştirmek için cross-platform framework."
+                ]
+            ],
+            [
+                "name" => "PHP",
+                "icon" => "devicon-php-plain colored",
+                "iconText" => "",
+                "tooltip" => [
+                    "en" => "Server-side language for building dynamic web applications and MVC systems.",
+                    "tr" => "Dinamik web uygulamaları ve MVC sistemleri geliştirmek için sunucu tarafı programlama dili."
+                ]
+            ],
+            [
+                "name" => "Laravel",
+                "icon" => "devicon-laravel-plain colored",
+                "iconText" => "",
+                "tooltip" => [
+                    "en" => "Modern PHP framework for rapid API and web application development.",
+                    "tr" => "Hızlı API ve web uygulaması geliştirme için modern PHP framework."
+                ]
+            ],
+            [
+                "name" => "REST API",
+                "icon" => "",
+                "iconText" => "API",
+                "tooltip" => [
+                    "en" => "RESTful architecture for building scalable, stateless backend services.",
+                    "tr" => "Ölçeklenebilir, stateless backend servisleri geliştirmek için RESTful mimari."
+                ]
+            ],
+            [
+                "name" => "Oracle Database",
+                "icon" => "devicon-oracle-original colored",
+                "iconText" => "",
+                "tooltip" => [
+                    "en" => "Enterprise relational database for building complex data systems.",
+                    "tr" => "Karmaşık veri sistemleri geliştirmek için kurumsal seviyede ilişkisel veritabanı."
+                ]
+            ],
+            [
+                "name" => "SQL Server",
+                "icon" => "devicon-microsoftsqlserver-plain colored",
+                "iconText" => "",
+                "tooltip" => [
+                    "en" => "Relational database for data storage, queries and stored procedures.",
+                    "tr" => "Veri saklama, sorgu ve stored procedure işlemleri için ilişkisel veritabanı."
+                ]
+            ],
+            [
+                "name" => "Firebase",
+                "icon" => "devicon-firebase-plain colored",
+                "iconText" => "",
+                "tooltip" => [
+                    "en" => "Cloud backend platform for real-time database and authentication services.",
+                    "tr" => "Real-time veritabanı ve kimlik doğrulama servisleri için bulut backend platformu."
+                ]
+            ]
+        ]
+    ],
     [
         "title" => [
             "en" => "Mobile",
@@ -133,17 +213,8 @@ $techCategories = [
                 "icon" => "devicon-swift-plain colored",
                 "iconText" => "",
                 "tooltip" => [
-                    "en" => "A programming language used for native iOS app development.",
-                    "tr" => "Native iOS uygulamaları geliştirmek için kullanılan programlama dilidir."
-                ]
-            ],
-            [
-                "name" => "SwiftUI",
-                "icon" => "devicon-swift-plain colored",
-                "iconText" => "",
-                "tooltip" => [
-                    "en" => "A modern framework for building iOS interfaces declaratively.",
-                    "tr" => "iOS arayüzlerini modern ve sade şekilde geliştirmek için kullanılan frameworktür."
+                    "en" => "Modern language for native iOS app development with performance and safety.",
+                    "tr" => "Performans ve güvenlik ile native iOS uygulamalar geliştirmek için modern programlama dili."
                 ]
             ],
             [
@@ -151,8 +222,17 @@ $techCategories = [
                 "icon" => "devicon-apple-original",
                 "iconText" => "",
                 "tooltip" => [
-                    "en" => "A classic iOS framework for building app interfaces programmatically.",
-                    "tr" => "iOS uygulama arayüzlerini programatik olarak geliştirmek için kullanılan frameworktür."
+                    "en" => "Apple's foundational framework for building iOS interfaces programmatically.",
+                    "tr" => "iOS arayüzlerini programatik olarak geliştirmek için Apple'ın temel framework'ü."
+                ]
+            ],
+            [
+                "name" => "SwiftUI",
+                "icon" => "devicon-swift-plain colored",
+                "iconText" => "",
+                "tooltip" => [
+                    "en" => "Declarative framework for building modern, responsive iOS interfaces.",
+                    "tr" => "Modern, responsive iOS arayüzleri geliştirmek için deklaratif framework."
                 ]
             ],
             [
@@ -160,8 +240,44 @@ $techCategories = [
                 "icon" => "devicon-apple-original",
                 "iconText" => "",
                 "tooltip" => [
-                    "en" => "Used for local data storage and persistence in iOS apps.",
-                    "tr" => "iOS uygulamalarında yerel veri saklama ve kalıcılık için kullanılır."
+                    "en" => "Modern persistence framework for local data storage in iOS apps.",
+                    "tr" => "iOS uygulamalarında yerel veri saklama için modern kalıcılık framework'ü."
+                ]
+            ],
+            [
+                "name" => "OpenAI API",
+                "icon" => "",
+                "iconText" => "AI",
+                "tooltip" => [
+                    "en" => "Integration with AI models for intelligent features and NLP capabilities.",
+                    "tr" => "Akıllı özellikler ve NLP yetenekleri için AI modelleri entegrasyonu."
+                ]
+            ],
+            [
+                "name" => "MapKit",
+                "icon" => "devicon-apple-original",
+                "iconText" => "",
+                "tooltip" => [
+                    "en" => "Apple's framework for integrating maps and location services.",
+                    "tr" => "Haritalar ve konum servisleri entegrasyonu için Apple framework'ü."
+                ]
+            ],
+            [
+                "name" => "Moya",
+                "icon" => "",
+                "iconText" => "HTTP",
+                "tooltip" => [
+                    "en" => "Abstraction layer for network requests in iOS apps.",
+                    "tr" => "iOS uygulamalarında ağ istekleri için soyutlama katmanı."
+                ]
+            ],
+            [
+                "name" => "Alamofire",
+                "icon" => "",
+                "iconText" => "HTTP",
+                "tooltip" => [
+                    "en" => "HTTP networking library for iOS applications.",
+                    "tr" => "iOS uygulamaları için HTTP ağ iletişim kütüphanesi."
                 ]
             ]
         ]
@@ -177,26 +293,8 @@ $techCategories = [
                 "icon" => "devicon-angularjs-plain colored",
                 "iconText" => "",
                 "tooltip" => [
-                    "en" => "A frontend framework used for structured web applications.",
-                    "tr" => "Düzenli ve ölçeklenebilir web uygulamaları geliştirmek için kullanılan frontend frameworktür."
-                ]
-            ],
-            [
-                "name" => "HTML",
-                "icon" => "devicon-html5-plain colored",
-                "iconText" => "",
-                "tooltip" => [
-                    "en" => "Used to create the structure of web pages.",
-                    "tr" => "Web sayfalarının temel yapısını oluşturmak için kullanılır."
-                ]
-            ],
-            [
-                "name" => "CSS",
-                "icon" => "devicon-css3-plain colored",
-                "iconText" => "",
-                "tooltip" => [
-                    "en" => "Used to style responsive and modern web interfaces.",
-                    "tr" => "Modern ve responsive web arayüzlerini tasarlamak için kullanılır."
+                    "en" => "Full-featured framework for building structured web applications.",
+                    "tr" => "Düzenli web uygulamaları geliştirmek için tam özellikli framework."
                 ]
             ],
             [
@@ -204,79 +302,26 @@ $techCategories = [
                 "icon" => "devicon-javascript-plain colored",
                 "iconText" => "",
                 "tooltip" => [
-                    "en" => "Used to add interactive behavior to web pages.",
-                    "tr" => "Web sayfalarına etkileşim ve dinamik davranış kazandırmak için kullanılır."
-                ]
-            ]
-        ]
-    ],
-    [
-        "title" => [
-            "en" => "Backend & Database",
-            "tr" => "Backend ve Veritabanı"
-        ],
-        "items" => [
-            [
-                "name" => "C#",
-                "icon" => "devicon-csharp-plain colored",
-                "iconText" => "",
-                "tooltip" => [
-                    "en" => "A programming language commonly used with .NET backend development.",
-                    "tr" => ".NET ile backend geliştirme süreçlerinde kullanılan programlama dilidir."
+                    "en" => "Core language for interactive client-side web development.",
+                    "tr" => "İnteraktif client-side web geliştirme için temel programlama dili."
                 ]
             ],
             [
-                "name" => ".NET Core",
-                "icon" => "devicon-dotnetcore-plain colored",
+                "name" => "HTML",
+                "icon" => "devicon-html5-plain colored",
                 "iconText" => "",
                 "tooltip" => [
-                    "en" => "A backend framework used for building APIs and web applications.",
-                    "tr" => "API ve web uygulamaları geliştirmek için kullanılan backend frameworktür."
+                    "en" => "Semantic markup language for structuring web page content.",
+                    "tr" => "Web sayfası içeriğini yapılandırmak için anlamsal işaretleme dili."
                 ]
             ],
             [
-                "name" => "RESTful API",
-                "icon" => "",
-                "iconText" => "API",
-                "tooltip" => [
-                    "en" => "Used for communication between frontend, mobile and backend systems.",
-                    "tr" => "Frontend, mobil ve backend sistemleri arasında veri iletişimi sağlamak için kullanılır."
-                ]
-            ],
-            [
-                "name" => "SQL Server",
-                "icon" => "devicon-microsoftsqlserver-plain colored",
+                "name" => "CSS",
+                "icon" => "devicon-css3-plain colored",
                 "iconText" => "",
                 "tooltip" => [
-                    "en" => "A relational database system used for storing and managing data.",
-                    "tr" => "Verileri saklamak ve yönetmek için kullanılan ilişkisel veritabanı sistemidir."
-                ]
-            ],
-            [
-                "name" => "Oracle",
-                "icon" => "devicon-oracle-original colored",
-                "iconText" => "",
-                "tooltip" => [
-                    "en" => "An enterprise-level relational database management system.",
-                    "tr" => "Kurumsal seviyede kullanılan ilişkisel veritabanı yönetim sistemidir."
-                ]
-            ],
-            [
-                "name" => "PHP",
-                "icon" => "devicon-php-plain colored",
-                "iconText" => "",
-                "tooltip" => [
-                    "en" => "A server-side language used for building dynamic web applications and handling form processing.",
-                    "tr" => "Dinamik web uygulamaları geliştirmek ve form işleme için kullanılan sunucu tarafı programlama dilidir."
-                ]
-            ],
-            [
-                "name" => "Firebase",
-                "icon" => "devicon-firebase-plain colored",
-                "iconText" => "",
-                "tooltip" => [
-                    "en" => "A cloud platform used for database, authentication and backend services.",
-                    "tr" => "Veritabanı, kimlik doğrulama ve backend servisleri için kullanılan bulut platformudur."
+                    "en" => "Styling language for responsive and modern web interfaces.",
+                    "tr" => "Responsive ve modern web arayüzleri tasarlamak için stil dili."
                 ]
             ]
         ]
