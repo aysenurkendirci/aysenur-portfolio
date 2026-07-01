@@ -67,11 +67,11 @@
                 - HTML Smooth Scroll: css/base.css scroll-behavior: smooth
             -->
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.php#about" data-en="About" data-tr="Hakkımda">About</a></li>
-                <li><a href="index.php#skills" data-en="Tech Stack" data-tr="Teknolojiler">Tech Stack</a></li>
-                <li><a href="index.php#experience" data-en="Experience" data-tr="Deneyim">Experience</a></li>
-                <li><a href="index.php#projects" data-en="Projects" data-tr="Projeler">Projects</a></li>
-                <li><a href="index.php#contact" data-en="Contact" data-tr="İletişim">Contact</a></li>
+                <li><a href="#about" data-en="About" data-tr="Hakkımda">About</a></li>
+                <li><a href="#skills" data-en="Tech Stack" data-tr="Teknolojiler">Tech Stack</a></li>
+                <li><a href="#experience" data-en="Experience" data-tr="Deneyim">Experience</a></li>
+                <li><a href="#projects" data-en="Projects" data-tr="Projeler">Projects</a></li>
+                <li><a href="#contact" data-en="Contact" data-tr="İletişim">Contact</a></li>
 
                 <!-- CV İndirme Linki -->
                 <li>
