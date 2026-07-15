@@ -1,0 +1,71 @@
+<header class="site-header" role="banner">
+    <nav class="navbar" aria-label="Ana navigasyon">
+        <div class="container navbar-container">
+            <a href="#home" class="brand" aria-label="Ana bölüme git">
+                <span class="brand-line">
+                    <span class="token-const">const</span>
+                    <span class="token-var">developer</span>
+                    <span class="token-eq">=</span>
+                    <span class="token-string">"Ayşe Nur Kendirci"</span>
+                    <span class="token-semi">;</span>
+                    <span class="brand-cursor" aria-hidden="true"></span>
+                </span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Navigasyon menüsünü aç"
+                aria-controls="navLinks"
+                aria-expanded="false"
+            >
+                <span aria-hidden="true">☰</span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" data-en="About" data-tr="Hakkımda">About</a></li>
+                <li><a href="#skills" data-en="Tech Stack" data-tr="Teknolojiler">Tech Stack</a></li>
+                <li><a href="#experience" data-en="Experience" data-tr="Deneyim">Experience</a></li>
+                <li><a href="#projects" data-en="Projects" data-tr="Projeler">Projects</a></li>
+                <li><a href="#contact" data-en="Contact" data-tr="İletişim">Contact</a></li>
+                <li>
+                    <a
+                        href="{{PROFILE_CV}}"
+                        download="Ayse_Nur_Kendirci_CV.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-en="CV"
+                        data-tr="CV"
+                    >
+                        CV
+                    </a>
+                </li>
+            </ul>
+
+            <div class="navbar-tools" aria-label="Sayfa ayarları">
+                <div class="toolbar-shell">
+                    <button
+                        class="tool-chip"
+                        id="langToggle"
+                        type="button"
+                        aria-label="Dili değiştir"
+                        title="İngilizce ve Türkçe arasında geçiş yap"
+                    >
+                        <span class="tool-label">TR</span>
+                    </button>
+
+                    <button
+                        class="tool-chip"
+                        id="themeToggle"
+                        type="button"
+                        aria-label="Temayı değiştir"
+                        title="Koyu ve açık tema arasında geçiş yap"
+                    >
+                        <span class="tool-label">☾</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

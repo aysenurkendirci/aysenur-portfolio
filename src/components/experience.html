@@ -1,0 +1,43 @@
+<section id="experience" class="experience section" aria-labelledby="experience-title">
+    <div class="container">
+        <h2 id="experience-title" class="section-title" data-en="Experience" data-tr="Deneyim">
+            Experience
+        </h2>
+        <div class="experience-list">
+            {{#each experiences}}
+            <article class="experience-card">
+                <div class="experience-top">
+                    <span class="experience-category"
+                          data-en="{{category.en}}"
+                          data-tr="{{category.tr}}">
+                        {{category.en}}
+                    </span>
+                    <span class="experience-date">
+                        {{date}}
+                    </span>
+                </div>
+                <div class="experience-content">
+                    <h3 data-en="{{title.en}}" data-tr="{{title.tr}}">
+                        {{title.en}}
+                    </h3>
+                    <p class="experience-company">
+                        {{company}}
+                    </p>
+                    <p class="experience-description"
+                       data-en="{{description.en}}"
+                       data-tr="{{description.tr}}">
+                        {{description.en}}
+                    </p>
+                    <ul class="experience-points">
+                        {{#each items}}
+                        <li data-en="{{en}}" data-tr="{{tr}}">
+                            {{en}}
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </article>
+            {{/each}}
+        </div>
+    </div>
+</section>

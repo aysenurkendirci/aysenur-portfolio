@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesaj Alındı | Kişisel Portföy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css?v=1.1">
+    <link rel="stylesheet" href="css/navbar.css?v=1.1">
+    <link rel="stylesheet" href="css/hero.css?v=1.1">
+    <link rel="stylesheet" href="css/content.css?v=1.1">
+</head>
+<body class="dark-theme">
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+    
+    <header class="site-header" role="banner">
+        <nav class="navbar" aria-label="Ana navigasyon">
+            <div class="container navbar-container">
+                <a href="index.html#home" class="brand">
+                    <span class="brand-line">
+                        <span class="token-const">const</span>
+                        <span class="token-var">developer</span>
+                        <span class="token-eq">=</span>
+                        <span class="token-string">"Ayşe Nur Kendirci"</span>
+                        <span class="token-semi">;</span>
+                        <span class="brand-cursor" aria-hidden="true"></span>
+                    </span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="contact-result-section section" aria-labelledby="result-title">
+            <div class="container">
+                <article class="result-card" style="text-align: center; max-width: 600px; margin: 80px auto; padding: 40px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; backdrop-filter: blur(10px);">
+                    <div class="result-icon success-icon" style="font-size: 4rem; color: #10B981; margin-bottom: 24px;">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <h1 id="result-title" class="result-title" style="font-size: 2rem; margin-bottom: 16px;" data-en="Message Sent!" data-tr="Mesaj Gönderildi!">
+                        Message Sent!
+                    </h1>
+
+                    <p class="result-text" style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 24px;"
+                       data-en="Thank you for getting in touch. I have received your message and will reply as soon as possible."
+                       data-tr="Benimle iletişime geçtiğiniz için teşekkürler. Mesajınız bana ulaştı, en kısa sürede dönüş sağlayacağım.">
+                        Thank you for getting in touch. I have received your message and will reply as soon as possible.
+                    </p>
+
+                    <a href="index.html#contact" class="btn" data-en="Back to Portfolio" data-tr="Portföye Geri Dön">
+                        Back to Portfolio
+                    </a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container footer-container">
+            <p class="footer-text" data-en="&copy; 2026 Ayşe Nur Kendirci. All rights reserved." data-tr="&copy; 2026 Ayşe Nur Kendirci. Tüm hakları saklıdır.">
+                &copy; 2026 Ayşe Nur Kendirci. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const savedLanguage = localStorage.getItem('portfolio-language');
+            const initialLanguage = savedLanguage || 'en';
+            document.documentElement.lang = initialLanguage;
+        })();
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>
