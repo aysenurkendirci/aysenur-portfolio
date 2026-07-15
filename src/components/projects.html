@@ -1,0 +1,39 @@
+<section id="projects" class="projects section" aria-labelledby="projects-title">
+    <div class="container">
+        <h2 id="projects-title" class="section-title" data-en="Projects" data-tr="Projeler">
+            Projects
+        </h2>
+        <div class="projects-grid">
+            {{#each projects}}
+            <article class="project-card">
+                <div class="project-card-top">
+                    <span class="project-category"
+                          data-en="{{category.en}}"
+                          data-tr="{{category.tr}}">
+                        {{category.en}}
+                    </span>
+                </div>
+                <h3>{{title}}</h3>
+                <p class="project-description"
+                   data-en="{{description.en}}"
+                   data-tr="{{description.tr}}">
+                    {{description.en}}
+                </p>
+                <ul class="tech-stack" aria-label="Project technologies">
+                    {{#each tech}}
+                    <li class="tech">{{this}}</li>
+                    {{/each}}
+                </ul>
+                <a href="{{github}}"
+                   class="project-link"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   data-en="View Repository →"
+                   data-tr="Repoyu Gör →">
+                    View Repository →
+                </a>
+            </article>
+            {{/each}}
+        </div>
+    </div>
+</section>

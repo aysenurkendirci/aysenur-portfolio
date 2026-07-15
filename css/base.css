@@ -342,6 +342,26 @@ img {
     border-width: 0;
 }
 
+.sr-only:focus {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 99999;
+    width: auto;
+    height: auto;
+    padding: 12px 24px;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    background-color: var(--primary-accent-color);
+    color: #1a1a1a;
+    font-weight: 800;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+}
+
 /* ==================================================
    BUTON GENEL AYARI
    Tüm .btn sınıfı butonlar için ortak stil verilir.

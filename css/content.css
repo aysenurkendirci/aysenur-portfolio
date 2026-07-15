@@ -314,6 +314,20 @@ olacak şekilde responsive davranıyor.
     box-shadow: var(--card-shadow);
 }
 
+.form-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-text-color);
+    margin-bottom: 8px;
+}
+
+.form-description {
+    font-size: 14px;
+    color: var(--secondary-text-color);
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
 .contact-info-list {
     height: 100%;
     display: grid;
@@ -785,5 +799,223 @@ olacak şekilde responsive davranıyor.
     .footer-text {
         font-size: 12px;
         line-height: 1.4;
+    }
+}
+
+/* ==================================================
+   CONTACT SECTION (MODERN 3-CARD LAYOUT)
+   ================================================== */
+.contact-section {
+    padding: 90px 24px;
+    background: var(--page-background-color);
+    position: relative;
+    border-bottom: 1px solid var(--border-color); /* Footer transition line */
+}
+
+.contact-container {
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-eyebrow {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary-accent-color);
+    margin-bottom: 12px;
+}
+
+.contact-header h2 {
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--primary-text-color);
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+}
+
+.contact-header p {
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--secondary-text-color);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 20px;
+    background: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    text-decoration: none;
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+    height: 100%; /* Equal height */
+    box-sizing: border-box;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.contact-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: var(--accent-background-color);
+    margin-bottom: 24px;
+    transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.contact-icon i {
+    font-size: 24px;
+    color: var(--primary-accent-color);
+    transition: transform 0.3s ease;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Stretch to fill card height */
+}
+
+.contact-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--secondary-text-color);
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.contact-value {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--primary-text-color);
+    margin-bottom: 24px;
+    word-break: break-all; /* Prevent overflow on small screens */
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.contact-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary-accent-color);
+    margin-top: auto; /* Push to bottom of card content */
+    transition: color 0.3s ease;
+}
+
+.contact-action i {
+    font-size: 12px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Hover effects */
+.contact-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-accent-color);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+}
+
+.contact-card:hover .contact-icon {
+    background: var(--primary-accent-color);
+}
+
+.contact-card:hover .contact-icon i {
+    color: #ffffff;
+    transform: scale(1.1) rotate(5deg);
+}
+
+.contact-card:hover .contact-value {
+    color: var(--primary-accent-color);
+}
+
+.contact-card:hover .contact-action i {
+    transform: translateX(6px);
+}
+
+/* Keyboard focus style */
+.contact-card:focus-visible {
+    outline: 3px solid var(--primary-accent-color);
+    outline-offset: 4px;
+}
+
+/* Accessibility: respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .contact-card {
+        transition: none;
+    }
+    .contact-card:hover {
+        transform: none;
+    }
+    .contact-action i {
+        transition: none;
+    }
+    .contact-card:hover .contact-action i {
+        transform: none;
+    }
+}
+
+/* ==================================================
+   RESPONSIVE DESIGN
+   ================================================== */
+@media (max-width: 992px) {
+    .contact-header h2 {
+        font-size: 38px;
+    }
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    /* Make the last card span full width for visual balance if we have 2 columns */
+    .contact-grid > .contact-card:last-child {
+        grid-column: span 2;
+        max-width: 50%;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 70px 20px;
+    }
+    .contact-header h2 {
+        font-size: 32px;
+    }
+    .contact-header p {
+        font-size: 15px;
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .contact-grid > .contact-card:last-child {
+        grid-column: span 1;
+        max-width: 100%;
+        margin: 0;
+    }
+    .contact-card {
+        padding: 24px;
     }
 }

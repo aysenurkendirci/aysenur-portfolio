@@ -1,893 +1,1042 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="tr">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Ayşe Nur Kendirci | Software Engineering Portfolio</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
-<link href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com" rel="dns-prefetch"/>
-<link href="https://cdn.jsdelivr.net" rel="dns-prefetch"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayşe Nur Kendirci | Backend Yazılım Geliştirici</title>
+    
+    <meta name="description" content="Ayşe Nur Kendirci'nin C#, .NET Core, PHP, Laravel, RESTful API, Oracle Database ve iOS geliştirme deneyimlerini içeren kişisel yazılım portföyü.">
+    <meta name="keywords" content="Ayşe Nur Kendirci, Backend Developer, C#, .NET Core, ASP.NET Core, Laravel, PHP, REST API, Oracle Database, Software Engineer">
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Ayşe Nur Kendirci | Backend Developer Portfolio">
+    <meta property="og:description" content="Backend geliştirme, bankacılık uygulamaları, RESTful API'ler ve iOS projeleri üzerine çalışmalarımı inceleyin.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/aysenurkendirci">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Devicon Technology Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <!-- Main Style Sheets with Cache Busting -->
+    <link rel="stylesheet" href="css/base.css?v=1.1">
+    <link rel="stylesheet" href="css/navbar.css?v=1.1">
+    <link rel="stylesheet" href="css/hero.css?v=1.1">
+    <link rel="stylesheet" href="css/content.css?v=1.1">
+    
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 </head>
 <body class="dark-theme">
-<script>
-        window.portfolioData = {
-            profile: {
-                name: "Ayşe Nur Kendirci",
-                title: {
-                    en: "Software Engineering Student | Backend Development",
-                    tr: "Yazılım Mühendisliği Öğrencisi | Backend Geliştirme"
-                },
-                tagline: {
-                    en: "Software Engineering student focused on backend development and practical software solutions.",
-                    tr: "Backend geliştirme ve pratik yazılım çözümlerine odaklanan Yazılım Mühendisliği öğrencisi."
-                },
-                description: {
-                    en: "I build software with a focus on maintainable backend systems, practical mobile applications and clean user experiences. My work combines internship experience, academic projects and hands-on product development.",
-                    tr: "Sürdürülebilir backend sistemleri, kullanışlı mobil uygulamalar ve temiz kullanıcı deneyimleri odağında yazılım geliştiriyorum. Çalışmalarım staj deneyimleri, akademik projeler ve uygulamalı ürün geliştirme sürecini bir araya getiriyor."
-                },
-                email: "aysenurkendirciss@gmail.com",
-                linkedin: "https://www.linkedin.com/in/aysenurkendirci",
-                github: "https://github.com/aysenurkendirci",
-                cv: "images/cv.pdf",
-                image: "images/profile.jpg",
-                contact_info: {
-                    email_label: {
-                        en: "Email",
-                        tr: "E-posta"
-                    },
-                    github_label: {
-                        en: "GitHub",
-                        tr: "GitHub"
-                    },
-                    github_action: {
-                        en: "View repositories",
-                        tr: "Depoları görüntüle"
-                    },
-                    linkedin_label: {
-                        en: "LinkedIn",
-                        tr: "LinkedIn"
-                    },
-                    linkedin_action: {
-                        en: "Connect with me",
-                        tr: "Benimle bağlantı kurun"
-                    }
-                }
-            },
-            aboutTexts: [
-                {
-                    en: "I am a Software Engineer with hands-on experience building backend systems and iOS applications. I specialize in REST API design, database architecture, and mobile app development using modern frameworks and clean code principles.",
-                    tr: "Backend sistemleri ve iOS uygulamaları geliştirme konusunda pratik deneyime sahip bir yazılım mühendisiyim. REST API tasarımı, veritabanı mimarisi ve modern frameworkler ile temiz kod ilkeleri kullanarak mobil uygulama geliştirme konularında uzmanlaşmışım."
-                },
-                {
-                    en: "Through internships at VakıfBank and academic projects, I have developed expertise in full-stack development, MVC architecture, and Agile workflows. I am comfortable working with C#, .NET Core, Oracle Database, Swift and Angular across different layers of application development.",
-                    tr: "VakıfBank'taki stajlarım ve akademik projelerim sayesinde full-stack geliştirme, MVC mimarisi ve Agile iş akışlarında uzmanlık geliştirdim. Uygulama geliştirmenin farklı katmanlarında C#, .NET Core, Oracle Database, Swift ve Angular ile çalışmaktan rahatım."
-                },
-                {
-                    en: "I focus on writing maintainable code, designing robust systems and solving complex technical problems. I am committed to continuous learning and delivering high-quality software that meets both technical requirements and user expectations.",
-                    tr: "Sürdürülebilir kod yazma, güçlü sistemler tasarlama ve karmaşık teknik problemleri çözme üzerine odaklanıyorum. Sürekli öğrenmeye ve hem teknik gereksinimleri hem de kullanıcı beklentilerini karşılayan yüksek kaliteli yazılım sunmaya sadınım."
-                }
-            ],
-            techCategories: [
-                {
-                    title: {
-                        en: "Mobile",
-                        tr: "Mobil"
-                    },
-                    items: [
-                        {
-                            name: "Swift",
-                            icon: "devicon-swift-plain colored",
-                            iconText: "",
-                            tooltip: {
-                                en: "A programming language used for native iOS app development.",
-                                tr: "Native iOS uygulamaları geliştirmek için kullanılan programlama dilidir."
-                            }
-                        },
-                        {
-                            name: "SwiftUI",
-                            icon: "devicon-swift-plain colored",
-                            iconText: "",
-                            tooltip: {
-                                en: "A modern framework for building iOS interfaces declaratively.",
-                                tr: "iOS arayüzlerini modern ve sade şekilde geliştirmek için kullanılan frameworktür."
-                            }
-                        },
-                        {
-                            name: "UIKit",
-                            icon: "devicon-apple-original",
-                            iconText: "",
-                            tooltip: {
-                                en: "A classic iOS framework for building app interfaces programmatically.",
-                                tr: "iOS uygulama arayüzlerini programatik olarak geliştirmek için kullanılan frameworktür."
-                            }
-                        },
-                        {
-                            name: "SwiftData",
-                            icon: "devicon-apple-original",
-                            iconText: "",
-                            tooltip: {
-                                en: "Used for local data storage and persistence in iOS apps.",
-                                tr: "iOS uygulamalarında yerel veri saklama ve kalıcılık için kullanılır."
-                            }
-                        }
-                    ]
-                },
-                {
-                    title: {
-                        en: "Frontend",
-                        tr: "Frontend"
-                    },
-                    items: [
-                        {
-                            name: "Angular",
-                            icon: "devicon-angularjs-plain colored",
-                            iconText: "",
-                            tooltip: {
-                                en: "A frontend framework used for structured web applications.",
-                                tr: "Düzenli ve ölçeklenebilir web uygulamaları geliştirmek için kullanılan frontend frameworktür."
-                            }
-                        },
-                        {
-                            name: "HTML",
-                            icon: "devicon-html5-plain colored",
-                            iconText: "",
-                            tooltip: {
-                                en: "Used to create the structure of web pages.",
-                                tr: "Web sayfalarının temel yapısını oluşturmak için kullanılır."
-                            }
-                        },
-                        {
-                            name: "CSS",
-                            icon: "devicon-css3-plain colored",
-                            iconText: "",
-                            tooltip: {
-                                en: "Used to style responsive and modern web interfaces.",
-                                tr: "Modern ve responsive web arayüzlerini tasarlamak için kullanılır."
-                            }
-                        },
-                        {
-                            name: "JavaScript",
-                            icon: "devicon-javascript-plain colored",
-                            iconText: "",
-                            tooltip: {
-                                en: "Used to add interactive behavior to web pages.",
-                                tr: "Web sayfalarına etkileşim ve dinamik davranış kazandırmak için kullanılır."
-                            }
-                        }
-                    ]
-                },
-                {
-                    title: {
-                        en: "Backend & Database",
-                        tr: "Backend ve Veritabanı"
-                    },
-                    items: [
-                        {
-                            name: "C#",
-                            icon: "devicon-csharp-plain colored",
-                            iconText: "",
-                            tooltip: {
-                                en: "A programming language commonly used with .NET backend development.",
-                                tr: ".NET ile backend geliştirme süreçlerinde kullanılan programlama dilidir."
-                            }
-                        },
-                        {
-                            name: ".NET Core",
-                            icon: "devicon-dotnetcore-plain colored",
-                            iconText: "",
-                            tooltip: {
-                                en: "A backend framework used for building APIs and web applications.",
-                                tr: "API ve web uygulamaları geliştirmek için kullanılan backend frameworktür."
-                            }
-                        },
-                        {
-                            name: "RESTful API",
-                            icon: "",
-                            iconText: "API",
-                            tooltip: {
-                                en: "Used for communication between frontend, mobile and backend systems.",
-                                tr: "Frontend, mobil ve backend sistemleri arasında veri iletişimi sağlamak için kullanılır."
-                            }
-                        },
-                        {
-                            name: "SQL Server",
-                            icon: "devicon-microsoftsqlserver-plain colored",
-                            iconText: "",
-                            tooltip: {
-                                en: "A relational database system used for storing and managing data.",
-                                tr: "Verileri saklamak ve yönetmek için kullanılan ilişkisel veritabanı sistemidir."
-                            }
-                        },
-                        {
-                            name: "Oracle",
-                            icon: "devicon-oracle-original colored",
-                            iconText: "",
-                            tooltip: {
-                                en: "An enterprise-level relational database management system.",
-                                tr: "Kurumsal seviyede kullanılan ilişkisel veritabanı yönetim sistemidir."
-                            }
-                        },
-                        {
-                            name: "PHP",
-                            icon: "devicon-php-plain colored",
-                            iconText: "",
-                            tooltip: {
-                                en: "A server-side language used for building dynamic web applications and handling form processing.",
-                                tr: "Dinamik web uygulamaları geliştirmek ve form işleme için kullanılan sunucu tarafı programlama dilidir."
-                            }
-                        },
-                        {
-                            name: "Firebase",
-                            icon: "devicon-firebase-plain colored",
-                            iconText: "",
-                            tooltip: {
-                                en: "A cloud platform used for database, authentication and backend services.",
-                                tr: "Veritabanı, kimlik doğrulama ve backend servisleri için kullanılan bulut platformudur."
-                            }
-                        }
-                    ]
-                }
-            ],
-            experiences: [
-                {
-                    category: {
-                        en: "Software Engineering Internship",
-                        tr: "Yazılım Mühendisliği Stajı"
-                    },
-                    date: "June 2026 – Present",
-                    title: {
-                        en: "Software Engineering Intern",
-                        tr: "Yazılım Mühendisliği Stajyeri"
-                    },
-                    company: "Development Studio",
-                    description: {
-                        en: "Building backend services and MVC applications using Laravel and PHP. Developing features using clean architecture principles and Agile methodologies.",
-                        tr: "Laravel ve PHP kullanarak backend servisleri ve MVC uygulamaları geliştiriyorum. Clean architecture ilkeleri ve Agile metodolojileri kullanarak özellikler geliştiriyorum."
-                    },
-                    items: [
-                        {
-                            en: "Developed backend features using Laravel and PHP with clean, maintainable code patterns.",
-                            tr: "Laravel ve PHP kullanarak temiz ve sürdürülebilir kod desenleriyle backend özellikleri geliştirdim."
-                        },
-                        {
-                            en: "Built MVC-based applications following SOLID principles and repository patterns.",
-                            tr: "SOLID ilkeleri ve repository desenleri takip ederek MVC tabanlı uygulamalar geliştirdim."
-                        },
-                        {
-                            en: "Implemented CRUD operations and REST API endpoints for data management.",
-                            tr: "Veri yönetimi için CRUD işlemleri ve REST API uç noktalarını uyguladım."
-                        },
-                        {
-                            en: "Worked with MySQL database, designing schemas and optimizing queries.",
-                            tr: "MySQL veritabanı ile çalışarak şemalar tasarladım ve sorguları optimize ettim."
-                        },
-                        {
-                            en: "Built pagination and filtering features for efficient data retrieval.",
-                            tr: "Verimli veri alımı için pagination ve filtering özellikleri oluşturdum."
-                        },
-                        {
-                            en: "Collaborated with team using Git version control and Agile workflows.",
-                            tr: "Git versiyon kontrolü ve Agile iş akışlarını kullanarak takım ile işbirliği yaptım."
-                        }
-                    ]
-                },
-                {
-                    category: {
-                        en: "Mobile Internship",
-                        tr: "Mobil Stajı"
-                    },
-                    date: "Jul 2025 - Sep 2025",
-                    title: {
-                        en: "iOS Development Intern",
-                        tr: "iOS Geliştirme Stajyeri"
-                    },
-                    company: "VakıfBank",
-                    description: {
-                        en: "Developed iOS applications using Swift, UIKit and SwiftUI. Implemented MVVM architecture, integrated AI APIs and built reusable components.",
-                        tr: "Swift, UIKit ve SwiftUI kullanarak iOS uygulamaları geliştirdim. MVVM mimarisi uyguladım, AI API'lerini entegre ettim ve tekrar kullanılabilir bileşenler geliştirdim."
-                    },
-                    items: [
-                        {
-                            en: "Developed iOS application screens and features using Swift, UIKit and SwiftUI frameworks.",
-                            tr: "Swift, UIKit ve SwiftUI framework'lerini kullanarak iOS uygulama ekranları ve özellikleri geliştirdim."
-                        },
-                        {
-                            en: "Implemented MVVM architecture patterns and built reusable UI components.",
-                            tr: "MVVM mimari desenleri uyguladım ve tekrar kullanılabilir UI bileşenleri inşa ettim."
-                        },
-                        {
-                            en: "Integrated OpenAI API for personalized recommendation features.",
-                            tr: "Kişiselleştirilmiş öneri özellikleri için OpenAI API entegrasyonu yaptım."
-                        },
-                        {
-                            en: "Worked with Firebase for backend services, authentication and real-time data.",
-                            tr: "Backend servisleri, kimlik doğrulama ve real-time veri için Firebase ile çalıştım."
-                        },
-                        {
-                            en: "Implemented SwiftData for local data persistence and storage management.",
-                            tr: "Yerel veri kalıcılığı ve depolama yönetimi için SwiftData uyguladım."
-                        },
-                        {
-                            en: "Integrated MapKit for location services and map-based features.",
-                            tr: "Konum servisleri ve harita tabanlı özellikler için MapKit entegrasyonu yaptım."
-                        }
-                    ]
-                },
-                {
-                    category: {
-                        en: "Banking Internship",
-                        tr: "Bankacılık Stajı"
-                    },
-                    date: "Jan 2026 - Feb 2026",
-                    title: {
-                        en: "Full-Stack Intern",
-                        tr: "Full-Stack Stajyeri"
-                    },
-                    company: "VakıfBank",
-                    description: {
-                        en: "Developed full-stack banking application with focus on REST APIs, business logic and database architecture. Used C#, .NET Core and Oracle Database.",
-                        tr: "REST API'ler, iş mantığı ve veritabanı mimarisi odağında tam-stack bankacılık uygulaması geliştirdim. C#, .NET Core ve Oracle Database kullandım."
-                    },
-                    items: [
-                        {
-                            en: "Developed REST API endpoints for banking operations and transaction management.",
-                            tr: "Bankacılık işlemleri ve işlem yönetimi için REST API uç noktaları geliştirdim."
-                        },
-                        {
-                            en: "Implemented authentication and authorization mechanisms for secure API access.",
-                            tr: "Güvenli API erişimi için kimlik doğrulama ve yetkilendirme mekanizmaları uyguladım."
-                        },
-                        {
-                            en: "Built backend business logic using C# and .NET Core with clean architecture principles.",
-                            tr: "Clean architecture ilkeleri ile C# ve .NET Core kullanarak backend iş mantığı geliştirdim."
-                        },
-                        {
-                            en: "Designed and implemented database schemas using Oracle Database and stored procedures.",
-                            tr: "Oracle Database ve stored procedure'ler kullanarak veritabanı şemaları tasarladım ve uyguladım."
-                        },
-                        {
-                            en: "Built Angular-based frontend modules for user interface interactions.",
-                            tr: "Kullanıcı arayüzü etkileşimleri için Angular tabanlı frontend modülleri geliştirdim."
-                        },
-                        {
-                            en: "Collaborated using Git version control and participated in Agile sprint workflows.",
-                            tr: "Git versiyon kontrolü kullanarak işbirliği yaptım ve Agile sprint iş akışlarına katıldım."
-                        }
-                    ]
-                },
-                {
-                    category: {
-                        en: "Leadership",
-                        tr: "Liderlik"
-                    },
-                    date: "2025 - Present",
-                    title: {
-                        en: "Mobile Technical Team Lead",
-                        tr: "Mobil Teknik Takım Kaptanı"
-                    },
-                    company: "GDG On Campus Doğuş University",
-                    description: {
-                        en: "Led mobile development initiatives and coordinated technical projects for student community.",
-                        tr: "Mobil geliştirme girişimlerine liderlik sağladım ve öğrenci topluluğu için teknik projeleri koordine ettim."
-                    },
-                    items: [
-                        {
-                            en: "Organized technical workshops and events focused on mobile development and software engineering.",
-                            tr: "Mobil geliştirme ve yazılım mühendisliği odaklı teknik workshopları ve etkinlikleri organize ettim."
-                        },
-                        {
-                            en: "Coordinated team collaboration and supported project-based learning activities.",
-                            tr: "Takım işbirliğini koordine ettim ve proje tabanlı öğrenme faaliyetlerini destekledim."
-                        },
-                        {
-                            en: "Contributed to mobile-focused projects and mentored team members.",
-                            tr: "Mobil odaklı projelere katkı sağladım ve takım üyelerine rehberlik ettim."
-                        },
-                        {
-                            en: "Developed leadership and community management skills.",
-                            tr: "Liderlik ve topluluk yönetimi becerilerini geliştirdim."
-                        }
-                    ]
-                },
-                {
-                    category: {
-                        en: "Programs & Bootcamps",
-                        tr: "Programlar ve Bootcampler"
-                    },
-                    date: "Ongoing Learning",
-                    title: {
-                        en: "Technical Training and Online Internship Programs",
-                        tr: "Teknik Eğitimler ve Online Staj Programları"
-                    },
-                    company: "DenizBank, Techcareer.net, BTK Academy, Udemy",
-                    description: {
-                        en: "Participated in online internship programs, bootcamps and technical trainings across finance, banking, mobile development and artificial intelligence.",
-                        tr: "Finans, bankacılık, mobil geliştirme ve yapay zekâ gibi farklı alanlarda online staj programları, bootcampler ve teknik eğitimlere katıldım."
-                    },
-                    items: [
-                        {
-                            en: "Completed DenizBank Denizaşırı Online Internship Program and gained insight into banking, finance and digital transformation.",
-                            tr: "DenizBank Denizaşırı Online Staj Programı'nı tamamlayarak bankacılık, finans ve dijital dönüşüm alanlarında bilgi edindim."
-                        },
-                        {
-                            en: "Successfully completed SwiftUI Bootcamp and improved iOS development skills.",
-                            tr: "SwiftUI Bootcamp programını başarıyla tamamlayarak iOS geliştirme becerilerimi güçlendirdim."
-                        },
-                        {
-                            en: "Joined technical events and workshops about AI, software development, databases and career development.",
-                            tr: "Yapay zekâ, yazılım geliştirme, veritabanı ve kariyer gelişimi üzerine teknik etkinliklere ve workshoplara katıldım."
-                        },
-                        {
-                            en: "Continued improving through hands-on learning, bootcamps and project-based practice.",
-                            tr: "Uygulamalı öğrenme, bootcampler ve proje tabanlı pratiklerle kendimi geliştirmeye devam ettim."
-                        }
-                    ]
-                }
-            ],
-            projects: [
-                {
-                    title: "Banking Application",
-                    category: {
-                        en: "Full-Stack Banking System",
-                        tr: "Full-Stack Bankacılık Sistemi"
-                    },
-                    description: {
-                        en: "Built a production-grade banking application with scalable backend architecture. Developed REST APIs for account operations, transaction management and secure authentication. Used C#/.NET Core for backend, Oracle Database for persistence, and Angular for the frontend interface.",
-                        tr: "Ölçeklenebilir backend mimarisi ile production-grade bir bankacılık uygulaması geliştirdim. Hesap işlemleri, işlem yönetimi ve güvenli kimlik doğrulama için REST API'ler geliştirdim. Backend için C#/.NET Core, veri saklama için Oracle Database ve frontend arayüzü için Angular kullandım."
-                    },
-                    tech: ["C#", ".NET Core", "Angular", "Oracle Database", "REST API"],
-                    github: "https://github.com/aysenurkendirci/Internship_Bank_Project"
-                },
-                {
-                    title: "CineScope",
-                    category: {
-                        en: "AI-Powered iOS Movie Recommendation Engine",
-                        tr: "Yapay Zekâ Destekli iOS Film Öneri Motoru"
-                    },
-                    description: {
-                        en: "Built an intelligent movie discovery app that generates personalized recommendations using OpenAI API. Implemented MVVM architecture with UIKit, managed local data with SwiftData, and integrated real-time Firebase backend services. Solved the problem of content discovery through AI-powered suggestion algorithms.",
-                        tr: "OpenAI API kullanarak kişiselleştirilmiş öneriler üreten akıllı bir film keşfetme uygulaması geliştirdim. MVVM mimarisi ile UIKit uyguladım, SwiftData ile yerel veri yönetimini sağladım ve real-time Firebase backend servislerini entegre ettim. AI tabanlı öneri algoritmaları aracılığıyla içerik keşfetme problemini çözdüm."
-                    },
-                    tech: ["Swift", "UIKit", "OpenAI API", "Firebase", "SwiftData"],
-                    github: "https://github.com/aysenurkendirci/CineScope-MovieApp"
-                },
-                {
-                    title: "PettiCare",
-                    category: {
-                        en: "Pet Care Management & Location Services",
-                        tr: "Evcil Hayvan Yönetimi ve Konum Servisleri"
-                    },
-                    description: {
-                        en: "Developed a comprehensive pet management system with integrated location services. Built multi-profile management with SwiftUI, implemented local persistence using SwiftData, and integrated MapKit for veterinary location discovery. Solved pet owner challenges through centralized care management and nearby veterinary finder functionality.",
-                        tr: "Entegre konum servisleri ile kapsamlı bir evcil hayvan yönetim sistemi geliştirdim. SwiftUI ile çok profil yönetimi oluşturdum, SwiftData kullanarak yerel veri saklama uyguladım ve veteriner keşfetme için MapKit entegrasyonu sağladım. Pet sahiplerinin yönetim ve veteriner bulma zorlukları için merkezi bir çözüm sundum."
-                    },
-                    tech: ["Swift", "SwiftUI", "SwiftData", "MapKit", "Location Services"],
-                    github: "https://github.com/aysenurkendirci/PettiCareApp"
-                },
-                {
-                    title: "HeyDOU Campus",
-                    category: {
-                        en: "Campus Management Platform",
-                        tr: "Kampüs Yönetim Platformu"
-                    },
-                    description: {
-                        en: "Built a centralized campus management system for academic communities. Integrated academic calendar, event management, club coordination and internship tracking. Solved fragmented campus information through unified web-based platform with AI-powered features for enhanced user experience.",
-                        tr: "Akademik topluluklar için merkezi bir kampüs yönetim sistemi geliştirdim. Akademik takvim, etkinlik yönetimi, kulüp koordinasyonu ve staj takipini entegre ettim. AI destekli özelliklerle geliştirilmiş kullanıcı deneyimi aracılığıyla parçalanmış kampüs bilgilerinin sorununu çözdüm."
-                    },
-                    tech: ["HTML", "CSS", "C#", "OpenAI Integration"],
-                    github: "https://github.com/aysenurkendirci/Heydou_kamp-s"
-                }
-            ],
-            contactForm: {
-                intro: {
-                    en: "I am open to internship opportunities, junior developer roles and meaningful project collaborations.",
-                    tr: "Staj fırsatlarına, junior geliştirici pozisyonlarına ve anlamlı proje iş birliklerine açığım."
-                },
-                fields: [
-                    {
-                        id: "name",
-                        name: "name",
-                        type: "text",
-                        label: {
-                            en: "Name",
-                            tr: "Ad Soyad"
-                        },
-                        placeholder: {
-                            en: "Your name",
-                            tr: "Adınızı yazın"
-                        },
-                        required: true
-                    },
-                    {
-                        id: "email",
-                        name: "email",
-                        type: "email",
-                        label: {
-                            en: "Email",
-                            tr: "E-posta"
-                        },
-                        placeholder: {
-                            en: "your@email.com",
-                            tr: "eposta@ornek.com"
-                        },
-                        required: true
-                    },
-                    {
-                        id: "message",
-                        name: "message",
-                        type: "textarea",
-                        rows: 6,
-                        label: {
-                            en: "Message",
-                            tr: "Mesaj"
-                        },
-                        placeholder: {
-                            en: "Write your message...",
-                            tr: "Mesajınızı yazın..."
-                        },
-                        required: true
-                    }
-                ],
-                submit: {
-                    text: {
-                        en: "Send Message",
-                        tr: "Mesaj Gönder"
-                    },
-                    icon: "fa-solid fa-paper-plane"
-                }
-            }
-        };
-    </script>
-<a class="sr-only" href="#main-content" tabindex="1">
-<span data-en="Skip to main content" data-tr="Ana içeriğe atla">
-            Skip to main content
-        </span>
-</a>
-<div aria-hidden="true" class="cursor-glow" id="cursorGlow"></div>
-<header class="site-header" role="banner">
-<nav aria-label="Main navigation" class="navbar">
-<div class="container navbar-container">
-<a aria-label="Go to home section" class="brand" href="#home">
-<span class="brand-line">
-<span class="token-const">const</span>
-<span class="token-var">developer</span>
-<span class="token-eq">=</span>
-<span class="token-string">"Ayşe Nur Kendirci"</span>
-<span class="token-semi">;</span>
-<span aria-hidden="true" class="brand-cursor"></span>
-</span>
-</a>
-<button aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation menu" class="menu-toggle" id="menuToggle" type="button">
-<span aria-hidden="true">☰</span>
-</button>
-<ul class="nav-links" id="navLinks">
-<li><a data-en="About" data-tr="Hakkımda" href="#about">About</a></li>
-<li><a data-en="Tech Stack" data-tr="Teknolojiler" href="#skills">Tech Stack</a></li>
-<li><a data-en="Experience" data-tr="Deneyim" href="#experience">Experience</a></li>
-<li><a data-en="Projects" data-tr="Projeler" href="#projects">Projects</a></li>
-<li><a data-en="Contact" data-tr="İletişim" href="#contact">Contact</a></li>
-<li>
-<a data-en="CV" data-tr="CV" href="images/cv.pdf" rel="noopener noreferrer" target="_blank">
-                            CV
-                        </a>
-</li>
-</ul>
-<div aria-label="Page settings" class="navbar-tools">
-<div class="toolbar-shell">
-<button aria-label="Change language" class="tool-chip" id="langToggle" title="Switch between English and Turkish" type="button">
-<span class="tool-label">TR</span>
-</button>
-<button aria-label="Change theme" class="tool-chip" id="themeToggle" title="Switch between dark and light theme" type="button">
-<span class="tool-label">☾</span>
-</button>
-</div>
-</div>
-</div>
-</nav>
-</header>
-<main id="main-content">
-<section aria-labelledby="hero-title" class="hero hero-split" id="home">
-<div aria-hidden="true" class="hero-bg-word">PORTFOLIO</div>
-<div class="container hero-split-layout">
-<div class="hero-left">
-<p class="intro-line" data-en="Hello, I'm" data-tr="Merhaba, ben">
-                        Hello, I'm
-                    </p>
-<h1 class="hero-name" id="hero-title">
-<span>Ayşe Nur</span>
-<span>Kendirci</span>
-</h1>
-<p class="hero-role" data-en="Software Engineering Student | Backend Development" data-tr="Yazılım Mühendisliği Öğrencisi | Backend Geliştirme">Software Engineering Student | Backend Development</p>
-<p class="hero-description" data-en="I am a Software Engineering student with hands-on internship experience in backend development and iOS applications. I currently contribute to real-world software projects using PHP and Laravel, while continuing to strengthen my experience with C#, .NET Core, REST APIs, Oracle Database and Swift." data-tr="Backend geliştirme ve iOS uygulamaları alanlarında staj deneyimine sahip bir Yazılım Mühendisliği öğrencisiyim. Şu anda PHP ve Laravel kullanarak gerçek yazılım projelerine katkı sağlıyor; C#, .NET Core, REST API, Oracle Database ve Swift alanlarındaki deneyimimi geliştirmeye devam ediyorum.">I am a Software Engineering student with hands-on internship experience in backend development and iOS applications. I currently contribute to real-world software projects using PHP and Laravel, while continuing to strengthen my experience with C#, .NET Core, REST APIs, Oracle Database and Swift.</p>
-<div class="hero-buttons">
-<a class="btn" data-en="View Projects" data-tr="Projeleri Gör" href="#projects">
-                            View Projects
-                        </a>
-<a class="btn btn-secondary" data-en="Download CV" data-tr="CV İndir" href="images/cv.pdf" rel="noopener noreferrer" target="_blank">
-                            Download CV
-                        </a>
-</div>
-<div aria-label="Social media links" class="hero-social-icons">
-<a aria-label="GitHub profile" href="https://github.com/aysenurkendirci" rel="noopener noreferrer" target="_blank">
-<i aria-hidden="true" class="devicon-github-original"></i>
-</a>
-<a aria-label="LinkedIn profile" href="https://www.linkedin.com/in/aysenurkendirci" rel="noopener noreferrer" target="_blank">
-<i aria-hidden="true" class="devicon-linkedin-plain"></i>
-</a>
-<a aria-label="Send email" href="mailto:aysenurkendirciss@gmail.com">
-<span aria-hidden="true">@</span>
-</a>
-</div>
-</div>
-<div class="hero-right">
-<div class="swing-wrapper">
-<div aria-hidden="true" class="swing-line"></div>
-<article class="portfolio-card">
-<div aria-hidden="true" class="portfolio-card-header"></div>
-<div class="portfolio-card-image">
-<img alt="Portrait of Ayşe Nur Kendirci" src="images/profile.jpg"/>
-</div>
-<div class="portfolio-card-footer">
-<h2>Ayşe Nur Kendirci</h2>
-<p data-en="Software Engineering Student | Backend Development" data-tr="Yazılım Mühendisliği Öğrencisi | Backend Geliştirme">Software Engineering Student | Backend Development</p>
-</div>
-</article>
-</div>
-</div>
-</div>
-</section>
-<section aria-labelledby="about-title" class="about section" id="about">
-<div class="container">
-<h2 class="section-title" data-en="About Me" data-tr="Hakkımda" id="about-title">
-                    About Me
-                </h2>
-<div class="about-content">
-<p data-en="I am a Software Engineering student at Doğuş University with internship experience in backend and mobile application development. I currently work as a Software Engineering Intern at Oksid Bilişim, the technology partner of İncehesap.com, where I contribute to real-world software projects using PHP and Laravel." data-tr="Doğuş Üniversitesi Yazılım Mühendisliği öğrencisiyim. Backend ve mobil uygulama geliştirme alanlarında staj deneyimine sahibim. Şu anda İncehesap.com’un teknoloji partneri olan Oksid Bilişim’de Yazılım Mühendisliği Stajyeri olarak PHP ve Laravel ile gerçek yazılım projelerine katkı sağlıyorum.">I am a Software Engineering student at Doğuş University with internship experience in backend and mobile application development. I currently work as a Software Engineering Intern at Oksid Bilişim, the technology partner of İncehesap.com, where I contribute to real-world software projects using PHP and Laravel.</p>
-<p data-en="My backend experience includes C#, .NET Core, RESTful APIs, authentication flows, Oracle Database and SQL-based data operations. I also have hands-on iOS experience with Swift, UIKit, SwiftUI, MVVM architecture, Firebase, Moya, Alamofire and SwiftData." data-tr="Backend tarafında C#, .NET Core, RESTful API’ler, authentication akışları, Oracle Database ve SQL tabanlı veri işlemleri üzerinde çalıştım. Mobil tarafta ise Swift, UIKit, SwiftUI, MVVM mimarisi, Firebase, Moya, Alamofire ve SwiftData ile uygulamalı deneyim kazandım.">My backend experience includes C#, .NET Core, RESTful APIs, authentication flows, Oracle Database and SQL-based data operations. I also have hands-on iOS experience with Swift, UIKit, SwiftUI, MVVM architecture, Firebase, Moya, Alamofire and SwiftData.</p>
-<p data-en="I focus on writing clean, maintainable code and building practical software solutions. I enjoy working in teams, improving existing features, and turning technical requirements into functional products." data-tr="Temiz ve sürdürülebilir kod yazmaya, pratik yazılım çözümleri geliştirmeye odaklanıyorum. Ekip içinde çalışmayı, mevcut özellikleri iyileştirmeyi ve teknik gereksinimleri çalışan ürünlere dönüştürmeyi önemsiyorum.">I focus on writing clean, maintainable code and building practical software solutions. I enjoy working in teams, improving existing features, and turning technical requirements into functional products.</p>
-</div>
-</div>
-</section>
-<section aria-labelledby="skills-title" class="skills section" id="skills">
-<div class="container">
-<h2 class="section-title" data-en="Tech Stack" data-tr="Teknolojiler" id="skills-title">
-                    Tech Stack
-                </h2>
-<div class="tech-categories">
-<article class="tech-category-card">
-<h3 data-en="Backend &amp; Database" data-tr="Backend ve Veritabanı">Backend &amp; Database</h3>
-<ul class="tech-list">
-<li class="tech-item" data-tooltip="Used for backend development and business logic." data-tooltip-en="Used for backend development and business logic." data-tooltip-tr="Backend geliştirme ve iş mantığı oluşturmak için kullanılır."><span aria-hidden="true" class="tech-icon"><i class="devicon-csharp-plain colored"></i></span><span class="tech-name">C#</span></li>
-<li class="tech-item" data-tooltip="A backend framework for building APIs and web applications." data-tooltip-en="A backend framework for building APIs and web applications." data-tooltip-tr="API ve web uygulamaları geliştirmek için kullanılan backend frameworktür."><span aria-hidden="true" class="tech-icon"><i class="devicon-dotnetcore-plain colored"></i></span><span class="tech-name">.NET Core</span></li>
-<li class="tech-item" data-tooltip="Used for MVC-based web application development." data-tooltip-en="Used for MVC-based web application development." data-tooltip-tr="MVC tabanlı web uygulamaları geliştirmek için kullanılır."><span aria-hidden="true" class="tech-icon"><i class="devicon-php-plain colored"></i></span><span class="tech-name">PHP</span></li>
-<li class="tech-item" data-tooltip="A PHP framework used for backend features and MVC applications." data-tooltip-en="A PHP framework used for backend features and MVC applications." data-tooltip-tr="Backend özellikleri ve MVC uygulamaları geliştirmek için kullanılan PHP frameworküdür."><span aria-hidden="true" class="tech-icon">LV</span><span class="tech-name">Laravel</span></li>
-<li class="tech-item" data-tooltip="Used for communication between frontend, mobile and backend systems." data-tooltip-en="Used for communication between frontend, mobile and backend systems." data-tooltip-tr="Frontend, mobil ve backend sistemleri arasında veri iletişimi sağlamak için kullanılır."><span aria-hidden="true" class="tech-icon">API</span><span class="tech-name">RESTful API</span></li>
-<li class="tech-item" data-tooltip="A relational database system used in banking-oriented projects." data-tooltip-en="A relational database system used in banking-oriented projects." data-tooltip-tr="Bankacılık odaklı projelerde kullanılan ilişkisel veritabanı sistemidir."><span aria-hidden="true" class="tech-icon"><i class="devicon-oracle-original colored"></i></span><span class="tech-name">Oracle Database</span></li>
-<li class="tech-item" data-tooltip="A relational database system used for storing and managing data." data-tooltip-en="A relational database system used for storing and managing data." data-tooltip-tr="Verileri saklamak ve yönetmek için kullanılan ilişkisel veritabanı sistemidir."><span aria-hidden="true" class="tech-icon"><i class="devicon-microsoftsqlserver-plain colored"></i></span><span class="tech-name">SQL Server</span></li>
-<li class="tech-item" data-tooltip="Used for authentication, backend services and app data." data-tooltip-en="Used for authentication, backend services and app data." data-tooltip-tr="Kimlik doğrulama, backend servisleri ve uygulama verileri için kullanılır."><span aria-hidden="true" class="tech-icon"><i class="devicon-firebase-plain colored"></i></span><span class="tech-name">Firebase</span></li>
-</ul>
-</article>
-<article class="tech-category-card">
-<h3 data-en="Mobile" data-tr="Mobil">Mobile</h3>
-<ul class="tech-list">
-<li class="tech-item" data-tooltip="Used for native iOS app development." data-tooltip-en="Used for native iOS app development." data-tooltip-tr="Native iOS uygulamaları geliştirmek için kullanılır."><span aria-hidden="true" class="tech-icon"><i class="devicon-swift-plain colored"></i></span><span class="tech-name">Swift</span></li>
-<li class="tech-item" data-tooltip="A modern framework for building iOS interfaces declaratively." data-tooltip-en="A modern framework for building iOS interfaces declaratively." data-tooltip-tr="iOS arayüzlerini modern ve sade şekilde geliştirmek için kullanılan frameworktür."><span aria-hidden="true" class="tech-icon"><i class="devicon-swift-plain colored"></i></span><span class="tech-name">SwiftUI</span></li>
-<li class="tech-item" data-tooltip="A classic iOS framework for building app interfaces programmatically." data-tooltip-en="A classic iOS framework for building app interfaces programmatically." data-tooltip-tr="iOS uygulama arayüzlerini programatik olarak geliştirmek için kullanılan frameworktür."><span aria-hidden="true" class="tech-icon"><i class="devicon-apple-original"></i></span><span class="tech-name">UIKit</span></li>
-<li class="tech-item" data-tooltip="Used for local data storage and persistence in iOS apps." data-tooltip-en="Used for local data storage and persistence in iOS apps." data-tooltip-tr="iOS uygulamalarında yerel veri saklama ve kalıcılık için kullanılır."><span aria-hidden="true" class="tech-icon"><i class="devicon-apple-original"></i></span><span class="tech-name">SwiftData</span></li>
-<li class="tech-item" data-tooltip="Used for map-based and location features in iOS apps." data-tooltip-en="Used for map-based and location features in iOS apps." data-tooltip-tr="iOS uygulamalarında harita ve konum özellikleri için kullanılır."><span aria-hidden="true" class="tech-icon"><i class="devicon-apple-original"></i></span><span class="tech-name">MapKit</span></li>
-<li class="tech-item" data-tooltip="Used for AI-powered recommendation features." data-tooltip-en="Used for AI-powered recommendation features." data-tooltip-tr="Yapay zekâ destekli öneri özellikleri için kullanılır."><span aria-hidden="true" class="tech-icon">AI</span><span class="tech-name">OpenAI API</span></li>
-</ul>
-</article>
-<article class="tech-category-card">
-<h3 data-en="Frontend" data-tr="Frontend">Frontend</h3>
-<ul class="tech-list">
-<li class="tech-item" data-tooltip="A frontend framework used for structured web applications." data-tooltip-en="A frontend framework used for structured web applications." data-tooltip-tr="Düzenli web uygulamaları geliştirmek için kullanılan frontend frameworktür."><span aria-hidden="true" class="tech-icon"><i class="devicon-angularjs-plain colored"></i></span><span class="tech-name">Angular</span></li>
-<li class="tech-item" data-tooltip="Used to create the structure of web pages." data-tooltip-en="Used to create the structure of web pages." data-tooltip-tr="Web sayfalarının temel yapısını oluşturmak için kullanılır."><span aria-hidden="true" class="tech-icon"><i class="devicon-html5-plain colored"></i></span><span class="tech-name">HTML</span></li>
-<li class="tech-item" data-tooltip="Used to style responsive web interfaces." data-tooltip-en="Used to style responsive web interfaces." data-tooltip-tr="Responsive web arayüzlerini tasarlamak için kullanılır."><span aria-hidden="true" class="tech-icon"><i class="devicon-css3-plain colored"></i></span><span class="tech-name">CSS</span></li>
-<li class="tech-item" data-tooltip="Used to add interactive behavior to web pages." data-tooltip-en="Used to add interactive behavior to web pages." data-tooltip-tr="Web sayfalarına etkileşim ve dinamik davranış kazandırmak için kullanılır."><span aria-hidden="true" class="tech-icon"><i class="devicon-javascript-plain colored"></i></span><span class="tech-name">JavaScript</span></li>
-</ul>
-</article>
-</div>
-</div>
-</section>
-<section aria-labelledby="experience-title" class="experience section" id="experience">
-<div class="container">
-<h2 class="section-title" data-en="Experience" data-tr="Deneyim" id="experience-title">
-                    Experience
-                </h2>
-<div class="experience-list">
-<article class="experience-card">
-<div class="experience-top">
-<span class="experience-category" data-en="Software Engineering Internship" data-tr="Yazılım Mühendisliği Stajı">Software Engineering Internship</span>
-<span class="experience-date">June 2026 - Present</span>
-</div>
-<div class="experience-content">
-<h3 data-en="Software Engineering Intern" data-tr="Yazılım Mühendisliği Stajyeri">Software Engineering Intern</h3>
-<p class="experience-company">Oksid Bilişim &amp; İncehesap.com</p>
-<p class="experience-description" data-en="Currently contributing to real-world software projects using PHP and Laravel, with a focus on backend development, maintainable features and practical web application workflows." data-tr="Şu anda PHP ve Laravel kullanarak gerçek yazılım projelerine katkı sağlıyor; backend geliştirme, sürdürülebilir özellikler ve pratik web uygulama akışları üzerine çalışıyorum.">Currently contributing to real-world software projects using PHP and Laravel, with a focus on backend development, maintainable features and practical web application workflows.</p>
-<ul class="experience-points">
-<li data-en="Develop and maintain web application features using PHP and Laravel." data-tr="PHP ve Laravel kullanarak web uygulama özellikleri geliştiriyor ve bakımını yapıyorum.">Develop and maintain web application features using PHP and Laravel.</li>
-<li data-en="Contribute to backend development tasks, including data-driven pages, feature updates and issue fixes." data-tr="Veri odaklı sayfalar, özellik güncellemeleri ve hata düzeltmeleri dahil backend geliştirme görevlerine katkı sağlıyorum.">Contribute to backend development tasks, including data-driven pages, feature updates and issue fixes.</li>
-<li data-en="Implement CRUD operations, filtering and pagination to improve application usability." data-tr="Uygulama kullanılabilirliğini artırmak için CRUD işlemleri, filtreleme ve sayfalama geliştiriyorum.">Implement CRUD operations, filtering and pagination to improve application usability.</li>
-<li data-en="Collaborate with Git and follow a structured development workflow while working on real software requirements." data-tr="Gerçek yazılım gereksinimleri üzerinde çalışırken Git kullanıyor ve düzenli bir geliştirme akışı takip ediyorum.">Collaborate with Git and follow a structured development workflow while working on real software requirements.</li>
-</ul>
-</div>
-</article>
-<article class="experience-card">
-<div class="experience-top">
-<span class="experience-category" data-en="Backend Developer Internship" data-tr="Backend Developer Stajı">Backend Developer Internship</span>
-<span class="experience-date">Jan 2026 - Feb 2026</span>
-</div>
-<div class="experience-content">
-<h3 data-en="Backend Developer Intern" data-tr="Backend Developer Stajyeri">Backend Developer Intern</h3>
-<p class="experience-company">VakıfBank</p>
-<p class="experience-description" data-en="Developed backend services for a digital banking project using C#, .NET Core, RESTful APIs and Oracle Database, with Angular used for supporting interface modules." data-tr="C#, .NET Core, RESTful API’ler ve Oracle Database kullanarak dijital bankacılık projesi için backend servisleri geliştirdim; Angular’ı arayüz modüllerini desteklemek için kullandım.">Developed backend services for a digital banking project using C#, .NET Core, RESTful APIs and Oracle Database, with Angular used for supporting interface modules.</p>
-<ul class="experience-points">
-<li data-en="Developed backend services using C# and .NET Core for digital banking workflows." data-tr="Dijital bankacılık iş akışları için C# ve .NET Core kullanarak backend servisleri geliştirdim.">Developed backend services using C# and .NET Core for digital banking workflows.</li>
-<li data-en="Implemented RESTful API structures for account management, authentication and money transfer features." data-tr="Hesap yönetimi, authentication ve para transferi özellikleri için RESTful API yapıları uyguladım.">Implemented RESTful API structures for account management, authentication and money transfer features.</li>
-<li data-en="Worked with Oracle Database, PL/SQL stored procedures and packages for structured data operations." data-tr="Düzenli veri işlemleri için Oracle Database, PL/SQL stored procedure ve package yapılarıyla çalıştım.">Worked with Oracle Database, PL/SQL stored procedures and packages for structured data operations.</li>
-<li data-en="Applied Clean Architecture and Repository Pattern principles while building scalable backend components." data-tr="Ölçeklenebilir backend bileşenleri geliştirirken Clean Architecture ve Repository Pattern prensiplerini uyguladım.">Applied Clean Architecture and Repository Pattern principles while building scalable backend components.</li>
-</ul>
-</div>
-</article>
-<article class="experience-card">
-<div class="experience-top">
-<span class="experience-category" data-en="Mobile Internship" data-tr="Mobil Staj">Mobile Internship</span>
-<span class="experience-date">Jul 2025 - Sep 2025</span>
-</div>
-<div class="experience-content">
-<h3 data-en="Mobile Application Developer Intern (iOS)" data-tr="Mobil Uygulama Geliştirme Stajyeri (iOS)">Mobile Application Developer Intern (iOS)</h3>
-<p class="experience-company">VakıfBank</p>
-<p class="experience-description" data-en="Developed iOS applications using Swift, UIKit and MVVM architecture, contributing to CineScope and PettiCare mobile projects." data-tr="Swift, UIKit ve MVVM mimarisi kullanarak iOS uygulamaları geliştirdim; CineScope ve PettiCare mobil projelerine katkı sağladım.">Developed iOS applications using Swift, UIKit and MVVM architecture, contributing to CineScope and PettiCare mobile projects.</p>
-<ul class="experience-points">
-<li data-en="Developed iOS application screens and features using Swift, UIKit and SwiftUI." data-tr="Swift, UIKit ve SwiftUI kullanarak iOS uygulama ekranları ve özellikleri geliştirdim.">Developed iOS application screens and features using Swift, UIKit and SwiftUI.</li>
-<li data-en="Built reusable components and organized project structure with MVVM architecture." data-tr="MVVM mimarisiyle tekrar kullanılabilir bileşenler geliştirdim ve proje yapısını düzenledim.">Built reusable components and organized project structure with MVVM architecture.</li>
-<li data-en="Integrated OpenAI Function Calling, Firebase Authentication and Remote Config features." data-tr="OpenAI Function Calling, Firebase Authentication ve Remote Config özelliklerini entegre ettim.">Integrated OpenAI Function Calling, Firebase Authentication and Remote Config features.</li>
-<li data-en="Used Moya, Alamofire and SwiftData to support networking and data management workflows." data-tr="Networking ve veri yönetimi akışlarını desteklemek için Moya, Alamofire ve SwiftData kullandım.">Used Moya, Alamofire and SwiftData to support networking and data management workflows.</li>
-</ul>
-</div>
-</article>
-<article class="experience-card">
-<div class="experience-top">
-<span class="experience-category" data-en="Leadership" data-tr="Liderlik">Leadership</span>
-<span class="experience-date">2025 - Present</span>
-</div>
-<div class="experience-content">
-<h3 data-en="Mobile Technical Team Lead" data-tr="Mobil Teknik Takım Kaptanı">Mobile Technical Team Lead</h3>
-<p class="experience-company">GDG On Campus Doğuş University</p>
-<p class="experience-description" data-en="Supporting mobile-focused technical activities, team coordination and student community projects." data-tr="Mobil odaklı teknik etkinliklere, takım koordinasyonuna ve öğrenci topluluğu projelerine destek oluyorum.">Supporting mobile-focused technical activities, team coordination and student community projects.</p>
-<ul class="experience-points">
-<li data-en="Helped organize software, mobile development and technology events for students." data-tr="Öğrenciler için yazılım, mobil geliştirme ve teknoloji etkinliklerinin düzenlenmesine yardımcı oldum.">Helped organize software, mobile development and technology events for students.</li>
-<li data-en="Supported team communication, technical planning and project-based learning activities." data-tr="Takım iletişimi, teknik planlama ve proje tabanlı öğrenme çalışmalarına destek verdim.">Supported team communication, technical planning and project-based learning activities.</li>
-</ul>
-</div>
-</article>
-</div>
-</div>
-</section>
-<section aria-labelledby="projects-title" class="projects section" id="projects">
-<div class="container">
-<h2 class="section-title" data-en="Projects" data-tr="Projeler" id="projects-title">
-                    Projects
-                </h2>
-<div class="projects-grid">
-<article class="project-card">
-<div class="project-card-top">
-<span class="project-category" data-en="Digital Banking System" data-tr="Dijital Bankacılık Sistemi">Digital Banking System</span>
-</div>
-<h3>FinGen Banking System</h3>
-<p class="project-description" data-en="A digital banking application built with C#, .NET Core, Angular and Oracle Database. The project includes authentication, account management, money transfer workflows and backend services designed around clean architecture principles." data-tr="C#, .NET Core, Angular ve Oracle Database kullanılarak geliştirilen dijital bankacılık uygulamasıdır. Projede authentication, hesap yönetimi, para transferi akışları ve clean architecture prensiplerine göre tasarlanan backend servisleri yer alır.">A digital banking application built with C#, .NET Core, Angular and Oracle Database. The project includes authentication, account management, money transfer workflows and backend services designed around clean architecture principles.</p>
-<ul aria-label="Project technologies" class="tech-stack">
-<li class="tech">C#</li><li class="tech">.NET Core</li><li class="tech">REST API</li><li class="tech">Oracle DB</li><li class="tech">Angular</li>
-</ul>
-<a class="project-link" data-en="View Repository →" data-tr="Repoyu Gör →" href="https://github.com/aysenurkendirci/Internship_Bank_Project" rel="noopener noreferrer" target="_blank">View Repository →</a>
-</article>
-<article class="project-card">
-<div class="project-card-top">
-<span class="project-category" data-en="AI-Powered iOS Movie App" data-tr="Yapay Zekâ Destekli iOS Film Uygulaması">AI-Powered iOS Movie App</span>
-</div>
-<h3>CineScope</h3>
-<p class="project-description" data-en="An iOS movie discovery application that uses OpenAI API to support personalized recommendation flows. The project focuses on UIKit-based screens, MVVM structure and clean mobile user experience." data-tr="OpenAI API ile kişiselleştirilmiş film öneri akışlarını destekleyen bir iOS film keşif uygulaması. Proje; UIKit tabanlı ekranlar, MVVM yapısı ve temiz mobil kullanıcı deneyimi üzerine odaklanır.">An iOS movie discovery application that uses OpenAI API to support personalized recommendation flows. The project focuses on UIKit-based screens, MVVM structure and clean mobile user experience.</p>
-<ul aria-label="Project technologies" class="tech-stack"><li class="tech">Swift</li><li class="tech">UIKit</li><li class="tech">OpenAI API</li><li class="tech">Firebase</li></ul>
-<a class="project-link" data-en="View Repository →" data-tr="Repoyu Gör →" href="https://github.com/aysenurkendirci/CineScope-MovieApp" rel="noopener noreferrer" target="_blank">View Repository →</a>
-</article>
-<article class="project-card">
-<div class="project-card-top">
-<span class="project-category" data-en="Pet Care &amp; Routine Tracking App" data-tr="Evcil Hayvan Bakım ve Rutin Takip Uygulaması">Pet Care &amp; Routine Tracking App</span>
-</div>
-<h3>PettiCare</h3>
-<p class="project-description" data-en="An iOS pet care application for managing pet profiles, care routines and nearby veterinary locations. The project uses SwiftUI, SwiftData and MapKit for local data and location-based features." data-tr="Evcil hayvan profilleri, bakım rutinleri ve yakın veteriner konumlarını yönetmek için geliştirilen bir iOS uygulaması. Projede yerel veri ve konum tabanlı özellikler için SwiftUI, SwiftData ve MapKit kullanıldı.">An iOS pet care application for managing pet profiles, care routines and nearby veterinary locations. The project uses SwiftUI, SwiftData and MapKit for local data and location-based features.</p>
-<ul aria-label="Project technologies" class="tech-stack"><li class="tech">Swift</li><li class="tech">SwiftUI</li><li class="tech">SwiftData</li><li class="tech">MapKit</li></ul>
-<a class="project-link" data-en="View Repository →" data-tr="Repoyu Gör →" href="https://github.com/aysenurkendirci/PettiCareApp" rel="noopener noreferrer" target="_blank">View Repository →</a>
-</article>
-<article class="project-card">
-<div class="project-card-top">
-<span class="project-category" data-en="Campus Management Platform" data-tr="Kampüs Yönetim Platformu">Campus Management Platform</span>
-</div>
-<h3>HeyDOU Campus</h3>
-<p class="project-description" data-en="A web-based campus management platform developed as an academic team project. It combines academic calendar, cafeteria, events, clubs, internship tracking and campus map features in one interface." data-tr="Akademik ekip projesi olarak geliştirilen web tabanlı kampüs yönetim platformu. Akademik takvim, yemekhane, etkinlikler, kulüpler, staj takibi ve kampüs haritası özelliklerini tek arayüzde birleştirir.">A web-based campus management platform developed as an academic team project. It combines academic calendar, cafeteria, events, clubs, internship tracking and campus map features in one interface.</p>
-<ul aria-label="Project technologies" class="tech-stack"><li class="tech">HTML</li><li class="tech">CSS</li><li class="tech">C#</li><li class="tech">OpenAI Integration</li></ul>
-<a class="project-link" data-en="View Repository →" data-tr="Repoyu Gör →" href="https://github.com/aysenurkendirci/Heydou_kamp-s" rel="noopener noreferrer" target="_blank">View Repository →</a>
-</article>
-</div>
-</div>
-</section>
-<section aria-labelledby="contact-title" class="contact section" id="contact">
-<div class="container">
-<h2 class="section-title" data-en="Contact" data-tr="İletişim" id="contact-title">
-                    Contact
-                </h2>
-<p class="contact-intro" data-en="I am open to software engineering internships, junior backend developer roles and mobile application projects where I can contribute, learn and build practical software solutions." data-tr="Yazılım mühendisliği stajlarına, junior backend geliştirici rollerine ve katkı sağlayabileceğim mobil uygulama projelerine açığım.">I am open to software engineering internships, junior backend developer roles and mobile application projects where I can contribute, learn and build practical software solutions.</p>
-<div class="contact-wrapper">
-<aside aria-label="Contact information" class="contact-info-card">
-<div class="contact-info-list">
-<a class="contact-info-item" href="mailto:aysenurkendirciss@gmail.com">
-<span aria-hidden="true" class="contact-icon email-icon">
-<i class="fa-solid fa-envelope"></i>
-</span>
-<span>
-<small data-en="Email" data-tr="E-posta">
-                                        Email
-                                    </small>
-<strong>aysenurkendirciss@gmail.com</strong>
-</span>
-</a>
-<a class="contact-info-item" href="https://github.com/aysenurkendirci" rel="noopener noreferrer" target="_blank">
-<span aria-hidden="true" class="contact-icon github-icon">
-<i class="fa-brands fa-github"></i>
-</span>
-<span>
-<small data-en="GitHub" data-tr="GitHub">
-                                        GitHub
-                                    </small>
-<strong data-en="View repositories" data-tr="Depoları görüntüle">
-                                        View repositories
-                                    </strong>
-</span>
-</a>
-<a class="contact-info-item" href="https://www.linkedin.com/in/aysenurkendirci" rel="noopener noreferrer" target="_blank">
-<span aria-hidden="true" class="contact-icon linkedin-icon">
-<i class="fa-brands fa-linkedin-in"></i>
-</span>
-<span>
-<small data-en="LinkedIn" data-tr="LinkedIn">
-                                        LinkedIn
-                                    </small>
-<strong data-en="Connect with me" data-tr="Benimle bağlantı kurun">
-                                        Connect with me
-                                    </strong>
-</span>
-</a>
-</div>
-</aside>
-<form action="https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID" aria-describedby="form-help" class="contact-form" method="POST" novalidate="">
+    <!-- Accessibility quick-link -->
+    <a href="#main-content" class="sr-only" tabindex="1">
+        <span data-en="Skip to main content" data-tr="Ana içeriğe atla">Skip to main content</span>
+    </a>
 
-<i aria-hidden="true" class="fa-solid fa-paper-plane"></i>
-</button>
-</form>
-</div>
-</div>
-</section>
-</main>
-<footer class="footer" role="contentinfo">
-<div class="container footer-container">
-<p class="footer-text" data-en="© 2026 Ayşe Nur Kendirci. All rights reserved." data-tr="© 2026 Ayşe Nur Kendirci. Tüm hakları saklıdır.">
-                © 2026 Ayşe Nur Kendirci. All rights reserved.
+    <!-- Interactive mouse cursor glow container -->
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+    <!-- NAVBAR COMPONENT -->
+    <header class="site-header" role="banner">
+    <nav class="navbar" aria-label="Ana navigasyon">
+        <div class="container navbar-container">
+            <a href="#home" class="brand" aria-label="Ana bölüme git">
+                <span class="brand-line">
+                    <span class="token-const">const</span>
+                    <span class="token-var">developer</span>
+                    <span class="token-eq">=</span>
+                    <span class="token-string">"Ayşe Nur Kendirci"</span>
+                    <span class="token-semi">;</span>
+                    <span class="brand-cursor" aria-hidden="true"></span>
+                </span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Navigasyon menüsünü aç"
+                aria-controls="navLinks"
+                aria-expanded="false"
+            >
+                <span aria-hidden="true">☰</span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" data-en="About" data-tr="Hakkımda">About</a></li>
+                <li><a href="#skills" data-en="Tech Stack" data-tr="Teknolojiler">Tech Stack</a></li>
+                <li><a href="#experience" data-en="Experience" data-tr="Deneyim">Experience</a></li>
+                <li><a href="#projects" data-en="Projects" data-tr="Projeler">Projects</a></li>
+                <li><a href="#contact" data-en="Contact" data-tr="İletişim">Contact</a></li>
+                <li>
+                    <a
+                        href="images/Ayse_Nur_Kendirci_CV.pdf"
+                        download="Ayse_Nur_Kendirci_CV.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-en="CV"
+                        data-tr="CV"
+                    >
+                        CV
+                    </a>
+                </li>
+            </ul>
+
+            <div class="navbar-tools" aria-label="Sayfa ayarları">
+                <div class="toolbar-shell">
+                    <button
+                        class="tool-chip"
+                        id="langToggle"
+                        type="button"
+                        aria-label="Dili değiştir"
+                        title="İngilizce ve Türkçe arasında geçiş yap"
+                    >
+                        <span class="tool-label">TR</span>
+                    </button>
+
+                    <button
+                        class="tool-chip"
+                        id="themeToggle"
+                        type="button"
+                        aria-label="Temayı değiştir"
+                        title="Koyu ve açık tema arasında geçiş yap"
+                    >
+                        <span class="tool-label">☾</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+    <main id="main-content">
+        <!-- HERO COMPONENT -->
+        <section id="home" class="hero hero-split" aria-labelledby="hero-title">
+    <div class="hero-bg-word" aria-hidden="true">PORTFOLIO</div>
+    <div class="container hero-split-layout">
+        <div class="hero-left">
+            <p class="intro-line" data-en="Hello, I'm" data-tr="Merhaba, ben">Hello, I'm</p>
+            <h1 id="hero-title" class="hero-name">
+                <span>Ayşe Nur</span>
+                <span>Kendirci</span>
+            </h1>
+            <p class="hero-role"
+               data-en="Software Engineering Student | Backend Development"
+               data-tr="Backend Yazılım Geliştirici">
+                Software Engineering Student | Backend Development
             </p>
-</div>
+            <p class="hero-description"
+               data-en="I am a software engineering student focused on backend development. I focus on developing sustainable, clear software systems that solve real needs."
+               data-tr="Backend geliştirme odaklı bir yazılım mühendisliği öğrencisiyim. Sürdürülebilir, anlaşılır ve gerçek ihtiyaçlara çözüm üreten yazılım sistemleri geliştirmeye odaklanıyorum.">
+                I am a software engineering student focused on backend development. I focus on developing sustainable, clear software systems that solve real needs.
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn" data-en="View Projects" data-tr="Projeleri Gör">
+                    View Projects
+                </a>
+                <a href="images/Ayse_Nur_Kendirci_CV.pdf"
+                   class="btn btn-secondary"
+                   download="Ayse_Nur_Kendirci_CV.pdf"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   data-en="Download CV"
+                   data-tr="CV İndir">
+                    Download CV
+                </a>
+            </div>
+            <div class="hero-social-icons" aria-label="Social media links">
+                <a href="https://github.com/aysenurkendirci" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                    <i class="devicon-github-original" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/aysenurkendirci" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                    <i class="devicon-linkedin-plain" aria-hidden="true"></i>
+                </a>
+                <a href="mailto:aysenurkendirciss@gmail.com" aria-label="Send email">
+                    <span aria-hidden="true">@</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="swing-wrapper">
+                <div class="swing-line" aria-hidden="true"></div>
+                <article class="portfolio-card">
+                    <div class="portfolio-card-header" aria-hidden="true"></div>
+                    <div class="portfolio-card-image">
+                        <img src="images/profile.jpg"
+                             alt="Ayşe Nur Kendirci portre fotoğrafı"
+                             data-alt-en="Portrait of Ayşe Nur Kendirci"
+                             data-alt-tr="Ayşe Nur Kendirci portre fotoğrafı">
+                    </div>
+                    <div class="portfolio-card-footer">
+                        <h2>Ayşe Nur Kendirci</h2>
+                        <p data-en="Software Engineering Student | Backend Development"
+                           data-tr="Backend Yazılım Geliştirici">
+                            Software Engineering Student | Backend Development
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        <!-- ABOUT COMPONENT -->
+        <section id="about" class="about section" aria-labelledby="about-title">
+    <div class="container">
+        <h2 id="about-title" class="section-title" data-en="About Me" data-tr="Hakkımda">
+            About Me
+        </h2>
+        <div class="about-content">
+            
+            <p data-en="As a software engineering student, I have internship and project experience in backend and mobile application development. Currently, I focus on backend development, RESTful services, database operations, and sustainable software architectures." data-tr="Yazılım mühendisliği öğrencisi olarak backend ve mobil uygulama geliştirme alanlarında staj ve proje deneyimine sahibim. Güncel olarak backend geliştirme, RESTful servisler, veritabanı işlemleri ve sürdürülebilir yazılım yapıları üzerine çalışıyorum.">
+                As a software engineering student, I have internship and project experience in backend and mobile application development. Currently, I focus on backend development, RESTful services, database operations, and sustainable software architectures.
+            </p>
+            
+            <p data-en="During my backend internship at VakıfBank, I experienced backend services, Oracle Database and PL/SQL-based operations, JWT Authentication, and layered architecture approaches on a digital banking application. At Oksid Bilişim, I contribute to the development of PHP and Laravel-based modules, the improvement of existing systems, and AI-focused projects." data-tr="VakıfBank’taki backend stajımda dijital bankacılık uygulaması üzerinde backend servisleri, Oracle Database ve PL/SQL tabanlı işlemler, JWT Authentication ve katmanlı mimari yaklaşımları deneyimledim. Oksid Bilişim’de ise PHP ve Laravel tabanlı modüllerin geliştirilmesine, mevcut sistemlerin iyileştirilmesine ve yapay zekâ odaklı projelere katkı sağlıyorum.">
+                During my backend internship at VakıfBank, I experienced backend services, Oracle Database and PL/SQL-based operations, JWT Authentication, and layered architecture approaches on a digital banking application. At Oksid Bilişim, I contribute to the development of PHP and Laravel-based modules, the improvement of existing systems, and AI-focused projects.
+            </p>
+            
+            <p data-en="Thanks to the iOS applications I developed with Swift, UIKit, and SwiftUI, I can evaluate software products holistically from backend services to the user interface. I aim to advance my career in backend development and design reliable, clean, and sustainable systems." data-tr="Swift, UIKit ve SwiftUI ile geliştirdiğim iOS uygulamaları sayesinde yazılım ürünlerini backend servislerinden kullanıcı arayüzüne kadar bütünsel biçimde değerlendirebiliyorum. Kariyerimi backend geliştirme alanında ilerletmeyi ve güvenilir, anlaşılır ve sürdürülebilir sistemler geliştirmeyi hedefliyorum.">
+                Thanks to the iOS applications I developed with Swift, UIKit, and SwiftUI, I can evaluate software products holistically from backend services to the user interface. I aim to advance my career in backend development and design reliable, clean, and sustainable systems.
+            </p>
+            
+        </div>
+    </div>
+</section>
+
+
+        <!-- SKILLS COMPONENT -->
+        <section id="skills" class="skills section" aria-labelledby="skills-title">
+    <div class="container">
+        <h2 id="skills-title" class="section-title" data-en="Tech Stack" data-tr="Teknolojiler">
+            Tech Stack
+        </h2>
+        <div class="tech-categories">
+            
+            <article class="tech-category-card">
+                <h3 data-en="Backend" data-tr="Backend">
+                    Backend
+                </h3>
+                <ul class="tech-list">
+                    
+                    <li class="tech-item"
+                        data-tooltip="Object-oriented language for building backend systems and APIs."
+                        data-tooltip-en="Object-oriented language for building backend systems and APIs."
+                        data-tooltip-tr="Backend sistemleri ve API'ler geliştirmek için kullanılan programlama dili.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="devicon-csharp-plain colored"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            C#
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="Cross-platform framework for building scalable APIs and backend services."
+                        data-tooltip-en="Cross-platform framework for building scalable APIs and backend services."
+                        data-tooltip-tr="Ölçeklenebilir API'ler ve backend servisleri geliştirmek için cross-platform framework.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="devicon-dotnetcore-plain colored"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            .NET Core
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="Web framework for building modern web applications and APIs in .NET."
+                        data-tooltip-en="Web framework for building modern web applications and APIs in .NET."
+                        data-tooltip-tr=".NET ortamında web uygulamaları ve API'ler geliştirmek için kullanılan framework.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="devicon-dotnetcore-plain colored"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            ASP.NET Core
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="Server-side language for building web applications and MVC systems."
+                        data-tooltip-en="Server-side language for building web applications and MVC systems."
+                        data-tooltip-tr="Dinamik web uygulamaları ve backend sistemleri geliştirmek için sunucu tarafı programlama dili.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="devicon-php-plain colored"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            PHP
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="Modern PHP framework for rapid API and web application development."
+                        data-tooltip-en="Modern PHP framework for rapid API and web application development."
+                        data-tooltip-tr="Hızlı API ve web uygulaması geliştirme için modern PHP framework.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="devicon-laravel-plain colored"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            Laravel
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="Architectural style for building stateless, scalable backend services."
+                        data-tooltip-en="Architectural style for building stateless, scalable backend services."
+                        data-tooltip-tr="Stateless ve ölçeklenebilir backend servisleri geliştirmek için kullanılan mimari yapı.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="fa-solid fa-gears"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            RESTful APIs
+                        </span>
+                    </li>
+                    
+                </ul>
+            </article>
+            
+            <article class="tech-category-card">
+                <h3 data-en="Mobile" data-tr="Mobil">
+                    Mobile
+                </h3>
+                <ul class="tech-list">
+                    
+                    <li class="tech-item"
+                        data-tooltip="Modern programming language for native iOS app development."
+                        data-tooltip-en="Modern programming language for native iOS app development."
+                        data-tooltip-tr="Native iOS uygulamaları geliştirmek için kullanılan modern programlama dili.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="devicon-swift-plain colored"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            Swift
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="Apple's classic framework for building iOS user interfaces."
+                        data-tooltip-en="Apple's classic framework for building iOS user interfaces."
+                        data-tooltip-tr="iOS kullanıcı arayüzleri oluşturmak için kullanılan klasik framework.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="devicon-apple-original"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            UIKit
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="Apple's declarative framework for building user interfaces on iOS."
+                        data-tooltip-en="Apple's declarative framework for building user interfaces on iOS."
+                        data-tooltip-tr="Kullanıcı arayüzlerini deklaratif olarak geliştirmek için kullanılan Apple framework'ü.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="devicon-swift-plain colored"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            SwiftUI
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="Modern persistence framework for local data storage in iOS apps."
+                        data-tooltip-en="Modern persistence framework for local data storage in iOS apps."
+                        data-tooltip-tr="iOS uygulamalarında yerel veri saklama ve kalıcılık sağlayan framework.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="devicon-apple-original"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            SwiftData
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="Network abstraction layer written in Swift."
+                        data-tooltip-en="Network abstraction layer written in Swift."
+                        data-tooltip-tr="Swift ile yazılmış ağ bağlantısı soyutlama katmanı.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            Moya
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="HTTP networking library for iOS applications."
+                        data-tooltip-en="HTTP networking library for iOS applications."
+                        data-tooltip-tr="iOS uygulamaları için HTTP tabanlı ağ iletişim kütüphanesi.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            Alamofire
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="Apple's framework for integrating maps and location information."
+                        data-tooltip-en="Apple's framework for integrating maps and location information."
+                        data-tooltip-tr="Uygulamalara harita ve konum servisleri entegre etmek için kullanılan Apple framework'ü.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="fa-solid fa-map"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            MapKit
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="Apple's framework for obtaining location, altitude, and orientation details."
+                        data-tooltip-en="Apple's framework for obtaining location, altitude, and orientation details."
+                        data-tooltip-tr="Konum, yükseklik ve yön bilgilerini elde etmek için kullanılan Apple framework'ü.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="fa-solid fa-location-dot"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            CoreLocation
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="Model-View-ViewModel pattern for separating UI development from business logic."
+                        data-tooltip-en="Model-View-ViewModel pattern for separating UI development from business logic."
+                        data-tooltip-tr="UI geliştirmeyi iş mantığından ayıran Model-View-ViewModel tasarım deseni.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="fa-solid fa-shuffle"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            MVVM
+                        </span>
+                    </li>
+                    
+                </ul>
+            </article>
+            
+            <article class="tech-category-card">
+                <h3 data-en="Frontend" data-tr="Frontend">
+                    Frontend
+                </h3>
+                <ul class="tech-list">
+                    
+                    <li class="tech-item"
+                        data-tooltip="Frontend framework for building structured, dynamic web applications."
+                        data-tooltip-en="Frontend framework for building structured, dynamic web applications."
+                        data-tooltip-tr="Düzenli ve dinamik web uygulamaları geliştirmek için kullanılan frontend frameworktür.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="devicon-angularjs-plain colored"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            Angular
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="Programming language for client-side interactivity and web development."
+                        data-tooltip-en="Programming language for client-side interactivity and web development."
+                        data-tooltip-tr="İnteraktif web sayfaları ve client-side etkileşimler için temel programlama dili.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="devicon-javascript-plain colored"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            JavaScript
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="Standard markup language for creating web page structures."
+                        data-tooltip-en="Standard markup language for creating web page structures."
+                        data-tooltip-tr="Web sayfalarının temel iskeletini ve yapısını oluşturmak için kullanılan standart dil.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="devicon-html5-plain colored"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            HTML
+                        </span>
+                    </li>
+                    
+                    <li class="tech-item"
+                        data-tooltip="Styling language for responsive and visually designed web interfaces."
+                        data-tooltip-en="Styling language for responsive and visually designed web interfaces."
+                        data-tooltip-tr="Web arayüzlerini tasarlamak ve şekillendirmek için kullanılan stil dili.">
+                        <span class="tech-icon" aria-hidden="true">
+                            
+                            <i class="devicon-css3-plain colored"></i>
+                            
+                            
+                        </span>
+                        <span class="tech-name">
+                            CSS
+                        </span>
+                    </li>
+                    
+                </ul>
+            </article>
+            
+        </div>
+    </div>
+</section>
+
+
+        <!-- EXPERIENCE COMPONENT -->
+        <section id="experience" class="experience section" aria-labelledby="experience-title">
+    <div class="container">
+        <h2 id="experience-title" class="section-title" data-en="Experience" data-tr="Deneyim">
+            Experience
+        </h2>
+        <div class="experience-list">
+            
+            <article class="experience-card">
+                <div class="experience-top">
+                    <span class="experience-category"
+                          data-en="Backend & Software Development"
+                          data-tr="Backend ve Yazılım Geliştirme">
+                        Backend & Software Development
+                    </span>
+                    <span class="experience-date">
+                        Haziran 2026 – Devam Ediyor
+                    </span>
+                </div>
+                <div class="experience-content">
+                    <h3 data-en="Software Engineering Intern" data-tr="Yazılım Mühendisliği Stajyeri">
+                        Software Engineering Intern
+                    </h3>
+                    <p class="experience-company">
+                        Oksid Bilişim (İncehesap.com Teknoloji Partneri)
+                    </p>
+                    <p class="experience-description"
+                       data-en="PHP and Laravel-based backend modülleri ile gerçek yazılım projeleri üzerinde çalışıyorum. Yeni özellik geliştirme, hata giderme, mevcut kod yapısını inceleme ve yapay zekâ odaklı projelere katkı sağlama süreçlerinde görev alıyorum."
+                       data-tr="PHP ve Laravel tabanlı backend modülleri ile gerçek yazılım projeleri üzerinde çalışıyorum. Yeni özellik geliştirme, hata giderme, mevcut kod yapısını inceleme ve yapay zekâ odaklı projelere katkı sağlama süreçlerinde görev alıyorum.">
+                        PHP and Laravel-based backend modülleri ile gerçek yazılım projeleri üzerinde çalışıyorum. Yeni özellik geliştirme, hata giderme, mevcut kod yapısını inceleme ve yapay zekâ odaklı projelere katkı sağlama süreçlerinde görev alıyorum.
+                    </p>
+                    <ul class="experience-points">
+                        
+                        <li data-en="I contribute to the development of backend modules using PHP and Laravel." data-tr="PHP ve Laravel kullanarak backend modüllerinin geliştirilmesine katkı sağlıyorum.">
+                            I contribute to the development of backend modules using PHP and Laravel.
+                        </li>
+                        
+                        <li data-en="I take part in new feature development and bug fixing in existing systems." data-tr="Mevcut sistemlerde yeni özellik geliştirme ve hata giderme çalışmalarında görev alıyorum.">
+                            I take part in new feature development and bug fixing in existing systems.
+                        </li>
+                        
+                        <li data-en="I participate in code reviews, testing, and team development workflows." data-tr="Kod inceleme, test ve ekip içi geliştirme süreçlerine katılıyorum.">
+                            I participate in code reviews, testing, and team development workflows.
+                        </li>
+                        
+                        <li data-en="I work on AI-focused software projects." data-tr="Yapay zekâ odaklı yazılım projeleri üzerinde çalışıyorum.">
+                            I work on AI-focused software projects.
+                        </li>
+                        
+                    </ul>
+                </div>
+            </article>
+            
+            <article class="experience-card">
+                <div class="experience-top">
+                    <span class="experience-category"
+                          data-en="Backend Internship"
+                          data-tr="Backend Stajı">
+                        Backend Internship
+                    </span>
+                    <span class="experience-date">
+                        Ocak 2026 – Şubat 2026
+                    </span>
+                </div>
+                <div class="experience-content">
+                    <h3 data-en="Backend Developer Intern" data-tr="Backend Developer Intern">
+                        Backend Developer Intern
+                    </h3>
+                    <p class="experience-company">
+                        VakıfBank
+                    </p>
+                    <p class="experience-description"
+                       data-en="Gained experience in backend services, RESTful API structures, and Oracle Database-based operations on a digital banking application."
+                       data-tr="Dijital bankacılık uygulaması üzerinde backend servisleri, RESTful API yapıları ve Oracle Database tabanlı işlemler konusunda deneyim kazandım.">
+                        Gained experience in backend services, RESTful API structures, and Oracle Database-based operations on a digital banking application.
+                    </p>
+                    <ul class="experience-points">
+                        
+                        <li data-en="Worked on backend services and RESTful API structures developed with C# and .NET Core." data-tr="C# ve .NET Core ile geliştirilen backend servisleri ve RESTful API yapıları üzerinde çalıştım.">
+                            Worked on backend services and RESTful API structures developed with C# and .NET Core.
+                        </li>
+                        
+                        <li data-en="Performed PL/SQL, Stored Procedure, and Package-based database operations on Oracle Database." data-tr="Oracle Database üzerinde PL/SQL, Stored Procedure ve Package tabanlı işlemler gerçekleştirdim.">
+                            Performed PL/SQL, Stored Procedure, and Package-based database operations on Oracle Database.
+                        </li>
+                        
+                        <li data-en="Analyzed authentication flows using JWT Authentication and contributed to development processes." data-tr="JWT Authentication kullanılan kimlik doğrulama akışlarını inceledim ve geliştirme süreçlerine katkı sağladım.">
+                            Analyzed authentication flows using JWT Authentication and contributed to development processes.
+                        </li>
+                        
+                        <li data-en="Worked on a project structure using Clean Architecture and Repository Pattern." data-tr="Clean Architecture ve Repository Pattern kullanılan proje yapısı üzerinde çalıştım.">
+                            Worked on a project structure using Clean Architecture and Repository Pattern.
+                        </li>
+                        
+                        <li data-en="Participated in Agile workflows and team development processes." data-tr="Agile iş akışları ve ekip içi geliştirme süreçlerine katıldım.">
+                            Participated in Agile workflows and team development processes.
+                        </li>
+                        
+                    </ul>
+                </div>
+            </article>
+            
+            <article class="experience-card">
+                <div class="experience-top">
+                    <span class="experience-category"
+                          data-en="Mobile Internship"
+                          data-tr="Mobil Staj">
+                        Mobile Internship
+                    </span>
+                    <span class="experience-date">
+                        Temmuz 2025 – Eylül 2025
+                    </span>
+                </div>
+                <div class="experience-content">
+                    <h3 data-en="Mobile Application Development Intern" data-tr="Mobil Uygulama Geliştirme Stajyeri">
+                        Mobile Application Development Intern
+                    </h3>
+                    <p class="experience-company">
+                        VakıfBank
+                    </p>
+                    <p class="experience-description"
+                       data-en="Developed two different iOS applications using Swift, UIKit, and MVVM architecture, gaining experience in mobile development processes."
+                       data-tr="Swift, UIKit ve MVVM mimarisi kullanarak iki farklı iOS uygulaması geliştirdim ve mobil uygulama geliştirme süreçlerinde deneyim kazandım.">
+                        Developed two different iOS applications using Swift, UIKit, and MVVM architecture, gaining experience in mobile development processes.
+                    </p>
+                    <ul class="experience-points">
+                        
+                        <li data-en="Developed iOS application screens using Swift, UIKit, and SwiftUI." data-tr="Swift, UIKit ve SwiftUI kullanarak iOS uygulama ekranları geliştirdim.">
+                            Developed iOS application screens using Swift, UIKit, and SwiftUI.
+                        </li>
+                        
+                        <li data-en="Worked on MVVM architecture and reusable component structures." data-tr="MVVM mimarisi ve tekrar kullanılabilir component yapıları üzerinde çalıştım.">
+                            Worked on MVVM architecture and reusable component structures.
+                        </li>
+                        
+                        <li data-en="Developed network layers using Moya and Alamofire." data-tr="Moya ve Alamofire ile network katmanları geliştirdim.">
+                            Developed network layers using Moya and Alamofire.
+                        </li>
+                        
+                        <li data-en="Implemented Firebase Authentication and Remote Config integrations." data-tr="Firebase Authentication ve Remote Config entegrasyonlarını uyguladım.">
+                            Implemented Firebase Authentication and Remote Config integrations.
+                        </li>
+                        
+                        <li data-en="Worked on local data management using SwiftData." data-tr="SwiftData kullanarak yerel veri yönetimi üzerinde çalıştım.">
+                            Worked on local data management using SwiftData.
+                        </li>
+                        
+                        <li data-en="Contributed to OpenAI Function Calling integration in the CineScope project." data-tr="CineScope projesinde OpenAI Function Calling entegrasyonuna katkı sağladım.">
+                            Contributed to OpenAI Function Calling integration in the CineScope project.
+                        </li>
+                        
+                    </ul>
+                </div>
+            </article>
+            
+            <article class="experience-card">
+                <div class="experience-top">
+                    <span class="experience-category"
+                          data-en="Leadership"
+                          data-tr="Liderlik">
+                        Leadership
+                    </span>
+                    <span class="experience-date">
+                        2025 – Devam Ediyor
+                    </span>
+                </div>
+                <div class="experience-content">
+                    <h3 data-en="Mobile Technical Team Lead" data-tr="Mobil Teknik Takım Lideri">
+                        Mobile Technical Team Lead
+                    </h3>
+                    <p class="experience-company">
+                        GDG On Campus Doğuş University
+                    </p>
+                    <p class="experience-description"
+                       data-en="Mobil teknik takım lideri olarak teknik etkinliklerin, ekip çalışmalarının ve öğrenci odaklı yazılım projelerinin planlanmasına katkı sağlıyorum."
+                       data-tr="Mobil teknik takım lideri olarak teknik etkinliklerin, ekip çalışmalarının ve öğrenci odaklı yazılım projelerinin planlanmasına katkı sağlıyorum.">
+                        Mobil teknik takım lideri olarak teknik etkinliklerin, ekip çalışmalarının ve öğrenci odaklı yazılım projelerinin planlanmasına katkı sağlıyorum.
+                    </p>
+                    <ul class="experience-points">
+                        
+                        <li data-en="I contribute to mobile development-focused technical events and project processes." data-tr="Mobil geliştirme odaklı teknik etkinlik ve proje süreçlerine katkı sağlıyorum.">
+                            I contribute to mobile development-focused technical events and project processes.
+                        </li>
+                        
+                        <li data-en="I support team coordination and technical planning." data-tr="Ekip koordinasyonu ve teknik planlama çalışmalarını destekliyorum.">
+                            I support team coordination and technical planning.
+                        </li>
+                        
+                        <li data-en="I play an active role in communication and teamwork within the student community." data-tr="Öğrenci topluluğu içerisindeki iletişim ve takım çalışmalarında aktif rol alıyorum.">
+                            I play an active role in communication and teamwork within the student community.
+                        </li>
+                        
+                    </ul>
+                </div>
+            </article>
+            
+            <article class="experience-card">
+                <div class="experience-top">
+                    <span class="experience-category"
+                          data-en="Certificates"
+                          data-tr="Sertifikalar">
+                        Certificates
+                    </span>
+                    <span class="experience-date">
+                        
+                    </span>
+                </div>
+                <div class="experience-content">
+                    <h3 data-en="Education & Certificates" data-tr="Eğitimler ve Sertifikalar">
+                        Education & Certificates
+                    </h3>
+                    <p class="experience-company">
+                        
+                    </p>
+                    <p class="experience-description"
+                       data-en="Backend, mobil geliştirme, veritabanı ve yazılım kariyeri alanlarında tamamladığım eğitim ve gelişim programları."
+                       data-tr="Backend, mobil geliştirme, veritabanı ve yazılım kariyeri alanlarında tamamladığım eğitim ve gelişim programları.">
+                        Backend, mobil geliştirme, veritabanı ve yazılım kariyeri alanlarında tamamladığım eğitim ve gelişim programları.
+                    </p>
+                    <ul class="experience-points">
+                        
+                        <li data-en="iOS Bootcamp — Kasım Adalan" data-tr="iOS Bootcamp — Kasım Adalan">
+                            iOS Bootcamp — Kasım Adalan
+                        </li>
+                        
+                        <li data-en="SwiftUI Bootcamp — Techcareer.net" data-tr="SwiftUI Bootcamp — Techcareer.net">
+                            SwiftUI Bootcamp — Techcareer.net
+                        </li>
+                        
+                        <li data-en="DenizAşırı Online Staj Programı — DenizBank" data-tr="DenizAşırı Online Staj Programı — DenizBank">
+                            DenizAşırı Online Staj Programı — DenizBank
+                        </li>
+                        
+                        <li data-en="GitHub Career Workshop — Techcareer.net" data-tr="GitHub Career Workshop — Techcareer.net">
+                            GitHub Career Workshop — Techcareer.net
+                        </li>
+                        
+                        <li data-en="Uygulamalarla SQL Öğreniyorum — BTK Akademi" data-tr="Uygulamalarla SQL Öğreniyorum — BTK Akademi">
+                            Uygulamalarla SQL Öğreniyorum — BTK Akademi
+                        </li>
+                        
+                        <li data-en="C# Projects: Learning by Building Applications — Udemy" data-tr="C# Projects: Learning by Building Applications — Udemy">
+                            C# Projects: Learning by Building Applications — Udemy
+                        </li>
+                        
+                    </ul>
+                </div>
+            </article>
+            
+        </div>
+    </div>
+</section>
+
+
+        <!-- PROJECTS COMPONENT -->
+        <section id="projects" class="projects section" aria-labelledby="projects-title">
+    <div class="container">
+        <h2 id="projects-title" class="section-title" data-en="Projects" data-tr="Projeler">
+            Projects
+        </h2>
+        <div class="projects-grid">
+            
+            <article class="project-card">
+                <div class="project-card-top">
+                    <span class="project-category"
+                          data-en="Digital Banking Application"
+                          data-tr="Dijital Bankacılık Uygulaması">
+                        Digital Banking Application
+                    </span>
+                </div>
+                <h3>FinGen Banking System</h3>
+                <p class="project-description"
+                   data-en="FinGen is a full-stack banking application developed to model digital banking workflows. The project uses C#, .NET Core, Angular, and Oracle Database technologies for user authentication, account management, fund transfers, and database operations."
+                   data-tr="FinGen, dijital bankacılık süreçlerini modellemek amacıyla geliştirilen full-stack bir bankacılık uygulamasıdır. Projede kullanıcı doğrulama, hesap yönetimi, para transferi ve veritabanı işlemleri için C#, .NET Core, Angular ve Oracle Database teknolojileri kullanılmıştır.">
+                    FinGen is a full-stack banking application developed to model digital banking workflows. The project uses C#, .NET Core, Angular, and Oracle Database technologies for user authentication, account management, fund transfers, and database operations.
+                </p>
+                <ul class="tech-stack" aria-label="Project technologies">
+                    
+                    <li class="tech">C#</li>
+                    
+                    <li class="tech">.NET Core</li>
+                    
+                    <li class="tech">RESTful API</li>
+                    
+                    <li class="tech">Angular</li>
+                    
+                    <li class="tech">Oracle Database</li>
+                    
+                    <li class="tech">JWT Authentication</li>
+                    
+                </ul>
+                <a href="https://github.com/aysenurkendirci/Internship_Bank_Project"
+                   class="project-link"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   data-en="View Repository →"
+                   data-tr="Repoyu Gör →">
+                    View Repository →
+                </a>
+            </article>
+            
+            <article class="project-card">
+                <div class="project-card-top">
+                    <span class="project-category"
+                          data-en="AI-Powered iOS Movie App"
+                          data-tr="Yapay Zekâ Destekli iOS Film Uygulaması">
+                        AI-Powered iOS Movie App
+                    </span>
+                </div>
+                <h3>CineScope</h3>
+                <p class="project-description"
+                   data-en="CineScope is an AI-powered iOS movie discovery application. The application features movie cataloging, personalized recommendation flows, Firebase-based user authentication, and OpenAI Function Calling integration."
+                   data-tr="CineScope, kullanıcıların ilgi alanlarına göre film keşfetmesini sağlayan yapay zekâ destekli bir iOS uygulamasıdır. Uygulamada film verileri, kişiselleştirilmiş öneri akışları, Firebase tabanlı kullanıcı işlemleri ve OpenAI Function Calling entegrasyonu bulunmaktadır.">
+                    CineScope is an AI-powered iOS movie discovery application. The application features movie cataloging, personalized recommendation flows, Firebase-based user authentication, and OpenAI Function Calling integration.
+                </p>
+                <ul class="tech-stack" aria-label="Project technologies">
+                    
+                    <li class="tech">Swift</li>
+                    
+                    <li class="tech">UIKit</li>
+                    
+                    <li class="tech">Firebase</li>
+                    
+                    <li class="tech">Moya</li>
+                    
+                    <li class="tech">Alamofire</li>
+                    
+                    <li class="tech">OpenAI Function Calling</li>
+                    
+                </ul>
+                <a href="https://github.com/aysenurkendirci/CineScope-MovieApp"
+                   class="project-link"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   data-en="View Repository →"
+                   data-tr="Repoyu Gör →">
+                    View Repository →
+                </a>
+            </article>
+            
+            <article class="project-card">
+                <div class="project-card-top">
+                    <span class="project-category"
+                          data-en="Pet Care & Routine Tracking App"
+                          data-tr="Evcil Hayvan Bakım ve Rutin Takip Uygulaması">
+                        Pet Care & Routine Tracking App
+                    </span>
+                </div>
+                <h3>PettiCare</h3>
+                <p class="project-description"
+                   data-en="PettiCare is an iOS application designed to manage pet profiles, care routines, and essential health information. It includes features for displaying nearby veterinarians on a map, adding favorite vets, and getting directions."
+                   data-tr="PettiCare, evcil hayvan profillerini, bakım rutinlerini ve sağlıkla ilgili temel bilgileri yönetmek için geliştirilen bir iOS uygulamasıdır. Yakındaki veterinerleri harita üzerinde görüntüleme, favori veteriner ekleme ve yol tarifi alma özellikleri içerir.">
+                    PettiCare is an iOS application designed to manage pet profiles, care routines, and essential health information. It includes features for displaying nearby veterinarians on a map, adding favorite vets, and getting directions.
+                </p>
+                <ul class="tech-stack" aria-label="Project technologies">
+                    
+                    <li class="tech">Swift</li>
+                    
+                    <li class="tech">SwiftUI</li>
+                    
+                    <li class="tech">SwiftData</li>
+                    
+                    <li class="tech">MapKit</li>
+                    
+                    <li class="tech">CoreLocation</li>
+                    
+                </ul>
+                <a href="https://github.com/aysenurkendirci/PettiCareApp"
+                   class="project-link"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   data-en="View Repository →"
+                   data-tr="Repoyu Gör →">
+                    View Repository →
+                </a>
+            </article>
+            
+            <article class="project-card">
+                <div class="project-card-top">
+                    <span class="project-category"
+                          data-en="Campus Management Platform"
+                          data-tr="Kampüs Yönetim Platformu">
+                        Campus Management Platform
+                    </span>
+                </div>
+                <h3>HeyDOU Campus</h3>
+                <p class="project-description"
+                   data-en="HeyDOU is a web-based campus management platform developed as an academic team project. It unifies academic calendar, cafeteria menus, events, clubs, internships, and campus mapping in one system. I contributed to the frontend, backend, and AI-powered features."
+                   data-tr="HeyDOU, üniversite öğrencilerinin akademik takvim, yemekhane, etkinlik, kulüp, staj ve kampüs bilgilerine tek bir platformdan ulaşmasını amaçlayan akademik ekip projesidir. Projenin frontend, backend ve yapay zekâ destekli özelliklerine katkı sağladım.">
+                    HeyDOU is a web-based campus management platform developed as an academic team project. It unifies academic calendar, cafeteria menus, events, clubs, internships, and campus mapping in one system. I contributed to the frontend, backend, and AI-powered features.
+                </p>
+                <ul class="tech-stack" aria-label="Project technologies">
+                    
+                    <li class="tech">C#</li>
+                    
+                    <li class="tech">HTML</li>
+                    
+                    <li class="tech">CSS</li>
+                    
+                    <li class="tech">JavaScript</li>
+                    
+                    <li class="tech">AI Integration</li>
+                    
+                </ul>
+                <a href="https://github.com/aysenurkendirci/Heydou_kamp-s"
+                   class="project-link"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   data-en="View Repository →"
+                   data-tr="Repoyu Gör →">
+                    View Repository →
+                </a>
+            </article>
+            
+        </div>
+    </div>
+</section>
+
+
+        <!-- CONTACT COMPONENT -->
+        <section id="contact" class="contact-section" aria-labelledby="contact-title">
+    <div class="contact-container">
+        <div class="contact-header">
+            <span class="section-eyebrow" data-en="Get in touch" data-tr="Benimle iletişime geçin">Benimle iletişime geçin</span>
+            <h2 id="contact-title" data-en="Contact" data-tr="İletişim">İletişim</h2>
+            <p data-en="You can contact me for backend development, long-term internships, junior software developer positions, and project collaborations."
+               data-tr="Backend geliştirme, uzun dönem staj, junior yazılım geliştirici pozisyonları ve proje iş birlikleri için benimle iletişime geçebilirsiniz.">
+                Backend geliştirme, uzun dönem staj, junior yazılım geliştirici pozisyonları ve proje iş birlikleri için benimle iletişime geçebilirsiniz.
+            </p>
+        </div>
+
+        <div class="contact-grid">
+            <a class="contact-card" href="https://mail.google.com/mail/?view=cm&fs=1&to=aysenurkendirciss@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Send email to aysenurkendirciss@gmail.com via Gmail">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                </div>
+                <div class="contact-content">
+                    <span class="contact-label" data-en="Email" data-tr="E-posta">E-posta</span>
+                    <strong class="contact-value">aysenurkendirciss@gmail.com</strong>
+                    <span class="contact-action">
+                        <span data-en="Send Email" data-tr="E-posta Gönder">E-posta Gönder</span>
+                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </a>
+
+            <a class="contact-card" href="https://github.com/aysenurkendirci" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile of Ayşe Nur Kendirci">
+                <div class="contact-icon">
+                    <i class="fa-brands fa-github" aria-hidden="true"></i>
+                </div>
+                <div class="contact-content">
+                    <span class="contact-label" data-en="GitHub" data-tr="GitHub">GitHub</span>
+                    <strong class="contact-value">github.com/aysenurkendirci</strong>
+                    <span class="contact-action">
+                        <span data-en="View Repositories" data-tr="Projelerimi İncele">Projelerimi İncele</span>
+                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </a>
+
+            <a class="contact-card" href="https://www.linkedin.com/in/aysenurkendirci" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile of Ayşe Nur Kendirci">
+                <div class="contact-icon">
+                    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                </div>
+                <div class="contact-content">
+                    <span class="contact-label" data-en="LinkedIn" data-tr="LinkedIn">LinkedIn</span>
+                    <strong class="contact-value">linkedin.com/in/aysenurkendirci</strong>
+                    <span class="contact-action">
+                        <span data-en="Connect" data-tr="Bağlantı Kur">Bağlantı Kur</span>
+                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <!-- FOOTER COMPONENT -->
+    <footer class="footer" role="contentinfo">
+    <div class="container footer-container">
+        <p class="footer-text"
+           data-en="&copy; 2026 Ayşe Nur Kendirci. All rights reserved."
+           data-tr="&copy; 2026 Ayşe Nur Kendirci. Tüm hakları saklıdır.">
+            &copy; 2026 Ayşe Nur Kendirci. All rights reserved.
+        </p>
+    </div>
 </footer>
-<script>
-        // Load saved language preference on page load
+
+
+    <!-- Language & Theme Initializer -->
+    <script>
         (function() {
+            // Restore language preference
             const savedLanguage = localStorage.getItem('portfolio-language');
-            const initialLanguage = savedLanguage || 'en';
+            const initialLanguage = savedLanguage || 'tr';
             document.documentElement.lang = initialLanguage;
             window.__initialLanguage = initialLanguage;
         })();
     </script>
-<script src="js/script.js"></script>
+    
+    <!-- Main Javascript Interactions -->
+    <script src="js/script.js"></script>
 </body>
 </html>

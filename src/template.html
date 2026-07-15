@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayşe Nur Kendirci | Backend Yazılım Geliştirici</title>
+    
+    <meta name="description" content="Ayşe Nur Kendirci'nin C#, .NET Core, PHP, Laravel, RESTful API, Oracle Database ve iOS geliştirme deneyimlerini içeren kişisel yazılım portföyü.">
+    <meta name="keywords" content="Ayşe Nur Kendirci, Backend Developer, C#, .NET Core, ASP.NET Core, Laravel, PHP, REST API, Oracle Database, Software Engineer">
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Ayşe Nur Kendirci | Backend Developer Portfolio">
+    <meta property="og:description" content="Backend geliştirme, bankacılık uygulamaları, RESTful API'ler ve iOS projeleri üzerine çalışmalarımı inceleyin.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/aysenurkendirci">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Devicon Technology Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <!-- Main Style Sheets with Cache Busting -->
+    <link rel="stylesheet" href="css/base.css?v=1.1">
+    <link rel="stylesheet" href="css/navbar.css?v=1.1">
+    <link rel="stylesheet" href="css/hero.css?v=1.1">
+    <link rel="stylesheet" href="css/content.css?v=1.1">
+    
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+</head>
+<body class="dark-theme">
+    <!-- Accessibility quick-link -->
+    <a href="#main-content" class="sr-only" tabindex="1">
+        <span data-en="Skip to main content" data-tr="Ana içeriğe atla">Skip to main content</span>
+    </a>
+
+    <!-- Interactive mouse cursor glow container -->
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+    <!-- NAVBAR COMPONENT -->
+    {{NAVBAR}}
+
+    <main id="main-content">
+        <!-- HERO COMPONENT -->
+        {{HERO}}
+
+        <!-- ABOUT COMPONENT -->
+        {{ABOUT}}
+
+        <!-- SKILLS COMPONENT -->
+        {{SKILLS}}
+
+        <!-- EXPERIENCE COMPONENT -->
+        {{EXPERIENCE}}
+
+        <!-- PROJECTS COMPONENT -->
+        {{PROJECTS}}
+
+        <!-- CONTACT COMPONENT -->
+        {{CONTACT}}
+    </main>
+
+    <!-- FOOTER COMPONENT -->
+    {{FOOTER}}
+
+    <!-- Language & Theme Initializer -->
+    <script>
+        (function() {
+            // Restore language preference
+            const savedLanguage = localStorage.getItem('portfolio-language');
+            const initialLanguage = savedLanguage || 'tr';
+            document.documentElement.lang = initialLanguage;
+            window.__initialLanguage = initialLanguage;
+        })();
+    </script>
+    
+    <!-- Main Javascript Interactions -->
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<section id="skills" class="skills section" aria-labelledby="skills-title">
+    <div class="container">
+        <h2 id="skills-title" class="section-title" data-en="Tech Stack" data-tr="Teknolojiler">
+            Tech Stack
+        </h2>
+        <div class="tech-categories">
+            {{#each techCategories}}
+            <article class="tech-category-card">
+                <h3 data-en="{{title.en}}" data-tr="{{title.tr}}">
+                    {{title.en}}
+                </h3>
+                <ul class="tech-list">
+                    {{#each items}}
+                    <li class="tech-item"
+                        data-tooltip="{{tooltip.en}}"
+                        data-tooltip-en="{{tooltip.en}}"
+                        data-tooltip-tr="{{tooltip.tr}}">
+                        <span class="tech-icon" aria-hidden="true">
+                            {{#if icon}}
+                            <i class="{{icon}}"></i>
+                            {{/if}}
+                            {{#unless icon}}
+                            {{iconText}}
+                            {{/unless}}
+                        </span>
+                        <span class="tech-name">
+                            {{name}}
+                        </span>
+                    </li>
+                    {{/each}}
+                </ul>
+            </article>
+            {{/each}}
+        </div>
+    </div>
+</section>
