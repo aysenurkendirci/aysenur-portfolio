@@ -2,8 +2,8 @@
   "profile": {
     "name": "Ayşe Nur Kendirci",
     "title": {
-      "en": "Software Engineering Student | Backend Development",
-      "tr": "Backend Yazılım Geliştirici"
+      "en": "Software Engineering Student | Backend Developer | C#/.NET",
+      "tr": "Yazılım Mühendisliği Öğrencisi | Backend Geliştirici | C#/.NET"
     },
     "tagline": {
       "en": "I am a developer who loves algorithms, experiences real-world projects, and enjoys solving problems.",
@@ -226,7 +226,10 @@
         "en": "Backend & Software Development",
         "tr": "Backend ve Yazılım Geliştirme"
       },
-      "date": "Jun 2026 - Sep 2026",
+      "date": {
+        "en": "Jun 2026 - Sep 2026",
+        "tr": "Haz 2026 - Eyl 2026"
+      },
       "title": {
         "en": "Part-Time Full-Stack Developer Intern",
         "tr": "Yarı Zamanlı Full-Stack Geliştirici Stajyer"
@@ -263,7 +266,10 @@
         "en": "Backend Internship",
         "tr": "Backend Stajı"
       },
-      "date": "Jan 2026 - Feb 2026",
+      "date": {
+        "en": "Jan 2026 - Feb 2026",
+        "tr": "Oca 2026 - Şub 2026"
+      },
       "title": {
         "en": "Backend Developer Intern",
         "tr": "Backend Geliştirici Stajyer"
@@ -300,7 +306,10 @@
         "en": "Mobile Internship",
         "tr": "Mobil Staj"
       },
-      "date": "Jul 2025 - Sep 2025",
+      "date": {
+        "en": "Jul 2025 - Sep 2025",
+        "tr": "Tem 2025 - Eyl 2025"
+      },
       "title": {
         "en": "Mobile Application Development Intern",
         "tr": "Mobil Uygulama Geliştirme Stajyeri"
@@ -337,7 +346,10 @@
         "en": "Leadership",
         "tr": "Liderlik"
       },
-      "date": "Feb 2026 - Oct 2026",
+      "date": {
+        "en": "Feb 2026 - Oct 2026",
+        "tr": "Şub 2026 - Eki 2026"
+      },
       "title": {
         "en": "Mobile Team Lead",
         "tr": "Mobil Takım Lideri"
