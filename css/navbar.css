@@ -153,11 +153,12 @@ body.dark-theme .navbar {
 ================================================== */
 
 .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-    margin-left: auto;
     list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 32px;
+    margin: 0 auto;
 }
 
 .nav-links a {
@@ -181,38 +182,13 @@ body.dark-theme .navbar {
    LANGUAGE / THEME TOOLS
 ================================================== */
 
-.navbar-tools {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-}
 
-.toolbar-shell {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 6px;
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.88);
-}
 
-body.dark-theme .toolbar-shell {
-    background: rgba(15, 23, 42, 0.88);
-}
 
-.tool-chip {
-    min-width: 44px;
-    min-height: 40px;
-    padding: 10px 14px;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    background: var(--surface-background-color);
-    color: var(--primary-text-color);
-    cursor: pointer;
-    font-weight: 700;
-    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
-}
+
+body.dark-theme 
+
+
 
 .tool-chip:hover {
     transform: translateY(-1px);
@@ -307,6 +283,9 @@ body.dark-theme .toolbar-shell {
     }
 
     .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
         gap: 18px;
     }
 
@@ -314,12 +293,7 @@ body.dark-theme .toolbar-shell {
         font-size: 15px;
     }
 
-    .tool-chip {
-        min-width: 38px;
-        min-height: 38px;
-        padding: 8px 12px;
-        font-size: 14px;
-    }
+    
 }
 
 /* ==================================================
@@ -360,30 +334,21 @@ body.dark-theme .toolbar-shell {
         height: 14px;
     }
 
-    .navbar-tools {
-        order: 2;
-        width: auto;
-        margin: 0;
-        flex: 0 0 auto;
-    }
+    
 
-    .toolbar-shell {
-        gap: 5px;
-        padding: 4px;
-        border-radius: 14px;
-    }
+    
 
-    .tool-chip {
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
-        min-height: 32px;
-        padding: 0;
-        border-radius: 10px;
-    }
+    
 
     .tool-label {
         font-size: 10px;
+    }
+
+    
+    .navbar-tools {
+        order: 2;
+        margin-left: auto;
+        margin-right: 12px;
     }
 
     .menu-toggle {
@@ -400,6 +365,9 @@ body.dark-theme .toolbar-shell {
     }
 
     .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
         order: 4;
         display: none;
         width: 100%;
@@ -454,13 +422,7 @@ body.dark-theme .toolbar-shell {
         font-size: 8.7px;
     }
 
-    .tool-chip {
-        width: 29px;
-        height: 29px;
-        min-width: 29px;
-        min-height: 29px;
-        border-radius: 9px;
-    }
+    
 
     .tool-label {
         font-size: 9.5px;
@@ -515,4 +477,37 @@ body {
         min-height: calc(100vh - 56px);
         padding-top: 18px;
     }
+}
+.navbar-tools {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+.toolbar-shell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(30, 41, 59, 0.5);
+    padding: 6px;
+    border-radius: 99px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+}
+.tool-chip {
+    background: transparent;
+    border: none;
+    color: var(--secondary-text-color);
+    padding: 6px 12px;
+    border-radius: 99px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tool-chip:hover {
+    color: var(--primary-text-color);
+    background: rgba(255, 255, 255, 0.1);
 }

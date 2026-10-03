@@ -4,7 +4,7 @@
 ================================================== */
 .section {
     padding: 56px 0 72px;
-    scroll-margin-top: 88px;
+    scroll-margin-top: 110px;
 }
 
 .section-title {
@@ -40,11 +40,11 @@ olacak şekilde responsive davranıyor.
 .tech-categories {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 16px;
 }
 
 .tech-category-card {
-    padding: 28px;
+    padding: 20px;
     border-radius: 24px;
     background: var(--card-background-color);
     border: 1px solid var(--border-color);
@@ -52,8 +52,8 @@ olacak şekilde responsive davranıyor.
 }
 
 .tech-category-card h3 {
-    margin-bottom: 22px;
-    font-size: 25px;
+    margin-bottom: 16px;
+    font-size: 20px;
     color: var(--primary-text-color);
 }
 
@@ -65,8 +65,8 @@ olacak şekilde responsive davranıyor.
     position: relative;
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 14px 0;
+    gap: 10px;
+    padding: 8px 0;
     border-bottom: 1px solid var(--border-color);
 }
  /*Kullanıcı teknoloji üzerine gelince açıklama çıkarıyor.*/
@@ -75,13 +75,14 @@ olacak şekilde responsive davranıyor.
 }
 
 .tech-icon {
-    min-width: 24px;
+    min-width: 20px;
+    font-size: 14px;
     color: var(--primary-accent-color);
     font-weight: 800;
 }
 
 .tech-name {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--primary-text-color);
 }
@@ -120,14 +121,13 @@ olacak şekilde responsive davranıyor.
    Deneyimler açıklama ve kazanımlar ile kart yapısında sunulur.
 ================================================== */
 .experience-list {
-    max-width: 980px;
-    margin: 0 auto;
     display: grid;
-    gap: 26px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
 .experience-card {
-    padding: 30px;
+    padding: 24px;
     border-radius: 26px;
     background: var(--card-background-color);
     border: 1px solid var(--border-color);
@@ -143,30 +143,28 @@ olacak şekilde responsive davranıyor.
 .experience-top {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     gap: 16px;
-    margin-bottom: 18px;
-    flex-wrap: wrap;
+    margin-bottom: 8px;
 }
 
-.experience-category {
-    padding: 7px 14px;
-    border-radius: 999px;
-    background: var(--accent-background-color);
-    color: var(--primary-accent-color);
-    font-size: 14px;
-    font-weight: 800;
-}
+
 
 .experience-date {
-    color: var(--secondary-text-color);
-    font-size: 14px;
+    color: var(--primary-accent-color);
+    font-size: 13px;
     font-weight: 700;
+    background: rgba(37, 99, 235, 0.1);
+    padding: 4px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
 }
 
-.experience-content h3 {
-    margin-bottom: 6px;
-    font-size: 25px;
+.experience-top h3 {
+    margin-bottom: 0;
+    font-size: 20px;
     color: var(--primary-text-color);
+    line-height: 1.3;
 }
 
 .experience-company {
@@ -176,16 +174,19 @@ olacak şekilde responsive davranıyor.
 }
 
 .experience-description {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     color: var(--secondary-text-color);
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 .experience-points {
     display: grid;
-    gap: 10px;
-    padding-left: 20px;
+    gap: 6px;
+    padding-left: 16px;
     color: var(--secondary-text-color);
+    font-size: 13px;
+    line-height: 1.4;
 }
 
 .experience-points li::marker {
@@ -488,14 +489,19 @@ olacak şekilde responsive davranıyor.
     }
 
     .experience-top {
-        gap: 12px;
-        margin-bottom: 16px;
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 8px;
+}
 
-    .experience-content h3 {
-        font-size: 24px;
-        margin-bottom: 8px;
-    }
+    .experience-top h3 {
+    margin-bottom: 0;
+    font-size: 20px;
+    color: var(--primary-text-color);
+    line-height: 1.3;
+}
 
     .project-card h3 {
         font-size: 20px;
@@ -508,9 +514,7 @@ olacak şekilde responsive davranıyor.
    Tablet görünümü - İyileştirilmiş spacing ve layout
 ================================================== */
 @media (max-width: 992px) {
-    .tech-categories,
-    .projects-grid,
-    .contact-wrapper {
+    .tech-categories, .projects-grid, .contact-wrapper, .experience-list {
         grid-template-columns: 1fr;
         gap: 20px;
     }
@@ -566,10 +570,12 @@ olacak şekilde responsive davranıyor.
     }
 
     .experience-top {
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 14px;
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 8px;
+}
 
     .experience-category,
     .project-category {
@@ -578,8 +584,14 @@ olacak şekilde responsive davranıyor.
     }
 
     .experience-date {
-        font-size: 13px;
-    }
+    color: var(--primary-accent-color);
+    font-size: 13px;
+    font-weight: 700;
+    background: rgba(37, 99, 235, 0.1);
+    padding: 4px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+}
 
     .contact-wrapper {
         gap: 20px;
@@ -669,16 +681,19 @@ olacak şekilde responsive davranıyor.
     }
 
     .experience-top {
-        gap: 6px;
-        margin-bottom: 12px;
-        font-size: 12px;
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 8px;
+}
 
-    .experience-content h3 {
-        font-size: 17px;
-        margin-bottom: 6px;
-        line-height: 1.2;
-    }
+    .experience-top h3 {
+    margin-bottom: 0;
+    font-size: 20px;
+    color: var(--primary-text-color);
+    line-height: 1.3;
+}
 
     .experience-company {
         font-size: 13px;
@@ -1017,5 +1032,122 @@ olacak şekilde responsive davranıyor.
     }
     .contact-card {
         padding: 24px;
+    }
+}
+/* ==================================================
+   EXPERIENCE (BRITTANY CHIANG STYLE)
+================================================== */
+.experience-list-brittany {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.experience-card-brittany {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 16px;
+    padding: 24px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+.experience-card-brittany:hover {
+    background: rgba(30, 41, 59, 0.5); /* subtle glassmorphism */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.experience-date-col {
+    padding-top: 4px;
+}
+
+.experience-date {
+    color: var(--secondary-text-color);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.experience-content-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.experience-role {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-text-color);
+    line-height: 1.3;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+}
+
+.experience-role:hover .experience-company-name, 
+.experience-role:hover span[data-en] {
+    color: var(--primary-accent-color);
+}
+
+.experience-company-name {
+    color: var(--primary-text-color);
+}
+
+.experience-company-separator {
+    color: var(--secondary-text-color);
+}
+
+.experience-card-brittany .experience-description {
+    color: var(--secondary-text-color);
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.experience-card-brittany .experience-points {
+    color: var(--secondary-text-color);
+    font-size: 14px;
+    line-height: 1.5;
+    padding-left: 18px;
+    margin: 0;
+    display: grid;
+    gap: 6px;
+}
+.experience-card-brittany .experience-points li::marker {
+    color: var(--primary-accent-color);
+}
+
+.experience-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    margin: 8px 0 0 0;
+    list-style: none;
+}
+
+.experience-tech-stack .tech-badge {
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(45, 212, 191, 0.1);
+    color: #2dd4bf; /* Teal color like Brittany's */
+    font-size: 12.5px;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .experience-card-brittany {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+    .experience-date-col {
+        margin-bottom: -4px;
     }
 }
