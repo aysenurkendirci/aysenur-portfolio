@@ -1,38 +1,36 @@
 <section id="experience" class="experience section" aria-labelledby="experience-title">
-    <div class="container">
+    <div class="container" style="max-width: 900px;">
         <h2 id="experience-title" class="section-title" data-en="Experience" data-tr="Deneyim">
             Experience
         </h2>
-        <div class="experience-list">
+        <div class="experience-list-brittany">
             {{#each experiences}}
-            <article class="experience-card">
-                <div class="experience-top">
-                    <span class="experience-category"
-                          data-en="{{category.en}}"
-                          data-tr="{{category.tr}}">
-                        {{category.en}}
-                    </span>
-                    <span class="experience-date">
-                        {{date}}
-                    </span>
-                </div>
-                <div class="experience-content">
-                    <h3 data-en="{{title.en}}" data-tr="{{title.tr}}">
-                        {{title.en}}
+            <article class="experience-card-brittany">
+                <header class="experience-date-col">
+                    <span class="experience-date">{{date}}</span>
+                </header>
+                <div class="experience-content-col">
+                    <h3 class="experience-role">
+                        <span data-en="{{title.en}}" data-tr="{{title.tr}}">{{title.en}}</span>
+                        <span class="experience-company-separator">·</span>
+                        <span class="experience-company-name">{{company}}</span>
                     </h3>
-                    <p class="experience-company">
-                        {{company}}
-                    </p>
+                    
                     <p class="experience-description"
                        data-en="{{description.en}}"
                        data-tr="{{description.tr}}">
                         {{description.en}}
                     </p>
+                    
                     <ul class="experience-points">
                         {{#each items}}
-                        <li data-en="{{en}}" data-tr="{{tr}}">
-                            {{en}}
-                        </li>
+                        <li data-en="{{en}}" data-tr="{{tr}}">{{en}}</li>
+                        {{/each}}
+                    </ul>
+
+                    <ul class="experience-tech-stack" aria-label="Technologies used">
+                        {{#each techList}}
+                        <li class="tech-badge">{{this}}</li>
                         {{/each}}
                     </ul>
                 </div>

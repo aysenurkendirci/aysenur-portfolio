@@ -6,12 +6,12 @@
       "tr": "Backend Yazılım Geliştirici"
     },
     "tagline": {
-      "en": "Building scalable backend systems and applications with clean architecture.",
-      "tr": "Temiz mimari ile ölçeklenebilir backend sistemleri ve uygulamaları geliştiriyorum."
+      "en": "I am a developer who loves algorithms, experiences real-world projects, and enjoys solving problems.",
+      "tr": "Yazılımı ve algoritmaları seven, gerçek hayat projelerini deneyimleyen ve sorun çözmekten keyif alan bir geliştiriciyim."
     },
     "description": {
-      "en": "I am a software engineering student focused on backend development. I focus on developing sustainable, clear software systems that solve real needs.",
-      "tr": "Backend geliştirme odaklı bir yazılım mühendisliği öğrencisiyim. Sürdürülebilir, anlaşılır ve gerçek ihtiyaçlara çözüm üreten yazılım sistemleri geliştirmeye odaklanıyorum."
+      "en": "Welcome to my portfolio! Let's get to know me better. I focus on building maintainable backend architectures and exploring new technologies with a passionate and curious mindset.",
+      "tr": "Portfolyoma hoş geldiniz, beni daha yakından tanıyın! Meraklı ve tutkulu bir yaklaşımla, sürdürülebilir sistemler kurmaya ve yeni teknolojileri keşfetmeye odaklanıyorum."
     },
     "email": "aysenurkendirciss@gmail.com",
     "linkedin": "https://www.linkedin.com/in/aysenurkendirci",
@@ -47,16 +47,16 @@
   },
   "aboutTexts": [
     {
-      "en": "As a software engineering student, I have internship and project experience in backend and mobile application development. Currently, I focus on backend development, RESTful services, database operations, and sustainable software architectures.",
-      "tr": "Yazılım mühendisliği öğrencisi olarak backend ve mobil uygulama geliştirme alanlarında staj ve proje deneyimine sahibim. Güncel olarak backend geliştirme, RESTful servisler, veritabanı işlemleri ve sürdürülebilir yazılım yapıları üzerine çalışıyorum."
+      "en": "I’m a Software Engineering student focused on backend development. I’ve worked on real software projects across banking, software products and mobile applications, with a growing focus on C#/.NET, REST APIs and database-driven systems.",
+      "tr": "Backend geliştirme odaklı bir Yazılım Mühendisliği öğrencisiyim. Bankacılık, e-ticaret (yazılım ürünleri) ve mobil uygulamalar alanlarında gerçek hayat projelerinde görev aldım. Güncel olarak C#/.NET, REST API'ler ve veritabanı odaklı sistemler üzerinde yoğunlaşıyorum."
     },
     {
-      "en": "During my backend internship at VakıfBank, I experienced backend services, Oracle Database and PL/SQL-based operations, JWT Authentication, and layered architecture approaches on a digital banking application. At Oksid Bilişim, I contribute to the development of PHP and Laravel-based modules, the improvement of existing systems, and AI-focused projects.",
-      "tr": "VakıfBank’taki backend stajımda dijital bankacılık uygulaması üzerinde backend servisleri, Oracle Database ve PL/SQL tabanlı işlemler, JWT Authentication ve katmanlı mimari yaklaşımları deneyimledim. Oksid Bilişim’de ise PHP ve Laravel tabanlı modüllerin geliştirilmesine, mevcut sistemlerin iyileştirilmesine ve yapay zekâ odaklı projelere katkı sağlıyorum."
+      "en": "During my backend experience at VakıfBank, I worked with C#, .NET, Oracle, PL/SQL, Dapper and JWT-based authentication. At İncehesap/Oksid Bilişim, I contributed to real software products across backend and full-stack development.",
+      "tr": "VakıfBank'taki backend deneyimimde C#, .NET, Oracle, PL/SQL, Dapper ve JWT tabanlı kimlik doğrulama süreçleri üzerinde çalıştım. İncehesap/Oksid Bilişim'de ise backend ve full-stack alanında aktif kullanılan yazılım ürünlerinin geliştirilmesine katkı sağladım."
     },
     {
-      "en": "Thanks to the iOS applications I developed with Swift, UIKit, and SwiftUI, I can evaluate software products holistically from backend services to the user interface. I aim to advance my career in backend development and design reliable, clean, and sustainable systems.",
-      "tr": "Swift, UIKit ve SwiftUI ile geliştirdiğim iOS uygulamaları sayesinde yazılım ürünlerini backend servislerinden kullanıcı arayüzüne kadar bütünsel biçimde değerlendirebiliyorum. Kariyerimi backend geliştirme alanında ilerletmeyi ve güvenilir, anlaşılır ve sürdürülebilir sistemler geliştirmeyi hedefliyorum."
+      "en": "My previous experience with Swift and iOS development also helps me understand how backend services connect to the client side and the overall product.",
+      "tr": "Swift ve iOS geliştirmedeki geçmiş tecrübem, backend servislerinin istemci (client) tarafıyla nasıl iletişim kurduğunu ve yazılım ürününün bütününü çok daha iyi kavramama yardımcı oluyor."
     }
   ],
   "techCategories": [
@@ -138,15 +138,6 @@
           }
         },
         {
-          "name": "UIKit",
-          "icon": "devicon-apple-original",
-          "iconText": "",
-          "tooltip": {
-            "en": "Apple's classic framework for building iOS user interfaces.",
-            "tr": "iOS kullanıcı arayüzleri oluşturmak için kullanılan klasik framework."
-          }
-        },
-        {
           "name": "SwiftUI",
           "icon": "devicon-swift-plain colored",
           "iconText": "",
@@ -180,33 +171,6 @@
           "tooltip": {
             "en": "HTTP networking library for iOS applications.",
             "tr": "iOS uygulamaları için HTTP tabanlı ağ iletişim kütüphanesi."
-          }
-        },
-        {
-          "name": "MapKit",
-          "icon": "fa-solid fa-map",
-          "iconText": "",
-          "tooltip": {
-            "en": "Apple's framework for integrating maps and location information.",
-            "tr": "Uygulamalara harita ve konum servisleri entegre etmek için kullanılan Apple framework'ü."
-          }
-        },
-        {
-          "name": "CoreLocation",
-          "icon": "fa-solid fa-location-dot",
-          "iconText": "",
-          "tooltip": {
-            "en": "Apple's framework for obtaining location, altitude, and orientation details.",
-            "tr": "Konum, yükseklik ve yön bilgilerini elde etmek için kullanılan Apple framework'ü."
-          }
-        },
-        {
-          "name": "MVVM",
-          "icon": "fa-solid fa-shuffle",
-          "iconText": "",
-          "tooltip": {
-            "en": "Model-View-ViewModel pattern for separating UI development from business logic.",
-            "tr": "UI geliştirmeyi iş mantığından ayıran Model-View-ViewModel tasarım deseni."
           }
         }
       ]
@@ -262,33 +226,36 @@
         "en": "Backend & Software Development",
         "tr": "Backend ve Yazılım Geliştirme"
       },
-      "date": "Haziran 2026 – Devam Ediyor",
+      "date": "Jun 2026 - Sep 2026",
       "title": {
-        "en": "Software Engineering Intern",
-        "tr": "Yazılım Mühendisliği Stajyeri"
+        "en": "Part-Time Full-Stack Developer Intern",
+        "tr": "Yarı Zamanlı Full-Stack Geliştirici Stajyer"
       },
-      "company": "Oksid Bilişim (İncehesap.com Teknoloji Partneri)",
+      "company": "İncehesap / Oksid Bilişim",
       "description": {
-        "en": "PHP and Laravel-based backend modülleri ile gerçek yazılım projeleri üzerinde çalışıyorum. Yeni özellik geliştirme, hata giderme, mevcut kod yapısını inceleme ve yapay zekâ odaklı projelere katkı sağlama süreçlerinde görev alıyorum.",
-        "tr": "PHP ve Laravel tabanlı backend modülleri ile gerçek yazılım projeleri üzerinde çalışıyorum. Yeni özellik geliştirme, hata giderme, mevcut kod yapısını inceleme ve yapay zekâ odaklı projelere katkı sağlama süreçlerinde görev alıyorum."
+        "en": "Contributed as a full-stack developer to an actively used C#/.NET warehouse management system and Inox Academy built with PHP and Laravel.",
+        "tr": "İncehesap teknoloji partneri Oksid Bilişim bünyesinde; aktif olarak kullanılan C#/.NET tabanlı depo yönetim sistemi ve PHP, Laravel ile geliştirilen Inox Academy projelerine katkı sağladım."
       },
       "items": [
         {
-          "en": "I contribute to the development of backend modules using PHP and Laravel.",
-          "tr": "PHP ve Laravel kullanarak backend modüllerinin geliştirilmesine katkı sağlıyorum."
+          "en": "Contributed to 2 major software products by designing RESTful APIs, managing data flows, and implementing complex business logic.",
+          "tr": "RESTful API'ler tasarlayıp veri akışlarını yöneterek, karmaşık iş süreçleri barındıran 2 büyük yazılım ürününe geliştirici olarak katkı sağladım."
         },
         {
-          "en": "I take part in new feature development and bug fixing in existing systems.",
-          "tr": "Mevcut sistemlerde yeni özellik geliştirme ve hata giderme çalışmalarında görev alıyorum."
+          "en": "Developed engaging user features for Inox Academy including module integrations, gamification mechanics, and real-time notifications.",
+          "tr": "Inox Academy projesi için oyunlaştırma (gamification) mekanikleri, bildirim sistemleri ve eğitim odaklı modül entegrasyonları geliştirdim."
         },
         {
-          "en": "I participate in code reviews, testing, and team development workflows.",
-          "tr": "Kod inceleme, test ve ekip içi geliştirme süreçlerine katılıyorum."
-        },
-        {
-          "en": "I work on AI-focused software projects.",
-          "tr": "Yapay zekâ odaklı yazılım projeleri üzerinde çalışıyorum."
+          "en": "Optimized backend performance and ensured seamless data synchronization between different system modules.",
+          "tr": "Backend servislerinin performansını optimize ettim ve farklı sistem modülleri arasında sorunsuz veri senkronizasyonu sağladım."
         }
+      ],
+      "techList": [
+        "C#",
+        ".NET",
+        "PHP",
+        "Laravel",
+        "REST API"
       ]
     },
     {
@@ -296,37 +263,36 @@
         "en": "Backend Internship",
         "tr": "Backend Stajı"
       },
-      "date": "Ocak 2026 – Şubat 2026",
+      "date": "Jan 2026 - Feb 2026",
       "title": {
         "en": "Backend Developer Intern",
-        "tr": "Backend Developer Intern"
+        "tr": "Backend Geliştirici Stajyer"
       },
       "company": "VakıfBank",
       "description": {
-        "en": "Gained experience in backend services, RESTful API structures, and Oracle Database-based operations on a digital banking application.",
-        "tr": "Dijital bankacılık uygulaması üzerinde backend servisleri, RESTful API yapıları ve Oracle Database tabanlı işlemler konusunda deneyim kazandım."
+        "en": "Developed core banking modules and enterprise-level backend logic using .NET Core and Oracle.",
+        "tr": ".NET Core ve Oracle kullanarak temel bankacılık modüllerini ve kurumsal backend süreçlerini geliştirdim."
       },
       "items": [
         {
-          "en": "Worked on backend services and RESTful API structures developed with C# and .NET Core.",
-          "tr": "C# ve .NET Core ile geliştirilen backend servisleri ve RESTful API yapıları üzerinde çalıştım."
+          "en": "Developed 2 core banking modules (account and card management) using C#, .NET Core, Angular, and Oracle Database.",
+          "tr": "C#, .NET Core, Angular ve Oracle Database kullanarak hesap ve kart yönetimi modüllerini geliştirdim."
         },
         {
-          "en": "Performed PL/SQL, Stored Procedure, and Package-based database operations on Oracle Database.",
-          "tr": "Oracle Database üzerinde PL/SQL, Stored Procedure ve Package tabanlı işlemler gerçekleştirdim."
+          "en": "Built RESTful API and backend logic with Oracle Stored Procedures, Packages, and Dapper.",
+          "tr": "Oracle Stored Procedure'ler, Paketler ve Dapper ile RESTful API'ler ve backend iş mantığı inşa ettim."
         },
         {
-          "en": "Analyzed authentication flows using JWT Authentication and contributed to development processes.",
-          "tr": "JWT Authentication kullanılan kimlik doğrulama akışlarını inceledim ve geliştirme süreçlerine katkı sağladım."
-        },
-        {
-          "en": "Worked on a project structure using Clean Architecture and Repository Pattern.",
-          "tr": "Clean Architecture ve Repository Pattern kullanılan proje yapısı üzerinde çalıştım."
-        },
-        {
-          "en": "Participated in Agile workflows and team development processes.",
-          "tr": "Agile iş akışları ve ekip içi geliştirme süreçlerine katıldım."
+          "en": "Applied JWT Authentication, Clean Architecture, and Repository Pattern.",
+          "tr": "Sistem üzerinde JWT tabanlı kimlik doğrulama, Clean Architecture ve Repository Pattern uyguladım."
         }
+      ],
+      "techList": [
+        "C#",
+        ".NET Core",
+        "Oracle",
+        "Dapper",
+        "JWT"
       ]
     },
     {
@@ -334,41 +300,36 @@
         "en": "Mobile Internship",
         "tr": "Mobil Staj"
       },
-      "date": "Temmuz 2025 – Eylül 2025",
+      "date": "Jul 2025 - Sep 2025",
       "title": {
         "en": "Mobile Application Development Intern",
         "tr": "Mobil Uygulama Geliştirme Stajyeri"
       },
       "company": "VakıfBank",
       "description": {
-        "en": "Developed two different iOS applications using Swift, UIKit, and MVVM architecture, gaining experience in mobile development processes.",
-        "tr": "Swift, UIKit ve MVVM mimarisi kullanarak iki farklı iOS uygulaması geliştirdim ve mobil uygulama geliştirme süreçlerinde deneyim kazandım."
+        "en": "Contributed to iOS applications, integrated external APIs, and implemented AI-powered recommendation flows.",
+        "tr": "iOS uygulamalarına katkı sağladım, harici API entegrasyonları yaptım ve yapay zeka destekli öneri akışları kurdum."
       },
       "items": [
         {
-          "en": "Developed iOS application screens using Swift, UIKit, and SwiftUI.",
-          "tr": "Swift, UIKit ve SwiftUI kullanarak iOS uygulama ekranları geliştirdim."
+          "en": "Contributed to 2 iOS applications (PettiCare and CineScope) using Swift and SwiftUI/UIKit.",
+          "tr": "Swift ve SwiftUI/UIKit kullanarak PettiCare ve CineScope olmak üzere 2 iOS uygulamasına katkıda bulundum."
         },
         {
-          "en": "Worked on MVVM architecture and reusable component structures.",
-          "tr": "MVVM mimarisi ve tekrar kullanılabilir component yapıları üzerinde çalıştım."
+          "en": "Integrated OpenAI Function Calling into CineScope for personalized movie recommendation flows.",
+          "tr": "Kişiselleştirilmiş film öneri akışları için CineScope uygulamasına OpenAI Function Calling entegrasyonu yaptım."
         },
         {
-          "en": "Developed network layers using Moya and Alamofire.",
-          "tr": "Moya ve Alamofire ile network katmanları geliştirdim."
-        },
-        {
-          "en": "Implemented Firebase Authentication and Remote Config integrations.",
-          "tr": "Firebase Authentication ve Remote Config entegrasyonlarını uyguladım."
-        },
-        {
-          "en": "Worked on local data management using SwiftData.",
-          "tr": "SwiftData kullanarak yerel veri yönetimi üzerinde çalıştım."
-        },
-        {
-          "en": "Contributed to OpenAI Function Calling integration in the CineScope project.",
-          "tr": "CineScope projesinde OpenAI Function Calling entegrasyonuna katkı sağladım."
+          "en": "Utilized Firebase, Moya, Alamofire, and external APIs for backend communication.",
+          "tr": "Backend iletişimi için Firebase, Moya, Alamofire ve harici API'ler kullandım."
         }
+      ],
+      "techList": [
+        "Swift",
+        "SwiftUI",
+        "UIKit",
+        "Firebase",
+        "OpenAI"
       ]
     },
     {
@@ -376,71 +337,35 @@
         "en": "Leadership",
         "tr": "Liderlik"
       },
-      "date": "2025 – Devam Ediyor",
+      "date": "Feb 2026 - Oct 2026",
       "title": {
-        "en": "Mobile Technical Team Lead",
-        "tr": "Mobil Teknik Takım Lideri"
+        "en": "Mobile Team Lead",
+        "tr": "Mobil Takım Lideri"
       },
       "company": "GDG On Campus Doğuş University",
       "description": {
-        "en": "Mobil teknik takım lideri olarak teknik etkinliklerin, ekip çalışmalarının ve öğrenci odaklı yazılım projelerinin planlanmasına katkı sağlıyorum.",
-        "tr": "Mobil teknik takım lideri olarak teknik etkinliklerin, ekip çalışmalarının ve öğrenci odaklı yazılım projelerinin planlanmasına katkı sağlıyorum."
+        "en": "Led the mobile development team, organizing technical events and coordinating collaborative software projects within the community.",
+        "tr": "Mobil geliştirme ekibine liderlik ederek, topluluk içindeki teknik etkinlikleri ve ortaklaşa geliştirilen yazılım projelerini koordine ettim."
       },
       "items": [
         {
-          "en": "I contribute to mobile development-focused technical events and project processes.",
-          "tr": "Mobil geliştirme odaklı teknik etkinlik ve proje süreçlerine katkı sağlıyorum."
+          "en": "Led the mobile technical team, guiding peers in iOS, Swift, and modern mobile development architectures (Clean Architecture, MVVM).",
+          "tr": "Mobil teknik ekibe liderlik ederek; öğrencilere iOS, Swift ve modern mobil mimariler (Clean Architecture, MVVM) konularında rehberlik ettim."
         },
         {
-          "en": "I support team coordination and technical planning.",
-          "tr": "Ekip koordinasyonu ve teknik planlama çalışmalarını destekliyorum."
+          "en": "Organized and managed technical workshops, bootcamps, and hackathon preparations to increase the technical capacity of the community.",
+          "tr": "Topluluğun teknik kapasitesini artırmak amacıyla teknik atölyeler (workshop), eğitimler ve proje geliştirme etkinlikleri organize ettim."
         },
         {
-          "en": "I play an active role in communication and teamwork within the student community.",
-          "tr": "Öğrenci topluluğu içerisindeki iletişim ve takım çalışmalarında aktif rol alıyorum."
+          "en": "Coordinated team collaboration, task delegation, and code review processes for community-driven applications.",
+          "tr": "Topluluk projelerinde takım içi işbirliğini, görev dağılımlarını ve kod inceleme (code review) süreçlerini yönettim."
         }
-      ]
-    },
-    {
-      "category": {
-        "en": "Certificates",
-        "tr": "Sertifikalar"
-      },
-      "date": "",
-      "title": {
-        "en": "Education & Certificates",
-        "tr": "Eğitimler ve Sertifikalar"
-      },
-      "company": "",
-      "description": {
-        "en": "Backend, mobil geliştirme, veritabanı ve yazılım kariyeri alanlarında tamamladığım eğitim ve gelişim programları.",
-        "tr": "Backend, mobil geliştirme, veritabanı ve yazılım kariyeri alanlarında tamamladığım eğitim ve gelişim programları."
-      },
-      "items": [
-        {
-          "en": "iOS Bootcamp — Kasım Adalan",
-          "tr": "iOS Bootcamp — Kasım Adalan"
-        },
-        {
-          "en": "SwiftUI Bootcamp — Techcareer.net",
-          "tr": "SwiftUI Bootcamp — Techcareer.net"
-        },
-        {
-          "en": "DenizAşırı Online Staj Programı — DenizBank",
-          "tr": "DenizAşırı Online Staj Programı — DenizBank"
-        },
-        {
-          "en": "GitHub Career Workshop — Techcareer.net",
-          "tr": "GitHub Career Workshop — Techcareer.net"
-        },
-        {
-          "en": "Uygulamalarla SQL Öğreniyorum — BTK Akademi",
-          "tr": "Uygulamalarla SQL Öğreniyorum — BTK Akademi"
-        },
-        {
-          "en": "C# Projects: Learning by Building Applications — Udemy",
-          "tr": "C# Projects: Learning by Building Applications — Udemy"
-        }
+      ],
+      "techList": [
+        "Leadership",
+        "Agile",
+        "Clean Architecture",
+        "MVVM"
       ]
     }
   ],
@@ -455,7 +380,14 @@
         "en": "FinGen is a full-stack banking application developed to model digital banking workflows. The project uses C#, .NET Core, Angular, and Oracle Database technologies for user authentication, account management, fund transfers, and database operations.",
         "tr": "FinGen, dijital bankacılık süreçlerini modellemek amacıyla geliştirilen full-stack bir bankacılık uygulamasıdır. Projede kullanıcı doğrulama, hesap yönetimi, para transferi ve veritabanı işlemleri için C#, .NET Core, Angular ve Oracle Database teknolojileri kullanılmıştır."
       },
-      "tech": ["C#", ".NET Core", "RESTful API", "Angular", "Oracle Database", "JWT Authentication"],
+      "tech": [
+        "C#",
+        ".NET Core",
+        "RESTful API",
+        "Angular",
+        "Oracle Database",
+        "JWT Authentication"
+      ],
       "github": "https://github.com/aysenurkendirci/Internship_Bank_Project"
     },
     {
@@ -468,7 +400,14 @@
         "en": "CineScope is an AI-powered iOS movie discovery application. The application features movie cataloging, personalized recommendation flows, Firebase-based user authentication, and OpenAI Function Calling integration.",
         "tr": "CineScope, kullanıcıların ilgi alanlarına göre film keşfetmesini sağlayan yapay zekâ destekli bir iOS uygulamasıdır. Uygulamada film verileri, kişiselleştirilmiş öneri akışları, Firebase tabanlı kullanıcı işlemleri ve OpenAI Function Calling entegrasyonu bulunmaktadır."
       },
-      "tech": ["Swift", "UIKit", "Firebase", "Moya", "Alamofire", "OpenAI Function Calling"],
+      "tech": [
+        "Swift",
+        "UIKit",
+        "Firebase",
+        "Moya",
+        "Alamofire",
+        "OpenAI Function Calling"
+      ],
       "github": "https://github.com/aysenurkendirci/CineScope-MovieApp"
     },
     {
@@ -481,7 +420,13 @@
         "en": "PettiCare is an iOS application designed to manage pet profiles, care routines, and essential health information. It includes features for displaying nearby veterinarians on a map, adding favorite vets, and getting directions.",
         "tr": "PettiCare, evcil hayvan profillerini, bakım rutinlerini ve sağlıkla ilgili temel bilgileri yönetmek için geliştirilen bir iOS uygulamasıdır. Yakındaki veterinerleri harita üzerinde görüntüleme, favori veteriner ekleme ve yol tarifi alma özellikleri içerir."
       },
-      "tech": ["Swift", "SwiftUI", "SwiftData", "MapKit", "CoreLocation"],
+      "tech": [
+        "Swift",
+        "SwiftUI",
+        "SwiftData",
+        "MapKit",
+        "CoreLocation"
+      ],
       "github": "https://github.com/aysenurkendirci/PettiCareApp"
     },
     {
@@ -494,7 +439,13 @@
         "en": "HeyDOU is a web-based campus management platform developed as an academic team project. It unifies academic calendar, cafeteria menus, events, clubs, internships, and campus mapping in one system. I contributed to the frontend, backend, and AI-powered features.",
         "tr": "HeyDOU, üniversite öğrencilerinin akademik takvim, yemekhane, etkinlik, kulüp, staj ve kampüs bilgilerine tek bir platformdan ulaşmasını amaçlayan akademik ekip projesidir. Projenin frontend, backend ve yapay zekâ destekli özelliklerine katkı sağladım."
       },
-      "tech": ["C#", "HTML", "CSS", "JavaScript", "AI Integration"],
+      "tech": [
+        "C#",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "AI Integration"
+      ],
       "github": "https://github.com/aysenurkendirci/Heydou_kamp-s"
     }
   ],

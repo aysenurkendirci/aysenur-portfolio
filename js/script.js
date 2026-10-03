@@ -266,3 +266,57 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+
+
+
+
+
+
+
+            
+
+
+// Interactive Cursor Glow
+const cursorGlow = document.getElementById('cursorGlow');
+if (cursorGlow) {
+    document.addEventListener('mousemove', (e) => {
+        // Use requestAnimationFrame for smoother performance
+        requestAnimationFrame(() => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+    });
+    
+    // Add fancy hover effect when over clickable items
+    document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => cursorGlow.style.transform = 'translate(-50%, -50%) scale(1.5)');
+        el.addEventListener('mouseleave', () => cursorGlow.style.transform = 'translate(-50%, -50%) scale(1)');
+    });
+}
+
+
+// Smooth Scroll for Navbar Links
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        if (this.getAttribute('target') === '_blank') return;
+        
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetEl = document.getElementById(targetId);
+        
+        if(targetEl) {
+            targetEl.scrollIntoView({
+                behavior: 'smooth'
+            });
+            
+            // Close mobile menu if open
+            const navLinks = document.getElementById('navLinks');
+            const menuToggle = document.getElementById('menuToggle');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        }
+    });
+});

@@ -137,7 +137,7 @@ html {
     scroll-behavior: smooth;
 
     /* Navbar sabit olduğu için (height: 88px) scroll sırasında bu kadar padding ekler */
-    scroll-padding-top: 88px;
+    scroll-padding-top: 110px;
 }
 
 /* ==================================================
@@ -275,54 +275,7 @@ img {
    Mouse hareket ettikçe arka planda yumuşak ışık efekti oluşturur.
    Bu efekt JavaScript ile mouse konumuna göre hareket ettirilir.
    ================================================== */
-.cursor-glow {
-    /*
-       Efekt ekran üzerinde sabit konumlanır.
-       Sayfa scroll olsa bile mouse pozisyonuna göre kalır.
-    */
-    position: fixed;
 
-    /* Işık efektinin genişliği */
-    width: 260px;
-
-    /* Işık efektinin yüksekliği */
-    height: 260px;
-
-    /* Kare alanı daireye çevirir */
-    border-radius: 50%;
-
-    /*
-       Ortası hafif mavi, kenarlara doğru şeffaflaşan
-       radial gradient ışık efekti oluşturur.
-    */
-    background: radial-gradient(
-        circle,
-        rgba(96, 165, 250, 0.16) 0%,
-        rgba(96, 165, 250, 0) 72%
-    );
-
-    /*
-       Bu efekt tıklamaları engellemesin diye pointer-events none yapılır.
-       Böylece kullanıcı butonlara ve linklere normal şekilde tıklayabilir.
-    */
-    pointer-events: none;
-
-    /*
-       Arka plan efekti olduğu için içeriklerin çok üstüne çıkmaması gerekir.
-    */
-    z-index: 0;
-
-    /*
-       Efektin merkezi mouse noktasına gelsin diye kendi boyutunun
-       yarısı kadar geri taşınır.
-    */
-    transform: translate(-50%, -50%);
-
-    /*
-       Mouse hareketinde efektin daha yumuşak hareket etmesini sağlar.
-    */
-    transition: transform 0.05s linear;
-}
 
 /* ==================================================
    ERIŞILEBILIRLIK SINIFI
@@ -480,7 +433,7 @@ fieldset {
 ================================================== */
 @media (max-width: 768px) {
     html {
-        scroll-padding-top: 72px;
+        scroll-padding-top: 110px;
     }
 
     body {
@@ -570,4 +523,181 @@ fieldset {
     textarea {
         min-height: 100px;
     }
+}
+/* ==================================================
+   PRELOADER (ReactBits Style)
+================================================== */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0f172a;
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+    transform-origin: top;
+}
+.preloader.slide-up {
+    transform: translateY(-100%);
+}
+.preloader-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    z-index: 1;
+}
+.preloader-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.preloader-brand {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: fadeUpIn 0.5s forwards 0.2s;
+}
+.preloader-progress {
+    width: 150px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+.preloader-progress::after {
+    content: '';
+    display: block;
+    width: 0%;
+    height: 100%;
+    background: var(--primary-accent-color, #3b82f6);
+    animation: loadProgress 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeUpIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes loadProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* ==================================================
+   PRELOADER (Exact ReactBits Page Transition Style)
+================================================== */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0f172a; /* Exact sleek dark background */
+    transform: translateY(0); /* starts covering the screen */
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.preloader.slide-up {
+    transform: translateY(-100%);
+}
+
+.preloader.slide-down-in {
+    transition: none; /* instant move to bottom */
+    transform: translateY(100%);
+}
+
+.preloader.sweep-up {
+    transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+    transform: translateY(0%);
+}
+
+.preloader-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preloader-brand {
+    font-size: 40px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 2px;
+    font-family: 'Inter', sans-serif;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.preloader-brand.show-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==================================================
+   FANCY GLOW EFFECTS
+================================================== */
+/* Cursor glow base style */
+.cursor-glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(56, 189, 248, 0) 70%);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease, background 0.2s ease;
+    mix-blend-mode: screen;
+}
+
+/* Fancy Glowing Cards */
+.project-card, .tech-category-card, .experience-card-brittany {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before, .tech-category-card::before, .experience-card-brittany::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(56,189,248,0.1) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.project-card:hover::before, .tech-category-card:hover::before, .experience-card-brittany:hover::before {
+    opacity: 1;
+    animation: rotateGlow 6s linear infinite;
+}
+
+@keyframes rotateGlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Bring content above glow */
+.project-content, .tech-category-card > *, .experience-date-col, .experience-content-col {
+    position: relative;
+    z-index: 1;
 }
