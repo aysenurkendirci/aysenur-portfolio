@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+
+    <!-- Security & Validation Meta Tags -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: https:; font-src 'self' https: data:; connect-src 'self' https:;">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayşe Nur Kendirci | Backend Yazılım Geliştirici</title>
@@ -21,7 +28,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     
     <!-- Main Style Sheets with Cache Busting -->
-    <link rel="stylesheet" href="css/base.css?v=7.0">
+    <link rel="stylesheet" href="css/base.css?v=12.0">
     <link rel="stylesheet" href="css/navbar.css?v=7.0">
     <link rel="stylesheet" href="css/hero.css?v=6.0">
     <link rel="stylesheet" href="css/content.css?v=6.0">
@@ -671,6 +678,46 @@
             Projects
         </h2>
         <div class="projects-grid">
+            
+            <article class="project-card premium-project-card">
+                <div class="project-header">
+                    <div class="project-top-row">
+                        <span class="project-category"
+                              data-en="Food Waste Reduction Platform"
+                              data-tr="Gıda İsrafını Önleme Platformu">
+                            Food Waste Reduction Platform
+                        </span>
+                        <a href="https://github.com/aysenurkendirci/EcoGrab"
+                           class="project-github-link"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="GitHub Repository">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                    <h3 class="project-title">EcoGrab</h3>
+                </div>
+                <div class="project-body">
+                    <p class="project-description"
+                       data-en="A full-stack platform designed to help food businesses reduce food waste by selling surplus products. Developed with ASP.NET Core, SQL Server, and a Flutter mobile app."
+                       data-tr="Gıda işletmelerinin fazla ürünleri satarak gıda israfını azaltmalarına yardımcı olan full-stack bir platform. ASP.NET Core, SQL Server ve Flutter ile geliştirilmiştir.">
+                        A full-stack platform designed to help food businesses reduce food waste by selling surplus products. Developed with ASP.NET Core, SQL Server, and a Flutter mobile app.
+                    </p>
+                </div>
+                <ul class="tech-stack premium-tech-stack" aria-label="Project technologies">
+                    
+                    <li class="premium-tech-badge">C#</li>
+                    
+                    <li class="premium-tech-badge">.NET 9</li>
+                    
+                    <li class="premium-tech-badge">ASP.NET Core</li>
+                    
+                    <li class="premium-tech-badge">SQL Server</li>
+                    
+                    <li class="premium-tech-badge">Flutter</li>
+                    
+                </ul>
+            </article>
             
             <article class="project-card premium-project-card">
                 <div class="project-header">

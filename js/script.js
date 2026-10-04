@@ -363,3 +363,111 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 3D Tilt Effect for Cards
+    const tiltCards = document.querySelectorAll('.premium-project-card, .experience-card-brittany');
+    
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Calculate rotation (max 5 degrees)
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = ((y - centerY) / centerY) * -4;
+            const rotateY = ((x - centerX) / centerX) * 4;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            card.style.transition = 'none'; // Remove transition during hover for instant follow
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            card.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)'; // Smooth reset
+        });
+    });
+    
+    // Typewriter effect for Tagline
+    const taglines = document.querySelectorAll('.hero-subtitle');
+    taglines.forEach(tagline => {
+        // Only run on the active translated text, but we'll apply it via a typing function
+        const originalText = tagline.textContent.trim();
+        tagline.textContent = '';
+        tagline.classList.add('typing-cursor');
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < originalText.length) {
+                tagline.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 35); // Typing speed
+            } else {
+                setTimeout(() => tagline.classList.remove('typing-cursor'), 2000);
+            }
+        };
+        // Start typing after a short delay
+        setTimeout(typeWriter, 800);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Trailing Glow Cursor
+    const trail = document.createElement('div');
+    trail.className = 'cursor-trail';
+    document.body.appendChild(trail);
+    
+    let mouseX = 0, mouseY = 0;
+    let trailX = 0, trailY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+    
+    function animateTrail() {
+        // Smoothly interpolate trail position towards actual mouse position
+        trailX += (mouseX - trailX) * 0.15;
+        trailY += (mouseY - trailY) * 0.15;
+        trail.style.left = `${trailX}px`;
+        trail.style.top = `${trailY}px`;
+        requestAnimationFrame(animateTrail);
+    }
+    animateTrail();
+    
+    // Enlarge trail on clickable elements
+    const clickables = document.querySelectorAll('a, button, .premium-project-card, .experience-card-brittany');
+    clickables.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            trail.style.width = '50px';
+            trail.style.height = '50px';
+            trail.style.background = 'rgba(147, 51, 234, 0.3)'; // Switch to purple
+        });
+        el.addEventListener('mouseleave', () => {
+            trail.style.width = '20px';
+            trail.style.height = '20px';
+            trail.style.background = 'rgba(45, 212, 191, 0.4)'; // Back to teal
+        });
+    });
+
+    // 2. Magnetic Buttons
+    const magneticBtns = document.querySelectorAll('.btn-primary, .btn-outline');
+    magneticBtns.forEach(btn => {
+        btn.classList.add('magnetic-btn');
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            // Move button slightly towards cursor
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0px, 0px)';
+        });
+    });
+});
