@@ -796,3 +796,58 @@ body.dark-theme {
     opacity: 1;
     transform: translateX(0) scale(1) translateY(0);
 }
+
+/* Button Shine Sweep Effect */
+.btn-primary, .btn-outline {
+    position: relative;
+    overflow: hidden;
+}
+.btn-primary::after, .btn-outline::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(30deg);
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.btn-primary:hover::after, .btn-outline:hover::after {
+    left: 120%;
+}
+
+/* Subtle pulse on primary button to attract attention */
+.btn-primary {
+    animation: gentlePulse 3s infinite;
+}
+@keyframes gentlePulse {
+    0% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(45, 212, 191, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0); }
+}
+
+/* Tech Badge Staggered Pop on Card Hover */
+.premium-tech-badge {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+.premium-project-card:hover .premium-tech-badge,
+.experience-card-brittany:hover .premium-tech-badge {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(45, 212, 191, 0.2);
+}
+/* Staggering the tech badge pops */
+.premium-project-card:hover .premium-tech-badge:nth-child(1), .experience-card-brittany:hover .premium-tech-badge:nth-child(1) { transition-delay: 0.05s; }
+.premium-project-card:hover .premium-tech-badge:nth-child(2), .experience-card-brittany:hover .premium-tech-badge:nth-child(2) { transition-delay: 0.1s; }
+.premium-project-card:hover .premium-tech-badge:nth-child(3), .experience-card-brittany:hover .premium-tech-badge:nth-child(3) { transition-delay: 0.15s; }
+.premium-project-card:hover .premium-tech-badge:nth-child(4), .experience-card-brittany:hover .premium-tech-badge:nth-child(4) { transition-delay: 0.2s; }
+.premium-project-card:hover .premium-tech-badge:nth-child(5), .experience-card-brittany:hover .premium-tech-badge:nth-child(5) { transition-delay: 0.25s; }
+
+/* Social Icons bouncy hover */
+.social-links a {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s;
+}
+.social-links a:hover {
+    transform: scale(1.2) translateY(-3px);
+    color: var(--primary-accent-color);
+}
