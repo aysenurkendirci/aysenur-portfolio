@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     
     <!-- Main Style Sheets with Cache Busting -->
-    <link rel="stylesheet" href="css/base.css?v=4.0">
+    <link rel="stylesheet" href="css/base.css?v=5.0">
     <link rel="stylesheet" href="css/navbar.css?v=2.0">
     <link rel="stylesheet" href="css/hero.css?v=2.0">
     <link rel="stylesheet" href="css/content.css?v=3.0">
@@ -49,6 +49,11 @@
     <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
     <!-- NAVBAR COMPONENT -->
+    
+    <!-- Floating Background Orbs for Premium UI -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    
     <header class="site-header" role="banner">
     <nav class="navbar" aria-label="Ana navigasyon">
         <div class="container navbar-container">
@@ -120,6 +125,7 @@
         </div>
     </nav>
 </header>
+
 
 
     <main id="main-content">
@@ -195,7 +201,7 @@
 
 
         <!-- ABOUT COMPONENT -->
-        <section id="about" class="about section" aria-labelledby="about-title">
+        <section id="about" class="about section reveal-left" aria-labelledby="about-title">
     <div class="container">
         <h2 id="about-title" class="section-title" data-en="About Me" data-tr="Hakkımda">
             About Me
@@ -212,7 +218,7 @@
 
 
         <!-- SKILLS COMPONENT -->
-        <section id="skills" class="skills section" aria-labelledby="skills-title">
+        <section id="skills" class="skills section reveal-right" aria-labelledby="skills-title">
     <div class="container">
         <h2 id="skills-title" class="section-title" data-en="Tech Stack" data-tr="Teknolojiler">
             Tech Stack
@@ -477,7 +483,7 @@
 
 
         <!-- EXPERIENCE COMPONENT -->
-        <section id="experience" class="experience section" aria-labelledby="experience-title">
+        <section id="experience" class="experience section reveal-zoom" aria-labelledby="experience-title">
     <div class="container" style="max-width: 900px;">
         <h2 id="experience-title" class="section-title" data-en="Experience" data-tr="Deneyim">
             Experience
@@ -659,7 +665,7 @@
 </section>
 
         <!-- PROJECTS COMPONENT -->
-        <section id="projects" class="projects section" aria-labelledby="projects-title">
+        <section id="projects" class="projects section reveal-zoom" aria-labelledby="projects-title">
     <div class="container">
         <h2 id="projects-title" class="section-title" data-en="Projects" data-tr="Projeler">
             Projects
@@ -836,7 +842,7 @@
 
 
         <!-- CONTACT COMPONENT -->
-        <section id="contact" class="contact-section" aria-labelledby="contact-title">
+        <section id="contact" class="contact-section reveal-up" aria-labelledby="contact-title">
     <div class="contact-container">
         <div class="contact-header">
             <span class="section-eyebrow" data-en="Get in touch" data-tr="Benimle iletişime geçin">Benimle iletişime geçin</span>
