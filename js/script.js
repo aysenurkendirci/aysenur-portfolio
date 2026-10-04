@@ -323,7 +323,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 document.addEventListener('DOMContentLoaded', () => {
     // Scroll Reveal Effect
-    const revealElements = document.querySelectorAll('section, .reveal-target');
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-up, .reveal-target');
     
     // Add reveal class to all sections by default if not present
     revealElements.forEach(el => {
