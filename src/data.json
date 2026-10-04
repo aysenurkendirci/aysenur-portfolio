@@ -375,6 +375,26 @@
   ],
   "projects": [
     {
+      "title": "EcoGrab",
+      "description": {
+        "en": "A full-stack platform designed to help food businesses reduce food waste by selling surplus products. Developed with ASP.NET Core, SQL Server, and a Flutter mobile app.",
+        "tr": "Gıda işletmelerinin fazla ürünleri satarak gıda israfını azaltmalarına yardımcı olan full-stack bir platform. ASP.NET Core, SQL Server ve Flutter ile geliştirilmiştir."
+      },
+      "image": "images/projects/ecograb.jpg",
+      "category": {
+        "en": "Food Waste Reduction Platform",
+        "tr": "Gıda İsrafını Önleme Platformu"
+      },
+      "tech": [
+        "C#",
+        ".NET 9",
+        "ASP.NET Core",
+        "SQL Server",
+        "Flutter"
+      ],
+      "github": "https://github.com/aysenurkendirci/EcoGrab"
+    },
+    {
       "title": "FinGen Banking System",
       "category": {
         "en": "Digital Banking Application",
