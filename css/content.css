@@ -1151,3 +1151,87 @@ olacak şekilde responsive davranıyor.
         margin-bottom: -4px;
     }
 }
+
+/* Premium Project Card Overrides */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.premium-project-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 16px;
+    background: rgba(30, 41, 59, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+    min-height: 320px;
+}
+
+.premium-project-card:hover {
+    transform: translateY(-5px) !important;
+    background: rgba(30, 41, 59, 0.6) !important;
+    border-color: rgba(45, 212, 191, 0.2) !important;
+    box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7) !important;
+}
+
+.project-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.project-github-link {
+    color: var(--secondary-text-color);
+    font-size: 22px;
+    transition: color 0.3s ease;
+}
+
+.project-github-link:hover {
+    color: var(--primary-accent-color);
+}
+
+.premium-project-card .project-title {
+    font-size: 22px !important;
+    font-weight: 700;
+    margin-bottom: 16px !important;
+    color: var(--primary-text-color) !important;
+    transition: color 0.3s ease;
+}
+
+.premium-project-card:hover .project-title {
+    color: var(--primary-accent-color) !important;
+}
+
+.premium-project-card .project-description {
+    color: var(--secondary-text-color) !important;
+    font-size: 14.5px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 24px !important;
+}
+
+.premium-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px !important;
+    margin-top: auto !important; /* pushes tech stack to bottom */
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.premium-tech-badge {
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(45, 212, 191, 0.1);
+    color: #2dd4bf;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
