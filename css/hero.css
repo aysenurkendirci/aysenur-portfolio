@@ -506,3 +506,24 @@ body.light-theme .hero-bg-word {
         font-size: 12px; /* Kart açıklamasını küçültür. */
     }
 }
+/* Animated Gradient Text for Name */
+.hero-title {
+    background: linear-gradient(
+        to right,
+        var(--primary-accent-color),
+        #9333ea,
+        var(--primary-accent-color)
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 4s linear infinite;
+    font-weight: 900;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
