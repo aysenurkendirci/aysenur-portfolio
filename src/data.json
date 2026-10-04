@@ -47,16 +47,8 @@
   },
   "aboutTexts": [
     {
-      "en": "I’m a Software Engineering student focused on backend development. I’ve worked on real software projects across banking, software products and mobile applications, with a growing focus on C#/.NET, REST APIs and database-driven systems.",
-      "tr": "Backend geliştirme odaklı bir Yazılım Mühendisliği öğrencisiyim. Bankacılık, e-ticaret (yazılım ürünleri) ve mobil uygulamalar alanlarında gerçek hayat projelerinde görev aldım. Güncel olarak C#/.NET, REST API'ler ve veritabanı odaklı sistemler üzerinde yoğunlaşıyorum."
-    },
-    {
-      "en": "During my backend experience at VakıfBank, I worked with C#, .NET, Oracle, PL/SQL, Dapper and JWT-based authentication. At İncehesap/Oksid Bilişim, I contributed to real software products across backend and full-stack development.",
-      "tr": "VakıfBank'taki backend deneyimimde C#, .NET, Oracle, PL/SQL, Dapper ve JWT tabanlı kimlik doğrulama süreçleri üzerinde çalıştım. İncehesap/Oksid Bilişim'de ise backend ve full-stack alanında aktif kullanılan yazılım ürünlerinin geliştirilmesine katkı sağladım."
-    },
-    {
-      "en": "My previous experience with Swift and iOS development also helps me understand how backend services connect to the client side and the overall product.",
-      "tr": "Swift ve iOS geliştirmedeki geçmiş tecrübem, backend servislerinin istemci (client) tarafıyla nasıl iletişim kurduğunu ve yazılım ürününün bütününü çok daha iyi kavramama yardımcı oluyor."
+      "en": "I’m a Software Engineering student focused on backend development. I’ve worked on real software projects across banking, software products and mobile applications, with a growing focus on C#/.NET, REST APIs and database-driven systems. During my backend experience at VakıfBank, I worked with C#, .NET, Oracle, PL/SQL, Dapper and JWT-based authentication. At İncehesap/Oksid Bilişim, I contributed to real software products across backend and full-stack development. My previous experience with Swift and iOS development also helps me understand how backend services connect to the client side and the overall product.",
+      "tr": "Backend geliştirme odaklı bir Yazılım Mühendisliği öğrencisiyim. Bankacılık, e-ticaret (yazılım ürünleri) ve mobil uygulamalar alanlarında gerçek hayat projelerinde görev aldım. Güncel olarak C#/.NET, REST API'ler ve veritabanı odaklı sistemler üzerinde yoğunlaşıyorum. VakıfBank'taki backend deneyimimde C#, .NET, Oracle, PL/SQL, Dapper ve JWT tabanlı kimlik doğrulama süreçleri üzerinde çalıştım. İncehesap/Oksid Bilişim'de ise backend ve full-stack alanında aktif kullanılan yazılım ürünlerinin geliştirilmesine katkı sağladım. Swift ve iOS geliştirmedeki geçmiş tecrübem, backend servislerinin istemci (client) tarafıyla nasıl iletişim kurduğunu ve yazılım ürününün bütününü çok daha iyi kavramama yardımcı oluyor."
     }
   ],
   "techCategories": [
