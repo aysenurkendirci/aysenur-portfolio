@@ -748,54 +748,24 @@ body.dark-theme {
     100% { background-position: 0% 50%; }
 }
 
-/* Floating Orbs (Blobs) */
-.blob {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(100px);
-    z-index: -1;
-    opacity: 0.5;
-    pointer-events: none;
-    animation: float 20s infinite alternate ease-in-out;
-}
-.blob-1 {
-    top: -10%;
-    right: -5%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(45,212,191,0.15) 0%, rgba(45,212,191,0) 70%);
-}
-.blob-2 {
-    bottom: -20%;
-    left: -10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(14,165,233,0.15) 0%, rgba(14,165,233,0) 70%);
-    animation-delay: -5s;
-}
 
-@keyframes float {
-    0% { transform: translate(0, 0) scale(1); }
     33% { transform: translate(-50px, 30px) scale(1.1); }
     66% { transform: translate(30px, -50px) scale(0.9); }
     100% { transform: translate(0, 0) scale(1); }
 }
 
 /* Directional Reveal Animations */
-.reveal-left, .reveal-right, .reveal-zoom, .reveal-up {
+/* SADECE BASİT FADE-IN REVEAL */
+.reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-up {
     opacity: 0;
-    transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
-
-.reveal-left { transform: translateX(-50px); }
-.reveal-right { transform: translateX(50px); }
-.reveal-zoom { transform: scale(0.9); }
-.reveal-up { transform: translateY(50px); }
-
-.reveal-left.active, .reveal-right.active, .reveal-zoom.active, .reveal-up.active {
+.reveal.active, .reveal-left.active, .reveal-right.active, .reveal-zoom.active, .reveal-up.active {
     opacity: 1;
-    transform: translateX(0) scale(1) translateY(0);
+    transform: translateY(0);
 }
+
 
 /* Button Shine Sweep Effect */
 .btn-primary, .btn-outline {
@@ -881,44 +851,20 @@ body.dark-theme {
 }
 
 /* Typewriter Effect cursor */
-.typing-cursor::after {
-    content: '|';
-    animation: blink 1s step-start infinite;
-    color: var(--primary-accent-color);
-}
-@keyframes blink {
-    50% { opacity: 0; }
+
 }
 
 /* Trailing Glowing Cursor */
-.cursor-trail {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: rgba(45, 212, 191, 0.4);
-    box-shadow: 0 0 20px rgba(45, 212, 191, 0.8), 0 0 40px rgba(147, 51, 234, 0.6);
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width 0.2s, height 0.2s;
-    mix-blend-mode: screen;
-}
+
 
 /* Float Animation for Hero Image / Card */
-.glass-id-card {
-    animation: floatingCard 6s ease-in-out infinite;
-}
-@keyframes floatingCard {
-    0% { transform: translateY(0px) rotate(0deg); }
+
     50% { transform: translateY(-15px) rotate(2deg); }
     100% { transform: translateY(0px) rotate(0deg); }
 }
 
 /* Magnetic Button Hover State */
-.magnetic-btn {
-    transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1);
-}
+
 
 /* Section Specific Backgrounds for Depth */
 .skills.section {
