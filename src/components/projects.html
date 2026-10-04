@@ -5,33 +5,36 @@
         </h2>
         <div class="projects-grid">
             {{#each projects}}
-            <article class="project-card">
-                <div class="project-card-top">
-                    <span class="project-category"
-                          data-en="{{category.en}}"
-                          data-tr="{{category.tr}}">
-                        {{category.en}}
-                    </span>
+            <article class="project-card premium-project-card">
+                <div class="project-header">
+                    <div class="project-top-row">
+                        <span class="project-category"
+                              data-en="{{category.en}}"
+                              data-tr="{{category.tr}}">
+                            {{category.en}}
+                        </span>
+                        <a href="{{github}}"
+                           class="project-github-link"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="GitHub Repository">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                    <h3 class="project-title">{{title}}</h3>
                 </div>
-                <h3>{{title}}</h3>
-                <p class="project-description"
-                   data-en="{{description.en}}"
-                   data-tr="{{description.tr}}">
-                    {{description.en}}
-                </p>
-                <ul class="tech-stack" aria-label="Project technologies">
+                <div class="project-body">
+                    <p class="project-description"
+                       data-en="{{description.en}}"
+                       data-tr="{{description.tr}}">
+                        {{description.en}}
+                    </p>
+                </div>
+                <ul class="tech-stack premium-tech-stack" aria-label="Project technologies">
                     {{#each tech}}
-                    <li class="tech">{{this}}</li>
+                    <li class="premium-tech-badge">{{this}}</li>
                     {{/each}}
                 </ul>
-                <a href="{{github}}"
-                   class="project-link"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   data-en="View Repository →"
-                   data-tr="Repoyu Gör →">
-                    View Repository →
-                </a>
             </article>
             {{/each}}
         </div>

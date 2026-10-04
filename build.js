@@ -255,7 +255,7 @@ function buildSuccessPage(context) {
     <link rel="stylesheet" href="css/base.css?v=2.0">
     <link rel="stylesheet" href="css/navbar.css?v=2.0">
     <link rel="stylesheet" href="css/hero.css?v=2.0">
-    <link rel="stylesheet" href="css/content.css?v=2.0">
+    <link rel="stylesheet" href="css/content.css?v=3.0">
 </head>
 <body class="dark-theme">
     <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
