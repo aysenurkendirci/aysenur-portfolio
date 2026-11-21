@@ -273,10 +273,11 @@ function build() {
     fs.writeFileSync(outputPath, templateHtml, 'utf8');
     console.log(`✓ Portfolio built successfully: ${outputPath}`);
     
-    // Also build a success.html fallback page
-    buildSuccessPage(context);
+    // KULLANILMIYOR: iletişim formu kaldırıldığı için success.html artık üretilmiyor
+    // buildSuccessPage(context);
 }
 
+/* KULLANILMIYOR: iletişim formu kaldırıldığı için success.html sayfası artık üretilmiyor.
 // Generate success.html fallback redirect page
 function buildSuccessPage(context) {
     const successTemplate = `<!DOCTYPE html>
@@ -355,6 +356,7 @@ function buildSuccessPage(context) {
     fs.writeFileSync(outputPath, compiledSuccess, 'utf8');
     console.log(`✓ Success fallback built successfully: ${outputPath}`);
 }
+*/
 
 // Execute build only when run directly (tests import the helpers below)
 if (require.main === module) {

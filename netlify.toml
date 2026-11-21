@@ -11,7 +11,7 @@
 
 # ------------------------------------------
 # Sitenin parçası olmayan dosyalar dışarıya sunulmaz
-# (kaynak kod, testler, yedek arşiv, yapılandırma)
+# (kaynak kod, testler, yapılandırma)
 # ------------------------------------------
 [[redirects]]
   from = "/src/*"
@@ -57,24 +57,6 @@
 
 [[redirects]]
   from = "/netlify.toml"
-  to = "/index.html"
-  status = 404
-  force = true
-
-[[redirects]]
-  from = "/aysenur-portfolio.rar"
-  to = "/index.html"
-  status = 404
-  force = true
-
-[[redirects]]
-  from = "/index.3html"
-  to = "/index.html"
-  status = 404
-  force = true
-
-[[redirects]]
-  from = "/validate-deployment.*"
   to = "/index.html"
   status = 404
   force = true

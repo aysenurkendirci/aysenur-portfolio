@@ -1,10 +1,19 @@
 {
   "name": "aysenur-portfolio",
   "private": true,
-  "description": "Ayşe Nur Kendirci kişisel portfolyo sitesi",
+  "description": "Ayşe Nur Kendirci – personal portfolio website (bilingual TR/EN, static, no framework)",
+  "homepage": "https://aysenurkendirci.github.io/aysenur-portfolio/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aysenurkendirci/aysenur-portfolio.git"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "node build.js",
     "validate": "node scripts/validate-data.js",
+    "preview": "node scripts/serve.js",
     "test": "node build.js && node --test --test-concurrency=1 \"tests/*.test.js\""
   },
   "devDependencies": {

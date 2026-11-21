@@ -1,26 +1,24 @@
-# OS Files
+# OS
 .DS_Store
 Thumbs.db
+
+# Editors
+.vscode/
+.idea/
 *.swp
 *.swo
 *~
-
-# IDE Files
-.vscode/
-.idea/
 *.sublime-project
 *.sublime-workspace
 *.code-workspace
 
-# Node modules (if using any frontend tools)
+# Node
 node_modules/
 package-lock.json
 
-# Build artifacts
+# Build / temp
 dist/
 build/
-
-# Temporary files
 temp/
 tmp/
 *.log
@@ -30,11 +28,6 @@ tmp/
 .env.local
 .env.*.local
 
-# Legacy PHP files (no longer needed)
-data.php
-process-form.php
-includes/
-
-# OS
-.DS_Store
+# Legacy PHP files (no longer used)
 *.php
+includes/
