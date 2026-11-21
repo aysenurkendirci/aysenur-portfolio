@@ -1,14 +1,45 @@
-<section id="about" class="about section reveal-left" aria-labelledby="about-title">
+<section id="about" class="sec about" aria-labelledby="about-title">
     <div class="container">
-        <h2 id="about-title" class="section-title" data-en="About Me" data-tr="Hakkımda">
-            About Me
-        </h2>
-        <div class="about-content">
-            {{#each aboutTexts}}
-            <p data-en="{{en}}" data-tr="{{tr}}">
-                {{en}}
+        <header class="sec-head rise">
+            <h2 id="about-title" class="sec-title" data-en="About Me" data-tr="Hakkımda">About Me</h2>
+            <span class="sec-rule" aria-hidden="true"></span>
+        </header>
+        <div class="about-layout">
+            <div class="about-text rise">
+                {{#each aboutTexts}}
+                <p data-en="{{en}}" data-tr="{{tr}}">{{en}}</p>
+                {{/each}}
+            </div>
+            <div class="about-side rise">
+            <p class="status-pill">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span data-en="Open to long-term internships" data-tr="Uzun dönem staja açık">Open to long-term internships</span>
             </p>
-            {{/each}}
+            <dl class="fact-panel panel glow-card">
+                <div class="fact-row">
+                    <dt><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i><span data-en="Education" data-tr="Eğitim">Education</span></dt>
+                    <dd>
+                        <strong data-en="{{education.school}}" data-tr="{{education.school_tr}}">{{education.school}}</strong>
+                        <span data-en="{{education.degree.en}}, {{education.date.en}}" data-tr="{{education.degree.tr}}, {{education.date.tr}}">{{education.degree.en}}, {{education.date.en}}</span>
+                    </dd>
+                </div>
+                <div class="fact-row">
+                    <dt><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span data-en="Based in" data-tr="Konum">Based in</span></dt>
+                    <dd>
+                        <strong data-en="Maltepe, Istanbul" data-tr="Maltepe, İstanbul">Maltepe, Istanbul</strong>
+                        <span data-en="Türkiye" data-tr="Türkiye">Türkiye</span>
+                    </dd>
+                </div>
+                <div class="fact-row">
+                    <dt><i class="fa-solid fa-language" aria-hidden="true"></i><span data-en="Languages" data-tr="Diller">Languages</span></dt>
+                    <dd class="lang-list">
+                        {{#each languages}}
+                        <span data-en="{{en}}" data-tr="{{tr}}">{{en}}</span>
+                        {{/each}}
+                    </dd>
+                </div>
+            </dl>
+            </div>
         </div>
     </div>
 </section>

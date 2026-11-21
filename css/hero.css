@@ -9,7 +9,7 @@
     background: /* Arka plana çok katmanlı efekt verir. */
         radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 25%), /* Sol üstte mavi ışık efekti oluşturur. */
         radial-gradient(circle at top right, rgba(168, 85, 247, 0.16), transparent 22%), /* Sağ üstte mor ışık efekti oluşturur. */
-        linear-gradient(180deg, #050816 0%, #081122 100%); /* Koyu lacivert dikey geçiş verir. */
+        linear-gradient(180deg, #08152a 0%, #0a192f 100%); /* Lacivert dikey geçiş; alttaki bölümlerin zemini (#0a192f) ile birleşir. */
 }
 
 /* Light theme açıkken hero arka planını açık renge çevirir. */
@@ -185,30 +185,30 @@ body.light-theme .hero-bg-word {
     align-items: center; /* Ortalar. */
 }
 
-/* Kartı yukarıdan asılmış gibi gösteren çizgiyi oluşturur. */
+/* KULLANILMIYOR: eski düz ip; yerini hero-fx.css içindeki .lanyard aldı
+/ * Kartı yukarıdan asılmış gibi gösteren çizgiyi oluşturur. * /
 .swing-line {
-    width: 2px; /* Çizginin kalınlığını belirler. */
-    height: 80px; /* Çizginin uzunluğunu belirler. */
-    background: linear-gradient( /* Çizgiye dikey renk geçişi verir. */
-        to bottom, /* Geçişin yukarıdan aşağıya olmasını sağlar. */
-        rgba(255, 255, 255, 0.1), /* Üst kısmı silik beyaz yapar. */
-        rgba(96, 165, 250, 0.6) /* Alt kısmı mavi yapar. */
+    width: 2px; / * Çizginin kalınlığını belirler. * /
+    height: 80px; / * Çizginin uzunluğunu belirler. * /
+    background: linear-gradient( / * Çizgiye dikey renk geçişi verir. * /
+        to bottom, / * Geçişin yukarıdan aşağıya olmasını sağlar. * /
+        rgba(255, 255, 255, 0.1), / * Üst kısmı silik beyaz yapar. * /
+        rgba(96, 165, 250, 0.6) / * Alt kısmı mavi yapar. * /
     );
 }
+*/
 
 /* Profil kartının ana görünümünü oluşturur. */
 .portfolio-card {
     width: 260px; /* Kart genişliğini belirler. */
     padding: 12px; /* Kart iç boşluğu verir. */
     border-radius: 18px; /* Kart köşelerini yuvarlatır. */
-    background: linear-gradient( /* Kart arka planına altın tonlu geçiş verir. */
-        180deg, /* Geçişi dikey yapar. */
-        rgba(245, 223, 153, 0.95), /* Üst kısmı açık altın yapar. */
-        rgba(200, 169, 92, 0.95) /* Alt kısmı koyu altın yapar. */
-    );
-    box-shadow: 0 24px 50px rgba(2, 6, 23, 0.36); /* Kartın arkasına büyük gölge verir. */
-    transform-origin: top center; /* Sallanma hareketinin üst merkezden başlamasını sağlar. */
-    animation: swingCard 4.5s ease-in-out infinite; /* Kartı sürekli sallanan animasyona bağlar. */
+    /* KULLANILMIYOR: eski altın kart ve sallanma (yerini hero-fx.css'teki pastel holografik kart ve çek-bırak aldı)
+    background: linear-gradient(180deg, rgba(245, 223, 153, 0.95), rgba(200, 169, 92, 0.95));
+    box-shadow: 0 24px 50px rgba(2, 6, 23, 0.36);
+    transform-origin: top center;
+    animation: swingCard 4.5s ease-in-out infinite;
+    */
 }
 
 /* Profil kartının üst boşluk alanıdır. */
@@ -248,45 +248,53 @@ body.light-theme .hero-bg-word {
 }
 
 /* Hero içinde bilgi kutuları kullanılacaksa alanı hazırlar. */
+/* KULLANILMIYOR:
 .hero-side-panel {
-    width: 100%; /* Kapsayıcıyı bulunduğu alanın tamamına yayar. */
-    max-width: 360px; /* Maksimum genişliği sınırlar. */
-    display: grid; /* Kutuları grid düzenine alır. */
-    gap: 14px; /* Kutular arasında boşluk bırakır. */
+    width: 100%; / * Kapsayıcıyı bulunduğu alanın tamamına yayar. * /
+    max-width: 360px; / * Maksimum genişliği sınırlar. * /
+    display: grid; / * Kutuları grid düzenine alır. * /
+    gap: 14px; / * Kutular arasında boşluk bırakır. * /
 }
+*/
 
 /* Bilgi kutusu kart tasarımını oluşturur. */
+/* KULLANILMIYOR:
 .info-box {
-    padding: 16px 18px; /* İç boşluk verir. */
-    border: 1px solid var(--border-color); /* Kenarlık ekler. */
-    border-radius: 16px; /* Köşeleri yuvarlatır. */
-    background: var(--card-background-color); /* Kart arka plan rengini kullanır. */
-    box-shadow: var(--card-shadow); /* Kart gölgesi verir. */
+    padding: 16px 18px; / * İç boşluk verir. * /
+    border: 1px solid var(--border-color); / * Kenarlık ekler. * /
+    border-radius: 16px; / * Köşeleri yuvarlatır. * /
+    background: var(--card-background-color); / * Kart arka plan rengini kullanır. * /
+    box-shadow: var(--card-shadow); / * Kart gölgesi verir. * /
 }
+*/
 
 /* Bilgi kutusu içindeki etiket yazısını ayarlar. */
+/* KULLANILMIYOR:
 .info-label {
-    display: block; /* Etiketi blok seviyesine getirir. */
-    margin-bottom: 5px; /* Altına küçük boşluk bırakır. */
-    color: var(--primary-accent-color); /* Vurgu rengini kullanır. */
-    font-size: 13px; /* Küçük etiket boyutu verir. */
-    font-weight: 700; /* Etiketi kalın yapar. */
+    display: block; / * Etiketi blok seviyesine getirir. * /
+    margin-bottom: 5px; / * Altına küçük boşluk bırakır. * /
+    color: var(--primary-accent-color); / * Vurgu rengini kullanır. * /
+    font-size: 13px; / * Küçük etiket boyutu verir. * /
+    font-weight: 700; / * Etiketi kalın yapar. * /
 }
+*/
 
-/* Sallanma animasyonunu tanımlar. */
+/* KULLANILMIYOR: kart artık sallanmıyor
+/ * Sallanma animasyonunu tanımlar. * /
 @keyframes swingCard {
-    0% { /* Animasyon başlangıcı. */
-        transform: rotate(-5deg); /* Kartı sola 5 derece döndürür. */
+    0% { / * Animasyon başlangıcı. * /
+        transform: rotate(-5deg); / * Kartı sola 5 derece döndürür. * /
     }
 
-    50% { /* Animasyonun ortası. */
-        transform: rotate(5deg); /* Kartı sağa 5 derece döndürür. */
+    50% { / * Animasyonun ortası. * /
+        transform: rotate(5deg); / * Kartı sağa 5 derece döndürür. * /
     }
 
-    100% { /* Animasyon sonu. */
-        transform: rotate(-5deg); /* Kartı tekrar sola döndürür. */
+    100% { / * Animasyon sonu. * /
+        transform: rotate(-5deg); / * Kartı tekrar sola döndürür. * /
     }
 }
+*/
 
 /* 600px ile 992px arası tablet görünümünü düzenler. */
 @media (min-width: 600px) and (max-width: 992px) {
@@ -507,6 +515,7 @@ body.light-theme .hero-bg-word {
     }
 }
 /* Animated Gradient Text for Name */
+/* KULLANILMIYOR:
 .hero-title {
     background: linear-gradient(
         to right,
@@ -521,9 +530,12 @@ body.light-theme .hero-bg-word {
     animation: shine 4s linear infinite;
     font-weight: 900;
 }
+*/
 
+/* KULLANILMIYOR:
 @keyframes shine {
     to {
         background-position: 200% center;
     }
 }
+*/

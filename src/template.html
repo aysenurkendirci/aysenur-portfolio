@@ -2,65 +2,83 @@
 <html lang="tr">
 <head>
 
-    <!-- Security & Validation Meta Tags -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: https:; font-src 'self' https: data:; connect-src 'self' https:;">
-
     <meta charset="UTF-8">
+
+    <!-- Güvenlik: yalnızca kendi scriptlerimiz çalışır, satır içi script ve eval yasak.
+         Sunucu başlıkları (frame-ancestors, HSTS vb.) netlify.toml içinde. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="color-scheme" content="dark light">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayşe Nur Kendirci | Backend Yazılım Geliştirici</title>
+    <title>Ayşe Nur Kendirci | Backend Geliştirici</title>
     
-    <meta name="description" content="Ayşe Nur Kendirci'nin C#, .NET Core, PHP, Laravel, RESTful API, Oracle Database ve iOS geliştirme deneyimlerini içeren kişisel yazılım portföyü.">
+    <meta name="description" content="Ayşe Nur Kendirci - Yazılım Mühendisliği öğrencisi. C#, .NET, ASP.NET Core, Oracle PL/SQL ve SQL Server ile backend geliştirme deneyimleri, stajlar ve projeler.">
     <meta name="keywords" content="Ayşe Nur Kendirci, Backend Developer, C#, .NET Core, ASP.NET Core, Laravel, PHP, REST API, Oracle Database, Software Engineer">
     
     <!-- Open Graph Metadata -->
     <meta property="og:title" content="Ayşe Nur Kendirci | Backend Developer Portfolio">
     <meta property="og:description" content="Backend geliştirme, bankacılık uygulamaları, RESTful API'ler ve iOS projeleri üzerine çalışmalarımı inceleyin.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://github.com/aysenurkendirci">
+    <meta property="og:url" content="https://aysenurkendirci.github.io/aysenur-portfolio/">
+
+    <!-- Bölüm yazı tipi: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha384-t1nt8BQoYMLFN5p42tRAtuAAFQaCQODekUVeKKZrEnEyp4H2R0RHFz0KWpmj7i8g" crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Devicon Technology Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/devicon.min.css"
+          integrity="sha384-IFjxIKlvgyAc/5tXXd/XhJ3PLi4dLuAR1AfVgwcTAQzexIouhxg2ebx3Nh1Zi/59" crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Main Style Sheets with Cache Busting -->
     <link rel="stylesheet" href="css/base.css?v=13.0">
     <link rel="stylesheet" href="css/navbar.css?v=7.0">
-    <link rel="stylesheet" href="css/hero.css?v=6.0">
-    <link rel="stylesheet" href="css/content.css?v=6.0">
+    <link rel="stylesheet" href="css/hero.css?v=8.0">
+    <link rel="stylesheet" href="css/content.css?v=7.0">
+    <link rel="stylesheet" href="css/sections.css?v=8.0">
+    <link rel="stylesheet" href="css/hero-fx.css?v=2.0">
     
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 </head>
 <body class="dark-theme">
+    <!-- Kayıtlı tema/dil, içerik çizilmeden önce uygulanır (yanıp sönme olmaz) -->
+    <script src="js/init.js?v=1.0"></script>
 
     
 
 
     
 
-    <!-- Preloader (Page Turn Effect) -->
-    
-    </div>
+    <!-- KULLANILMIYOR: preloader kaldırıldı, kapanış etiketi yetim kalmıştı
+    </div> -->
 
     <!-- Accessibility quick-link -->
-    <a href="#main-content" class="sr-only" tabindex="1">
+    <a href="#main-content" class="sr-only">
         <span data-en="Skip to main content" data-tr="Ana içeriğe atla">Skip to main content</span>
     </a>
 
-    <!-- Interactive mouse cursor glow container -->
-    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+    <!-- KULLANILMIYOR: imleç parıltısı
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div> -->
 
     <!-- NAVBAR COMPONENT -->
     
-    <!-- Floating Background Orbs for Premium UI -->
+    <!-- KULLANILMIYOR: yüzen arka plan küreleri
     <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
+    <div class="blob blob-2"></div> -->
     
+    <!-- Bölümlerin arkasında yavaşça dolaşan renk bulutları (hero kendi zeminini korur) -->
+    <div class="aurora" aria-hidden="true">
+        <span class="aurora-orb orb-blue"></span>
+        <span class="aurora-orb orb-violet"></span>
+        <span class="aurora-orb orb-gold"></span>
+    </div>
+
     {{NAVBAR}}
 
 
@@ -80,6 +98,9 @@
         <!-- PROJECTS COMPONENT -->
         {{PROJECTS}}
 
+        <!-- EDUCATION / CERTIFICATES COMPONENT -->
+        {{EDUCATION}}
+
         <!-- CONTACT COMPONENT -->
         {{CONTACT}}
     </main>
@@ -87,18 +108,16 @@
     <!-- FOOTER COMPONENT -->
     {{FOOTER}}
 
-    <!-- Language & Theme Initializer -->
-    <script>
-        (function() {
-            // Restore language preference
-            const savedLanguage = localStorage.getItem('portfolio-language');
-            const initialLanguage = savedLanguage || 'tr';
-            document.documentElement.lang = initialLanguage;
-            window.__initialLanguage = initialLanguage;
-        })();
-    </script>
-    
+    <!-- Kitap sayfası geçişi için katman -->
+    <div class="page-turn" aria-hidden="true">
+        <div class="page-turn-leaf">
+            <span class="page-turn-title"></span>
+            <span class="page-turn-rule"></span>
+        </div>
+    </div>
+
     <!-- Main Javascript Interactions -->
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=3.0"></script>
+    <script src="js/hero-fx.js?v=2.0"></script>
 </body>
 </html>

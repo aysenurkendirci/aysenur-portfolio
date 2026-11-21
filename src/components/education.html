@@ -1,0 +1,17 @@
+<section id="certificates" class="sec certs" aria-labelledby="certs-title">
+    <div class="container">
+        <header class="sec-head rise">
+            <h2 id="certs-title" class="sec-title" data-en="Certificates" data-tr="Sertifikalar">Certificates</h2>
+            <span class="sec-rule" aria-hidden="true"></span>
+        </header>
+        <ul class="panel cert-list" data-stagger>
+            {{#each certificates}}
+            <li class="cert rise">
+                <i class="fa-solid fa-award cert-icon" aria-hidden="true"></i>
+                <span class="cert-name" data-en="{{name.en}}" data-tr="{{name.tr}}">{{name.en}}</span>
+                <span class="cert-issuer" data-en="{{issuer.en}}" data-tr="{{issuer.tr}}">{{issuer.en}}</span>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</section>

@@ -416,10 +416,12 @@ fieldset {
         padding: 50px 0 64px;
     }
 
-    .section-title {
+    /* KULLANILMIYOR:
+.section-title {
         font-size: 36px;
         margin-bottom: 36px;
     }
+*/
 
     .btn {
         padding: 11px 24px;
@@ -448,10 +450,12 @@ fieldset {
         padding: 48px 0 60px;
     }
 
-    .section-title {
+    /* KULLANILMIYOR:
+.section-title {
         font-size: 32px;
         margin-bottom: 32px;
     }
+*/
 
     .btn {
         padding: 10px 22px;
@@ -487,11 +491,13 @@ fieldset {
         padding: 40px 0 52px;
     }
 
-    .section-title {
+    /* KULLANILMIYOR:
+.section-title {
         font-size: 26px;
         margin-bottom: 24px;
         line-height: 1.2;
     }
+*/
 
     .btn {
         padding: 10px 18px;
@@ -527,6 +533,7 @@ fieldset {
 /* ==================================================
    PRELOADER (ReactBits Style)
 ================================================== */
+/* KULLANILMIYOR:
 .preloader {
     position: fixed;
     top: 0;
@@ -541,9 +548,13 @@ fieldset {
     transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
     transform-origin: top;
 }
+*/
+/* KULLANILMIYOR:
 .preloader.slide-up {
     transform: translateY(-100%);
 }
+*/
+/* KULLANILMIYOR:
 .preloader-bg {
     position: absolute;
     top: 0;
@@ -553,6 +564,8 @@ fieldset {
     background: linear-gradient(135deg, #1e293b, #0f172a);
     z-index: 1;
 }
+*/
+/* KULLANILMIYOR:
 .preloader-content {
     position: relative;
     z-index: 2;
@@ -561,6 +574,8 @@ fieldset {
     align-items: center;
     gap: 20px;
 }
+*/
+/* KULLANILMIYOR:
 .preloader-brand {
     font-size: 24px;
     font-weight: 700;
@@ -569,6 +584,8 @@ fieldset {
     opacity: 0;
     animation: fadeUpIn 0.5s forwards 0.2s;
 }
+*/
+/* KULLANILMIYOR:
 .preloader-progress {
     width: 150px;
     height: 2px;
@@ -576,6 +593,8 @@ fieldset {
     border-radius: 2px;
     overflow: hidden;
 }
+*/
+/* KULLANILMIYOR:
 .preloader-progress::after {
     content: '';
     display: block;
@@ -584,19 +603,25 @@ fieldset {
     background: var(--primary-accent-color, #3b82f6);
     animation: loadProgress 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
+*/
 
+/* KULLANILMIYOR:
 @keyframes fadeUpIn {
     0% { opacity: 0; transform: translateY(10px); }
     100% { opacity: 1; transform: translateY(0); }
 }
+*/
+/* KULLANILMIYOR:
 @keyframes loadProgress {
     0% { width: 0%; }
     100% { width: 100%; }
 }
+*/
 
 /* ==================================================
    PRELOADER (Exact ReactBits Page Transition Style)
 ================================================== */
+/* KULLANILMIYOR:
 .preloader {
     position: fixed;
     top: 0;
@@ -607,31 +632,41 @@ fieldset {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #0f172a; /* Exact sleek dark background */
-    transform: translateY(0); /* starts covering the screen */
+    background: #0f172a; / * Exact sleek dark background * /
+    transform: translateY(0); / * starts covering the screen * /
     transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
 }
+*/
 
+/* KULLANILMIYOR:
 .preloader.slide-up {
     transform: translateY(-100%);
 }
+*/
 
+/* KULLANILMIYOR:
 .preloader.slide-down-in {
-    transition: none; /* instant move to bottom */
+    transition: none; / * instant move to bottom * /
     transform: translateY(100%);
 }
+*/
 
+/* KULLANILMIYOR:
 .preloader.sweep-up {
     transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
     transform: translateY(0%);
 }
+*/
 
+/* KULLANILMIYOR:
 .preloader-content {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+*/
 
+/* KULLANILMIYOR:
 .preloader-brand {
     font-size: 40px;
     font-weight: 800;
@@ -642,11 +677,14 @@ fieldset {
     transform: translateY(20px);
     transition: all 0.5s ease;
 }
+*/
 
+/* KULLANILMIYOR:
 .preloader-brand.show-text {
     opacity: 1;
     transform: translateY(0);
 }
+*/
 
 
 /* ==================================================
@@ -667,11 +705,14 @@ fieldset {
 }
 
 /* Fancy Glowing Cards */
+/* KULLANILMIYOR:
 .project-card, .tech-category-card, .experience-card-brittany {
     position: relative;
     overflow: hidden;
 }
+*/
 
+/* KULLANILMIYOR:
 .project-card::before, .tech-category-card::before, .experience-card-brittany::before {
     content: '';
     position: absolute;
@@ -685,55 +726,84 @@ fieldset {
     pointer-events: none;
     z-index: 0;
 }
+*/
 
+/* KULLANILMIYOR:
 .project-card:hover::before, .tech-category-card:hover::before, .experience-card-brittany:hover::before {
     opacity: 1;
     animation: rotateGlow 6s linear infinite;
 }
+*/
 
+/* KULLANILMIYOR:
 @keyframes rotateGlow {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+*/
 
 /* Bring content above glow */
+/* KULLANILMIYOR:
 .project-content, .tech-category-card > *, .experience-date-col, .experience-content-col {
     position: relative;
     z-index: 1;
 }
+*/
 
 /* Scroll Reveal Animations */
+/* KULLANILMIYOR:
 .reveal {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
 }
+*/
 
+/* KULLANILMIYOR:
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
 }
+*/
 
 /* Staggered card reveals */
+/* KULLANILMIYOR:
 .projects-grid .project-card, .experience-list .experience-card-brittany {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+*/
 
+/* KULLANILMIYOR:
 .reveal.active .project-card, .reveal.active .experience-card-brittany {
     opacity: 1;
     transform: translateY(0);
 }
+*/
 
+/* KULLANILMIYOR:
 .reveal.active .project-card:nth-child(1) { transition-delay: 0.1s; }
+*/
+/* KULLANILMIYOR:
 .reveal.active .project-card:nth-child(2) { transition-delay: 0.2s; }
+*/
+/* KULLANILMIYOR:
 .reveal.active .project-card:nth-child(3) { transition-delay: 0.3s; }
+*/
+/* KULLANILMIYOR:
 .reveal.active .project-card:nth-child(4) { transition-delay: 0.4s; }
+*/
 
+/* KULLANILMIYOR:
 .reveal.active .experience-card-brittany:nth-child(1) { transition-delay: 0.1s; }
+*/
+/* KULLANILMIYOR:
 .reveal.active .experience-card-brittany:nth-child(2) { transition-delay: 0.2s; }
+*/
+/* KULLANILMIYOR:
 .reveal.active .experience-card-brittany:nth-child(3) { transition-delay: 0.3s; }
+*/
 
 /* Subtle Animated Background for Dark Theme */
 body.dark-theme {
@@ -749,29 +819,38 @@ body.dark-theme {
 }
 
 
+/* KULLANILMIYOR (bozuk kalıntı: @keyframes başlığı silinmiş, ayraçlar dengesizdi):
     33% { transform: translate(-50px, 30px) scale(1.1); }
     66% { transform: translate(30px, -50px) scale(0.9); }
     100% { transform: translate(0, 0) scale(1); }
 }
+*/
 
 /* Directional Reveal Animations */
 /* SADECE BASİT FADE-IN REVEAL */
+/* KULLANILMIYOR:
 .reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-up {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
+*/
+/* KULLANILMIYOR:
 .reveal.active, .reveal-left.active, .reveal-right.active, .reveal-zoom.active, .reveal-up.active {
     opacity: 1;
     transform: translateY(0);
 }
+*/
 
 
 /* Button Shine Sweep Effect */
+/* KULLANILMIYOR:
 .btn-primary, .btn-outline {
     position: relative;
     overflow: hidden;
 }
+*/
+/* KULLANILMIYOR:
 .btn-primary::after, .btn-outline::after {
     content: '';
     position: absolute;
@@ -783,44 +862,69 @@ body.dark-theme {
     transform: rotate(30deg);
     transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
+*/
+/* KULLANILMIYOR:
 .btn-primary:hover::after, .btn-outline:hover::after {
     left: 120%;
 }
+*/
 
 /* Subtle pulse on primary button to attract attention */
+/* KULLANILMIYOR:
 .btn-primary {
     animation: gentlePulse 3s infinite;
 }
+*/
+/* KULLANILMIYOR:
 @keyframes gentlePulse {
     0% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.4); }
     70% { box-shadow: 0 0 0 15px rgba(45, 212, 191, 0); }
     100% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0); }
 }
+*/
 
 /* Tech Badge Staggered Pop on Card Hover */
+/* KULLANILMIYOR:
 .premium-tech-badge {
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
 }
+*/
+/* KULLANILMIYOR:
 .premium-project-card:hover .premium-tech-badge,
 .experience-card-brittany:hover .premium-tech-badge {
     transform: translateY(-3px);
     box-shadow: 0 4px 10px rgba(45, 212, 191, 0.2);
 }
+*/
 /* Staggering the tech badge pops */
+/* KULLANILMIYOR:
 .premium-project-card:hover .premium-tech-badge:nth-child(1), .experience-card-brittany:hover .premium-tech-badge:nth-child(1) { transition-delay: 0.05s; }
+*/
+/* KULLANILMIYOR:
 .premium-project-card:hover .premium-tech-badge:nth-child(2), .experience-card-brittany:hover .premium-tech-badge:nth-child(2) { transition-delay: 0.1s; }
+*/
+/* KULLANILMIYOR:
 .premium-project-card:hover .premium-tech-badge:nth-child(3), .experience-card-brittany:hover .premium-tech-badge:nth-child(3) { transition-delay: 0.15s; }
+*/
+/* KULLANILMIYOR:
 .premium-project-card:hover .premium-tech-badge:nth-child(4), .experience-card-brittany:hover .premium-tech-badge:nth-child(4) { transition-delay: 0.2s; }
+*/
+/* KULLANILMIYOR:
 .premium-project-card:hover .premium-tech-badge:nth-child(5), .experience-card-brittany:hover .premium-tech-badge:nth-child(5) { transition-delay: 0.25s; }
+*/
 
 /* Social Icons bouncy hover */
+/* KULLANILMIYOR:
 .social-links a {
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s;
 }
+*/
+/* KULLANILMIYOR:
 .social-links a:hover {
     transform: scale(1.2) translateY(-3px);
     color: var(--primary-accent-color);
 }
+*/
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
@@ -845,23 +949,29 @@ body.dark-theme {
 }
 
 /* 3D Tilt Effect Setup */
+/* KULLANILMIYOR:
 .premium-project-card, .experience-card-brittany {
     transform-style: preserve-3d;
     perspective: 1000px;
 }
+*/
 
-/* Typewriter Effect cursor */
+/* KULLANILMIYOR (bozuk kalıntı: @keyframes başlığı silinmiş, ayraçlar dengesizdi):
+ Typewriter Effect cursor 
 
 }
+*/
 
 /* Trailing Glowing Cursor */
 
 
-/* Float Animation for Hero Image / Card */
+/* KULLANILMIYOR (bozuk kalıntı: @keyframes başlığı silinmiş, ayraçlar dengesizdi):
+ Float Animation for Hero Image / Card 
 
     50% { transform: translateY(-15px) rotate(2deg); }
     100% { transform: translateY(0px) rotate(0deg); }
 }
+*/
 
 /* Magnetic Button Hover State */
 
@@ -929,22 +1039,28 @@ p, h1, h2, h3, h4, h5, h6, a, span {
     .container {
         padding: 0 40px;
     }
-    .hero-content {
+    /* KULLANILMIYOR:
+.hero-content {
         flex-direction: column;
         text-align: center;
         gap: 3rem;
         padding-top: 120px;
     }
-    .hero-text {
+*/
+    /* KULLANILMIYOR:
+.hero-text {
         max-width: 100%;
         align-items: center;
     }
+*/
     .hero-buttons {
         justify-content: center;
     }
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    /* KULLANILMIYOR:
+.projects-grid {
+        grid-template-columns: repeat(2, 1fr); / * 2 columns on tablets * /
     }
+*/
 }
 
 /* Mobile Devices (max-width: 768px) */
@@ -954,70 +1070,98 @@ p, h1, h2, h3, h4, h5, h6, a, span {
     }
     
     /* Typography Scaling */
-    .hero-title {
+    /* KULLANILMIYOR:
+.hero-title {
         font-size: 2.5rem;
     }
-    .hero-subtitle {
+*/
+    /* KULLANILMIYOR:
+.hero-subtitle {
         font-size: 1.2rem;
     }
-    .section-title {
+*/
+    /* KULLANILMIYOR:
+.section-title {
         font-size: 2rem;
         margin-bottom: 2rem;
     }
+*/
     
     /* Layout Adjustments */
-    .projects-grid {
-        grid-template-columns: 1fr; /* 1 column on mobile */
+    /* KULLANILMIYOR:
+.projects-grid {
+        grid-template-columns: 1fr; / * 1 column on mobile * /
         gap: 1.5rem;
     }
-    .experience-list {
+*/
+    /* KULLANILMIYOR:
+.experience-list {
         padding: 0;
     }
-    .experience-card-brittany {
+*/
+    /* KULLANILMIYOR:
+.experience-card-brittany {
         padding: 1.5rem;
         flex-direction: column;
     }
-    .experience-time {
+*/
+    /* KULLANILMIYOR:
+.experience-time {
         margin-bottom: 1rem;
         min-width: 100%;
     }
+*/
     
     /* Navbar adjustments if not already handled */
     .nav-links {
         display: none; /* Hide default nav links, assuming hamburger menu handles it */
     }
-    .hamburger {
-        display: flex; /* Show hamburger menu */
+    /* KULLANILMIYOR:
+.hamburger {
+        display: flex; / * Show hamburger menu * /
     }
+*/
     
     /* Remove hover 3D tilt and effects on touch devices */
-    .premium-project-card, .experience-card-brittany {
+    /* KULLANILMIYOR:
+.premium-project-card, .experience-card-brittany {
         transform: none !important;
         transition: none !important;
     }
-    .premium-project-card:hover::after, .experience-card-brittany:hover::after {
-        opacity: 0; /* Disable spotlight on mobile */
+*/
+    /* KULLANILMIYOR:
+.premium-project-card:hover::after, .experience-card-brittany:hover::after {
+        opacity: 0; / * Disable spotlight on mobile * /
     }
-    .cursor-trail {
-        display: none; /* Hide magic cursor on mobile touch screens */
+*/
+    /* KULLANILMIYOR:
+.cursor-trail {
+        display: none; / * Hide magic cursor on mobile touch screens * /
     }
+*/
 }
 
 /* Small Mobile Devices (max-width: 480px) */
 @media screen and (max-width: 480px) {
-    .hero-title {
+    /* KULLANILMIYOR:
+.hero-title {
         font-size: 2rem;
     }
+*/
     .hero-buttons {
         flex-direction: column;
         width: 100%;
     }
-    .btn-primary, .btn-outline {
+    /* KULLANILMIYOR:
+.btn-primary, .btn-outline {
         width: 100%;
         text-align: center;
     }
-    .glass-id-card {
+*/
+    /* KULLANILMIYOR:
+.glass-id-card {
         width: 100%;
         height: auto;
     }
+*/
 }

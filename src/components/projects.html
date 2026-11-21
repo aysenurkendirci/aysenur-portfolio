@@ -1,40 +1,35 @@
-<section id="projects" class="projects section reveal-zoom" aria-labelledby="projects-title">
+<section id="projects" class="sec projects" aria-labelledby="projects-title">
     <div class="container">
-        <h2 id="projects-title" class="section-title" data-en="Projects" data-tr="Projeler">
-            Projects
-        </h2>
-        <div class="projects-grid">
+        <header class="sec-head rise">
+            <h2 id="projects-title" class="sec-title" data-en="Projects" data-tr="Projeler">Projects</h2>
+            <span class="sec-rule" aria-hidden="true"></span>
+        </header>
+        <div class="work-grid" data-stagger>
             {{#each projects}}
-            <article class="project-card premium-project-card">
-                <div class="project-header">
-                    <div class="project-top-row">
-                        <span class="project-category"
-                              data-en="{{category.en}}"
-                              data-tr="{{category.tr}}">
-                            {{category.en}}
-                        </span>
-                        <a href="{{github}}"
-                           class="project-github-link"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           aria-label="GitHub Repository">
-                            <i class="fa-brands fa-github"></i>
+            <article class="panel glow-card work {{#if featured}}work-featured{{/if}} rise" data-tilt>
+                <div class="work-intro">
+                    <div class="work-head">
+                        <span class="work-icon" aria-hidden="true"><i class="{{icon}}"></i></span>
+                        <h3 class="work-title">{{title}}</h3>
+                        <span class="work-badge" data-en="{{context.en}}" data-tr="{{context.tr}}">{{context.en}}</span>
+                    </div>
+                    <p class="work-category" data-en="{{category.en}}" data-tr="{{category.tr}}">{{category.en}}</p>
+                </div>
+                <div class="work-main">
+                    <p class="work-desc" data-en="{{description.en}}" data-tr="{{description.tr}}">{{description.en}}</p>
+                    <div class="work-foot">
+                        <ul class="tag-list" aria-label="Technologies">
+                            {{#each tech}}
+                            <li class="tag">{{this}}</li>
+                            {{/each}}
+                        </ul>
+                        <a class="work-link" href="{{github}}" target="_blank" rel="noopener noreferrer" aria-label="{{title}} GitHub">
+                            <i class="fa-brands fa-github" aria-hidden="true"></i>
+                            <span>GitHub</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square work-arrow" aria-hidden="true"></i>
                         </a>
                     </div>
-                    <h3 class="project-title">{{title}}</h3>
                 </div>
-                <div class="project-body">
-                    <p class="project-description"
-                       data-en="{{description.en}}"
-                       data-tr="{{description.tr}}">
-                        {{description.en}}
-                    </p>
-                </div>
-                <ul class="tech-stack premium-tech-stack" aria-label="Project technologies">
-                    {{#each tech}}
-                    <li class="premium-tech-badge">{{this}}</li>
-                    {{/each}}
-                </ul>
             </article>
             {{/each}}
         </div>

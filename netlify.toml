@@ -5,7 +5,79 @@
 
 [build]
   publish = "."
-  command = ""
+  # Her yayında data.json doğrulanır ve sayfa yeniden üretilir.
+  # Doğrulama başarısız olursa (ör. telefon numarası, bozuk link) yayın durur.
+  command = "node build.js"
+
+# ------------------------------------------
+# Sitenin parçası olmayan dosyalar dışarıya sunulmaz
+# (kaynak kod, testler, yedek arşiv, yapılandırma)
+# ------------------------------------------
+[[redirects]]
+  from = "/src/*"
+  to = "/index.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/scripts/*"
+  to = "/index.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/tests/*"
+  to = "/index.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/node_modules/*"
+  to = "/index.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/.vscode/*"
+  to = "/index.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/build.js"
+  to = "/index.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package.json"
+  to = "/index.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify.toml"
+  to = "/index.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/aysenur-portfolio.rar"
+  to = "/index.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/index.3html"
+  to = "/index.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/validate-deployment.*"
+  to = "/index.html"
+  status = 404
+  force = true
 
 # SPA routing (HTML anchor links çalışmaya devam eder)
 [[redirects]]
@@ -13,16 +85,21 @@
   to = "/index.html"
   status = 200
 
-# Security Headers
+# ------------------------------------------
+# Güvenlik başlıkları
+# ------------------------------------------
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()"
+    Cross-Origin-Opener-Policy = "same-origin"
 
-# CSS Cache
+# CSS Cache (dosya adları ?v= ile sürümlenir)
 [[headers]]
   for = "/css/*"
   [headers.values]
@@ -34,11 +111,17 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Images Cache
+# Images Cache (yalnızca fotoğraflar; CV bu kurala girmez)
 [[headers]]
-  for = "/images/*"
+  for = "/images/*.jpg"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# CV her zaman güncel sürümüyle indirilsin
+[[headers]]
+  for = "/images/Ayse_Nur_Kendirci_CV.pdf"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 # HTML Cache
 [[headers]]

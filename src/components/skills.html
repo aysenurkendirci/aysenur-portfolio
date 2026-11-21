@@ -1,35 +1,28 @@
-<section id="skills" class="skills section reveal-right" aria-labelledby="skills-title">
+<section id="skills" class="sec skills" aria-labelledby="skills-title">
     <div class="container">
-        <h2 id="skills-title" class="section-title" data-en="Tech Stack" data-tr="Teknolojiler">
-            Tech Stack
-        </h2>
-        <div class="tech-categories">
+        <header class="sec-head rise">
+            <h2 id="skills-title" class="sec-title" data-en="Tech Stack" data-tr="Teknolojiler">Tech Stack</h2>
+            <span class="sec-rule" aria-hidden="true"></span>
+        </header>
+        <div class="panel stack-panel" data-stagger>
             {{#each techCategories}}
-            <article class="tech-category-card">
-                <h3 data-en="{{title.en}}" data-tr="{{title.tr}}">
-                    {{title.en}}
+            <div class="stack-row rise">
+                <h3 class="stack-name">
+                    <i class="{{catIcon}}" aria-hidden="true"></i>
+                    <span data-en="{{title.en}}" data-tr="{{title.tr}}">{{title.en}}</span>
                 </h3>
-                <ul class="tech-list">
+                <ul class="chip-list">
                     {{#each items}}
-                    <li class="tech-item"
+                    <li class="chip" tabindex="0"
                         data-tooltip="{{tooltip.en}}"
                         data-tooltip-en="{{tooltip.en}}"
                         data-tooltip-tr="{{tooltip.tr}}">
-                        <span class="tech-icon" aria-hidden="true">
-                            {{#if icon}}
-                            <i class="{{icon}}"></i>
-                            {{/if}}
-                            {{#unless icon}}
-                            {{iconText}}
-                            {{/unless}}
-                        </span>
-                        <span class="tech-name">
-                            {{name}}
-                        </span>
+                        <i class="{{icon}}" aria-hidden="true"></i>
+                        <span>{{name}}</span>
                     </li>
                     {{/each}}
                 </ul>
-            </article>
+            </div>
             {{/each}}
         </div>
     </div>

@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { validateData } = require('./scripts/validate-data');
 
 // Configure directories
 const SRC_DIR = path.join(__dirname, 'src');
@@ -94,14 +95,30 @@ function renderTemplate(html, context) {
         result = result.substring(0, openStart) + blockReplacement + result.substring(openStart + fullBlockLength);
     }
     
-    // Now replace simple variables in the current context
+    // Now replace simple variables in the current context.
+    // Every value is HTML-escaped (including { and }), so data can never inject
+    // markup, break out of an attribute, or be re-parsed as template syntax.
     const varRegex = /\{\{([\w\.]+)\}\}/g;
     result = result.replace(varRegex, (m, key) => {
         const val = getValue(context, key);
-        return val !== undefined ? val : m;
+        if (val === undefined || val === null) return m;
+        if (typeof val === 'object') return m;
+        return escapeHtml(val);
     });
     
     return result;
+}
+
+// Escape a data value for safe use in HTML text and quoted attributes
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/\{/g, '&#123;')
+        .replace(/\}/g, '&#125;');
 }
 
 // Find matching closing tag for a given opening tag by counting depths
@@ -156,8 +173,16 @@ function compileComponent(name, context) {
 function build() {
     console.log('--- Starting Static Portfolio Build ---');
     
-    // Load portfolio data
+    // Load portfolio data and stop the build if it is invalid
     const data = loadData();
+    const problems = validateData(data, __dirname);
+    if (problems.length) {
+        console.error(`
+✗ data.json doğrulaması başarısız (${problems.length} sorun):`);
+        problems.forEach(p => console.error(`  - ${p}`));
+        process.exit(1);
+    }
+    console.log('✓ data.json doğrulandı');
     
     // Prepare complete template rendering context
     const context = {
@@ -209,6 +234,7 @@ function build() {
     const skillsHtml = compileComponent('skills', context);
     const experienceHtml = compileComponent('experience', context);
     const projectsHtml = compileComponent('projects', context);
+    const educationHtml = compileComponent('education', context);
     const contactHtml = compileComponent('contact', context);
     const footerHtml = compileComponent('footer', context);
 
@@ -228,11 +254,19 @@ function build() {
     templateHtml = templateHtml.replace('{{SKILLS}}', skillsHtml);
     templateHtml = templateHtml.replace('{{EXPERIENCE}}', experienceHtml);
     templateHtml = templateHtml.replace('{{PROJECTS}}', projectsHtml);
+    templateHtml = templateHtml.replace('{{EDUCATION}}', educationHtml);
     templateHtml = templateHtml.replace('{{CONTACT}}', contactHtml);
     templateHtml = templateHtml.replace('{{FOOTER}}', footerHtml);
 
     // Compile any global variables inside template.html directly
     templateHtml = renderTemplate(templateHtml, context);
+
+    // Fail if any placeholder was left unresolved (typo or missing data)
+    const leftover = templateHtml.match(/\{\{[^}]*\}\}/g);
+    if (leftover) {
+        console.error(`✗ Çözülmemiş şablon değişkenleri: ${[...new Set(leftover)].join(', ')}`);
+        process.exit(1);
+    }
 
     // Save final compiled file
     const outputPath = path.join(DIST_DIR, 'index.html');
@@ -251,6 +285,7 @@ function buildSuccessPage(context) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesaj Alındı | Kişisel Portföy</title>
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/base.css?v=13.0">
     <link rel="stylesheet" href="css/navbar.css?v=7.0">
@@ -258,7 +293,7 @@ function buildSuccessPage(context) {
     <link rel="stylesheet" href="css/content.css?v=6.0">
 </head>
 <body class="dark-theme">
-    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+    <script src="js/init.js?v=1.0"></script>
     
     <header class="site-header" role="banner">
         <nav class="navbar" aria-label="Ana navigasyon">
@@ -311,14 +346,7 @@ function buildSuccessPage(context) {
         </div>
     </footer>
 
-    <script>
-        (function() {
-            const savedLanguage = localStorage.getItem('portfolio-language');
-            const initialLanguage = savedLanguage || 'en';
-            document.documentElement.lang = initialLanguage;
-        })();
-    </script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=3.0"></script>
 </body>
 </html>`;
 
@@ -328,5 +356,9 @@ function buildSuccessPage(context) {
     console.log(`✓ Success fallback built successfully: ${outputPath}`);
 }
 
-// Execute build
-build();
+// Execute build only when run directly (tests import the helpers below)
+if (require.main === module) {
+    build();
+}
+
+module.exports = { escapeHtml, renderTemplate };

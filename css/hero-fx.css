@@ -1,0 +1,519 @@
+/* ==================================================
+   HERO FX — font, isim rengi, açılış animasyonu, yaka kartı askısı,
+   kart çerçevesi ve etkileşim (kartı aşağı çek-bırak, eğim, holografik
+   yansıma).
+
+   Yerleşim ve metinler hero.css'te; bu dosya yalnızca görünümü ve
+   hareketi geliştirir. JS yoksa ya da "hareketi azalt" açıksa her şey
+   statik ve görünür kalır.
+   ================================================== */
+
+/* ---------- Yazı tipi: tüm site tek aile ---------- */
+
+body {
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.brand,
+.lanyard-text {
+    font-family: "Fira Code", ui-monospace, Consolas, monospace;
+}
+
+.hero-name {
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+}
+
+.intro-line {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.hero-role {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.hero-description {
+    line-height: 1.75;
+}
+
+/* ---------- İsim rengi: kod satırındaki maviden mora ----------
+   Harfler JS ile ayrılır; her harfe --t (0..1) verilir ve renk iki uç
+   arasında karıştırılır. JS yoksa isim düz mavi kalır (hero.css). */
+
+body.dark-theme {
+    --name-a: #60a5fa;
+    --name-b: #c084fc;
+}
+
+body.light-theme {
+    --name-a: #2563eb;
+    --name-b: #7e22ce;
+}
+
+.hero-name .ch {
+    display: inline-block;
+    color: color-mix(in oklab, var(--name-a) calc(100% - var(--t, 0) * 100%), var(--name-b));
+    transition: transform 380ms cubic-bezier(0.34, 1.56, 0.64, 1), color 200ms ease-out;
+}
+
+/* Fareyle harflerin üstünden geçince tek tek zıplar */
+.hero-name .ch:hover {
+    transform: translateY(-0.12em) rotate(-4deg);
+    color: #34d399;
+}
+
+body.light-theme .hero-name .ch:hover {
+    color: #047857;
+}
+
+.hero-name .sp {
+    display: inline-block;
+    width: 0.28em;
+}
+
+/* ---------- Açılış: tek, düzenlenmiş bir an ----------
+   Harfler sırayla yükselir, ardından rol, açıklama, butonlar;
+   askı yukarıdan iner ve kart sallanarak yerine oturur. */
+
+@keyframes hero-letter {
+    from {
+        opacity: 0;
+        transform: translateY(0.45em) rotate(6deg);
+        filter: blur(6px);
+    }
+}
+
+@keyframes hero-rise {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+        filter: blur(4px);
+    }
+}
+
+@keyframes badge-fade {
+    from {
+        opacity: 0;
+    }
+}
+
+html.js .hero-name .ch {
+    animation: hero-letter 700ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    animation-delay: calc(120ms + var(--i, 0) * 35ms);
+}
+
+html.js .hero-left > .intro-line { animation: hero-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) backwards 40ms; }
+html.js .hero-left > .hero-role { animation: hero-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) backwards 620ms; }
+html.js .hero-left > .hero-description { animation: hero-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) backwards 720ms; }
+html.js .hero-left > .hero-buttons { animation: hero-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) backwards 820ms; }
+html.js .hero-left > .hero-social-icons { animation: hero-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) backwards 900ms; }
+html.js .swing-wrapper { animation: badge-fade 500ms ease-out backwards 200ms; }
+
+/* ---------- Yaka kartı düzeneği ---------- */
+
+.swing-wrapper {
+    width: 290px;
+    perspective: 1200px;
+}
+
+/* Askı + klips + kart tek parça: kart aşağı çekilince şerit makaradan
+   uzar gibi aşağı kayar (--pull), yana çekilince hafifçe yatar (--lean).
+   İkisini de JS'teki yay fiziği verir; boştayken düzenek hareketsizdir. */
+.badge-rig {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: 50% 0;
+    transform: translateY(var(--pull, 0px)) rotate(var(--lean, 0deg));
+    will-change: transform;
+}
+
+/* Kartın eski CSS salınımı kapalı */
+.portfolio-card {
+    animation: none;
+}
+
+/* Askı şeridi: dokuma kumaş, kenar dikişleri, üzerinde kod satırı.
+   Yukarı doğru uzar ve hero'nun üst kenarında kaybolur. */
+.lanyard {
+    position: relative;
+    width: 18px;
+    height: 460px;
+    margin-top: -380px;
+    overflow: hidden;
+    border-radius: 0 0 3px 3px;
+    background:
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 3px),
+        linear-gradient(90deg, #172554, #1e3a8a 30%, #1d4ed8 50%, #1e3a8a 70%, #172554);
+    box-shadow:
+        inset 2px 0 0 rgba(255, 255, 255, 0.10),
+        inset -2px 0 0 rgba(0, 0, 0, 0.25),
+        0 6px 14px rgba(2, 6, 23, 0.35);
+}
+
+/* Kenar dikişleri */
+.lanyard::before,
+.lanyard::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: repeating-linear-gradient(0deg, rgba(191, 219, 254, 0.45) 0 4px, transparent 4px 8px);
+}
+
+.lanyard::before { left: 2px; }
+.lanyard::after { right: 2px; }
+
+.lanyard-text {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%) rotate(180deg);
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    color: #cbd5e1;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+
+.lanyard-text .tk-const { color: #d8b4fe; }
+.lanyard-text .tk-var { color: #93c5fd; }
+.lanyard-text .tk-str { color: #6ee7b7; }
+
+/* Metal klips: askıyı karttaki deliğe bağlar */
+.lanyard-clip {
+    position: relative;
+    z-index: 2;
+    width: 26px;
+    height: 22px;
+    margin-top: -2px;
+    margin-bottom: -12px;
+    border-radius: 5px 5px 8px 8px;
+    background: linear-gradient(180deg, #f1f5f9, #cbd5e1 40%, #94a3b8 75%, #cbd5e1);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        inset 0 -2px 3px rgba(51, 65, 85, 0.35),
+        0 3px 6px rgba(2, 6, 23, 0.35);
+}
+
+/* Klipsin kart deliğine giren halkası */
+.lanyard-clip::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -9px;
+    width: 12px;
+    height: 14px;
+    border: 3px solid #cbd5e1;
+    border-top-color: transparent;
+    border-radius: 0 0 8px 8px;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 2px rgba(2, 6, 23, 0.25);
+}
+
+/* ---------- Kart: pastel holografik (lila, açık mavi, mint), askı deliği, plastik kılıf ---------- */
+
+.portfolio-card {
+    position: relative;
+    isolation: isolate;
+    width: 270px;
+    padding: 12px;
+    border-radius: 18px;
+    background:
+        linear-gradient(150deg, #f5ecff 0%, #e6efff 40%, #e0f7ee 75%, #efe6ff 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.55),
+        0 0 0 1px rgba(167, 139, 250, 0.35),
+        0 calc(28px + var(--pull-n, 0) * 0.12px) calc(50px + var(--pull-n, 0) * 0.15px) -12px rgba(2, 6, 23, 0.55);
+    transform: rotateX(var(--card-rx, 0deg)) rotateY(var(--card-ry, 0deg));
+    transform-style: preserve-3d;
+    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: grab;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.portfolio-card:active,
+.swing-wrapper.is-dragging .portfolio-card {
+    cursor: grabbing;
+}
+
+/* Holografik bant: imleç gezdikçe kartın üzerinde kayar */
+.portfolio-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(115deg,
+        transparent 18%,
+        rgba(192, 132, 252, 0.55) 33%,
+        rgba(96, 165, 250, 0.55) 46%,
+        rgba(52, 211, 153, 0.55) 59%,
+        transparent 74%);
+    background-size: 260% 260%;
+    background-position: var(--hx, 15%) var(--hy, 50%);
+    opacity: 0.5;
+    transition: background-position 450ms cubic-bezier(0.22, 1, 0.36, 1), opacity 300ms ease-out;
+    pointer-events: none;
+}
+
+.swing-wrapper.is-hovering .portfolio-card::before,
+.swing-wrapper.is-dragging .portfolio-card::before {
+    opacity: 0.85;
+}
+
+body.light-theme .portfolio-card {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.55),
+        0 0 0 1px rgba(126, 34, 206, 0.22),
+        0 calc(24px + var(--pull-n, 0) * 0.12px) calc(44px + var(--pull-n, 0) * 0.15px) -12px rgba(15, 23, 42, 0.32);
+}
+
+.swing-wrapper.is-hovering .portfolio-card {
+    transition-duration: 120ms;
+}
+
+/* Askı deliği (zımba izi) */
+.portfolio-card-header {
+    position: relative;
+    height: 22px;
+}
+
+.portfolio-card-header::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    width: 46px;
+    height: 9px;
+    border-radius: 6px;
+    background: #0a192f;
+    box-shadow:
+        inset 0 2px 3px rgba(0, 0, 0, 0.6),
+        0 1px 0 rgba(255, 255, 255, 0.55);
+    transform: translateX(-50%);
+}
+
+body.light-theme .portfolio-card-header::before {
+    background: #e8eefc;
+}
+
+.portfolio-card-header::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    right: 8px;
+    width: 15px;
+    height: 15px;
+    background: linear-gradient(135deg, #c084fc, #60a5fa 60%, #34d399);
+    clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+    transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.swing-wrapper.is-hovering .portfolio-card-header::after,
+.swing-wrapper.is-dragging .portfolio-card-header::after {
+    transform: rotate(90deg) scale(1.2);
+}
+
+/* Fotoğrafın etrafında ince iç çerçeve */
+.portfolio-card-image {
+    position: relative;
+    box-shadow:
+        0 0 0 1px rgba(109, 40, 217, 0.18),
+        0 3px 8px rgba(76, 29, 149, 0.22);
+}
+
+.portfolio-card-image img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+
+.portfolio-card-footer h2 {
+    letter-spacing: -0.01em;
+}
+
+/* Plastik kılıf yansıması: imlecin olduğu yerde parlar */
+.card-glare {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+    background:
+        radial-gradient(260px circle at var(--gx, 30%) var(--gy, 0%), rgba(255, 255, 255, 0.38), transparent 55%),
+        linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.10) 45%, transparent 55%);
+    mix-blend-mode: soft-light;
+    opacity: 0.35;
+    pointer-events: none;
+    transition: opacity 300ms ease-out;
+}
+
+.swing-wrapper.is-hovering .card-glare,
+.swing-wrapper.is-dragging .card-glare {
+    opacity: 1;
+}
+
+/* ---------- "Kartı çek" ipucu (ilk etkileşimden sonra kaybolur) ---------- */
+
+.pull-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 26px;
+    color: var(--s-muted, #aab7cc);
+    font-size: 13px;
+    font-weight: 600;
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+}
+
+.pull-hint i {
+    color: #c084fc;
+}
+
+body.light-theme .pull-hint i {
+    color: #7e22ce;
+}
+
+.pull-hint .hint-touch {
+    display: none;
+}
+
+@media (hover: none) {
+    .pull-hint .hint-mouse {
+        display: none;
+    }
+
+    .pull-hint .hint-touch {
+        display: inline;
+    }
+}
+
+.swing-wrapper.has-pulled .pull-hint {
+    opacity: 0;
+    transform: translateY(-4px);
+}
+
+/* ---------- Butonlar ve sosyal ikonlar ---------- */
+
+.hero-buttons .btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Birincil butonda üzerine gelince tek seferlik parlama */
+.hero-buttons .btn:not(.btn-secondary)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+    transform: translateX(-120%);
+}
+
+.hero-buttons .btn:not(.btn-secondary):hover::after {
+    transform: translateX(120%);
+    transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-buttons .btn-secondary:hover {
+    border-color: #34d399;
+    color: #34d399;
+}
+
+body.light-theme .hero-buttons .btn-secondary:hover {
+    border-color: #047857;
+    color: #047857;
+}
+
+.hero-social-icons a {
+    transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1), color 200ms ease-out, border-color 200ms ease-out;
+}
+
+.hero-social-icons a:nth-child(1):hover { color: #c084fc; border-color: #c084fc; }
+.hero-social-icons a:nth-child(2):hover { color: #60a5fa; border-color: #60a5fa; }
+.hero-social-icons a:nth-child(3):hover { color: #34d399; border-color: #34d399; }
+
+/* ---------- Duyarlı ---------- */
+
+@media (max-width: 992px) {
+    .swing-wrapper {
+        margin: 0 auto;
+    }
+
+    /* Tek sütunda kartın üstünde metin var: askı yukarı uzamaz,
+       üst ucu yumuşakça kaybolur ki yukarıdan geliyormuş gibi dursun */
+    .lanyard {
+        height: 110px;
+        margin-top: 0;
+        border-radius: 0 0 3px 3px;
+        -webkit-mask-image: linear-gradient(to bottom, transparent, #000 55%);
+        mask-image: linear-gradient(to bottom, transparent, #000 55%);
+    }
+}
+
+@media (max-width: 768px) {
+    .swing-wrapper {
+        width: 230px;
+    }
+
+    .portfolio-card {
+        width: 210px;
+    }
+}
+
+@media (max-width: 480px) {
+    .swing-wrapper {
+        width: 200px;
+    }
+
+    .portfolio-card {
+        width: 190px;
+    }
+
+    .lanyard {
+        height: 70px;
+    }
+}
+
+/* ---------- Hareketi azalt: her şey statik ve görünür ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    html.js .hero-name .ch,
+    html.js .hero-left > *,
+    html.js .swing-wrapper {
+        animation: none;
+    }
+
+    .badge-rig,
+    .portfolio-card,
+    .hero-name .ch,
+    .hero-name .ch:hover {
+        transform: none;
+        transition: none;
+    }
+
+    .hero-buttons .btn:not(.btn-secondary):hover::after {
+        transition: none;
+    }
+
+    .pull-hint {
+        display: none;
+    }
+
+    .portfolio-card::before,
+    .portfolio-card-header::after {
+        transition: none;
+    }
+}

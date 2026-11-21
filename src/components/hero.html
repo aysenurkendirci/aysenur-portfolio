@@ -44,9 +44,17 @@
             </div>
         </div>
         <div class="hero-right">
-            <div class="swing-wrapper">
-                <div class="swing-line" aria-hidden="true"></div>
+            <div class="swing-wrapper" data-badge>
+                <!-- Askı, klips ve kart tek parça: kart aşağı çekilir, bırakınca yaylanarak geri sarılır -->
+                <div class="badge-rig">
+                <!-- KULLANILMIYOR: eski düz ip (kart sallanırken sabit kalıyordu)
+                <div class="swing-line" aria-hidden="true"></div> -->
+                <div class="lanyard" aria-hidden="true">
+                    <span class="lanyard-text"><span class="tk-const">const</span> <span class="tk-var">developer</span> = <span class="tk-str">"Ayşe Nur Kendirci"</span>; <span class="tk-const">const</span> <span class="tk-var">developer</span> = <span class="tk-str">"Ayşe Nur Kendirci"</span>;</span>
+                </div>
+                <span class="lanyard-clip" aria-hidden="true"></span>
                 <article class="portfolio-card">
+                    <span class="card-glare" aria-hidden="true"></span>
                     <div class="portfolio-card-header" aria-hidden="true"></div>
                     <div class="portfolio-card-image">
                         <img src="{{PROFILE_IMAGE}}"
@@ -62,6 +70,12 @@
                         </p>
                     </div>
                 </article>
+                </div>
+                <p class="pull-hint" aria-hidden="true">
+                    <i class="fa-solid fa-hand-pointer"></i>
+                    <span class="hint-mouse" data-en="Pull the card down" data-tr="Kartı aşağı çek">Pull the card down</span>
+                    <span class="hint-touch" data-en="Tap the card" data-tr="Karta dokun">Tap the card</span>
+                </p>
             </div>
         </div>
     </div>

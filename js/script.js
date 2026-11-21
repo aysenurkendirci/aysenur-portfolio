@@ -1,143 +1,352 @@
 // Portfolio Site - Client-side interactions
-// Manages: language toggle (EN/TR), theme toggle (dark/light), mobile menu, cursor effect
+// Dil (TR/EN), tema (koyu/açık), mobil menü, kitap sayfası geçişi,
+// giriş animasyonları, kart ışığı ve proje kartı eğimi.
+//
+// Güvenlik notları:
+// - Depodan okunan değerler yalnızca izin listesindeki değerlerse kullanılır.
+// - Metinler her zaman textContent ile yazılır (HTML olarak yorumlanmaz).
+// - localStorage erişimi try/catch içindedir; engelliyse site yine çalışır.
 
+(function () {
+    "use strict";
 
-const cursorGlowElement = document.getElementById("cursorGlow");
-const menuToggleButton = document.getElementById("menuToggle");
-const navigationLinks = document.getElementById("navLinks");
-const themeToggleButton = document.getElementById("themeToggle");
-const languageToggleButton = document.getElementById("langToggle");
-const pageBody = document.body;
+    const LANGS = ["tr", "en"];
+    const THEMES = ["dark-theme", "light-theme"];
+    const DEFAULT_LANG = "tr";
+    const DEFAULT_THEME = "dark-theme";
 
-// Cursor glow effect - follows mouse movement
-document.addEventListener("mousemove", (event) => {
-    if (!cursorGlowElement) return;
-    cursorGlowElement.style.left = `${event.clientX}px`;
-    cursorGlowElement.style.top = `${event.clientY}px`;
-});
+    const root = document.documentElement;
+    const pageBody = document.body;
+    const menuToggleButton = document.getElementById("menuToggle");
+    const navigationLinks = document.getElementById("navLinks");
+    const themeToggleButton = document.getElementById("themeToggle");
+    const languageToggleButton = document.getElementById("langToggle");
 
-// Mobile menu toggle
-if (menuToggleButton && navigationLinks) {
-    menuToggleButton.addEventListener("click", () => {
-        navigationLinks.classList.toggle("active");
-        const isMenuOpen = navigationLinks.classList.contains("active");
-        menuToggleButton.setAttribute("aria-expanded", isMenuOpen.toString());
-    });
-}
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const prefersReducedMotion = () => motionQuery.matches;
 
-// Language switching - apply selected language to all multilingual elements
-function applyLanguage(selectedLanguage) {
-    // Update HTML lang attribute for accessibility
-    document.documentElement.lang = selectedLanguage;
+    // ---------- Güvenli depolama ----------
 
-    // Update text elements with data-en and data-tr attributes
-    const textElements = document.querySelectorAll("[data-en][data-tr]");
-    textElements.forEach((el) => {
-        el.textContent = el.dataset[selectedLanguage];
-    });
+    function storageGet(key) {
+        try {
+            return window.localStorage.getItem(key);
+        } catch (error) {
+            return null;
+        }
+    }
 
-    // Update image alt attributes
-    const imageElements = document.querySelectorAll("[data-alt-en][data-alt-tr]");
-    imageElements.forEach((el) => {
-        el.alt = selectedLanguage === "en" ? el.dataset.altEn : el.dataset.altTr;
-    });
+    function storageSet(key, value) {
+        try {
+            window.localStorage.setItem(key, value);
+        } catch (error) {
+            /* depolama kapalı: tercih yalnızca bu sayfa için geçerli */
+        }
+    }
 
-    // Update form placeholders
-    const placeholderElements = document.querySelectorAll(
-        "[data-placeholder-en][data-placeholder-tr]"
-    );
-    placeholderElements.forEach((el) => {
-        el.placeholder =
-            selectedLanguage === "en"
-                ? el.dataset.placeholderEn
-                : el.dataset.placeholderTr;
-    });
+    const pick = (value, allowed, fallback) => (allowed.includes(value) ? value : fallback);
 
-    // Update tooltips
-    const tooltipElements = document.querySelectorAll(
-        "[data-tooltip-en][data-tooltip-tr]"
-    );
-    tooltipElements.forEach((el) => {
-        const tooltipText =
-            selectedLanguage === "en"
-                ? el.dataset.tooltipEn
-                : el.dataset.tooltipTr;
-        el.setAttribute("data-tooltip", tooltipText);
-    });
+    // ---------- Dil ----------
 
-    // Update language toggle button label
+    function currentLanguage() {
+        return pick(root.lang, LANGS, DEFAULT_LANG);
+    }
+
+    function applyLanguage(requested) {
+        const lang = pick(requested, LANGS, DEFAULT_LANG);
+        root.lang = lang;
+
+        document.querySelectorAll("[data-en][data-tr]").forEach((el) => {
+            const text = el.dataset[lang];
+            if (typeof text === "string" && text.length) el.textContent = text;
+        });
+
+        document.querySelectorAll("[data-alt-en][data-alt-tr]").forEach((el) => {
+            el.alt = lang === "en" ? el.dataset.altEn : el.dataset.altTr;
+        });
+
+        document.querySelectorAll("[data-tooltip-en][data-tooltip-tr]").forEach((el) => {
+            el.setAttribute("data-tooltip", lang === "en" ? el.dataset.tooltipEn : el.dataset.tooltipTr);
+        });
+
+        if (languageToggleButton) {
+            const label = languageToggleButton.querySelector(".tool-label");
+            if (label) label.textContent = lang === "en" ? "TR" : "EN";
+            languageToggleButton.setAttribute(
+                "aria-label",
+                lang === "en" ? "Türkçeye geç" : "Switch to English"
+            );
+        }
+
+        storageSet("portfolio-language", lang);
+    }
+
+    // ---------- Tema ----------
+
+    function currentTheme() {
+        return pageBody.classList.contains("light-theme") ? "light-theme" : "dark-theme";
+    }
+
+    function applyTheme(requested) {
+        const theme = pick(requested, THEMES, DEFAULT_THEME);
+        pageBody.classList.remove(...THEMES);
+        pageBody.classList.add(theme);
+        root.style.colorScheme = theme === "light-theme" ? "light" : "dark";
+
+        if (themeToggleButton) {
+            const label = themeToggleButton.querySelector(".tool-label");
+            if (label) label.textContent = theme === "dark-theme" ? "☾" : "☀";
+            themeToggleButton.setAttribute("aria-pressed", String(theme === "light-theme"));
+            themeToggleButton.setAttribute(
+                "aria-label",
+                theme === "dark-theme" ? "Açık temaya geç" : "Koyu temaya geç"
+            );
+        }
+
+        storageSet("portfolio-theme", theme);
+    }
+
+    // Tercihleri hemen uygula (script sayfanın sonunda, DOM hazır)
+    applyLanguage(window.__initialLanguage || storageGet("portfolio-language"));
+    applyTheme(window.__initialTheme || storageGet("portfolio-theme"));
+
     if (languageToggleButton) {
-        const label = languageToggleButton.querySelector(".tool-label");
-        if (label) {
-            label.textContent = selectedLanguage === "en" ? "TR" : "EN";
-        }
+        languageToggleButton.addEventListener("click", () => {
+            applyLanguage(currentLanguage() === "en" ? "tr" : "en");
+        });
     }
 
-    // Save preference
-    localStorage.setItem("portfolio-language", selectedLanguage);
-}
-
-// Theme switching - apply selected theme (dark-theme or light-theme)
-function applyTheme(selectedTheme) {
-    // Remove previous theme classes
-    pageBody.classList.remove("dark-theme", "light-theme");
-    
-    // Add new theme class
-    pageBody.classList.add(selectedTheme);
-
-    // Update theme toggle button label (moon/sun icon)
     if (themeToggleButton) {
-        const label = themeToggleButton.querySelector(".tool-label");
-        if (label) {
-            label.textContent = selectedTheme === "dark-theme" ? "☾" : "☀";
-        }
+        themeToggleButton.addEventListener("click", () => {
+            applyTheme(currentTheme() === "dark-theme" ? "light-theme" : "dark-theme");
+        });
     }
 
-    // Save preference
-    localStorage.setItem("portfolio-theme", selectedTheme);
-}
+    // ---------- Mobil menü ----------
 
-// Language toggle button - click event
-if (languageToggleButton) {
-    languageToggleButton.addEventListener("click", () => {
-        const currentLanguage =
-            localStorage.getItem("portfolio-language") || "tr";
-        const nextLanguage = currentLanguage === "en" ? "tr" : "en";
-        applyLanguage(nextLanguage);
-    });
-}
+    function setMenu(open) {
+        if (!menuToggleButton || !navigationLinks) return;
+        navigationLinks.classList.toggle("active", open);
+        menuToggleButton.setAttribute("aria-expanded", String(open));
+    }
 
-// Theme toggle button - click event
-if (themeToggleButton) {
-    themeToggleButton.addEventListener("click", () => {
-        const currentTheme =
-            localStorage.getItem("portfolio-theme") || "dark-theme";
-        const nextTheme =
-            currentTheme === "dark-theme" ? "light-theme" : "dark-theme";
-        applyTheme(nextTheme);
-    });
-}
-
-// Initialize on page load - restore user preferences
-document.addEventListener("DOMContentLoaded", () => {
-    // Load saved language preference
-    const savedLanguage =
-        localStorage.getItem("portfolio-language") || "tr";
-
-    // Load saved theme preference
-    const savedTheme =
-        localStorage.getItem("portfolio-theme") || "dark-theme";
-
-    // Apply saved preferences
-    applyLanguage(savedLanguage);
-    applyTheme(savedTheme);
-
-    // Set initial menu state for accessibility
     if (menuToggleButton && navigationLinks) {
-        const isMenuOpen = navigationLinks.classList.contains("active");
-        menuToggleButton.setAttribute("aria-expanded", isMenuOpen.toString());
+        setMenu(false);
+        menuToggleButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+            setMenu(!navigationLinks.classList.contains("active"));
+        });
+        // Dışarı tıklayınca veya Escape ile kapanır
+        document.addEventListener("click", (event) => {
+            if (navigationLinks.classList.contains("active") && !navigationLinks.contains(event.target)) {
+                setMenu(false);
+            }
+        });
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && navigationLinks.classList.contains("active")) {
+                setMenu(false);
+                menuToggleButton.focus();
+            }
+        });
+        // Masaüstüne genişleyince açık kalmasın
+        window.matchMedia("(min-width: 769px)").addEventListener("change", (e) => {
+            if (e.matches) setMenu(false);
+        });
     }
 
+    // ---------- Kitap sayfası geçişi ----------
+    // Menüdeki bir bölüme gidilince ekranı bir sayfa kaplar, üzerinde bölümün adı
+    // yazar; arkada sayfa hedef bölüme kayar, sonra sayfa soldaki cilt çizgisinden
+    // çevrilerek açılır.
+
+    const pageTurn = document.querySelector(".page-turn");
+    const pageTurnTitle = pageTurn ? pageTurn.querySelector(".page-turn-title") : null;
+    const COVER_MS = 300;
+    const TURN_MS = 750;
+    let turning = false;
+
+    function jumpTo(target) {
+        target.scrollIntoView({ behavior: "instant", block: "start" });
+        const heading = target.querySelector("h1, h2") || target;
+        if (!heading.hasAttribute("tabindex")) heading.setAttribute("tabindex", "-1");
+        heading.focus({ preventScroll: true });
+    }
+
+    function goToSection(target, id) {
+        setMenu(false);
+        if (window.location.hash !== `#${id}`) {
+            history.pushState(null, "", `#${id}`);
+        }
+
+        if (!pageTurn || prefersReducedMotion() || turning) {
+            jumpTo(target);
+            return;
+        }
+
+        turning = true;
+        const heading = target.querySelector("h1, h2");
+        pageTurnTitle.textContent = heading ? heading.textContent.trim() : "";
+
+        pageTurn.classList.remove("is-turning");
+        pageTurn.classList.add("is-active");
+
+        window.setTimeout(() => {
+            jumpTo(target);
+            // Bir kare bekleyip çevirmeye başla ki kaydırma tamamlanmış olsun
+            requestAnimationFrame(() => {
+                pageTurn.classList.add("is-turning");
+                window.setTimeout(() => {
+                    pageTurn.classList.remove("is-active", "is-turning");
+                    turning = false;
+                }, TURN_MS);
+            });
+        }, COVER_MS);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        const id = link.getAttribute("href").slice(1);
+        if (!id || id === "main-content" || !/^[a-z][\w-]*$/i.test(id)) return;
+        link.addEventListener("click", (event) => {
+            const target = document.getElementById(id);
+            if (!target) return;
+            event.preventDefault();
+            goToSection(target, id);
+        });
+    });
+
+    // ---------- Giriş animasyonları, kart ışığı, eğim ----------
+    // "Hareketi azalt" açıksa ya da IntersectionObserver yoksa içerik doğrudan görünür.
+
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    document.querySelectorAll("[data-stagger]").forEach((group) => {
+        Array.from(group.children).forEach((child, index) => {
+            child.style.setProperty("--d", `${Math.min(index, 8) * 90}ms`);
+        });
+    });
+    document.querySelectorAll(".chip-list").forEach((list) => {
+        Array.from(list.children).forEach((chip, index) => {
+            chip.style.setProperty("--i", String(Math.min(index, 12)));
+        });
+    });
+
+    const revealTargets = document.querySelectorAll(".rise, .thread-entry, [data-thread]");
+
+    function revealAll() {
+        revealTargets.forEach((el) => el.classList.add("is-in", "is-drawn", "is-done"));
+    }
+
+    if (prefersReducedMotion() || !("IntersectionObserver" in window)) {
+        revealAll();
+    } else {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                if (el.hasAttribute("data-thread")) {
+                    el.classList.add("is-drawn");
+                } else {
+                    el.classList.add("is-in");
+                    const delay = parseInt(el.style.getPropertyValue("--d"), 10) || 0;
+                    window.setTimeout(() => el.classList.add("is-done"), delay + 1400);
+                }
+                observer.unobserve(el);
+            });
+        }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+
+        revealTargets.forEach((el) => observer.observe(el));
+    }
+
+    // Kullanıcı sonradan "hareketi azalt"ı açarsa her şey hemen görünür olsun
+    motionQuery.addEventListener("change", (e) => {
+        if (e.matches) revealAll();
+    });
+
+    if (finePointer) {
+        document.querySelectorAll(".glow-card").forEach((card) => {
+            card.addEventListener("pointermove", (event) => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+                card.style.setProperty("--my", `${event.clientY - rect.top}px`);
+
+                if (!prefersReducedMotion() && card.hasAttribute("data-tilt")) {
+                    const px = (event.clientX - rect.left) / rect.width - 0.5;
+                    const py = (event.clientY - rect.top) / rect.height - 0.5;
+                    card.style.setProperty("--tilt-y", `${(px * 6).toFixed(2)}deg`);
+                    card.style.setProperty("--tilt-x", `${(-py * 6).toFixed(2)}deg`);
+                }
+            });
+            card.addEventListener("pointerleave", () => {
+                card.style.setProperty("--tilt-x", "0deg");
+                card.style.setProperty("--tilt-y", "0deg");
+            });
+        });
+    }
+
+    // ---------- İmleç efekti ----------
+    // Farenin ucunda bir nokta (anında takip eder, gecikme yok) ve onu yumuşakça
+    // izleyen bir halka. Bağlantı/düğme üstünde halka büyüyüp yeşile döner,
+    // tıklayınca küçülür. Sistem imleci yerinde kalır. Yalnızca gerçek fare +
+    // hareketi azalt kapalıyken; hareket bitince döngü durur (boşta CPU harcamaz).
+    if (finePointer && !prefersReducedMotion()) {
+        const dot = document.createElement("div");
+        const ring = document.createElement("div");
+        dot.className = "cursor-dot";
+        ring.className = "cursor-ring";
+        dot.setAttribute("aria-hidden", "true");
+        ring.setAttribute("aria-hidden", "true");
+        document.body.append(dot, ring);
+
+        let mouseX = -100;
+        let mouseY = -100;
+        let ringX = mouseX;
+        let ringY = mouseY;
+        let frame = null;
+
+        const follow = () => {
+            ringX += (mouseX - ringX) * 0.2;
+            ringY += (mouseY - ringY) * 0.2;
+            ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+            frame = Math.abs(mouseX - ringX) > 0.2 || Math.abs(mouseY - ringY) > 0.2
+                ? requestAnimationFrame(follow)
+                : null;
+        };
+
+        document.addEventListener("pointermove", (event) => {
+            if (event.pointerType !== "mouse") return;
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+            dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+            if (!root.classList.contains("cursor-on")) {
+                ringX = mouseX;
+                ringY = mouseY;
+                root.classList.add("cursor-on");
+            }
+            const over = event.target instanceof Element
+                && event.target.closest("a, button, [tabindex], .chip, summary, label");
+            root.classList.toggle("cursor-hover", Boolean(over));
+            if (!frame) frame = requestAnimationFrame(follow);
+        }, { passive: true });
+
+        document.addEventListener("pointerdown", () => root.classList.add("cursor-press"));
+        document.addEventListener("pointerup", () => root.classList.remove("cursor-press"));
+        document.documentElement.addEventListener("mouseleave", () => {
+            root.classList.remove("cursor-on", "cursor-hover", "cursor-press");
+        });
+        motionQuery.addEventListener("change", (e) => {
+            if (e.matches) {
+                dot.remove();
+                ring.remove();
+            }
+        });
+    }
+})();
+
+
+// ==================================================
+// KULLANILMAYAN ESKİ KODLAR (yorum satırında saklanıyor)
+// ==================================================
+
+/* KULLANILMIYOR: iletişim formu gönderimi (sayfada form yok)
     // AJAX-based Contact Form Submission
     const contactForm = document.querySelector(".contact-form");
     if (contactForm && contactForm.tagName === "FORM") {
@@ -265,37 +474,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-});
+*/
 
-
-
-
-
-
-
-
-            
-
-
-// Interactive Cursor Glow
-const cursorGlow = document.getElementById('cursorGlow');
-if (cursorGlow) {
-    document.addEventListener('mousemove', (e) => {
-        // Use requestAnimationFrame for smoother performance
-        requestAnimationFrame(() => {
-            cursorGlow.style.left = e.clientX + 'px';
-            cursorGlow.style.top = e.clientY + 'px';
-        });
-    });
-    
-    // Add fancy hover effect when over clickable items
-    document.querySelectorAll('a, button').forEach(el => {
-        el.addEventListener('mouseenter', () => cursorGlow.style.transform = 'translate(-50%, -50%) scale(1.5)');
-        el.addEventListener('mouseleave', () => cursorGlow.style.transform = 'translate(-50%, -50%) scale(1)');
-    });
-}
-
-
+/* KULLANILMIYOR: eski yumuşak kaydırma (yerini kitap sayfası geçişi aldı)
 // Smooth Scroll for Navbar Links
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', function(e) {
@@ -320,7 +501,43 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         }
     });
 });
+*/
 
+/* KULLANILMIYOR: imleç parıltısı kaldırıldı
+const cursorGlowElement = document.getElementById("cursorGlow");
+*/
+
+/* KULLANILMIYOR: imleç parıltısı kaldırıldı
+// Cursor glow effect - follows mouse movement
+document.addEventListener("mousemove", (event) => {
+    if (!cursorGlowElement) return;
+    cursorGlowElement.style.left = `${event.clientX}px`;
+    cursorGlowElement.style.top = `${event.clientY}px`;
+});
+
+*/
+
+/* KULLANILMIYOR: imleç parıltısı kaldırıldı
+// Interactive Cursor Glow
+const cursorGlow = document.getElementById('cursorGlow');
+if (cursorGlow) {
+    document.addEventListener('mousemove', (e) => {
+        // Use requestAnimationFrame for smoother performance
+        requestAnimationFrame(() => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+    });
+    
+    // Add fancy hover effect when over clickable items
+    document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => cursorGlow.style.transform = 'translate(-50%, -50%) scale(1.5)');
+        el.addEventListener('mouseleave', () => cursorGlow.style.transform = 'translate(-50%, -50%) scale(1)');
+    });
+}
+*/
+
+/* KULLANILMIYOR: eski reveal-left/right/zoom animasyonları (yerine aşağıdaki tek seferlik görünme kodu geldi)
 document.addEventListener('DOMContentLoaded', () => {
     // Scroll Reveal Effect
     const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-up, .reveal-target');
@@ -347,7 +564,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 });
+*/
 
+/* KULLANILMIYOR: kart spot ışığı efekti kaldırıldı
 document.addEventListener('DOMContentLoaded', () => {
     // Spotlight Effect for Cards
     const cards = document.querySelectorAll('.premium-project-card, .experience-card-brittany');
@@ -363,4 +582,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-
+*/
