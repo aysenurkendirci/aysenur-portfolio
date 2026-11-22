@@ -153,6 +153,55 @@
         });
     }
 
+    // ---------- E-posta ----------
+    // Masaüstünde Gmail'in e-posta yazma ekranı yeni sekmede açılır (çoğu
+    // bilgisayarda mailto için kurulu bir e-posta programı yoktur). Telefonda
+    // cihazın e-posta uygulaması açılır. İkisinde de alıcı ve konu hazırdır.
+    const EMAIL_PATTERN = /^[^\s@<>"'?&]+@[^\s@<>"'?&]+\.[a-z]{2,}$/i;
+    const MAIL_SUBJECT = { tr: "Portfolyo üzerinden iletişim", en: "Contact via portfolio" };
+    const desktopPointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+        const email = link.getAttribute("href").slice(7).split("?")[0];
+        if (!EMAIL_PATTERN.test(email)) return;
+        link.addEventListener("click", (event) => {
+            const subject = encodeURIComponent(MAIL_SUBJECT[currentLanguage()]);
+            if (desktopPointer) {
+                event.preventDefault();
+                const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${subject}`;
+                window.open(url, "_blank", "noopener,noreferrer");
+            } else {
+                link.setAttribute("href", `mailto:${email}?subject=${subject}`);
+            }
+        });
+    });
+
+    // Adresi kopyala (Gmail kullanmayanlar için)
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+        const label = button.querySelector("span");
+        let timer = null;
+        button.addEventListener("click", async () => {
+            const lang = currentLanguage();
+            let ok = false;
+            try {
+                await navigator.clipboard.writeText(button.dataset.copy);
+                ok = true;
+            } catch (error) {
+                ok = false;
+            }
+            const texts = ok
+                ? { tr: "Kopyalandı", en: "Copied" }
+                : { tr: "Kopyalanamadı", en: "Couldn't copy" };
+            label.textContent = texts[lang];
+            button.classList.toggle("is-copied", ok);
+            window.clearTimeout(timer);
+            timer = window.setTimeout(() => {
+                label.textContent = label.dataset[currentLanguage()];
+                button.classList.remove("is-copied");
+            }, 1800);
+        });
+    });
+
     // ---------- Kitap sayfası geçişi ----------
     // Menüdeki bir bölüme gidilince ekranı bir sayfa kaplar, üzerinde bölümün adı
     // yazar; arkada sayfa hedef bölüme kayar, sonra sayfa soldaki cilt çizgisinden

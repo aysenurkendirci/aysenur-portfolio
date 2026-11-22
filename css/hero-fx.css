@@ -8,10 +8,34 @@
    statik ve görünür kalır.
    ================================================== */
 
-/* ---------- Yazı tipi: tüm site tek aile ---------- */
+/* ---------- Yazı tipi: tüm site tek aile ----------
+   "Jakarta Fallback": Plus Jakarta Sans yüklenene kadar görünen Arial,
+   ölçüleri Jakarta'ya eşitlenmiş halde. Font gelince yazılar yerinden
+   oynamaz (yükleme kayması olmaz). Değerler fontun kendi ölçülerinden
+   (üst %103.8, alt %22.2) ve ölçülen genişlik oranlarından hesaplandı. */
+
+@font-face {
+    font-family: "Jakarta Fallback";
+    src: local("Arial"), local("ArialMT");
+    font-weight: 100 549;
+    size-adjust: 101%;
+    ascent-override: 102.8%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Jakarta Fallback";
+    src: local("Arial Bold"), local("Arial-BoldMT");
+    font-weight: 550 900;
+    size-adjust: 97.3%;
+    ascent-override: 106.7%;
+    descent-override: 22.8%;
+    line-gap-override: 0%;
+}
 
 body {
-    font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-family: "Plus Jakarta Sans", "Jakarta Fallback", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 .brand,
@@ -515,5 +539,118 @@ body.light-theme .hero-buttons .btn-secondary:hover {
     .portfolio-card::before,
     .portfolio-card-header::after {
         transition: none;
+    }
+}
+
+/* ==================================================
+   EKRANA GÖRE ÖLÇEKLENEN HERO (masaüstü)
+   Tüm hero boyutları tek bir birime (--u) bağlı. Birim ekranın
+   genişliğine VE yüksekliğine bakar; hangisi darsa ona göre küçülür.
+   Böylece 1366×768 dizüstüden 2560×1440 monitöre kadar hero her
+   ekranda aynı oranda görünür ve ilk ekrana sığar.
+   (1440×900'de --u ≈ 14px; eski piksel değerleri buna göre çevrildi.)
+   ================================================== */
+
+@media (min-width: 993px) {
+    :root {
+        --u: max(8px, min(1vw, 1.65vh, 26px));
+    }
+
+    /* Navbar ve hero aynı genişlikte: kenarları her ekranda hizalı */
+    .navbar-container,
+    .hero-split-layout {
+        max-width: max(1180px, calc(82 * var(--u)));
+    }
+
+    .hero-split {
+        padding: calc(1.6 * var(--u)) 0 calc(2 * var(--u));
+    }
+
+    .hero-split-layout {
+        gap: calc(3 * var(--u));
+    }
+
+    .hero-bg-word {
+        font-size: calc(19 * var(--u));
+    }
+
+    .intro-line {
+        margin-bottom: calc(0.7 * var(--u));
+        font-size: calc(1.9 * var(--u));
+    }
+
+    .hero-name {
+        margin-bottom: calc(1.1 * var(--u));
+        font-size: calc(6.7 * var(--u));
+    }
+
+    .hero-role {
+        max-width: calc(37 * var(--u)); /* "…Öğrencisi |" sonrası kırılsın, "Backend Geliştirici" bölünmesin */
+        margin-bottom: calc(1.2 * var(--u));
+        font-size: calc(2.3 * var(--u));
+    }
+
+    .hero-left {
+        max-width: calc(50 * var(--u));
+    }
+
+    .hero-description {
+        max-width: calc(46 * var(--u));
+        margin-bottom: calc(1.9 * var(--u));
+        font-size: max(14px, calc(1.3 * var(--u)));
+    }
+
+    .hero-buttons {
+        gap: calc(1.1 * var(--u));
+        margin-bottom: calc(1.6 * var(--u));
+    }
+
+    .hero-buttons .btn {
+        min-height: max(40px, calc(3.05 * var(--u)));
+        padding: calc(0.9 * var(--u)) calc(1.7 * var(--u));
+        border-radius: calc(0.85 * var(--u));
+        font-size: max(14px, calc(1.1 * var(--u)));
+    }
+
+    .hero-social-icons {
+        gap: calc(1.1 * var(--u));
+    }
+
+    .hero-social-icons a {
+        width: max(40px, calc(3.6 * var(--u)));
+        height: max(40px, calc(3.6 * var(--u)));
+        border-radius: calc(var(--u));
+        font-size: calc(1.65 * var(--u));
+    }
+
+    .swing-wrapper {
+        width: calc(23 * var(--u));
+    }
+
+    .portfolio-card {
+        width: calc(21.5 * var(--u));
+        padding: calc(0.85 * var(--u));
+        border-radius: calc(1.25 * var(--u));
+    }
+
+    .portfolio-card-image {
+        border-radius: calc(var(--u));
+    }
+
+    .portfolio-card-image img {
+        height: calc(25.5 * var(--u));
+    }
+
+    .portfolio-card-footer h2 {
+        font-size: calc(1.55 * var(--u));
+    }
+
+    .portfolio-card-footer p {
+        font-size: max(11px, calc(1.05 * var(--u)));
+    }
+
+    .pull-hint {
+        margin-top: calc(1.8 * var(--u));
+        font-size: max(12px, calc(0.9 * var(--u)));
     }
 }

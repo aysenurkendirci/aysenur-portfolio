@@ -535,3 +535,131 @@ test('favicon yüklenir ve sitede sarı/altın renk kullanılmaz', async () => {
     assert.deepEqual(errors, []);
     await page.close();
 });
+
+test('hero her masaüstü ekranında ilk ekrana sığar ve aynı oranda görünür', async () => {
+    const ratios = [];
+    for (const [width, height] of [[1280, 720], [1366, 768], [1536, 734], [1440, 900], [1920, 1080], [2560, 1440]]) {
+        const { page, errors } = await openPage({ width, height });
+        await sleep(2600);
+        const m = await page.evaluate(() => {
+            const bottom = (s) => document.querySelector(s).getBoundingClientRect().bottom;
+            return {
+                social: bottom('.hero-social-icons'),
+                card: bottom('.portfolio-card'),
+                hint: bottom('.pull-hint'),
+                name: parseFloat(getComputedStyle(document.querySelector('.hero-name')).fontSize)
+            };
+        });
+        for (const [part, b] of Object.entries({ sosyal: m.social, kart: m.card, ipucu: m.hint })) {
+            assert.ok(b <= height, `${width}x${height}: ${part} ilk ekrana sığmıyor (alt=${Math.round(b)})`);
+        }
+        // İsim, ekranın dar kenarına göre hep aynı oranda olmalı
+        ratios.push(m.name / Math.min(width, height * 1.55));
+        assert.deepEqual(errors, []);
+        await page.close();
+    }
+    const spread = Math.max(...ratios) / Math.min(...ratios);
+    assert.ok(spread < 1.05, `ekranlar arasında oran farkı çok büyük: ${ratios.map((r) => r.toFixed(4)).join(', ')}`);
+});
+
+test('mobil navbar tek satırda ve kompakt', async () => {
+    for (const width of [320, 360, 390, 414, 768]) {
+        const { page } = await openPage({ width, height: 800, mobile: true });
+        const m = await page.evaluate(() => {
+            const top = (s) => Math.round(document.querySelector(s).getBoundingClientRect().top);
+            return {
+                height: Math.round(document.querySelector('.site-header').getBoundingClientRect().height),
+                brand: top('.brand'), tools: top('#langToggle'), menu: top('#menuToggle'),
+                brandText: document.querySelector('.brand').innerText.replace(/\s+/g, ' ').trim(),
+                brandCut: document.querySelector('.brand-line').scrollWidth > document.querySelector('.brand').clientWidth + 1
+            };
+        });
+        assert.ok(m.height <= 70, `${width}px: navbar çok yüksek (${m.height}px)`);
+        assert.ok(Math.abs(m.menu - m.tools) < 12 && Math.abs(m.menu - m.brand) < 20, `${width}px: navbar tek satırda değil ${JSON.stringify(m)}`);
+        assert.match(m.brandText, /Ayşe Nur Kendirci/);
+        assert.equal(m.brandCut, false, `${width}px: navbar'daki isim kesiliyor`);
+        await page.close();
+    }
+});
+
+test('sayfa yüklenirken kayma yok (CLS < 0.1, yavaş bağlantıda bile)', async () => {
+    for (const [width, height, mobile] of [[1440, 900, false], [1536, 734, false], [390, 844, true]]) {
+        const context = await browser.createBrowserContext();
+        const page = await context.newPage();
+        await page.setViewport({ width, height, isMobile: mobile, hasTouch: mobile });
+        const cdp = await page.createCDPSession();
+        await cdp.send('Network.emulateNetworkConditions', {
+            offline: false, latency: 150, downloadThroughput: 400 * 1024, uploadThroughput: 200 * 1024
+        });
+        await page.evaluateOnNewDocument(() => {
+            window.__cls = 0;
+            new PerformanceObserver((list) => {
+                for (const entry of list.getEntries()) if (!entry.hadRecentInput) window.__cls += entry.value;
+            }).observe({ type: 'layout-shift', buffered: true });
+        });
+        await page.goto(`${baseUrl}/index.html`, { waitUntil: 'networkidle0', timeout: 60000 });
+        await sleep(2500);
+        const cls = await page.evaluate(() => window.__cls);
+        assert.ok(cls < 0.1, `${width}x${height}: yükleme sırasında kayma çok fazla (CLS=${cls.toFixed(3)})`);
+        await context.close();
+    }
+});
+
+test('e-posta: telefonda kartın dışına taşmaz; tıklayınca yazma ekranı açılır; kopyalanabilir', async () => {
+    // Taşma: adres her telefon genişliğinde iletişim kartının içinde kalmalı
+    for (const width of [320, 360, 375, 390, 414]) {
+        const { page } = await openPage({ width, height: 800, mobile: true });
+        const m = await page.evaluate(() => {
+            const card = document.querySelector('.contact-inner').getBoundingClientRect();
+            const mail = document.querySelector('.contact-mail span').getBoundingClientRect();
+            const copy = document.querySelector('.copy-mail').getBoundingClientRect();
+            const fs = parseFloat(getComputedStyle(document.querySelector('.contact-mail')).fontSize);
+            return { cardL: card.left, cardR: card.right, mailL: mail.left, mailR: mail.right, copyR: copy.right,
+                oneLine: mail.height < fs * 2.6 }; // tek satır ≈ 1.9×, iki satır ≥ 3.4×
+        });
+        assert.ok(m.oneLine, `${width}px: e-posta adresi iki satıra bölünüyor`);
+        assert.ok(m.mailR <= m.cardR - 8 && m.mailL >= m.cardL && m.copyR <= m.cardR - 8,
+            `${width}px: e-posta kartın dışına taşıyor ${JSON.stringify(m)}`);
+        await page.close();
+    }
+
+    // Masaüstü: Gmail yazma ekranı yeni sekmede, alıcı ve konu dolu
+    const { page, errors } = await openPage({ width: 1280 });
+    await page.evaluate(() => document.getElementById('contact').scrollIntoView({ behavior: 'instant' }));
+    await page.evaluate(() => document.querySelectorAll('.rise').forEach((e) => e.classList.add('is-in', 'is-done')));
+    // window.open çağrısını yakala (Gmail oturum açılmamış tarayıcıyı girişe yönlendirir)
+    await page.evaluate(() => {
+        window.__opened = [];
+        window.open = (u, name, features) => { window.__opened.push({ u, name, features }); return null; };
+    });
+    await page.click('.contact-mail');
+    const opened = await page.evaluate(() => window.__opened);
+    assert.equal(opened.length, 1, 'yazma ekranı açılmadı');
+    const url = new URL(opened[0].u);
+    assert.equal(url.hostname, 'mail.google.com');
+    assert.equal(url.searchParams.get('view'), 'cm');
+    assert.equal(url.searchParams.get('to'), 'aysenurkendirciss@gmail.com');
+    assert.equal(url.searchParams.get('su'), 'Portfolyo üzerinden iletişim');
+    assert.equal(opened[0].name, '_blank');
+    assert.match(opened[0].features, /noopener/);
+
+    // Kopyala düğmesi
+    await page.browserContext().overridePermissions(baseUrl, ['clipboard-read', 'clipboard-write', 'clipboard-sanitized-write']);
+    await page.click('.copy-mail');
+    await sleep(150);
+    assert.equal(await page.evaluate(() => navigator.clipboard.readText()), 'aysenurkendirciss@gmail.com');
+    assert.equal(await page.$eval('.copy-mail span', (s) => s.textContent), 'Kopyalandı');
+    assert.deepEqual(errors, []);
+    await page.close();
+
+    // Telefon: cihazın e-posta uygulaması için mailto, konu ile
+    const { page: phone } = await openPage({ width: 390, height: 844, mobile: true });
+    await phone.evaluate(() => {
+        const link = document.querySelector('.contact-mail');
+        link.addEventListener('click', (e) => e.preventDefault(), { once: true }); // testte uygulamayı açma
+        link.click();
+    });
+    const href = await phone.$eval('.contact-mail', (a) => a.getAttribute('href'));
+    assert.equal(href, 'mailto:aysenurkendirciss@gmail.com?subject=Portfolyo%20%C3%BCzerinden%20ileti%C5%9Fim');
+    await phone.close();
+});

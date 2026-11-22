@@ -121,6 +121,21 @@ function escapeHtml(value) {
         .replace(/\}/g, '&#125;');
 }
 
+// Puts the Turkish text into elements that carry data-en / data-tr, and the
+// Turkish tooltip into data-tooltip. Values are already HTML-escaped attribute
+// values, which are equally valid as element text.
+function applyDefaultLanguage(html) {
+    html = html.replace(
+        /(<([a-z][a-z0-9]*)\b[^>]*?\sdata-en="[^"]*"[^>]*?\sdata-tr="([^"]*)"[^>]*>)([^<]*)(<\/\2>)/gi,
+        (match, open, tag, tr, inner, close) => (inner.trim() ? `${open}${tr}${close}` : match)
+    );
+    html = html.replace(
+        /\sdata-tooltip="[^"]*"(\s+data-tooltip-en="[^"]*"\s+data-tooltip-tr="([^"]*)")/g,
+        (match, rest, tr) => ` data-tooltip="${tr}"${rest}`
+    );
+    return html;
+}
+
 // Find matching closing tag for a given opening tag by counting depths
 function findMatchingClose(str, openToken, closeToken, startIndex) {
     let depth = 1;
@@ -261,6 +276,11 @@ function build() {
     // Compile any global variables inside template.html directly
     templateHtml = renderTemplate(templateHtml, context);
 
+    // Varsayılan dil Türkçe: statik HTML'e doğrudan Türkçe metin yazılır.
+    // Böylece JS yüklenince metinler değişmez, sayfa kaymaz ve bir anlık
+    // İngilizce görünmez. (İngilizce seçenler için JS yine çevirir.)
+    templateHtml = applyDefaultLanguage(templateHtml);
+
     // Fail if any placeholder was left unresolved (typo or missing data)
     const leftover = templateHtml.match(/\{\{[^}]*\}\}/g);
     if (leftover) {
@@ -363,4 +383,4 @@ if (require.main === module) {
     build();
 }
 
-module.exports = { escapeHtml, renderTemplate };
+module.exports = { escapeHtml, renderTemplate, applyDefaultLanguage };

@@ -98,3 +98,18 @@ test('üretilen index.html güvenli ve eksiksiz', () => {
         assert.ok(!tag.includes('@latest'), `sabitlenmemiş sürüm: ${tag}`);
     });
 });
+
+test('sayfa varsayılan dil olan Türkçe ile üretilir (JS yüklenince metin değişmez)', () => {
+    const { applyDefaultLanguage } = require('../build');
+    assert.equal(
+        applyDefaultLanguage('<h2 id="t" data-en="About" data-tr="Hakkımda">About</h2><span data-en="" data-tr=""></span>'),
+        '<h2 id="t" data-en="About" data-tr="Hakkımda">Hakkımda</h2><span data-en="" data-tr=""></span>'
+    );
+    const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+    const pairs = [...html.matchAll(/<([a-z0-9]+)\b[^>]*?\sdata-en="([^"]*)"[^>]*?\sdata-tr="([^"]*)"[^>]*>([^<]*)<\/\1>/g)];
+    assert.ok(pairs.length > 50);
+    const notTurkish = pairs.filter(([, , , tr, inner]) => inner.trim() && inner.trim() !== tr.trim());
+    assert.deepEqual(notTurkish.map((p) => p[4].trim()), [], 'Türkçe olmayan statik metin var');
+    const tips = [...html.matchAll(/data-tooltip="([^"]*)"\s+data-tooltip-en="[^"]*"\s+data-tooltip-tr="([^"]*)"/g)];
+    assert.ok(tips.length > 0 && tips.every(([, shown, tr]) => shown === tr), 'ipuçları Türkçe değil');
+});

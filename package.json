@@ -14,7 +14,7 @@
     "build": "node build.js",
     "validate": "node scripts/validate-data.js",
     "preview": "node scripts/serve.js",
-    "test": "node build.js && node --test --test-concurrency=1 \"tests/*.test.js\""
+    "test": "node build.js && node --test --test-concurrency=1 --test-timeout=90000 \"tests/*.test.js\""
   },
   "devDependencies": {
     "puppeteer-core": "^24.0.0"
