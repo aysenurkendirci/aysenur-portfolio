@@ -4,12 +4,14 @@
 
 **Software Engineering student · Full-stack, with a stronger focus on the backend**
 
+### 🔗 [aysenurkendirci.github.io/aysenur-portfolio](https://aysenurkendirci.github.io/aysenur-portfolio/)
+
 [![Live site](https://img.shields.io/badge/live%20site-aysenurkendirci.github.io-60a5fa?style=flat-square)](https://aysenurkendirci.github.io/aysenur-portfolio/)
 ![Stack](https://img.shields.io/badge/stack-HTML%20%C2%B7%20CSS%20%C2%B7%20JavaScript-c084fc?style=flat-square)
 ![Tests](https://img.shields.io/badge/tests-Node%20%2B%20Chrome-34d399?style=flat-square)
 ![Languages](https://img.shields.io/badge/site-TR%20%2F%20EN-0a192f?style=flat-square)
 
-[**Visit the site →**](https://aysenurkendirci.github.io/aysenur-portfolio/) · [Türkçe ↓](#türkçe)
+[**Visit the live site →**](https://aysenurkendirci.github.io/aysenur-portfolio/) · [Türkçe ↓](#türkçe)
 
 ![Portfolio preview on desktop and mobile](docs/preview.jpg)
 
@@ -139,7 +141,7 @@ All personal content in this repository (text, photo, CV) belongs to Ayşe Nur K
 
 ## Türkçe
 
-**Canlı site:** https://aysenurkendirci.github.io/aysenur-portfolio/
+### 🔗 Canlı site: [aysenurkendirci.github.io/aysenur-portfolio](https://aysenurkendirci.github.io/aysenur-portfolio/)
 
 Doğuş Üniversitesi Yazılım Mühendisliği öğrencisi Ayşe Nur Kendirci'nin kişisel portfolyo sitesi. Full-stack çalışıyor, ağırlığı backend tarafında. Sitede VakıfBank ile İncehesap.com & Oksid Bilişim stajları, projeleri, kullandığı teknolojiler ve sertifikaları Türkçe ve İngilizce olarak yer alıyor.
 
